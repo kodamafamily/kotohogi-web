@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google検索に開発中の画面が載らないようにする設定 -->
   <meta name="robots" content="noindex, nofollow">
   <title>KOTOHOGI 〜日本語教育に経験を。人生にやりがいを。〜</title>
   <style>
@@ -11,9 +10,9 @@
       --primary: #f59e0b;
       --primary-dark: #d97706;
       --primary-light: #fef3c7;
-      --tag-blue: #bae6fd;      /* 趣味タグ（水色） */
+      --tag-blue: #bae6fd;
       --tag-blue-active: #0284c7;
-      --tag-pink: #fbcfe8;      /* 授業レベルタグ（ピンク） */
+      --tag-pink: #fbcfe8;
       --tag-pink-active: #db2777;
       --bg-color: #fafaf9;
       --text-main: #292524;
@@ -152,6 +151,11 @@
       border-color: var(--tag-blue-active);
       font-weight: bold;
     }
+    .chip.lang.active {
+      background: #fef3c7;
+      border-color: var(--primary-dark);
+      font-weight: bold;
+    }
 
     /* 講師一覧グリッド */
     .results-header {
@@ -169,7 +173,7 @@
       .teacher-grid { grid-template-columns: 1fr; }
     }
 
-    /* 講師カード（新スクリーンショット準拠レイアウト） */
+    /* 講師カード */
     .teacher-card {
       background: #fff;
       border: 1px solid var(--border-color);
@@ -187,20 +191,18 @@
       margin-bottom: 0.8rem;
     }
     .avatar-circle {
-      width: 96px;
-      height: 96px;
+      width: 92px;
+      height: 92px;
       background: #f5f5f4;
       border: 2px solid #d6d3d1;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       flex-shrink: 0;
     }
-    .teacher-header-info {
-      flex: 1;
-    }
+    .teacher-header-info { flex: 1; }
     .teacher-name-row {
       display: flex;
       align-items: center;
@@ -208,13 +210,13 @@
       flex-wrap: wrap;
     }
     .teacher-name-row h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: bold;
     }
     .rating {
       color: #eab308;
       font-weight: bold;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
     .rank-badge {
       font-size: 0.72rem;
@@ -225,7 +227,7 @@
       border: 1px solid #f59e0b;
     }
 
-    /* 名前の下の可能言語（国旗アイコン） */
+    /* 国旗アイコン */
     .flags-row {
       display: flex;
       align-items: center;
@@ -235,7 +237,6 @@
     .flag-item {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
       border: 1px solid #e7e5e4;
       border-radius: 3px;
       overflow: hidden;
@@ -243,8 +244,8 @@
       height: 22px;
     }
 
-    /* 趣味タグ（水色） */
-    .tags-hobby-group {
+    /* タグ類 */
+    .tags-hobby-group, .tags-level-group {
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
@@ -252,13 +253,11 @@
     .tag-hobby {
       background: var(--tag-blue);
       color: #0c4a6e;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: bold;
-      padding: 0.2rem 0.65rem;
+      padding: 0.18rem 0.6rem;
       border-radius: 6px;
     }
-
-    /* 授業レベル行（ピンクタグ） */
     .level-section {
       display: flex;
       align-items: flex-start;
@@ -272,110 +271,238 @@
       font-weight: bold;
       color: var(--text-muted);
       white-space: nowrap;
-      padding-top: 0.2rem;
-    }
-    .tags-level-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
+      padding-top: 0.18rem;
     }
     .tag-level {
       background: var(--tag-pink);
       color: #831843;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: bold;
-      padding: 0.2rem 0.65rem;
+      padding: 0.18rem 0.6rem;
       border-radius: 6px;
     }
-
     .price-line {
       font-size: 0.9rem;
       font-weight: bold;
       color: var(--primary-dark);
       margin-bottom: 0.5rem;
     }
-
     .teacher-bio {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-main);
       margin-bottom: 1rem;
       background: #fafaf9;
-      padding: 0.85rem;
+      padding: 0.8rem;
       border-radius: 8px;
       border: 1px solid #f5f5f4;
     }
-    .bio-row {
-      margin-bottom: 0.25rem;
-    }
+    .bio-row { margin-bottom: 0.25rem; }
 
     /* タブ切り替え（スケジュール / レビュー） */
     .tabs {
       display: flex;
       border: 1px solid var(--text-main);
-      border-radius: 6px;
+      border-radius: 6px 6px 0 0;
       overflow: hidden;
-      margin-bottom: 0.8rem;
     }
     .tab-btn {
       flex: 1;
-      padding: 0.4rem;
+      padding: 0.45rem;
       background: #fff;
       border: none;
       cursor: pointer;
       font-weight: bold;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
     .tab-btn.active {
-      background: var(--primary);
-      color: #fff;
+      background: #fef9c3;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--primary);
+    }
+    .tab-panel {
+      border: 1px solid var(--text-main);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      padding: 0.85rem;
+      background: #fff;
+      min-height: 215px;
     }
 
-    /* スケジュール表（0〜24時目盛り付き） */
+    /* ① スケジュール表（0,3,6,9,12,15,18,21,24の縦線付き） */
+    .schedule-wrapper {
+      position: relative;
+    }
     .schedule-header {
       display: flex;
       align-items: center;
       font-size: 0.72rem;
       font-weight: bold;
-      margin-bottom: 0.3rem;
-      color: var(--text-muted);
+      margin-bottom: 0.35rem;
     }
     .schedule-month {
-      width: 65px;
+      width: 64px;
+      color: var(--text-main);
+      flex-shrink: 0;
+    }
+    .time-scale-header {
+      flex: 1;
+      position: relative;
+      height: 16px;
+    }
+    .time-scale-header span {
+      position: absolute;
+      transform: translateX(-50%);
       color: var(--text-main);
     }
-    .time-scale {
-      flex: 1;
-      display: flex;
-      justify-content: space-between;
+    .schedule-rows-area {
+      position: relative;
+    }
+    /* 縦線を貫通させるオーバーレイ */
+    .grid-lines-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 64px;
+      right: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .grid-v-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #78716c;
+      opacity: 0.55;
     }
     .schedule-bar-row {
       display: flex;
       align-items: center;
       font-size: 0.75rem;
-      margin-bottom: 0.3rem;
+      height: 22px;
+      position: relative;
     }
-    .day-label { width: 65px; font-weight: bold; }
+    .day-label {
+      width: 64px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
     .time-track {
       flex: 1;
-      height: 12px;
+      height: 13px;
       background: #f5f5f4;
       position: relative;
-      border-radius: 2px;
-      border-left: 1px solid #a8a29e;
-      border-right: 1px solid #a8a29e;
     }
     .time-fill {
       position: absolute;
       top: 0; bottom: 0;
       background: #eab308;
       border-radius: 2px;
+      z-index: 2;
     }
-    .review-item {
-      font-size: 0.8rem;
-      background: #f5f5f4;
-      padding: 0.55rem;
-      border-radius: 6px;
-      margin-bottom: 0.45rem;
+
+    /* ② レビュータブ（平均評価＋棒グラフ＋ソート＋レビュー一覧） */
+    .review-panel-bg {
+      background: #fefce8;
+      margin: -0.85rem;
+      padding: 0.85rem;
+      border-radius: 0 0 5px 5px;
+    }
+    .rating-summary-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .big-rating {
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: #eab308;
+      white-space: nowrap;
+      padding: 0 0.4rem;
+    }
+    .rating-bars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.22rem;
+    }
+    .rating-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .star-label {
+      width: 26px;
+      color: #eab308;
+      text-align: right;
+    }
+    .bar-track {
+      flex: 1;
+      height: 10px;
+      background: #fff;
+      border: 1px solid #44403c;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: #eab308;
+    }
+    .count-label {
+      width: 28px;
+      color: #0284c7;
+      text-decoration: underline;
+      font-size: 0.72rem;
+    }
+    .review-sort-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      font-size: 0.74rem;
+      margin-bottom: 0.55rem;
+    }
+    .sort-link {
+      color: #0284c7;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 0.74rem;
+    }
+    .sort-link.active {
+      font-weight: bold;
+      color: #0369a1;
+    }
+    .review-list {
+      max-height: 165px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .review-card-item {
+      background: #e7e5e4;
+      border: 1px solid #57534e;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .review-card-left { flex: 1; }
+    .review-meta {
+      font-weight: bold;
+      font-size: 0.73rem;
+      margin-bottom: 0.15rem;
+    }
+    .review-stars {
+      color: #eab308;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     .btn-book {
@@ -388,12 +515,12 @@
       font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 1rem;
+      margin-top: 0.9rem;
       transition: 0.2s;
     }
     .btn-book:hover { background: var(--primary-dark); }
 
-    /* シニア講師向け「らくらく講師用サイト」モード */
+    /* シニア講師向けビュー */
     .senior-dashboard {
       display: none;
       background: #fff;
@@ -455,7 +582,6 @@
       margin: 1rem 0;
     }
 
-    /* フッター */
     footer {
       background: #292524;
       color: #d6d3d1;
@@ -507,6 +633,19 @@
       <!-- 検索フィルター -->
       <div class="search-box">
         <div class="filter-row">
+          <div class="filter-label">可能言語</div>
+          <div class="filter-options" id="lang-filters">
+            <button class="chip lang" data-val="JP">🇯🇵 日本語</button>
+            <button class="chip lang" data-val="US">🇺🇸 英語(米)</button>
+            <button class="chip lang" data-val="UK">🇬🇧 英語(英)</button>
+            <button class="chip lang" data-val="CN">🇨🇳 中国語</button>
+            <button class="chip lang" data-val="KR">🇰🇷 韓国語</button>
+            <button class="chip lang" data-val="FR">🇫🇷 フランス語</button>
+            <button class="chip lang" data-val="ES">🇪🇸 スペイン語</button>
+            <button class="chip lang" data-val="AE">🇦🇪 アラビア語</button>
+          </div>
+        </div>
+        <div class="filter-row">
           <div class="filter-label">授業レベル・内容</div>
           <div class="filter-options" id="level-filters">
             <button class="chip level" data-val="基礎会話">基礎会話</button>
@@ -520,14 +659,14 @@
           <div class="filter-label">趣味・関心テーマ</div>
           <div class="filter-options" id="hobby-filters">
             <button class="chip hobby" data-val="建築">建築</button>
-            <button class="chip hobby" data-val="アメフト">アメフト</button>
-            <button class="chip hobby" data-val="サッカー">サッカー</button>
-            <button class="chip hobby" data-val="F1">F1</button>
+            <button class="chip hobby" data-val="スポーツ">スポーツ</button>
             <button class="chip hobby" data-val="相撲">相撲</button>
-            <button class="chip hobby" data-val="テニス">テニス</button>
-            <button class="chip hobby" data-val="ピアノ">ピアノ</button>
-            <button class="chip hobby" data-val="ドラマ">ドラマ</button>
-            <button class="chip hobby" data-val="飛行機">飛行機</button>
+            <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
+            <button class="chip hobby" data-val="音楽">音楽</button>
+            <button class="chip hobby" data-val="旅行">旅行</button>
+            <button class="chip hobby" data-val="料理・グルメ">料理・グルメ</button>
+            <button class="chip hobby" data-val="歴史・文化">歴史・文化</button>
+            <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
           </div>
         </div>
       </div>
@@ -538,6 +677,7 @@
         <select id="sort-select" onchange="renderTeachers()" style="padding: 0.4rem; border-radius: 4px;">
           <option value="rating">並び替え: 評価順</option>
           <option value="price_asc">並び替え: 料金が安い順</option>
+          <option value="reviews_desc">並び替え: レビュー件数順</option>
         </select>
       </div>
 
@@ -618,82 +758,308 @@
   </footer>
 
   <script>
-    // Windows等でも綺麗に表示されるSVG国旗パーツ
+    // SVG国旗アイコン
     const flagSVGs = {
-      JP: `<span class="flag-item" title="日本語"><svg width="32" height="22" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
-      US: `<span class="flag-item" title="英語（アメリカ）"><svg width="32" height="22" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
-      UK: `<span class="flag-item" title="英語（イギリス）"><svg width="32" height="22" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>`,
-      AE: `<span class="flag-item" title="アラビア語（UAE）"><svg width="32" height="22" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
+      JP: `<span class="flag-item" title="日本語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
+      US: `<span class="flag-item" title="英語（アメリカ）"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
+      UK: `<span class="flag-item" title="英語（イギリス）"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>`,
+      CN: `<span class="flag-item" title="中国語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>`,
+      KR: `<span class="flag-item" title="韓国語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>`,
+      FR: `<span class="flag-item" title="フランス語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>`,
+      ES: `<span class="flag-item" title="スペイン語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>`,
+      AE: `<span class="flag-item" title="アラビア語"><svg width="30" height="20" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
     };
 
-    // スクリーンショット画像に基づく講師データ
+    // 共通サンプルレビュー生成ヘルパー
+    const defaultReviews = [
+      { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "とてもやさしい先生です。" },
+      { user: "@Miomaruさん", date: "2025年2月18日", timestamp: 20250218, stars: 4, text: "1から丁寧に教えてくれて、楽しく日本語を学ぶことができました。" },
+      { user: "@Miomarumaruさん", date: "2025年2月18日", timestamp: 20250218, stars: 5, text: "He was very kind and I enjoyed the lesson very much! Thank you!" },
+      { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "わからなかった宿題を一緒に見てもらいました。またお願いしたいです。" }
+    ];
+
+    // 20名分の講師データ（既存2名 + 追加18名）
     const teachers = [
       {
-        id: 1,
-        name: "児玉 峻 (66)",
-        icon: "👨🏻",
-        rating: 4.6,
-        rank: "プレミアム先生",
-        price: 3000,
-        languages: ["JP", "US"],
-        hobbies: ["建築", "アメフト", "サッカー", "F1", "相撲"],
-        levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"],
-        education: "東京大学 建築学科卒業",
-        career: "不動産デベロッパー勤務経験あり",
+        id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "US"], hobbies: ["建築", "スポーツ", "相撲"], levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"],
+        education: "東京大学 建築学科卒業", career: "不動産デベロッパー勤務経験あり",
         bio: "趣味はスポーツ観戦全般です！建築・不動産関係の仕事をしていたので、建物巡りも好きです！",
         message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！",
+        ratingCounts: { 5: 240, 4: 45, 3: 19, 2: 13, 1: 26 },
         schedule: [
-          { day: "12 WED", left: "37.5%", width: "37.5%" },  // 9:00 - 18:00
-          { day: "13 THU", left: "37.5%", width: "54.1%" },  // 9:00 - 22:00
-          { day: "14 FRI", left: "83.3%", width: "16.7%" },  // 20:00 - 24:00
-          { day: "15 SAT", left: "0%", width: "0%" },
-          { day: "16 SUN", left: "37.5%", width: "37.5%" },  // 9:00 - 18:00
-          { day: "17 MON", left: "37.5%", width: "54.1%" },  // 9:00 - 22:00
-          { day: "18 TUE", left: "37.5%", width: "37.5%" }   // 9:00 - 18:00
+          { day: "12 WED", start: 9, end: 18 }, { day: "13 THU", start: 9, end: 22 }, { day: "14 FRI", start: 20, end: 24 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 9, end: 18 }, { day: "17 MON", start: 9, end: 22 }, { day: "18 TUE", start: 9, end: 18 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "UK", "AE"], hobbies: ["スポーツ", "音楽", "映画・ドラマ", "旅行"], levels: ["基礎会話", "日常会話", "読み"],
+        education: "一橋大学 法学部卒業", career: "航空会社勤務経験あり",
+        bio: "趣味はドラマ鑑賞とピアノ演奏です。",
+        message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！",
+        ratingCounts: { 5: 195, 4: 38, 3: 12, 2: 5, 1: 8 },
+        schedule: [
+          { day: "12 WED", start: 19, end: 22 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 9, end: 21 }, { day: "16 SUN", start: 9, end: 14 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 0, end: 0 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 3, name: "佐藤 健一 (68)", icon: "👴🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "US", "CN"], hobbies: ["歴史・文化", "旅行", "料理・グルメ"], levels: ["日常会話", "ビジネス", "読み", "書き"],
+        education: "京都大学 文学部卒業", career: "大手総合商社 勤務経験あり（北京駐在6年）",
+        bio: "日本の歴史や城巡りが趣味です。各地の美味しいものもよく知っています。",
+        message: "ビジネス敬語から日本の歴史雑学まで、楽しく会話しましょう！",
+        ratingCounts: { 5: 310, 4: 40, 3: 8, 2: 2, 1: 3 },
+        schedule: [
+          { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 18, end: 22 },
+          { day: "15 SAT", start: 10, end: 18 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 15 }, { day: "18 TUE", start: 9, end: 15 }
         ],
         reviews: [
-          { user: "Sean さん", date: "2026年2月27日", stars: "★★★★★", text: "日本のビジネスマナーや建築の専門用語を先生から学べたおかげで、内定を獲得できました。" }
+          { user: "@Wei_Tokyoさん", date: "2025年2月24日", timestamp: 20250224, stars: 5, text: "中国語でも補足してくれて安心でした。日本の商習慣がよくわかりました。" },
+          ...defaultReviews.slice(0, 3)
         ]
       },
       {
-        id: 2,
-        name: "石原 美緒子 (72)",
-        icon: "👩🏻‍🦳",
-        rating: 4.6,
-        rank: "プレミアム先生",
-        price: 3000,
-        languages: ["JP", "UK", "AE"],
-        hobbies: ["テニス", "ピアノ", "ドラマ", "飛行機"],
-        levels: ["基礎会話", "日常会話", "読み"],
-        education: "一橋大学 法学部卒業",
-        career: "航空会社勤務経験あり",
-        bio: "趣味はドラマ鑑賞です。",
-        message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！",
+        id: 4, name: "高橋 節子 (70)", icon: "👵🏻", rating: 4.9, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "US"], hobbies: ["映画・ドラマ", "相撲", "歴史・文化"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        education: "東京学芸大学 教育学部卒業", career: "都立高校 元教諭（国語）",
+        bio: "映画やドラマ鑑賞、大相撲観戦が大好きです。年2回は国技館へ足を運びます。",
+        message: "国語の教員経験を活かし、正しい発音と美しい日本語を丁寧にお教えします。",
+        ratingCounts: { 5: 412, 4: 35, 3: 5, 2: 1, 1: 2 },
         schedule: [
-          { day: "12 WED", left: "79.1%", width: "12.5%" },  // 19:00 - 22:00
-          { day: "13 THU", left: "0%", width: "0%" },
-          { day: "14 FRI", left: "0%", width: "0%" },
-          { day: "15 SAT", left: "37.5%", width: "50%" },    // 9:00 - 21:00
-          { day: "16 SUN", left: "37.5%", width: "20.8%" },  // 9:00 - 14:00
-          { day: "17 MON", left: "0%", width: "0%" },
-          { day: "18 TUE", left: "0%", width: "0%" }
+          { day: "12 WED", start: 9, end: 17 }, { day: "13 THU", start: 9, end: 17 }, { day: "14 FRI", start: 9, end: 17 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 17 }, { day: "18 TUE", start: 9, end: 17 }
         ],
-        reviews: [
-          { user: "Jocelyn さん", date: "2026年2月27日", stars: "★★★★★", text: "とっても優しく丁寧な先生です。日本のドラマの話で盛り上がり、楽しく日本語を勉強できました。" }
-        ]
+        reviews: defaultReviews
+      },
+      {
+        id: 5, name: "鈴木 誠 (65)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "スポーツ", "旅行"], levels: ["基礎会話", "日常会話", "ビジネス"],
+        education: "早稲田大学 商学部卒業", career: "大手化学メーカー 勤務経験あり",
+        bio: "スポーツ観戦と少年漫画が大好きで、毎週欠かさず読んでいます。",
+        message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！",
+        ratingCounts: { 5: 85, 4: 22, 3: 9, 2: 3, 1: 4 },
+        schedule: [
+          { day: "12 WED", start: 12, end: 21 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 12, end: 18 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 12, end: 21 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 12, end: 21 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 6, name: "田中 陽子 (67)", icon: "👩🏻", rating: 4.7, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "FR", "UK"], hobbies: ["料理・グルメ", "音楽", "旅行"], levels: ["基礎会話", "日常会話", "読み"],
+        education: "慶應義塾大学 文学部卒業", career: "外資系ホテル コンシェルジュ勤務経験あり",
+        bio: "和食作りとクラシック音楽鑑賞が趣味です。フランス旅行に何度も行きました。",
+        message: "おもてなしの心で、リラックスして話せる時間を作ります。",
+        ratingCounts: { 5: 160, 4: 28, 3: 6, 2: 2, 1: 1 },
+        schedule: [
+          { day: "12 WED", start: 15, end: 23 }, { day: "13 THU", start: 15, end: 23 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 14, end: 22 }, { day: "16 SUN", start: 14, end: 22 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 15, end: 23 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 7, name: "渡辺 博 (71)", icon: "👴🏻", rating: 4.4, rank: "ノーマル先生", price: 2000,
+        languages: ["JP"], hobbies: ["歴史・文化", "建築", "旅行"], levels: ["日常会話", "読み", "書き"],
+        education: "東北大学 工学部卒業", career: "自治体 都市計画・文化財保護担当",
+        bio: "古い寺社仏閣の建築様式を調べるのがライフワークです。",
+        message: "日本語だけでたくさん話したい中級・上級者の方、大歓迎です！",
+        ratingCounts: { 5: 62, 4: 18, 3: 7, 2: 4, 1: 3 },
+        schedule: [
+          { day: "12 WED", start: 9, end: 12 }, { day: "13 THU", start: 9, end: 12 }, { day: "14 FRI", start: 9, end: 12 },
+          { day: "15 SAT", start: 9, end: 15 }, { day: "16 SUN", start: 9, end: 15 }, { day: "17 MON", start: 9, end: 12 }, { day: "18 TUE", start: 0, end: 0 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 8, name: "伊藤 恵美子 (64)", icon: "👩🏻‍🦳", rating: 4.8, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "KR", "US"], hobbies: ["映画・ドラマ", "料理・グルメ", "音楽"], levels: ["基礎会話", "日常会話", "ビジネス"],
+        education: "大阪外国語大学 卒業", career: "航空会社 客室乗務員・マナー講師",
+        bio: "韓国ドラマとK-POPが大好きで、韓国語も日常会話ができます。",
+        message: "就職活動中の留学生向けの面接練習やビジネスマナーもお任せください！",
+        ratingCounts: { 5: 220, 4: 25, 3: 4, 2: 1, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 10, end: 16 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 10, end: 16 },
+          { day: "15 SAT", start: 10, end: 18 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 10, end: 16 }, { day: "18 TUE", start: 18, end: 22 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 9, name: "山本 隆司 (69)", icon: "👨🏻", rating: 4.3, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "ES"], hobbies: ["スポーツ", "音楽", "旅行"], levels: ["基礎会話", "日常会話"],
+        education: "上智大学 外国語学部卒業", career: "自動車メーカー 中南米営業担当",
+        bio: "サッカー観戦とギター演奏が趣味です。メキシコに5年住んでいました。",
+        message: "スペイン語圏の学習者の方、文法の違いもわかりやすく説明しますよ！",
+        ratingCounts: { 5: 54, 4: 19, 3: 8, 2: 3, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 20, end: 24 }, { day: "13 THU", start: 20, end: 24 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 8, end: 12 }, { day: "16 SUN", start: 8, end: 12 }, { day: "17 MON", start: 20, end: 24 }, { day: "18 TUE", start: 20, end: 24 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 10, name: "中村 文子 (73)", icon: "👵🏻", rating: 4.7, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "US"], hobbies: ["歴史・文化", "料理・グルメ", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        education: "お茶の水女子大学 文教育学部卒業", career: "中学校 元教諭（社会・書道）",
+        bio: "茶道と家庭料理が趣味です。最近は孫と一緒に日本のアニメを見ています。",
+        message: "日本の四季の行事や食文化について、楽しくおしゃべりしましょう。",
+        ratingCounts: { 5: 175, 4: 30, 3: 7, 2: 2, 1: 3 },
+        schedule: [
+          { day: "12 WED", start: 9, end: 14 }, { day: "13 THU", start: 9, end: 14 }, { day: "14 FRI", start: 9, end: 14 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 13, end: 17 }, { day: "17 MON", start: 9, end: 14 }, { day: "18 TUE", start: 9, end: 14 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 11, name: "小林 茂 (66)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "US"], hobbies: ["建築", "アニメ・漫画", "旅行"], levels: ["日常会話", "ビジネス", "書き"],
+        education: "東京工業大学 工学部卒業", career: "大手電機メーカー エンジニア",
+        bio: "プラモデル制作とSFアニメ鑑賞、国内の温泉巡りが趣味です。",
+        message: "ITやものづくり分野で働きたい方の技術日本語もサポートできます。",
+        ratingCounts: { 5: 78, 4: 21, 3: 6, 2: 2, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 18, end: 22 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 18, end: 22 },
+          { day: "15 SAT", start: 10, end: 17 }, { day: "16 SUN", start: 10, end: 17 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 18, end: 22 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 12, name: "加藤 真由美 (63)", icon: "👩🏻", rating: 4.6, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "CN"], hobbies: ["料理・グルメ", "映画・ドラマ", "旅行"], levels: ["基礎会話", "日常会話", "読み"],
+        education: "神戸大学 国際文化学部卒業", career: "貿易会社 勤務経験あり",
+        bio: "中華料理と和食の食べ歩きが趣味です。台湾と香港に何度も訪れています。",
+        message: "漢字圏の方ならではの表現のクセを直して、自然な日本語に近づけます！",
+        ratingCounts: { 5: 92, 4: 18, 3: 5, 2: 1, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 10, end: 15 }, { day: "13 THU", start: 10, end: 15 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 9, end: 13 }, { day: "16 SUN", start: 9, end: 13 }, { day: "17 MON", start: 10, end: 15 }, { day: "18 TUE", start: 10, end: 15 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 13, name: "吉田 義男 (74)", icon: "👴🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "UK"], hobbies: ["相撲", "歴史・文化", "音楽"], levels: ["日常会話", "ビジネス", "読み", "書き"],
+        education: "慶應義塾大学 経済学部卒業", career: "メガバンク 勤務経験あり（ロンドン支店勤務）",
+        bio: "大相撲とジャズ鑑賞が趣味です。落語もよく聞きに行きます。",
+        message: "経済ニュースの読解や、大人同士の知的な雑談を楽しみましょう。",
+        ratingCounts: { 5: 265, 4: 32, 3: 7, 2: 2, 1: 1 },
+        schedule: [
+          { day: "12 WED", start: 16, end: 21 }, { day: "13 THU", start: 16, end: 21 }, { day: "14 FRI", start: 16, end: 21 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 16, end: 21 }, { day: "17 MON", start: 16, end: 21 }, { day: "18 TUE", start: 0, end: 0 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 14, name: "山田 和子 (68)", icon: "👩🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
+        languages: ["JP"], hobbies: ["料理・グルメ", "旅行", "歴史・文化"], levels: ["基礎会話", "日常会話"],
+        education: "日本女子大学 家政学部卒業", career: "病院 栄養士・食育インストラクター",
+        bio: "日本の家庭料理や和菓子作りが得意です。",
+        message: "日本に住み始めたばかりの奥様や学生さん、生活の相談も兼ねてお話ししましょう！",
+        ratingCounts: { 5: 68, 4: 15, 3: 6, 2: 2, 1: 1 },
+        schedule: [
+          { day: "12 WED", start: 9, end: 13 }, { day: "13 THU", start: 9, end: 13 }, { day: "14 FRI", start: 9, end: 13 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 13 }, { day: "18 TUE", start: 9, end: 13 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 15, name: "佐々木 達也 (65)", icon: "👨🏻", rating: 4.4, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "US"], hobbies: ["スポーツ", "映画・ドラマ", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "ビジネス"],
+        education: "明治大学 政治経済学部卒業", career: "広告代理店 勤務経験あり",
+        bio: "野球観戦と映画鑑賞が趣味です。日本のCMやトレンド文化に詳しいです。",
+        message: "教科書には載っていない若者言葉やリアルな会話表現を楽しく学べます！",
+        ratingCounts: { 5: 59, 4: 17, 3: 5, 2: 3, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 13, end: 19 }, { day: "13 THU", start: 13, end: 19 }, { day: "14 FRI", start: 13, end: 19 },
+          { day: "15 SAT", start: 13, end: 19 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 13, end: 19 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 16, name: "松本 千代子 (71)", icon: "👵🏻", rating: 4.9, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "FR"], hobbies: ["音楽", "歴史・文化", "映画・ドラマ"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        education: "東京藝術大学 音楽学部卒業", career: "音楽教室主宰・小学校非常勤講師",
+        bio: "ピアノと日本の童謡・唱歌、フランス映画が大好きです。",
+        message: "綺麗なイントネーション（高低アクセント）を音楽のリズムのように楽しく身につけましょう。",
+        ratingCounts: { 5: 280, 4: 20, 3: 3, 2: 1, 1: 0 },
+        schedule: [
+          { day: "12 WED", start: 14, end: 20 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 14, end: 20 },
+          { day: "15 SAT", start: 10, end: 16 }, { day: "16 SUN", start: 10, end: 16 }, { day: "17 MON", start: 14, end: 20 }, { day: "18 TUE", start: 0, end: 0 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 17, name: "井上 浩二 (67)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "KR"], hobbies: ["旅行", "料理・グルメ", "スポーツ"], levels: ["日常会話", "ビジネス", "読み"],
+        education: "九州大学 経済学部卒業", career: "鉄道会社 観光企画担当",
+        bio: "全国のローカル線巡りと温泉旅行、ゴルフが趣味です。",
+        message: "日本旅行のプランを一緒に立てながら、実践的な旅行日本語を練習しましょう！",
+        ratingCounts: { 5: 74, 4: 16, 3: 6, 2: 1, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 9, end: 18 }, { day: "16 SUN", start: 9, end: 18 }, { day: "17 MON", start: 9, end: 15 }, { day: "18 TUE", start: 0, end: 0 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 18, name: "木村 律子 (69)", icon: "👩🏻‍🦳", rating: 4.7, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "映画・ドラマ", "歴史・文化"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        education: "津田塾大学 学芸学部卒業", career: "出版社 編集者（児童書・文芸担当）",
+        bio: "読書とジブリ映画、美術館巡りが大好きです。",
+        message: "小説やニュース記事を一緒に読みながら、語彙力と表現力を広げましょう！",
+        ratingCounts: { 5: 188, 4: 27, 3: 5, 2: 2, 1: 1 },
+        schedule: [
+          { day: "12 WED", start: 10, end: 18 }, { day: "13 THU", start: 10, end: 18 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 10, end: 18 }, { day: "17 MON", start: 10, end: 18 }, { day: "18 TUE", start: 10, end: 18 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 19, name: "林 政男 (72)", icon: "👴🏻", rating: 4.6, rank: "ノーマル先生", price: 2000,
+        languages: ["JP", "US", "ES"], hobbies: ["建築", "旅行", "相撲"], levels: ["日常会話", "ビジネス"],
+        education: "横浜国立大学 工学部卒業", career: "大手ゼネコン 海外プロジェクト担当",
+        bio: "世界中の建築物を見て回ることが趣味です。相撲も毎場所欠かさず見ています。",
+        message: "海外での建設プロジェクト経験が豊富です。楽しく異文化交流しましょう！",
+        ratingCounts: { 5: 88, 4: 19, 3: 4, 2: 1, 1: 2 },
+        schedule: [
+          { day: "12 WED", start: 19, end: 23 }, { day: "13 THU", start: 19, end: 23 }, { day: "14 FRI", start: 19, end: 23 },
+          { day: "15 SAT", start: 9, end: 14 }, { day: "16 SUN", start: 9, end: 14 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 19, end: 23 }
+        ],
+        reviews: defaultReviews
+      },
+      {
+        id: 20, name: "斎藤 美智子 (66)", icon: "👩🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
+        languages: ["JP", "CN", "US"], hobbies: ["料理・グルメ", "音楽", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        education: "同志社大学 文学部卒業", career: "日本語学校 非常勤講師経験あり",
+        bio: "京都のカフェ巡りと合唱、日本の漫画が大好きです。",
+        message: "初めて日本語を学ぶ方も大歓迎！ゼロから優しくサポートします。",
+        ratingCounts: { 5: 230, 4: 29, 3: 6, 2: 1, 1: 1 },
+        schedule: [
+          { day: "12 WED", start: 9, end: 17 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 9, end: 17 },
+          { day: "15 SAT", start: 9, end: 17 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 17 }, { day: "18 TUE", start: 9, end: 17 }
+        ],
+        reviews: defaultReviews
       }
     ];
 
+    let selectedLangs = new Set();
     let selectedLevels = new Set();
     let selectedHobbies = new Set();
-    let activeTabs = { 1: 'schedule', 2: 'schedule' };
+    let activeTabs = {};
+    let reviewSortModes = {};
     let currentTeacher = null;
 
+    // フィルター設定
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
         const val = btn.dataset.val;
-        if (btn.classList.contains('level')) {
+        if (btn.classList.contains('lang')) {
+          selectedLangs.has(val) ? selectedLangs.delete(val) : selectedLangs.add(val);
+        } else if (btn.classList.contains('level')) {
           selectedLevels.has(val) ? selectedLevels.delete(val) : selectedLevels.add(val);
         } else {
           selectedHobbies.has(val) ? selectedHobbies.delete(val) : selectedHobbies.add(val);
@@ -707,43 +1073,122 @@
       renderTeachers();
     }
 
+    function setReviewSort(teacherId, sortType) {
+      reviewSortModes[teacherId] = sortType;
+      renderTeachers();
+    }
+
+    function renderStars(count) {
+      return '★'.repeat(count) + '☆'.repeat(5 - count);
+    }
+
     function renderTeachers() {
       const sortBy = document.getElementById('sort-select').value;
       let filtered = teachers.filter(t => {
+        const langMatch = [...selectedLangs].every(lg => t.languages.includes(lg));
         const levelMatch = [...selectedLevels].every(l => t.levels.includes(l));
         const hobbyMatch = [...selectedHobbies].every(h => t.hobbies.includes(h));
-        return levelMatch && hobbyMatch;
+        return langMatch && levelMatch && hobbyMatch;
       });
 
       if (sortBy === 'rating') filtered.sort((a, b) => b.rating - a.rating);
       if (sortBy === 'price_asc') filtered.sort((a, b) => a.price - b.price);
+      if (sortBy === 'reviews_desc') {
+        filtered.sort((a, b) => {
+          const sumA = Object.values(a.ratingCounts).reduce((x, y) => x + y, 0);
+          const sumB = Object.values(b.ratingCounts).reduce((x, y) => x + y, 0);
+          return sumB - sumA;
+        });
+      }
 
       document.getElementById('teacher-count').textContent = filtered.length;
       const grid = document.getElementById('teacher-grid');
       grid.innerHTML = '';
 
+      // 0, 3, 6, 9, 12, 15, 18, 21, 24時の位置（%）
+      const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+
       filtered.forEach(t => {
-        const isSchedule = activeTabs[t.id] === 'schedule';
+        const currentTab = activeTabs[t.id] || 'schedule';
+        const isSchedule = currentTab === 'schedule';
         const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
 
-        const tabContent = isSchedule
-          ? `
-            <div class="schedule-header">
-              <span class="schedule-month">FEB</span>
-              <div class="time-scale">
-                <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span>
-              </div>
-            </div>
-            ${t.schedule.map(s => `
+        let tabContent = '';
+        if (isSchedule) {
+          const headerMarks = hours.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
+          const verticalLines = hours.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
+
+          const rowsHtml = t.schedule.map(s => {
+            const leftPct = (s.start / 24) * 100;
+            const widthPct = ((s.end - s.start) / 24) * 100;
+            return `
               <div class="schedule-bar-row">
                 <span class="day-label">${s.day}</span>
-                <div class="time-track"><div class="time-fill" style="left:${s.left}; width:${s.width};"></div></div>
-              </div>`).join('')}
-          `
-          : t.reviews.map(r => `
-              <div class="review-item">
-                <strong>${r.user}</strong> (${r.date}) <span style="color:#f59e0b;">${r.stars}</span><br>${r.text}
-              </div>`).join('');
+                <div class="time-track">
+                  ${widthPct > 0 ? `<div class="time-fill" style="left:${leftPct}%; width:${widthPct}%;"></div>` : ''}
+                </div>
+              </div>`;
+          }).join('');
+
+          tabContent = `
+            <div class="schedule-wrapper">
+              <div class="schedule-header">
+                <span class="schedule-month">FEB</span>
+                <div class="time-scale-header">${headerMarks}</div>
+              </div>
+              <div class="schedule-rows-area">
+                <div class="grid-lines-overlay">${verticalLines}</div>
+                ${rowsHtml}
+              </div>
+            </div>
+          `;
+        } else {
+          // ② レビュータブ（平均評価 + 棒グラフ + ソート機能）
+          const totalReviews = Object.values(t.ratingCounts).reduce((a, b) => a + b, 0);
+          const barsHtml = [5, 4, 3, 2, 1].map(star => {
+            const cnt = t.ratingCounts[star] || 0;
+            const pct = totalReviews > 0 ? Math.round((cnt / totalReviews) * 100) : 0;
+            return `
+              <div class="rating-bar-row">
+                <span class="star-label">★${star}</span>
+                <div class="bar-track"><div class="bar-fill" style="width: ${pct}%;"></div></div>
+                <span class="count-label">${cnt}</span>
+              </div>
+            `;
+          }).join('');
+
+          const rSort = reviewSortModes[t.id] || 'newest';
+          const sortedReviews = [...t.reviews].sort((a, b) => {
+            if (rSort === 'highest') return b.stars - a.stars;
+            if (rSort === 'lowest') return a.stars - b.stars;
+            return b.timestamp - a.timestamp;
+          });
+
+          const reviewsHtml = sortedReviews.map(r => `
+            <div class="review-card-item">
+              <div class="review-card-left">
+                <div class="review-meta">${r.user} ${r.date}</div>
+                <div>${r.text}</div>
+              </div>
+              <div class="review-stars">${renderStars(r.stars)}</div>
+            </div>
+          `).join('');
+
+          tabContent = `
+            <div class="review-panel-bg">
+              <div class="rating-summary-box">
+                <div class="big-rating">★ ${t.rating.toFixed(1)}</div>
+                <div class="rating-bars">${barsHtml}</div>
+              </div>
+              <div class="review-sort-links">
+                <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest')">新しい順</button>
+                <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest')">評価が高い順</button>
+                <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest')">評価が低い順</button>
+              </div>
+              <div class="review-list">${reviewsHtml}</div>
+            </div>
+          `;
+        }
 
         grid.innerHTML += `
           <div class="teacher-card">
@@ -753,21 +1198,16 @@
                 <div class="teacher-header-info">
                   <div class="teacher-name-row">
                     <h3>${t.name}</h3>
-                    <span class="rating">★ ${t.rating}</span>
+                    <span class="rating">★ ${t.rating.toFixed(1)}</span>
                     <span class="rank-badge">${t.rank}</span>
                   </div>
-                  <!-- 名前の下の可能言語（国旗） -->
-                  <div class="flags-row" aria-label="可能言語">
-                    ${flagsHtml}
-                  </div>
-                  <!-- 趣味タグ -->
+                  <div class="flags-row" aria-label="可能言語">${flagsHtml}</div>
                   <div class="tags-hobby-group">
                     ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
                   </div>
                 </div>
               </div>
 
-              <!-- 授業レベル -->
               <div class="level-section">
                 <span class="level-label">授業レベル：</span>
                 <div class="tags-level-group">
@@ -790,7 +1230,7 @@
                 <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">スケジュール</button>
                 <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review')">レビュー</button>
               </div>
-              <div style="min-height: 155px;">${tabContent}</div>
+              <div class="tab-panel">${tabContent}</div>
               <button class="btn-book" onclick="openModal(${t.id})">予約にすすむ</button>
             </div>
           </div>
