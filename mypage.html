@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>生徒マイページ | KOTOHOGI</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --bg-color: #fafaf9;
+      --text-main: #292524;
+      --text-muted: #57534e;
+      --border-color: #e7e5e4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    header {
+      background: #fff;
+      border-bottom: 2px solid var(--primary);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    .logo span { display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: normal; }
+    .btn-back {
+      background: #fff;
+      border: 2px solid var(--primary);
+      color: var(--primary-dark);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .btn-back:hover { background: #fffbeb; }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .page-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .card-section {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .card-section h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.9rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.7rem;
+    }
+
+    /* 回数券カード */
+    .ticket-box {
+      border: 2px solid #f59e0b;
+      background: #fffbeb;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn-action {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .btn-action:hover { background: var(--primary-dark); }
+    .btn-blue { background: #0284c7; }
+    .btn-blue:hover { background: #0369a1; }
+
+    /* マイフィルター */
+    .filter-form {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+    .filter-form select {
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #d6d3d1;
+      font-size: 0.9rem;
+    }
+
+    /* 受講履歴 */
+    .history-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .history-item {
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.15s;
+      background: #fafaf9;
+    }
+    .history-item:hover { border-color: var(--primary); background: #fffbeb; }
+
+    /* 教材アーカイブ */
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .material-card {
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #fafaf9;
+    }
+    .material-tag {
+      display: inline-block;
+      background: #bae6fd;
+      color: #0c4a6e;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.4rem;
+    }
+
+    /* 先生詳細ポップアップ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+      padding: 1rem;
+    }
+    .modal {
+      background: #fff;
+      padding: 1.8rem;
+      border-radius: 12px;
+      max-width: 650px;
+      width: 100%;
+      position: relative;
+    }
+    .modal-close-x {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="student.html" class="logo">
+      KOTOHOGI
+      <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
+    </a>
+    <a href="student.html" class="btn-back">← 先生を探す画面に戻る</a>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">👤 生徒マイページ（Jocelyn さん）</h1>
+
+    <!-- 1. 回数券ステータス -->
+    <div class="card-section">
+      <h2>🎟 回数券（チケット）残高・購入</h2>
+      <div id="ticket-status-area"></div>
+    </div>
+
+    <!-- 2. マイフィルター設定 -->
+    <div class="card-section">
+      <h2>⭐ マイフィルター設定（お気に入り検索条件の保存）</h2>
+      <p style="font-size:0.85rem; color:var(--text-muted);">保存した条件は、先生検索ページの「⭐ マイフィルターを適用」ボタンからいつでも呼び出せます。</p>
+      <div class="filter-form">
+        <select id="mf-lang">
+          <option value="">可能言語: 指定なし</option>
+          <option value="JP">🇯🇵 日本語</option>
+          <option value="US">🇺🇸 英語(米)</option>
+          <option value="UK">🇬🇧 英語(英)</option>
+          <option value="CN">🇨🇳 中国語</option>
+          <option value="KR">🇰🇷 韓国語</option>
+          <option value="FR">🇫🇷 フランス語</option>
+          <option value="ES">🇪🇸 スペイン語</option>
+          <option value="AE">🇦🇪 アラビア語</option>
+        </select>
+        <select id="mf-level">
+          <option value="">授業レベル: 指定なし</option>
+          <option value="基礎会話">基礎会話</option>
+          <option value="日常会話">日常会話</option>
+          <option value="ビジネス">ビジネス</option>
+          <option value="読み">読み</option>
+          <option value="書き">書き</option>
+        </select>
+        <select id="mf-hobby">
+          <option value="">趣味・関心: 指定なし</option>
+          <option value="建築">建築</option>
+          <option value="スポーツ">スポーツ</option>
+          <option value="相撲">相撲</option>
+          <option value="映画・ドラマ">映画・ドラマ</option>
+          <option value="音楽">音楽</option>
+          <option value="旅行">旅行</option>
+          <option value="料理・グルメ">料理・グルメ</option>
+          <option value="歴史・文化">歴史・文化</option>
+          <option value="アニメ・漫画">アニメ・漫画</option>
+        </select>
+        <button class="btn-action btn-blue" onclick="saveMyFilter()">この条件を保存する</button>
+      </div>
+      <p id="saved-filter-text" style="font-size:0.85rem; font-weight:bold; color:#0284c7; margin-top:0.6rem;"></p>
+    </div>
+
+    <!-- 3. これまでの授業履歴 -->
+    <div class="card-section">
+      <h2>📚 これまでの授業履歴（総受講回数：<span id="total-lessons">0</span>回）</h2>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;">※履歴をクリックすると、その先生の詳細プロフィール・再予約画面がポップアップで開きます。</p>
+      <div class="history-list" id="history-list"></div>
+    </div>
+
+    <!-- 4. 過去に閲覧した教材・ニュース記事（今後の教材機能拡張用） -->
+    <div class="card-section">
+      <h2>📖 過去に閲覧・授業で使用した教材</h2>
+      <div class="material-grid">
+        <div class="material-card">
+          <span class="material-tag">日常会話・日本文化</span>
+          <h3 style="font-size:1rem; margin-bottom:0.3rem;">第4回：大相撲の観戦マナーと歴史</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026年2月10日（担当：石原 美緒子 先生）</p>
+          <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキスト（PDF/Web教材）を開きます。')">教材を復習する</button>
+        </div>
+        <div class="material-card">
+          <span class="material-tag">ビジネス・敬語</span>
+          <h3 style="font-size:1rem; margin-bottom:0.3rem;">面接で好印象を与える尊敬語・謙譲語</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026年1月25日（担当：児玉 峻 先生）</p>
+          <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキスト（PDF/Web教材）を開きます。')">教材を復習する</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 先生詳細ポップアップ -->
+  <div class="modal-overlay" id="teacher-popup">
+    <div class="modal">
+      <button class="modal-close-x" onclick="closePopup()">✕</button>
+      <div id="popup-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "kotohogi_demo_state_v1";
+    const teacherMaster = {
+      1: { id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"], hobbies: ["建築", "スポーツ", "相撲"], career: "東京大学 建築学科卒業 / 不動産デベロッパー勤務経験あり", message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！" },
+      2: { id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇬🇧 🇦🇪", levels: ["基礎会話", "日常会話", "読み"], hobbies: ["スポーツ", "音楽", "映画・ドラマ", "旅行"], career: "一橋大学 法学部卒業 / 航空会社勤務経験あり", message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！" },
+      5: { id: 5, name: "鈴木 誠 (65)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス"], hobbies: ["アニメ・漫画", "スポーツ", "旅行"], career: "早稲田大学 商学部卒業 / 大手化学メーカー 勤務経験あり", message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！" }
+    };
+
+    function getState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) return JSON.parse(saved);
+      return {
+        tickets: 3.5,
+        history: [
+          { date: "2026年2月10日", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分" },
+          { date: "2026年2月03日", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分" },
+          { date: "2026年1月25日", teacherId: 1, topic: "日本建築とビジネス文化", payment: "クレジット決済 ¥3,000" }
+        ],
+        myFilter: { lang: "US", level: "日常会話", hobby: "" }
+      };
+    }
+
+    let state = getState();
+
+    function renderPage() {
+      state = getState();
+      const ticketArea = document.getElementById('ticket-status-area');
+      if (state.tickets > 0) {
+        ticketArea.innerHTML = `
+          <div class="ticket-box">
+            <div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">現在の回数券残高（有効期限：2026年8月31日）</div>
+              <div style="font-size:1.6rem; font-weight:bold; color:var(--primary-dark);">残り ${state.tickets.toFixed(1)} 回分</div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。</div>
+            </div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button class="btn-action" onclick="buyTickets()">＋ 11回分を追加購入（¥20,000）</button>
+              <button class="btn-action" style="background:#78716c; font-size:0.78rem;" onclick="resetTicketsToZero()">[テスト用] 残高0枚表示を確認</button>
+            </div>
+          </div>
+        `;
+      } else {
+        ticketArea.innerHTML = `
+          <div class="ticket-box">
+            <div>
+              <div style="font-weight:bold; color:#92400e; font-size:1.05rem;">現在、回数券をお持ちではありません</div>
+              <div style="font-size:0.88rem; margin-top:0.2rem;">10回分の料金（¥20,000）で<strong>11回分（¥22,000相当）</strong>受講できるお得な回数券がおすすめです！</div>
+            </div>
+            <button class="btn-action" onclick="buyTickets()">🎟 11回分回数券を購入する（¥20,000）</button>
+          </div>
+        `;
+      }
+
+      document.getElementById('mf-lang').value = state.myFilter.lang || "";
+      document.getElementById('mf-level').value = state.myFilter.level || "";
+      document.getElementById('mf-hobby').value = state.myFilter.hobby || "";
+      const activeList = [state.myFilter.lang, state.myFilter.level, state.myFilter.hobby].filter(Boolean);
+      document.getElementById('saved-filter-text').textContent =
+        activeList.length > 0 ? `現在保存中のマイフィルター：【 ${activeList.join(' / ')} 】` : "現在マイフィルターは未設定です。";
+
+      document.getElementById('total-lessons').textContent = state.history.length;
+      const hList = document.getElementById('history-list');
+      hList.innerHTML = state.history.map(h => {
+        const t = teacherMaster[h.teacherId] || teacherMaster[1];
+        return `
+          <div class="history-item" onclick="openTeacherPopup(${t.id})">
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">${h.date} ｜ ${h.payment}</div>
+              <div style="font-weight:bold; font-size:1rem;">${t.icon} ${t.name} <span style="font-size:0.85rem; font-weight:normal; color:var(--text-muted);">（${h.topic}）</span></div>
+            </div>
+            <span style="color:#0284c7; font-weight:bold; font-size:0.88rem;">先生の詳細・予約へ ＞</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function buyTickets() {
+      state.tickets = Math.round((state.tickets + 11.0) * 10) / 10;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderPage();
+      alert("11回分回数券（¥20,000）を購入しました！有効期限は6ヶ月間です。");
+    }
+
+    function resetTicketsToZero() {
+      state.tickets = 0;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderPage();
+    }
+
+    function saveMyFilter() {
+      state.myFilter = {
+        lang: document.getElementById('mf-lang').value,
+        level: document.getElementById('mf-level').value,
+        hobby: document.getElementById('mf-hobby').value
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderPage();
+      alert("マイフィルターを保存しました！先生検索ページで「⭐ マイフィルターを適用」を押すと反映されます。");
+    }
+
+    function openTeacherPopup(id) {
+      const t = teacherMaster[id] || teacherMaster[1];
+      document.getElementById('popup-body').innerHTML = `
+        <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem;">
+          <div style="font-size:3rem; background:#f5f5f4; width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center;">${t.icon}</div>
+          <div>
+            <h3 style="font-size:1.3rem;">${t.name} <span style="color:#eab308;">★ ${t.rating}</span></h3>
+            <div style="font-size:0.85rem; color:var(--primary-dark); font-weight:bold;">${t.rank}（¥${t.price.toLocaleString()} / 1h）</div>
+            <div style="margin-top:0.3rem;">対応言語：${t.langs}</div>
+          </div>
+        </div>
+        <div style="background:#fafaf9; padding:1rem; border-radius:8px; font-size:0.9rem; margin-bottom:1rem;">
+          <p><strong>経歴：</strong>${t.career}</p>
+          <p style="margin-top:0.4rem;"><strong>対応レベル：</strong>${t.levels.join('・')}</p>
+          <p style="margin-top:0.4rem;"><strong>趣味：</strong>${t.hobbies.join('・')}</p>
+          <p style="margin-top:0.4rem;"><strong>生徒に一言：</strong>${t.message}</p>
+        </div>
+        <a href="student.html?book=${t.id}" class="btn-action" style="display:block; text-align:center; text-decoration:none; padding:0.85rem;">この先生の予約へすすむ</a>
+      `;
+      document.getElementById('teacher-popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('teacher-popup').style.display = 'none';
+    }
+
+    renderPage();
+  </script>
+</body>
+</html>
