@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google検索に開発中の画面が載らないようにする設定 -->
+  <meta name="robots" content="noindex, nofollow">
   <title>KOTOHOGI 〜日本語教育に経験を。人生にやりがいを。〜</title>
   <style>
     :root {
-      --primary: #f59e0b;       /* 資料のテーマカラー（温かみのあるオレンジ・イエロー系） */
+      --primary: #f59e0b;
       --primary-dark: #d97706;
       --primary-light: #fef3c7;
-      --tag-blue: #bae6fd;      /* 資料の趣味タグカラー */
+      --tag-blue: #bae6fd;      /* 趣味タグ（水色） */
       --tag-blue-active: #0284c7;
+      --tag-pink: #fbcfe8;      /* 授業レベルタグ（ピンク） */
+      --tag-pink-active: #db2777;
       --bg-color: #fafaf9;
       --text-main: #292524;
       --text-muted: #57534e;
@@ -71,12 +75,12 @@
     /* ヒーローセクション */
     .hero {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      padding: 2.5rem 2rem;
+      padding: 2.2rem 2rem;
       text-align: center;
       border-bottom: 1px solid var(--border-color);
     }
-    .hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-    .hero p { color: var(--text-muted); max-width: 700px; margin: 0 auto 1rem; }
+    .hero h1 { font-size: 1.7rem; margin-bottom: 0.5rem; }
+    .hero p { color: var(--text-muted); max-width: 700px; margin: 0 auto 1rem; font-size: 0.95rem; }
     .hero-badges {
       display: flex;
       justify-content: center;
@@ -99,7 +103,7 @@
       padding: 0 1rem;
     }
 
-    /* 検索フィルター（資料11ページ準拠） */
+    /* 検索フィルター */
     .search-box {
       background: #fff;
       border: 1px solid var(--border-color);
@@ -138,9 +142,9 @@
       transition: 0.15s;
     }
     .chip.level.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary-dark);
+      background: var(--tag-pink);
+      color: var(--text-main);
+      border-color: var(--tag-pink-active);
       font-weight: bold;
     }
     .chip.hobby.active {
@@ -165,11 +169,11 @@
       .teacher-grid { grid-template-columns: 1fr; }
     }
 
-    /* 講師カード */
+    /* 講師カード（新スクリーンショット準拠レイアウト） */
     .teacher-card {
       background: #fff;
       border: 1px solid var(--border-color);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       display: flex;
@@ -179,72 +183,130 @@
     .teacher-top {
       display: flex;
       gap: 1.2rem;
-      margin-bottom: 1rem;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
     }
-    .avatar {
-      width: 90px;
-      height: 110px;
-      background: #e7e5e4;
-      border-radius: 8px;
+    .avatar-circle {
+      width: 96px;
+      height: 96px;
+      background: #f5f5f4;
+      border: 2px solid #d6d3d1;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       flex-shrink: 0;
     }
-    .teacher-meta h3 {
-      font-size: 1.25rem;
+    .teacher-header-info {
+      flex: 1;
+    }
+    .teacher-name-row {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
     }
-    .rating { color: var(--primary); font-weight: bold; }
+    .teacher-name-row h3 {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .rating {
+      color: #eab308;
+      font-weight: bold;
+      font-size: 1.15rem;
+    }
     .rank-badge {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 4px;
       background: #fef3c7;
       color: #92400e;
       border: 1px solid #f59e0b;
     }
-    .rank-badge.premium {
-      background: #fde68a;
-      font-weight: bold;
+
+    /* 名前の下の可能言語（国旗アイコン） */
+    .flags-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.45rem 0 0.55rem;
     }
-    .price-tag {
-      font-size: 0.95rem;
-      font-weight: bold;
-      color: var(--primary-dark);
-      margin: 0.3rem 0;
+    .flag-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border: 1px solid #e7e5e4;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      height: 22px;
     }
-    .tags-group {
+
+    /* 趣味タグ（水色） */
+    .tags-hobby-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
-      margin-top: 0.4rem;
-    }
-    .tag-level {
-      background: #fed7aa;
-      font-size: 0.75rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
+      gap: 0.35rem;
     }
     .tag-hobby {
       background: var(--tag-blue);
-      font-size: 0.75rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-    }
-    .teacher-bio {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      background: #fafaf9;
-      padding: 0.8rem;
+      color: #0c4a6e;
+      font-size: 0.78rem;
+      font-weight: bold;
+      padding: 0.2rem 0.65rem;
       border-radius: 6px;
     }
-    .teacher-bio strong { color: var(--text-main); }
+
+    /* 授業レベル行（ピンクタグ） */
+    .level-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin: 0.7rem 0;
+      padding-top: 0.6rem;
+      border-top: 1px dashed #e7e5e4;
+    }
+    .level-label {
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+    .tags-level-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .tag-level {
+      background: var(--tag-pink);
+      color: #831843;
+      font-size: 0.78rem;
+      font-weight: bold;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .price-line {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .teacher-bio {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      background: #fafaf9;
+      padding: 0.85rem;
+      border-radius: 8px;
+      border: 1px solid #f5f5f4;
+    }
+    .bio-row {
+      margin-bottom: 0.25rem;
+    }
 
     /* タブ切り替え（スケジュール / レビュー） */
     .tabs {
@@ -267,6 +329,25 @@
       background: var(--primary);
       color: #fff;
     }
+
+    /* スケジュール表（0〜24時目盛り付き） */
+    .schedule-header {
+      display: flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      color: var(--text-muted);
+    }
+    .schedule-month {
+      width: 65px;
+      color: var(--text-main);
+    }
+    .time-scale {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+    }
     .schedule-bar-row {
       display: flex;
       align-items: center;
@@ -279,20 +360,22 @@
       height: 12px;
       background: #f5f5f4;
       position: relative;
-      border-radius: 3px;
+      border-radius: 2px;
+      border-left: 1px solid #a8a29e;
+      border-right: 1px solid #a8a29e;
     }
     .time-fill {
       position: absolute;
       top: 0; bottom: 0;
-      background: #fcd34d;
-      border-radius: 3px;
+      background: #eab308;
+      border-radius: 2px;
     }
     .review-item {
       font-size: 0.8rem;
       background: #f5f5f4;
-      padding: 0.5rem;
-      border-radius: 4px;
-      margin-bottom: 0.4rem;
+      padding: 0.55rem;
+      border-radius: 6px;
+      margin-bottom: 0.45rem;
     }
 
     .btn-book {
@@ -310,7 +393,7 @@
     }
     .btn-book:hover { background: var(--primary-dark); }
 
-    /* シニア講師向け「らくらく講師用サイト」モード（資料16ページ準拠） */
+    /* シニア講師向け「らくらく講師用サイト」モード */
     .senior-dashboard {
       display: none;
       background: #fff;
@@ -346,7 +429,7 @@
       width: 100%;
     }
 
-    /* モーダル（予約・特商法確認） */
+    /* モーダル */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -372,7 +455,7 @@
       margin: 1rem 0;
     }
 
-    /* フッター（特商法表記リンク等） */
+    /* フッター */
     footer {
       background: #292524;
       color: #d6d3d1;
@@ -426,11 +509,9 @@
         <div class="filter-row">
           <div class="filter-label">授業レベル・内容</div>
           <div class="filter-options" id="level-filters">
-            <button class="chip level" data-val="初級">初級</button>
-            <button class="chip level" data-val="中級">中級</button>
-            <button class="chip level" data-val="上級">上級</button>
+            <button class="chip level" data-val="基礎会話">基礎会話</button>
             <button class="chip level" data-val="日常会話">日常会話</button>
-            <button class="chip level" data-val="ビジネス会話">ビジネス会話</button>
+            <button class="chip level" data-val="ビジネス">ビジネス</button>
             <button class="chip level" data-val="読み">読み</button>
             <button class="chip level" data-val="書き">書き</button>
           </div>
@@ -438,14 +519,15 @@
         <div class="filter-row">
           <div class="filter-label">趣味・関心テーマ</div>
           <div class="filter-options" id="hobby-filters">
-            <button class="chip hobby" data-val="映画">映画</button>
-            <button class="chip hobby" data-val="ドラマ">ドラマ</button>
-            <button class="chip hobby" data-val="相撲">相撲</button>
-            <button class="chip hobby" data-val="旅行">旅行</button>
             <button class="chip hobby" data-val="建築">建築</button>
-            <button class="chip hobby" data-val="漫画">漫画</button>
+            <button class="chip hobby" data-val="アメフト">アメフト</button>
             <button class="chip hobby" data-val="サッカー">サッカー</button>
-            <button class="chip hobby" data-val="野球">野球</button>
+            <button class="chip hobby" data-val="F1">F1</button>
+            <button class="chip hobby" data-val="相撲">相撲</button>
+            <button class="chip hobby" data-val="テニス">テニス</button>
+            <button class="chip hobby" data-val="ピアノ">ピアノ</button>
+            <button class="chip hobby" data-val="ドラマ">ドラマ</button>
+            <button class="chip hobby" data-val="飛行機">飛行機</button>
           </div>
         </div>
       </div>
@@ -466,13 +548,13 @@
   <!-- シニア講師向けビュー（らくらく講師用サイト） -->
   <div id="senior-view" class="container">
     <div class="senior-dashboard" style="display: block;">
-      <h2>👵👴 らくらく講師用マイページ（Bさん・70歳）</h2>
+      <h2>👵👴 らくらく講師用マイページ（石原 美緒子・72歳）</h2>
       <p>現在のランク：<strong>プレミアム先生（1授業 2,000円受取 / 累計124時間・評価 ★4.6）</strong></p>
       
       <div class="senior-grid">
         <div class="senior-card">
           <h3>📅 本日の授業予定</h3>
-          <p>2月14日（金）12:00〜13:00<br>生徒：Jocelynさん（初級・相撲トーク）</p>
+          <p>2月15日（土）10:00〜11:00<br>生徒：Jocelynさん（日常会話・ドラマトーク）</p>
           <button class="senior-btn" onclick="alert('Zoom会議室をワンクリックで起動します！')">授業を始める（Zoom起動）</button>
         </div>
         <div class="senior-card">
@@ -498,13 +580,12 @@
       <div style="margin: 1rem 0;">
         <label style="display:block; font-size:0.85rem; font-weight:bold;">希望日時を選択：</label>
         <select id="booking-slot" style="width:100%; padding:0.5rem; margin-top:0.3rem;">
-          <option>2月14日（金）12:00〜13:00</option>
-          <option>2月14日（金）15:00〜16:00</option>
-          <option>2月17日（月）10:00〜11:00</option>
+          <option>2月12日（水）12:00〜13:00</option>
+          <option>2月13日（木）15:00〜16:00</option>
+          <option>2月15日（土）10:00〜11:00</option>
         </select>
       </div>
 
-      <!-- 特商法に基づくキャンセル・返金規定の事前同意（資料22ページ準拠） -->
       <div class="policy-box">
         <strong>【キャンセル・返金規定（特定商取引法に基づく表示）】</strong><br>
         ・授業開始24時間前までは無料でキャンセル可能です。<br>
@@ -537,57 +618,68 @@
   </footer>
 
   <script>
-    // 資料5ページ・11ページ・25ページに基づく講師データ
+    // Windows等でも綺麗に表示されるSVG国旗パーツ
+    const flagSVGs = {
+      JP: `<span class="flag-item" title="日本語"><svg width="32" height="22" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
+      US: `<span class="flag-item" title="英語（アメリカ）"><svg width="32" height="22" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
+      UK: `<span class="flag-item" title="英語（イギリス）"><svg width="32" height="22" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>`,
+      AE: `<span class="flag-item" title="アラビア語（UAE）"><svg width="32" height="22" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
+    };
+
+    // スクリーンショット画像に基づく講師データ
     const teachers = [
       {
         id: 1,
-        name: "Bさん (70)",
-        icon: "👵",
+        name: "児玉 峻 (66)",
+        icon: "👨🏻",
         rating: 4.6,
         rank: "プレミアム先生",
         price: 3000,
-        languages: "🇯🇵 🇺🇸",
-        levels: ["初級", "中級", "上級", "日常会話", "読み", "書き"],
-        hobbies: ["映画", "ドラマ", "相撲", "旅行", "建築"],
-        career: "東京学芸大学教育学部 卒業 / 国立東京学芸大学附属高校 元教諭(国語)",
-        bio: "趣味は映画やドラマの鑑賞です。相撲観戦も大好きで、年2回ほど国技館に赴きます。",
-        message: "国語の教員経験があるため、どのような生徒さんでも大歓迎です。",
+        languages: ["JP", "US"],
+        hobbies: ["建築", "アメフト", "サッカー", "F1", "相撲"],
+        levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"],
+        education: "東京大学 建築学科卒業",
+        career: "不動産デベロッパー勤務経験あり",
+        bio: "趣味はスポーツ観戦全般です！建築・不動産関係の仕事をしていたので、建物巡りも好きです！",
+        message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！",
         schedule: [
-          { day: "12 WED", left: "37.5%", width: "37.5%" }, // 9:00 - 18:00
-          { day: "13 THU", left: "37.5%", width: "37.5%" },
-          { day: "14 FRI", left: "37.5%", width: "37.5%" },
+          { day: "12 WED", left: "37.5%", width: "37.5%" },  // 9:00 - 18:00
+          { day: "13 THU", left: "37.5%", width: "54.1%" },  // 9:00 - 22:00
+          { day: "14 FRI", left: "83.3%", width: "16.7%" },  // 20:00 - 24:00
           { day: "15 SAT", left: "0%", width: "0%" },
-          { day: "16 SUN", left: "0%", width: "0%" },
-          { day: "17 MON", left: "37.5%", width: "37.5%" }
+          { day: "16 SUN", left: "37.5%", width: "37.5%" },  // 9:00 - 18:00
+          { day: "17 MON", left: "37.5%", width: "54.1%" },  // 9:00 - 22:00
+          { day: "18 TUE", left: "37.5%", width: "37.5%" }   // 9:00 - 18:00
         ],
         reviews: [
-          { user: "Jocelyn さん", date: "2026年2月27日", stars: "★★★★☆", text: "大好きな相撲の話で一緒に盛り上がりました。楽しく日本語を勉強できました。" },
-          { user: "Joseph さん", date: "2026年2月26日", stars: "★★★★★", text: "とっても優しい先生です。" }
+          { user: "Sean さん", date: "2026年2月27日", stars: "★★★★★", text: "日本のビジネスマナーや建築の専門用語を先生から学べたおかげで、内定を獲得できました。" }
         ]
       },
       {
         id: 2,
-        name: "Aさん (66)",
-        icon: "👨🏻",
-        rating: 4.4,
-        rank: "ノーマル先生",
-        price: 2000,
-        languages: "🇯🇵 🇺🇸 🇨🇳",
-        levels: ["初級", "中級", "日常会話", "ビジネス会話"],
-        hobbies: ["漫画", "映画", "サッカー", "野球", "旅行"],
-        career: "早稲田大学商学部 卒業 / 大手化学メーカー勤務経験あり（43年勤続）",
-        bio: "趣味はスポーツ全般です。また、漫画も良く読んでいて、ジャンプが大好きです。",
-        message: "40年間サラリーマンとして勤めていたので、日本のビジネス文化などにも精通しています。",
+        name: "石原 美緒子 (72)",
+        icon: "👩🏻‍🦳",
+        rating: 4.6,
+        rank: "プレミアム先生",
+        price: 3000,
+        languages: ["JP", "UK", "AE"],
+        hobbies: ["テニス", "ピアノ", "ドラマ", "飛行機"],
+        levels: ["基礎会話", "日常会話", "読み"],
+        education: "一橋大学 法学部卒業",
+        career: "航空会社勤務経験あり",
+        bio: "趣味はドラマ鑑賞です。",
+        message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！",
         schedule: [
-          { day: "12 WED", left: "50%", width: "37.5%" }, // 12:00 - 21:00
+          { day: "12 WED", left: "79.1%", width: "12.5%" },  // 19:00 - 22:00
           { day: "13 THU", left: "0%", width: "0%" },
-          { day: "14 FRI", left: "50%", width: "25%" },
-          { day: "15 SAT", left: "0%", width: "0%" },
-          { day: "16 SUN", left: "50%", width: "37.5%" },
-          { day: "17 MON", left: "0%", width: "0%" }
+          { day: "14 FRI", left: "0%", width: "0%" },
+          { day: "15 SAT", left: "37.5%", width: "50%" },    // 9:00 - 21:00
+          { day: "16 SUN", left: "37.5%", width: "20.8%" },  // 9:00 - 14:00
+          { day: "17 MON", left: "0%", width: "0%" },
+          { day: "18 TUE", left: "0%", width: "0%" }
         ],
         reviews: [
-          { user: "Sean さん", date: "2026年2月27日", stars: "★★★★★", text: "日本のビジネスマナーを先生から学べたおかげで、内定を獲得できました。" }
+          { user: "Jocelyn さん", date: "2026年2月27日", stars: "★★★★★", text: "とっても優しく丁寧な先生です。日本のドラマの話で盛り上がり、楽しく日本語を勉強できました。" }
         ]
       }
     ];
@@ -597,7 +689,6 @@
     let activeTabs = { 1: 'schedule', 2: 'schedule' };
     let currentTeacher = null;
 
-    // フィルターボタンのイベント設定
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
@@ -633,12 +724,22 @@
 
       filtered.forEach(t => {
         const isSchedule = activeTabs[t.id] === 'schedule';
+        const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
+
         const tabContent = isSchedule
-          ? t.schedule.map(s => `
+          ? `
+            <div class="schedule-header">
+              <span class="schedule-month">FEB</span>
+              <div class="time-scale">
+                <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span>
+              </div>
+            </div>
+            ${t.schedule.map(s => `
               <div class="schedule-bar-row">
                 <span class="day-label">${s.day}</span>
                 <div class="time-track"><div class="time-fill" style="left:${s.left}; width:${s.width};"></div></div>
-              </div>`).join('')
+              </div>`).join('')}
+          `
           : t.reviews.map(r => `
               <div class="review-item">
                 <strong>${r.user}</strong> (${r.date}) <span style="color:#f59e0b;">${r.stars}</span><br>${r.text}
@@ -648,34 +749,48 @@
           <div class="teacher-card">
             <div>
               <div class="teacher-top">
-                <div class="avatar">${t.icon}</div>
-                <div class="teacher-meta">
-                  <h3>
-                    ${t.name}
+                <div class="avatar-circle">${t.icon}</div>
+                <div class="teacher-header-info">
+                  <div class="teacher-name-row">
+                    <h3>${t.name}</h3>
                     <span class="rating">★ ${t.rating}</span>
-                    <span class="rank-badge ${t.price === 3000 ? 'premium' : ''}">${t.rank}</span>
-                  </h3>
-                  <div class="price-tag">¥${t.price.toLocaleString()} / 1授業(1時間) 対応言語: ${t.languages}</div>
-                  <div class="tags-group">
-                    ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
+                    <span class="rank-badge">${t.rank}</span>
                   </div>
-                  <div class="tags-group">
+                  <!-- 名前の下の可能言語（国旗） -->
+                  <div class="flags-row" aria-label="可能言語">
+                    ${flagsHtml}
+                  </div>
+                  <!-- 趣味タグ -->
+                  <div class="tags-hobby-group">
                     ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
                   </div>
                 </div>
               </div>
+
+              <!-- 授業レベル -->
+              <div class="level-section">
+                <span class="level-label">授業レベル：</span>
+                <div class="tags-level-group">
+                  ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="price-line">受講料：¥${t.price.toLocaleString()} / 1授業(1時間)</div>
+
               <div class="teacher-bio">
-                <strong>経歴:</strong> ${t.career}<br>
-                <strong>自己紹介:</strong> ${t.bio}<br>
-                <strong>生徒に一言:</strong> ${t.message}
+                <div class="bio-row">${t.education}</div>
+                <div class="bio-row">${t.career}</div>
+                <div class="bio-row"><strong>趣味・関心：</strong>${t.bio}</div>
+                <div class="bio-row"><strong>生徒に一言：</strong>${t.message}</div>
               </div>
             </div>
+
             <div>
               <div class="tabs">
                 <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">スケジュール</button>
                 <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review')">レビュー</button>
               </div>
-              <div style="min-height: 115px;">${tabContent}</div>
+              <div style="min-height: 155px;">${tabContent}</div>
               <button class="btn-book" onclick="openModal(${t.id})">予約にすすむ</button>
             </div>
           </div>
@@ -711,7 +826,6 @@
       closeModal();
     }
 
-    // 初期表示
     renderTeachers();
   </script>
 </body>
