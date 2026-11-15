@@ -47,6 +47,7 @@
       font-weight: bold;
       color: var(--primary-dark);
       letter-spacing: 0.05em;
+      text-decoration: none;
     }
     .logo span {
       display: block;
@@ -71,13 +72,12 @@
     .btn-mypage {
       background: var(--primary);
       color: #fff;
-      border: none;
+      text-decoration: none;
       padding: 0.5rem 1.1rem;
       border-radius: 8px;
       font-weight: bold;
       font-size: 0.9rem;
-      cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       transition: 0.2s;
@@ -103,15 +103,8 @@
       flex-wrap: wrap;
       gap: 0.6rem;
     }
-    .search-title-bar h1 {
-      font-size: 1.35rem;
-      color: var(--text-main);
-    }
-    .search-actions {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+    .search-title-bar h1 { font-size: 1.35rem; color: var(--text-main); }
+    .search-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .btn-myfilter {
       background: #0284c7;
       color: #fff;
@@ -146,14 +139,14 @@
     .filter-row {
       display: flex;
       align-items: flex-start;
-      padding: 0.7rem 0;
+      padding: 0.75rem 0;
       border-bottom: 1px solid var(--border-color);
       gap: 1rem;
     }
     .filter-row:last-child { border-bottom: none; padding-bottom: 0.2rem; }
     .filter-row:first-child { padding-top: 0.2rem; }
     .filter-label {
-      width: 140px;
+      width: 145px;
       font-weight: bold;
       font-size: 0.88rem;
       flex-shrink: 0;
@@ -164,6 +157,34 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      align-items: center;
+    }
+
+    /* ② 日付＋30分刻み時間セレクトボックス */
+    .datetime-picker-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .dt-select {
+      padding: 0.42rem 0.75rem;
+      border: 1px solid #a8a29e;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      background: #fff;
+      color: var(--text-main);
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .dt-select.active-filter {
+      background: #dcfce7;
+      border-color: #16a34a;
+      color: #14532d;
+    }
+    .dt-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
     /* フィルターチップ */
@@ -188,13 +209,6 @@
       border-radius: 2px;
       overflow: hidden;
       height: 15px;
-    }
-    .chip.day.active, .chip.time.active {
-      background: #dcfce7;
-      border-color: #16a34a;
-      box-shadow: 0 0 0 1px #16a34a;
-      font-weight: bold;
-      color: #14532d;
     }
     .chip.lang.active {
       background: #fef3c7;
@@ -232,13 +246,14 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
       gap: 1.5rem;
+      align-items: stretch;
     }
     @media (max-width: 600px) {
       .teacher-grid { grid-template-columns: 1fr; }
       .filter-row { flex-direction: column; gap: 0.4rem; }
     }
 
-    /* 講師カード */
+    /* ③ 講師カード（上揃えレイアウト修正済み） */
     .teacher-card {
       background: #fff;
       border: 1px solid var(--border-color);
@@ -247,7 +262,13 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start; /* 上から順に詰める */
+    }
+    /* プロフィール部分の最小高さを揃えてタブの開始位置を水平に一致させる */
+    .card-profile-upper {
+      min-height: 295px;
+      display: flex;
+      flex-direction: column;
     }
     .teacher-top {
       display: flex;
@@ -256,15 +277,15 @@
       margin-bottom: 0.8rem;
     }
     .avatar-circle {
-      width: 92px;
-      height: 92px;
+      width: 90px;
+      height: 90px;
       background: #f5f5f4;
       border: 2px solid #d6d3d1;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       flex-shrink: 0;
     }
     .teacher-header-info { flex: 1; }
@@ -318,7 +339,7 @@
       display: flex;
       align-items: flex-start;
       gap: 0.6rem;
-      margin: 0.7rem 0;
+      margin: 0.6rem 0;
       padding-top: 0.6rem;
       border-top: 1px dashed #e7e5e4;
     }
@@ -344,17 +365,22 @@
       margin-bottom: 0.5rem;
     }
     .teacher-bio {
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       color: var(--text-main);
       margin-bottom: 1rem;
       background: #fafaf9;
-      padding: 0.8rem;
+      padding: 0.75rem;
       border-radius: 8px;
       border: 1px solid #f5f5f4;
+      flex: 1;
     }
     .bio-row { margin-bottom: 0.25rem; }
 
-    /* タブ切り替え */
+    /* タブ切り替えエリア（常に上部から開始） */
+    .card-tab-section {
+      display: flex;
+      flex-direction: column;
+    }
     .tabs {
       display: flex;
       border: 1px solid var(--text-main);
@@ -381,7 +407,6 @@
       border-radius: 0 0 6px 6px;
       padding: 0.85rem;
       background: #fff;
-      min-height: 215px;
     }
 
     /* スケジュール表 */
@@ -466,6 +491,11 @@
     .review-meta { font-weight: bold; font-size: 0.73rem; margin-bottom: 0.15rem; }
     .review-stars { color: #eab308; font-size: 0.95rem; letter-spacing: 1px; white-space: nowrap; }
 
+    /* 予約ボタンだけカード最下部に配置 */
+    .card-footer-action {
+      margin-top: auto;
+      padding-top: 0.9rem;
+    }
     .btn-book {
       width: 100%;
       padding: 0.8rem;
@@ -476,12 +506,11 @@
       font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 0.9rem;
       transition: 0.2s;
     }
     .btn-book:hover { background: var(--primary-dark); }
 
-    /* モーダル共通 */
+    /* モーダル */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -498,11 +527,8 @@
       border-radius: 12px;
       max-width: 560px;
       width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
       position: relative;
     }
-    .modal.wide { max-width: 760px; }
     .modal-close-x {
       position: absolute;
       top: 1rem; right: 1.2rem;
@@ -512,8 +538,6 @@
       cursor: pointer;
       color: var(--text-muted);
     }
-
-    /* 予約モーダル内の支払い並列ボタン */
     .payment-options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -535,72 +559,13 @@
     .pay-credit:hover { background: var(--primary-dark); }
     .pay-ticket { background: #0284c7; color: #fff; }
     .pay-ticket:hover { background: #0369a1; }
-    .pay-ticket:disabled {
-      background: #d6d3d1;
-      color: #78716c;
-      cursor: not-allowed;
-    }
-
+    .pay-ticket:disabled { background: #d6d3d1; color: #78716c; cursor: not-allowed; }
     .policy-box {
       background: #fef3c7;
       padding: 0.8rem;
       border-radius: 6px;
       font-size: 0.78rem;
       margin: 1rem 0;
-    }
-
-    /* マイページ用スタイル */
-    .mypage-section {
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 1.2rem;
-      margin-bottom: 1.2rem;
-      background: #fafaf9;
-    }
-    .mypage-section h4 {
-      font-size: 1.05rem;
-      margin-bottom: 0.7rem;
-      border-left: 4px solid var(--primary);
-      padding-left: 0.6rem;
-    }
-    .ticket-status-card {
-      background: #fff;
-      border: 2px solid #f59e0b;
-      border-radius: 8px;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .history-item {
-      background: #fff;
-      border: 1px solid #d6d3d1;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-    .history-item:hover {
-      border-color: var(--primary);
-      background: #fffbeb;
-    }
-    .myfilter-form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.6rem;
-    }
-    .myfilter-form select {
-      padding: 0.4rem;
-      border-radius: 6px;
-      border: 1px solid #d6d3d1;
-      font-size: 0.85rem;
     }
 
     footer {
@@ -618,23 +583,20 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .footer-links a {
-      color: #fcd34d;
-      margin-right: 1.5rem;
-      text-decoration: none;
-    }
+    .footer-links a { color: #fcd34d; margin-right: 1.5rem; text-decoration: none; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
+    <a href="student.html" class="logo">
       KOTOHOGI
       <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
-    </div>
+    </a>
     <div class="header-nav">
       <div class="ticket-badge-header" id="header-ticket-display">🎟 回数券残り: 3.5回分</div>
-      <button class="btn-mypage" onclick="openMyPage()">👤 マイページ</button>
+      <!-- ① 別ページ（mypage.html）へ遷移 -->
+      <a href="mypage.html" class="btn-mypage">👤 マイページ</a>
     </div>
   </header>
 
@@ -650,27 +612,27 @@
       </div>
 
       <div class="search-box">
-        <!-- ② 希望授業日時フィルター -->
+        <!-- ② 特定の日付＋時間（30分刻み）検索 -->
         <div class="filter-row">
-          <div class="filter-label">希望の曜日</div>
-          <div class="filter-options" id="day-filters">
-            <button class="chip day" data-val="12 WED">12 (水)</button>
-            <button class="chip day" data-val="13 THU">13 (木)</button>
-            <button class="chip day" data-val="14 FRI">14 (金)</button>
-            <button class="chip day" data-val="15 SAT">15 (土)</button>
-            <button class="chip day" data-val="16 SUN">16 (日)</button>
-            <button class="chip day" data-val="17 MON">17 (月)</button>
-            <button class="chip day" data-val="18 TUE">18 (火)</button>
-          </div>
-        </div>
+          <div class="filter-label">希望の日時（1時間枠）</div>
+          <div class="filter-options">
+            <div class="datetime-picker-group">
+              <select id="filter-date" class="dt-select" onchange="onDateTimeFilterChange()">
+                <option value="">日付を指定しない</option>
+                <option value="12 WED">2026年2月12日（水）</option>
+                <option value="13 THU">2026年2月13日（木）</option>
+                <option value="14 FRI">2026年2月14日（金）</option>
+                <option value="15 SAT">2026年2月15日（土）</option>
+                <option value="16 SUN">2026年2月16日（日）</option>
+                <option value="17 MON">2026年2月17日（月）</option>
+                <option value="18 TUE">2026年2月18日（火）</option>
+              </select>
 
-        <div class="filter-row">
-          <div class="filter-label">希望の時間帯</div>
-          <div class="filter-options" id="time-filters">
-            <button class="chip time" data-start="9" data-end="12">🌅 朝 (9:00〜12:00)</button>
-            <button class="chip time" data-start="12" data-end="15">☀️ 昼 (12:00〜15:00)</button>
-            <button class="chip time" data-start="15" data-end="18">🌇 夕方 (15:00〜18:00)</button>
-            <button class="chip time" data-start="18" data-end="24">🌙 夜 (18:00〜24:00)</button>
+              <select id="filter-time" class="dt-select" onchange="onDateTimeFilterChange()">
+                <option value="">開始時間を指定しない</option>
+              </select>
+              <span class="dt-hint" id="dt-range-preview">※30分刻みで選択可能（選択時間から1時間受講）</span>
+            </div>
           </div>
         </div>
 
@@ -764,12 +726,8 @@
       <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark); margin-top:0.3rem;"></p>
       
       <div style="margin: 1rem 0;">
-        <label style="display:block; font-size:0.85rem; font-weight:bold;">希望日時を選択：</label>
-        <select id="booking-slot" style="width:100%; padding:0.5rem; margin-top:0.3rem; border-radius:6px;">
-          <option>2月12日（水）12:00〜13:00</option>
-          <option>2月13日（木）15:00〜16:00</option>
-          <option>2月15日（土）10:00〜11:00</option>
-        </select>
+        <label style="display:block; font-size:0.85rem; font-weight:bold;">希望日時（1時間枠）：</label>
+        <select id="booking-slot" style="width:100%; padding:0.5rem; margin-top:0.3rem; border-radius:6px;"></select>
       </div>
 
       <div class="policy-box">
@@ -781,78 +739,7 @@
         <input type="checkbox" id="agree-policy"> 上記のキャンセル規定および利用規約に同意する
       </label>
 
-      <!-- ③ クレジット決済と回数券利用を並列表示 -->
       <div id="payment-area"></div>
-    </div>
-  </div>
-
-  <!-- ④ 生徒マイページモーダル -->
-  <div class="modal-overlay" id="mypage-modal">
-    <div class="modal wide">
-      <button class="modal-close-x" onclick="closeMyPage()">✕</button>
-      <h3 style="font-size:1.35rem; margin-bottom:1rem;">👤 生徒マイページ（Jocelyn さん）</h3>
-
-      <!-- 回数券ステータス -->
-      <div class="mypage-section">
-        <h4>🎟 回数券（チケット）残高・購入</h4>
-        <div id="mypage-ticket-box"></div>
-      </div>
-
-      <!-- マイフィルター設定 -->
-      <div class="mypage-section">
-        <h4>⭐ マイフィルター設定（お気に入り検索条件の保存）</h4>
-        <p style="font-size:0.82rem; color:var(--text-muted);">よく使う検索条件を保存しておくと、トップページの「マイフィルターを適用」ボタンで一発検索できます。</p>
-        <div class="myfilter-form">
-          <select id="mf-lang">
-            <option value="">言語: 指定なし</option>
-            <option value="JP">日本語</option>
-            <option value="US">英語(米)</option>
-            <option value="UK">英語(英)</option>
-            <option value="CN">中国語</option>
-            <option value="KR">韓国語</option>
-            <option value="FR">フランス語</option>
-            <option value="ES">スペイン語</option>
-            <option value="AE">アラビア語</option>
-          </select>
-          <select id="mf-level">
-            <option value="">レベル: 指定なし</option>
-            <option value="基礎会話">基礎会話</option>
-            <option value="日常会話">日常会話</option>
-            <option value="ビジネス">ビジネス</option>
-            <option value="読み">読み</option>
-            <option value="書き">書き</option>
-          </select>
-          <select id="mf-hobby">
-            <option value="">趣味: 指定なし</option>
-            <option value="建築">建築</option>
-            <option value="スポーツ">スポーツ</option>
-            <option value="相撲">相撲</option>
-            <option value="映画・ドラマ">映画・ドラマ</option>
-            <option value="音楽">音楽</option>
-            <option value="旅行">旅行</option>
-            <option value="料理・グルメ">料理・グルメ</option>
-            <option value="歴史・文化">歴史・文化</option>
-            <option value="アニメ・漫画">アニメ・漫画</option>
-          </select>
-          <button class="btn-myfilter" onclick="saveMyFilter()">この条件を保存する</button>
-        </div>
-        <p id="current-myfilter-label" style="font-size:0.82rem; font-weight:bold; color:#0284c7; margin-top:0.5rem;"></p>
-      </div>
-
-      <!-- これまでの授業履歴 -->
-      <div class="mypage-section" style="margin-bottom:0;">
-        <h4>📚 これまでの授業履歴（総受講回数：<span id="total-lesson-count">0</span>回）</h4>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">※履歴の先生をクリックすると、その先生の詳細プロフィール・予約画面が開きます。</p>
-        <div id="lesson-history-list"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 履歴から開く先生詳細ポップアップ -->
-  <div class="modal-overlay" id="teacher-detail-modal">
-    <div class="modal wide">
-      <button class="modal-close-x" onclick="closeTeacherDetailModal()">✕</button>
-      <div id="teacher-detail-content"></div>
     </div>
   </div>
 
@@ -889,6 +776,7 @@
       { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "わからなかった宿題を一緒に見てもらいました。またお願いしたいです。" }
     ];
 
+    // スケジュールは30分単位（例：9.5 = 9:30）に対応
     const teachers = [
       {
         id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000,
@@ -898,8 +786,8 @@
         message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！",
         ratingCounts: { 5: 240, 4: 45, 3: 19, 2: 13, 1: 26 },
         schedule: [
-          { day: "12 WED", start: 9, end: 18 }, { day: "13 THU", start: 9, end: 22 }, { day: "14 FRI", start: 20, end: 24 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 9, end: 18 }, { day: "17 MON", start: 9, end: 22 }, { day: "18 TUE", start: 9, end: 18 }
+          { day: "12 WED", start: 9, end: 18 }, { day: "13 THU", start: 9.5, end: 22 }, { day: "14 FRI", start: 20, end: 24 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 9, end: 18.5 }, { day: "17 MON", start: 9, end: 22 }, { day: "18 TUE", start: 9, end: 18 }
         ],
         reviews: defaultReviews
       },
@@ -911,8 +799,8 @@
         message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！",
         ratingCounts: { 5: 195, 4: 38, 3: 12, 2: 5, 1: 8 },
         schedule: [
-          { day: "12 WED", start: 19, end: 22 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 9, end: 21 }, { day: "16 SUN", start: 9, end: 14 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 0, end: 0 }
+          { day: "12 WED", start: 19, end: 22.5 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 9.5, end: 21 }, { day: "16 SUN", start: 9, end: 14.5 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 0, end: 0 }
         ],
         reviews: defaultReviews
       },
@@ -924,7 +812,7 @@
         message: "ビジネス敬語から日本の歴史雑学まで、楽しく会話しましょう！",
         ratingCounts: { 5: 310, 4: 40, 3: 8, 2: 2, 1: 3 },
         schedule: [
-          { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 18, end: 22 },
+          { day: "12 WED", start: 9, end: 15.5 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 18.5, end: 22 },
           { day: "15 SAT", start: 10, end: 18 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 15 }, { day: "18 TUE", start: 9, end: 15 }
         ],
         reviews: defaultReviews
@@ -937,7 +825,7 @@
         message: "国語の教員経験を活かし、正しい発音と美しい日本語を丁寧にお教えします。",
         ratingCounts: { 5: 412, 4: 35, 3: 5, 2: 1, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 9, end: 17 }, { day: "13 THU", start: 9, end: 17 }, { day: "14 FRI", start: 9, end: 17 },
+          { day: "12 WED", start: 9, end: 17 }, { day: "13 THU", start: 9, end: 17 }, { day: "14 FRI", start: 9.5, end: 17.5 },
           { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 17 }, { day: "18 TUE", start: 9, end: 17 }
         ],
         reviews: defaultReviews
@@ -950,7 +838,7 @@
         message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！",
         ratingCounts: { 5: 85, 4: 22, 3: 9, 2: 3, 1: 4 },
         schedule: [
-          { day: "12 WED", start: 12, end: 21 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 12, end: 18 },
+          { day: "12 WED", start: 12.5, end: 21 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 12, end: 18.5 },
           { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 12, end: 21 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 12, end: 21 }
         ],
         reviews: defaultReviews
@@ -963,7 +851,7 @@
         message: "おもてなしの心で、リラックスして話せる時間を作ります。",
         ratingCounts: { 5: 160, 4: 28, 3: 6, 2: 2, 1: 1 },
         schedule: [
-          { day: "12 WED", start: 15, end: 23 }, { day: "13 THU", start: 15, end: 23 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "12 WED", start: 15, end: 23 }, { day: "13 THU", start: 15.5, end: 23 }, { day: "14 FRI", start: 0, end: 0 },
           { day: "15 SAT", start: 14, end: 22 }, { day: "16 SUN", start: 14, end: 22 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 15, end: 23 }
         ],
         reviews: defaultReviews
@@ -976,8 +864,8 @@
         message: "日本語だけでたくさん話したい中級・上級者の方、大歓迎です！",
         ratingCounts: { 5: 62, 4: 18, 3: 7, 2: 4, 1: 3 },
         schedule: [
-          { day: "12 WED", start: 9, end: 12 }, { day: "13 THU", start: 9, end: 12 }, { day: "14 FRI", start: 9, end: 12 },
-          { day: "15 SAT", start: 9, end: 15 }, { day: "16 SUN", start: 9, end: 15 }, { day: "17 MON", start: 9, end: 12 }, { day: "18 TUE", start: 0, end: 0 }
+          { day: "12 WED", start: 9, end: 12.5 }, { day: "13 THU", start: 9, end: 12 }, { day: "14 FRI", start: 9, end: 12 },
+          { day: "15 SAT", start: 9, end: 15.5 }, { day: "16 SUN", start: 9, end: 15 }, { day: "17 MON", start: 9, end: 12 }, { day: "18 TUE", start: 0, end: 0 }
         ],
         reviews: defaultReviews
       },
@@ -989,7 +877,7 @@
         message: "就職活動中の留学生向けの面接練習やビジネスマナーもお任せください！",
         ratingCounts: { 5: 220, 4: 25, 3: 4, 2: 1, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 10, end: 16 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 10, end: 16 },
+          { day: "12 WED", start: 10.5, end: 16 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 10, end: 16.5 },
           { day: "15 SAT", start: 10, end: 18 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 10, end: 16 }, { day: "18 TUE", start: 18, end: 22 }
         ],
         reviews: defaultReviews
@@ -1002,8 +890,8 @@
         message: "スペイン語圏の学習者の方、文法の違いもわかりやすく説明しますよ！",
         ratingCounts: { 5: 54, 4: 19, 3: 8, 2: 3, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 20, end: 24 }, { day: "13 THU", start: 20, end: 24 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 8, end: 12 }, { day: "16 SUN", start: 8, end: 12 }, { day: "17 MON", start: 20, end: 24 }, { day: "18 TUE", start: 20, end: 24 }
+          { day: "12 WED", start: 20, end: 24 }, { day: "13 THU", start: 20.5, end: 24 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 8, end: 12.5 }, { day: "16 SUN", start: 8, end: 12 }, { day: "17 MON", start: 20, end: 24 }, { day: "18 TUE", start: 20, end: 24 }
         ],
         reviews: defaultReviews
       },
@@ -1015,8 +903,8 @@
         message: "日本の四季の行事や食文化について、楽しくおしゃべりしましょう。",
         ratingCounts: { 5: 175, 4: 30, 3: 7, 2: 2, 1: 3 },
         schedule: [
-          { day: "12 WED", start: 9, end: 14 }, { day: "13 THU", start: 9, end: 14 }, { day: "14 FRI", start: 9, end: 14 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 13, end: 17 }, { day: "17 MON", start: 9, end: 14 }, { day: "18 TUE", start: 9, end: 14 }
+          { day: "12 WED", start: 9, end: 14.5 }, { day: "13 THU", start: 9, end: 14 }, { day: "14 FRI", start: 9, end: 14 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 13.5, end: 17.5 }, { day: "17 MON", start: 9, end: 14 }, { day: "18 TUE", start: 9, end: 14 }
         ],
         reviews: defaultReviews
       },
@@ -1028,8 +916,8 @@
         message: "ITやものづくり分野で働きたい方の技術日本語もサポートできます。",
         ratingCounts: { 5: 78, 4: 21, 3: 6, 2: 2, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 18, end: 22 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 18, end: 22 },
-          { day: "15 SAT", start: 10, end: 17 }, { day: "16 SUN", start: 10, end: 17 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 18, end: 22 }
+          { day: "12 WED", start: 18, end: 22.5 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 18, end: 22 },
+          { day: "15 SAT", start: 10.5, end: 17 }, { day: "16 SUN", start: 10, end: 17 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 18, end: 22 }
         ],
         reviews: defaultReviews
       },
@@ -1041,8 +929,8 @@
         message: "漢字圏の方ならではの表現のクセを直して、自然な日本語に近づけます！",
         ratingCounts: { 5: 92, 4: 18, 3: 5, 2: 1, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 10, end: 15 }, { day: "13 THU", start: 10, end: 15 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 9, end: 13 }, { day: "16 SUN", start: 9, end: 13 }, { day: "17 MON", start: 10, end: 15 }, { day: "18 TUE", start: 10, end: 15 }
+          { day: "12 WED", start: 10, end: 15.5 }, { day: "13 THU", start: 10, end: 15 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 9.5, end: 13.5 }, { day: "16 SUN", start: 9, end: 13 }, { day: "17 MON", start: 10, end: 15 }, { day: "18 TUE", start: 10, end: 15 }
         ],
         reviews: defaultReviews
       },
@@ -1054,7 +942,7 @@
         message: "経済ニュースの読解や、大人同士の知的な雑談を楽しみましょう。",
         ratingCounts: { 5: 265, 4: 32, 3: 7, 2: 2, 1: 1 },
         schedule: [
-          { day: "12 WED", start: 16, end: 21 }, { day: "13 THU", start: 16, end: 21 }, { day: "14 FRI", start: 16, end: 21 },
+          { day: "12 WED", start: 16.5, end: 21 }, { day: "13 THU", start: 16, end: 21 }, { day: "14 FRI", start: 16, end: 21 },
           { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 16, end: 21 }, { day: "17 MON", start: 16, end: 21 }, { day: "18 TUE", start: 0, end: 0 }
         ],
         reviews: defaultReviews
@@ -1067,7 +955,7 @@
         message: "日本に住み始めたばかりの奥様や学生さん、生活の相談も兼ねてお話ししましょう！",
         ratingCounts: { 5: 68, 4: 15, 3: 6, 2: 2, 1: 1 },
         schedule: [
-          { day: "12 WED", start: 9, end: 13 }, { day: "13 THU", start: 9, end: 13 }, { day: "14 FRI", start: 9, end: 13 },
+          { day: "12 WED", start: 9.5, end: 13.5 }, { day: "13 THU", start: 9, end: 13 }, { day: "14 FRI", start: 9, end: 13 },
           { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 13 }, { day: "18 TUE", start: 9, end: 13 }
         ],
         reviews: defaultReviews
@@ -1080,7 +968,7 @@
         message: "教科書には載っていない若者言葉やリアルな会話表現を楽しく学べます！",
         ratingCounts: { 5: 59, 4: 17, 3: 5, 2: 3, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 13, end: 19 }, { day: "13 THU", start: 13, end: 19 }, { day: "14 FRI", start: 13, end: 19 },
+          { day: "12 WED", start: 13, end: 19.5 }, { day: "13 THU", start: 13, end: 19 }, { day: "14 FRI", start: 13.5, end: 19 },
           { day: "15 SAT", start: 13, end: 19 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 13, end: 19 }
         ],
         reviews: defaultReviews
@@ -1093,7 +981,7 @@
         message: "綺麗なイントネーション（高低アクセント）を音楽のリズムのように楽しく身につけましょう。",
         ratingCounts: { 5: 280, 4: 20, 3: 3, 2: 1, 1: 0 },
         schedule: [
-          { day: "12 WED", start: 14, end: 20 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 14, end: 20 },
+          { day: "12 WED", start: 14.5, end: 20.5 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 14, end: 20 },
           { day: "15 SAT", start: 10, end: 16 }, { day: "16 SUN", start: 10, end: 16 }, { day: "17 MON", start: 14, end: 20 }, { day: "18 TUE", start: 0, end: 0 }
         ],
         reviews: defaultReviews
@@ -1106,7 +994,7 @@
         message: "日本旅行のプランを一緒に立てながら、実践的な旅行日本語を練習しましょう！",
         ratingCounts: { 5: 74, 4: 16, 3: 6, 2: 1, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9.5, end: 15.5 }, { day: "14 FRI", start: 0, end: 0 },
           { day: "15 SAT", start: 9, end: 18 }, { day: "16 SUN", start: 9, end: 18 }, { day: "17 MON", start: 9, end: 15 }, { day: "18 TUE", start: 0, end: 0 }
         ],
         reviews: defaultReviews
@@ -1119,8 +1007,8 @@
         message: "小説やニュース記事を一緒に読みながら、語彙力と表現力を広げましょう！",
         ratingCounts: { 5: 188, 4: 27, 3: 5, 2: 2, 1: 1 },
         schedule: [
-          { day: "12 WED", start: 10, end: 18 }, { day: "13 THU", start: 10, end: 18 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 10, end: 18 }, { day: "17 MON", start: 10, end: 18 }, { day: "18 TUE", start: 10, end: 18 }
+          { day: "12 WED", start: 10, end: 18.5 }, { day: "13 THU", start: 10, end: 18 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 10.5, end: 18 }, { day: "17 MON", start: 10, end: 18 }, { day: "18 TUE", start: 10, end: 18 }
         ],
         reviews: defaultReviews
       },
@@ -1132,7 +1020,7 @@
         message: "海外での建設プロジェクト経験が豊富です。楽しく異文化交流しましょう！",
         ratingCounts: { 5: 88, 4: 19, 3: 4, 2: 1, 1: 2 },
         schedule: [
-          { day: "12 WED", start: 19, end: 23 }, { day: "13 THU", start: 19, end: 23 }, { day: "14 FRI", start: 19, end: 23 },
+          { day: "12 WED", start: 19.5, end: 23.5 }, { day: "13 THU", start: 19, end: 23 }, { day: "14 FRI", start: 19, end: 23 },
           { day: "15 SAT", start: 9, end: 14 }, { day: "16 SUN", start: 9, end: 14 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 19, end: 23 }
         ],
         reviews: defaultReviews
@@ -1145,30 +1033,35 @@
         message: "初めて日本語を学ぶ方も大歓迎！ゼロから優しくサポートします。",
         ratingCounts: { 5: 230, 4: 29, 3: 6, 2: 1, 1: 1 },
         schedule: [
-          { day: "12 WED", start: 9, end: 17 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 9, end: 17 },
-          { day: "15 SAT", start: 9, end: 17 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 17 }, { day: "18 TUE", start: 9, end: 17 }
+          { day: "12 WED", start: 9, end: 17.5 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 9, end: 17 },
+          { day: "15 SAT", start: 9.5, end: 17 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 17 }, { day: "18 TUE", start: 9, end: 17 }
         ],
         reviews: defaultReviews
       }
     ];
 
-    // 生徒アカウントの状態管理（回数券・受講履歴・マイフィルター）
-    let studentState = {
-      tickets: 3.5, // 初期状態：3.5回分保有（0にすると未購入時のUIもテスト可能）
-      history: [
-        { date: "2026年2月10日", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分" },
-        { date: "2026年2月03日", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分" },
-        { date: "2026年1月25日", teacherId: 1, topic: "日本建築とビジネス文化", payment: "クレジット決済 ¥3,000" }
-      ],
-      myFilter: {
-        lang: "US",
-        level: "日常会話",
-        hobby: ""
-      }
-    };
+    // 共通ストレージ（mypage.html / admin.html とも連携）
+    const STORAGE_KEY = "kotohogi_demo_state_v1";
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) return JSON.parse(saved);
+      const initial = {
+        tickets: 3.5,
+        history: [
+          { date: "2026年2月10日", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分" },
+          { date: "2026年2月03日", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分" },
+          { date: "2026年1月25日", teacherId: 1, topic: "日本建築とビジネス文化", payment: "クレジット決済 ¥3,000" }
+        ],
+        myFilter: { lang: "US", level: "日常会話", hobby: "" }
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+      return initial;
+    }
+    function saveState(st) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
+    }
 
-    let selectedDays = new Set();
-    let selectedTimeSlots = []; // { start, end }
+    let studentState = loadState();
     let selectedLangs = new Set();
     let selectedLevels = new Set();
     let selectedHobbies = new Set();
@@ -1176,20 +1069,34 @@
     let reviewSortModes = {};
     let currentTeacher = null;
 
-    // フィルターボタン設定
+    // 30分刻みの時間オプションを生成（0:00〜23:00）
+    function formatHour(val) {
+      const h = Math.floor(val);
+      const m = (val % 1) === 0.5 ? "30" : "00";
+      return `${String(h).padStart(2, '0')}:${m}`;
+    }
+
+    const timeSelect = document.getElementById('filter-time');
+    for (let t = 6.0; t <= 23.0; t += 0.5) {
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = `${formatHour(t)} 〜 ${formatHour(t + 1)}`;
+      timeSelect.appendChild(opt);
+    }
+
+    function onDateTimeFilterChange() {
+      const dEl = document.getElementById('filter-date');
+      const tEl = document.getElementById('filter-time');
+      dEl.classList.toggle('active-filter', dEl.value !== "");
+      tEl.classList.toggle('active-filter', tEl.value !== "");
+      renderTeachers();
+    }
+
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
         const val = btn.dataset.val;
-        if (btn.classList.contains('day')) {
-          selectedDays.has(val) ? selectedDays.delete(val) : selectedDays.add(val);
-        } else if (btn.classList.contains('time')) {
-          const s = Number(btn.dataset.start);
-          const e = Number(btn.dataset.end);
-          const idx = selectedTimeSlots.findIndex(item => item.start === s && item.end === e);
-          if (idx > -1) selectedTimeSlots.splice(idx, 1);
-          else selectedTimeSlots.push({ start: s, end: e });
-        } else if (btn.classList.contains('lang')) {
+        if (btn.classList.contains('lang')) {
           selectedLangs.has(val) ? selectedLangs.delete(val) : selectedLangs.add(val);
         } else if (btn.classList.contains('level')) {
           selectedLevels.has(val) ? selectedLevels.delete(val) : selectedLevels.add(val);
@@ -1201,8 +1108,10 @@
     });
 
     function resetFilters() {
-      selectedDays.clear();
-      selectedTimeSlots = [];
+      document.getElementById('filter-date').value = "";
+      document.getElementById('filter-time').value = "";
+      document.getElementById('filter-date').classList.remove('active-filter');
+      document.getElementById('filter-time').classList.remove('active-filter');
       selectedLangs.clear();
       selectedLevels.clear();
       selectedHobbies.clear();
@@ -1212,6 +1121,7 @@
 
     function applyMyFilter() {
       resetFilters();
+      studentState = loadState();
       const mf = studentState.myFilter;
       if (mf.lang) {
         selectedLangs.add(mf.lang);
@@ -1245,150 +1155,25 @@
       return '★'.repeat(count) + '☆'.repeat(5 - count);
     }
 
-    // 講師カードHTML生成（一覧と履歴ポップアップの両方で再利用）
-    function buildTeacherCardInner(t, isPopup = false) {
-      const currentTab = activeTabs[t.id] || 'schedule';
-      const isSchedule = currentTab === 'schedule';
-      const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
-      const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
-
-      let tabContent = '';
-      if (isSchedule) {
-        const headerMarks = hours.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
-        const verticalLines = hours.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
-        const rowsHtml = t.schedule.map(s => {
-          const leftPct = (s.start / 24) * 100;
-          const widthPct = ((s.end - s.start) / 24) * 100;
-          return `
-            <div class="schedule-bar-row">
-              <span class="day-label">${s.day}</span>
-              <div class="time-track">
-                ${widthPct > 0 ? `<div class="time-fill" style="left:${leftPct}%; width:${widthPct}%;"></div>` : ''}
-              </div>
-            </div>`;
-        }).join('');
-
-        tabContent = `
-          <div class="schedule-wrapper">
-            <div class="schedule-header">
-              <span class="schedule-month">FEB</span>
-              <div class="time-scale-header">${headerMarks}</div>
-            </div>
-            <div class="schedule-rows-area">
-              <div class="grid-lines-overlay">${verticalLines}</div>
-              ${rowsHtml}
-            </div>
-          </div>
-        `;
-      } else {
-        const totalReviews = Object.values(t.ratingCounts).reduce((a, b) => a + b, 0);
-        const barsHtml = [5, 4, 3, 2, 1].map(star => {
-          const cnt = t.ratingCounts[star] || 0;
-          const pct = totalReviews > 0 ? Math.round((cnt / totalReviews) * 100) : 0;
-          return `
-            <div class="rating-bar-row">
-              <span class="star-label">★${star}</span>
-              <div class="bar-track"><div class="bar-fill" style="width: ${pct}%;"></div></div>
-              <span class="count-label">${cnt}</span>
-            </div>
-          `;
-        }).join('');
-
-        const rSort = reviewSortModes[t.id] || 'newest';
-        const sortedReviews = [...t.reviews].sort((a, b) => {
-          if (rSort === 'highest') return b.stars - a.stars;
-          if (rSort === 'lowest') return a.stars - b.stars;
-          return b.timestamp - a.timestamp;
-        });
-
-        const reviewsHtml = sortedReviews.map(r => `
-          <div class="review-card-item">
-            <div class="review-card-left">
-              <div class="review-meta">${r.user} ${r.date}</div>
-              <div>${r.text}</div>
-            </div>
-            <div class="review-stars">${renderStars(r.stars)}</div>
-          </div>
-        `).join('');
-
-        tabContent = `
-          <div class="review-panel-bg">
-            <div class="rating-summary-box">
-              <div class="big-rating">★ ${t.rating.toFixed(1)}</div>
-              <div class="rating-bars">${barsHtml}</div>
-            </div>
-            <div class="review-sort-links">
-              <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">新しい順</button>
-              <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">評価が高い順</button>
-              <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">評価が低い順</button>
-            </div>
-            <div class="review-list">${reviewsHtml}</div>
-          </div>
-        `;
-      }
-
-      const ticketCost = t.price === 3000 ? "1.5回分" : "1.0回分";
-
-      return `
-        <div>
-          <div class="teacher-top">
-            <div class="avatar-circle">${t.icon}</div>
-            <div class="teacher-header-info">
-              <div class="teacher-name-row">
-                <h3>${t.name}</h3>
-                <span class="rating">★ ${t.rating.toFixed(1)}</span>
-                <span class="rank-badge">${t.rank}</span>
-              </div>
-              <div class="flags-row">${flagsHtml}</div>
-              <div class="tags-hobby-group">
-                ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
-              </div>
-            </div>
-          </div>
-
-          <div class="level-section">
-            <span class="level-label">授業レベル：</span>
-            <div class="tags-level-group">
-              ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
-            </div>
-          </div>
-
-          <div class="price-line">受講料：¥${t.price.toLocaleString()} / 1h（回数券利用時：${ticketCost}消費）</div>
-
-          <div class="teacher-bio">
-            <div class="bio-row">${t.education}</div>
-            <div class="bio-row">${t.career}</div>
-            <div class="bio-row"><strong>趣味・関心：</strong>${t.bio}</div>
-            <div class="bio-row"><strong>生徒に一言：</strong>${t.message}</div>
-          </div>
-        </div>
-
-        <div>
-          <div class="tabs">
-            <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">スケジュール</button>
-            <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">レビュー</button>
-          </div>
-          <div class="tab-panel">${tabContent}</div>
-          <button class="btn-book" onclick="${isPopup ? 'closeTeacherDetailModal();' : ''} openModal(${t.id})">予約にすすむ</button>
-        </div>
-      `;
-    }
-
     function renderTeachers() {
       const sortBy = document.getElementById('sort-select').value;
+      const targetDate = document.getElementById('filter-date').value;
+      const targetTimeVal = document.getElementById('filter-time').value;
+      const targetStart = targetTimeVal !== "" ? Number(targetTimeVal) : null;
+
       let filtered = teachers.filter(t => {
         const langMatch = [...selectedLangs].every(lg => t.languages.includes(lg));
         const levelMatch = [...selectedLevels].every(l => t.levels.includes(l));
         const hobbyMatch = [...selectedHobbies].every(h => t.hobbies.includes(h));
 
-        // 曜日＆時間帯のマッチング
+        // ② 特定日付＋30分刻み時間マッチング（選択した開始時間から1時間枠が収まるか判定）
         let scheduleMatch = true;
-        if (selectedDays.size > 0 || selectedTimeSlots.length > 0) {
+        if (targetDate !== "" || targetStart !== null) {
           scheduleMatch = t.schedule.some(s => {
             if (s.end <= s.start) return false;
-            const dayOk = selectedDays.size === 0 || selectedDays.has(s.day);
-            const timeOk = selectedTimeSlots.length === 0 || selectedTimeSlots.some(slot => s.start < slot.end && s.end > slot.start);
-            return dayOk && timeOk;
+            const dateOk = (targetDate === "") || (s.day === targetDate);
+            const timeOk = (targetStart === null) || (s.start <= targetStart && (targetStart + 1) <= s.end);
+            return dateOk && timeOk;
           });
         }
 
@@ -1409,13 +1194,143 @@
       const grid = document.getElementById('teacher-grid');
       grid.innerHTML = '';
 
+      const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+
       filtered.forEach(t => {
-        grid.innerHTML += `<div class="teacher-card">${buildTeacherCardInner(t, false)}</div>`;
+        const currentTab = activeTabs[t.id] || 'schedule';
+        const isSchedule = currentTab === 'schedule';
+        const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
+        const ticketCost = t.price === 3000 ? "1.5回分" : "1.0回分";
+
+        let tabContent = '';
+        if (isSchedule) {
+          const headerMarks = hours.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
+          const verticalLines = hours.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
+          const rowsHtml = t.schedule.map(s => {
+            const leftPct = (s.start / 24) * 100;
+            const widthPct = ((s.end - s.start) / 24) * 100;
+            return `
+              <div class="schedule-bar-row">
+                <span class="day-label">${s.day}</span>
+                <div class="time-track">
+                  ${widthPct > 0 ? `<div class="time-fill" style="left:${leftPct}%; width:${widthPct}%;"></div>` : ''}
+                </div>
+              </div>`;
+          }).join('');
+
+          tabContent = `
+            <div class="schedule-wrapper">
+              <div class="schedule-header">
+                <span class="schedule-month">FEB</span>
+                <div class="time-scale-header">${headerMarks}</div>
+              </div>
+              <div class="schedule-rows-area">
+                <div class="grid-lines-overlay">${verticalLines}</div>
+                ${rowsHtml}
+              </div>
+            </div>
+          `;
+        } else {
+          const totalReviews = Object.values(t.ratingCounts).reduce((a, b) => a + b, 0);
+          const barsHtml = [5, 4, 3, 2, 1].map(star => {
+            const cnt = t.ratingCounts[star] || 0;
+            const pct = totalReviews > 0 ? Math.round((cnt / totalReviews) * 100) : 0;
+            return `
+              <div class="rating-bar-row">
+                <span class="star-label">★${star}</span>
+                <div class="bar-track"><div class="bar-fill" style="width: ${pct}%;"></div></div>
+                <span class="count-label">${cnt}</span>
+              </div>
+            `;
+          }).join('');
+
+          const rSort = reviewSortModes[t.id] || 'newest';
+          const sortedReviews = [...t.reviews].sort((a, b) => {
+            if (rSort === 'highest') return b.stars - a.stars;
+            if (rSort === 'lowest') return a.stars - b.stars;
+            return b.timestamp - a.timestamp;
+          });
+
+          const reviewsHtml = sortedReviews.map(r => `
+            <div class="review-card-item">
+              <div class="review-card-left">
+                <div class="review-meta">${r.user} ${r.date}</div>
+                <div>${r.text}</div>
+              </div>
+              <div class="review-stars">${renderStars(r.stars)}</div>
+            </div>
+          `).join('');
+
+          tabContent = `
+            <div class="review-panel-bg">
+              <div class="rating-summary-box">
+                <div class="big-rating">★ ${t.rating.toFixed(1)}</div>
+                <div class="rating-bars">${barsHtml}</div>
+              </div>
+              <div class="review-sort-links">
+                <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest')">新しい順</button>
+                <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest')">評価が高い順</button>
+                <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest')">評価が低い順</button>
+              </div>
+              <div class="review-list">${reviewsHtml}</div>
+            </div>
+          `;
+        }
+
+        grid.innerHTML += `
+          <div class="teacher-card">
+            <div class="card-profile-upper">
+              <div class="teacher-top">
+                <div class="avatar-circle">${t.icon}</div>
+                <div class="teacher-header-info">
+                  <div class="teacher-name-row">
+                    <h3>${t.name}</h3>
+                    <span class="rating">★ ${t.rating.toFixed(1)}</span>
+                    <span class="rank-badge">${t.rank}</span>
+                  </div>
+                  <div class="flags-row">${flagsHtml}</div>
+                  <div class="tags-hobby-group">
+                    ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-section">
+                <span class="level-label">授業レベル：</span>
+                <div class="tags-level-group">
+                  ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="price-line">受講料：¥${t.price.toLocaleString()} / 1h（回数券利用時：${ticketCost}消費）</div>
+
+              <div class="teacher-bio">
+                <div class="bio-row">${t.education}</div>
+                <div class="bio-row">${t.career}</div>
+                <div class="bio-row"><strong>趣味・関心：</strong>${t.bio}</div>
+                <div class="bio-row"><strong>生徒に一言：</strong>${t.message}</div>
+              </div>
+            </div>
+
+            <!-- ③ 左右で上の位置がピタッと揃うタブセクション -->
+            <div class="card-tab-section">
+              <div class="tabs">
+                <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">スケジュール</button>
+                <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review')">レビュー</button>
+              </div>
+              <div class="tab-panel">${tabContent}</div>
+            </div>
+
+            <div class="card-footer-action">
+              <button class="btn-book" onclick="openModal(${t.id})">予約にすすむ</button>
+            </div>
+          </div>
+        `;
       });
     }
 
-    // ③ 予約モーダル（クレジット決済と回数券利用を並列表示）
     function openModal(id) {
+      studentState = loadState();
       currentTeacher = teachers.find(t => t.id === id);
       const isPremium = currentTeacher.price === 3000;
       const requiredTickets = isPremium ? 1.5 : 1.0;
@@ -1424,6 +1339,17 @@
       document.getElementById('modal-teacher-price').textContent =
         `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`;
       document.getElementById('agree-policy').checked = false;
+
+      // 先生の空きスケジュールから予約候補枠を生成
+      const slotSelect = document.getElementById('booking-slot');
+      slotSelect.innerHTML = '';
+      currentTeacher.schedule.forEach(s => {
+        if (s.end > s.start) {
+          const opt = document.createElement('option');
+          opt.textContent = `2月${s.day} ${formatHour(s.start)}〜${formatHour(s.start + 1)}`;
+          slotSelect.appendChild(opt);
+        }
+      });
 
       const payArea = document.getElementById('payment-area');
       if (studentState.tickets > 0) {
@@ -1464,131 +1390,50 @@
       }
       const isPremium = currentTeacher.price === 3000;
       const requiredTickets = isPremium ? 1.5 : 1.0;
+      const chosenSlot = document.getElementById('booking-slot').value;
 
       if (method === 'ticket') {
         studentState.tickets = Math.round((studentState.tickets - requiredTickets) * 10) / 10;
-        updateTicketHeader();
         studentState.history.unshift({
-          date: "2026年2月12日（予約済）",
+          date: chosenSlot,
           teacherId: currentTeacher.id,
           topic: "オンライン日本語レッスン",
           payment: `回数券 ${requiredTickets.toFixed(1)}回分`
         });
+        saveState(studentState);
+        updateTicketHeader();
         alert(`回数券を ${requiredTickets.toFixed(1)}回分 使用して ${currentTeacher.name} の授業を予約しました！（残り回数券: ${studentState.tickets.toFixed(1)}回分）`);
       } else {
         studentState.history.unshift({
-          date: "2026年2月12日（予約済）",
+          date: chosenSlot,
           teacherId: currentTeacher.id,
           topic: "オンライン日本語レッスン",
           payment: `クレジット決済 ¥${currentTeacher.price.toLocaleString()}`
         });
+        saveState(studentState);
         alert(`${currentTeacher.name} の授業予約を受け付けました！決済完了後、受講用Zoomリンクをメールでお送りします。`);
       }
       closeModal();
     }
 
     function updateTicketHeader() {
+      studentState = loadState();
       const el = document.getElementById('header-ticket-display');
       el.textContent = studentState.tickets > 0
         ? `🎟 回数券残り: ${studentState.tickets.toFixed(1)}回分`
         : `🎟 回数券: 未購入（1回分お得！）`;
     }
 
-    // ④ 生徒マイページ関連
-    function openMyPage() {
-      renderMyPageContent();
-      document.getElementById('mypage-modal').style.display = 'flex';
-    }
-
-    function closeMyPage() {
-      document.getElementById('mypage-modal').style.display = 'none';
-    }
-
-    function buyTicketPack() {
-      studentState.tickets = Math.round((studentState.tickets + 11.0) * 10) / 10;
+    // マイページで「先生の詳細を見る」を押した際に直接その先生の予約モーダルを開ける連携
+    window.addEventListener('DOMContentLoaded', () => {
       updateTicketHeader();
-      renderMyPageContent();
-      alert('11回分回数券セット（¥20,000・1回分お得！）を購入しました！有効期限は購入日から6ヶ月間です。');
-    }
-
-    function saveMyFilter() {
-      studentState.myFilter = {
-        lang: document.getElementById('mf-lang').value,
-        level: document.getElementById('mf-level').value,
-        hobby: document.getElementById('mf-hobby').value
-      };
-      renderMyPageContent();
-      alert('マイフィルターを保存しました！トップページの「⭐ マイフィルターを適用」ボタンからいつでも呼び出せます。');
-    }
-
-    function renderMyPageContent() {
-      // 回数券エリア
-      const ticketBox = document.getElementById('mypage-ticket-box');
-      if (studentState.tickets > 0) {
-        ticketBox.innerHTML = `
-          <div class="ticket-status-card">
-            <div>
-              <div style="font-size:0.85rem; color:var(--text-muted);">現在の回数券残高（有効期限：2026年8月31日）</div>
-              <div style="font-size:1.5rem; font-weight:bold; color:var(--primary-dark);">残り ${studentState.tickets.toFixed(1)} 回分</div>
-              <div style="font-size:0.78rem; color:var(--text-muted);">※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。</div>
-            </div>
-            <button class="btn-myfilter" style="background:var(--primary);" onclick="buyTicketPack()">＋ 11回分を追加購入（¥20,000）</button>
-          </div>
-        `;
-      } else {
-        ticketBox.innerHTML = `
-          <div class="ticket-status-card" style="background:#fffbeb;">
-            <div>
-              <div style="font-weight:bold; color:#92400e;">現在、回数券をお持ちではありません</div>
-              <div style="font-size:0.85rem;">10回分の料金（¥20,000）で<strong>11回分（¥22,000相当）</strong>受講できるお得な回数券がおすすめです！</div>
-            </div>
-            <button class="btn-myfilter" style="background:var(--primary);" onclick="buyTicketPack()">🎟 11回分回数券を購入する（¥20,000）</button>
-          </div>
-        `;
+      renderTeachers();
+      const params = new URLSearchParams(window.location.search);
+      const bookId = params.get('book');
+      if (bookId) {
+        openModal(Number(bookId));
       }
-
-      // マイフィルター現在値反映
-      const mf = studentState.myFilter;
-      document.getElementById('mf-lang').value = mf.lang;
-      document.getElementById('mf-level').value = mf.level;
-      document.getElementById('mf-hobby').value = mf.hobby;
-      const conds = [mf.lang, mf.level, mf.hobby].filter(Boolean);
-      document.getElementById('current-myfilter-label').textContent =
-        conds.length > 0 ? `現在保存中のマイフィルター: 【 ${conds.join(' / ')} 】` : '現在マイフィルターは未設定です。';
-
-      // 授業履歴エリア
-      document.getElementById('total-lesson-count').textContent = studentState.history.length;
-      const historyList = document.getElementById('lesson-history-list');
-      historyList.innerHTML = studentState.history.map(h => {
-        const t = teachers.find(item => item.id === h.teacherId);
-        if (!t) return '';
-        return `
-          <div class="history-item" onclick="openTeacherDetailPopup(${t.id})">
-            <div>
-              <div style="font-size:0.78rem; color:var(--text-muted);">${h.date} ｜ ${h.payment}</div>
-              <div style="font-weight:bold; font-size:0.95rem;">${t.icon} ${t.name} <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">（${h.topic}）</span></div>
-            </div>
-            <span style="color:#0284c7; font-size:0.82rem; font-weight:bold;">先生の詳細・再予約 ＞</span>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // 履歴クリック時の先生詳細ポップアップ
-    function openTeacherDetailPopup(teacherId) {
-      const t = teachers.find(item => item.id === teacherId);
-      if (!t) return;
-      document.getElementById('teacher-detail-content').innerHTML = buildTeacherCardInner(t, true);
-      document.getElementById('teacher-detail-modal').style.display = 'flex';
-    }
-
-    function closeTeacherDetailModal() {
-      document.getElementById('teacher-detail-modal').style.display = 'none';
-    }
-
-    // 初期表示
-    updateTicketHeader();
-    renderTeachers();
+    });
   </script>
 </body>
 </html>
