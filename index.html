@@ -28,11 +28,11 @@
       line-height: 1.6;
     }
 
-    /* ヘッダー */
+    /* ヘッダー（生徒専用にシンプル化） */
     header {
       background: #fff;
       border-bottom: 2px solid var(--primary);
-      padding: 1rem 2rem;
+      padding: 0.9rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -52,109 +52,139 @@
       color: var(--text-muted);
       font-weight: normal;
     }
-    .mode-switch {
+    .header-nav {
       display: flex;
-      gap: 0.5rem;
-    }
-    .mode-btn {
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--primary);
-      background: #fff;
-      color: var(--primary-dark);
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    .mode-btn.active {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    /* ヒーローセクション */
-    .hero {
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      padding: 2.2rem 2rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .hero h1 { font-size: 1.7rem; margin-bottom: 0.5rem; }
-    .hero p { color: var(--text-muted); max-width: 700px; margin: 0 auto 1rem; font-size: 0.95rem; }
-    .hero-badges {
-      display: flex;
-      justify-content: center;
+      align-items: center;
       gap: 1rem;
-      flex-wrap: wrap;
       font-size: 0.85rem;
     }
-    .badge {
-      background: #fff;
-      padding: 0.3rem 0.8rem;
+    .header-pill {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+      padding: 0.35rem 0.8rem;
       border-radius: 20px;
-      border: 1px solid var(--primary);
+      font-weight: bold;
+    }
+
+    /* ① ファーストビュー直結の検索フィルターエリア */
+    .search-hero-area {
+      background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
+      border-bottom: 1px solid #fde68a;
+      padding: 1.8rem 1rem 2.2rem;
+    }
+    .search-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .search-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .search-title-bar h1 {
+      font-size: 1.35rem;
+      color: var(--text-main);
+    }
+    .btn-reset {
+      background: #fff;
+      border: 1px solid #d6d3d1;
+      color: var(--text-muted);
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.15s;
+    }
+    .btn-reset:hover {
+      background: #f5f5f4;
+      color: var(--text-main);
+    }
+
+    .search-box {
+      background: #fff;
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+    }
+    .filter-row {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+      gap: 1rem;
+    }
+    .filter-row:last-child { border-bottom: none; padding-bottom: 0.2rem; }
+    .filter-row:first-child { padding-top: 0.2rem; }
+    .filter-label {
+      width: 140px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      padding-top: 0.35rem;
+      color: var(--text-main);
+    }
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    /* ② 国旗付きフィルターチップ */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: 0.15s;
+      color: var(--text-main);
+    }
+    .chip:hover {
+      border-color: var(--primary);
+      background: #fffbeb;
+    }
+    .chip-flag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #e7e5e4;
+      border-radius: 2px;
+      overflow: hidden;
+      height: 15px;
+    }
+    .chip.lang.active {
+      background: #fef3c7;
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 1px var(--primary-dark);
+      font-weight: bold;
+    }
+    .chip.level.active {
+      background: var(--tag-pink);
+      border-color: var(--tag-pink-active);
+      box-shadow: 0 0 0 1px var(--tag-pink-active);
+      font-weight: bold;
+    }
+    .chip.hobby.active {
+      background: var(--tag-blue);
+      border-color: var(--tag-blue-active);
+      box-shadow: 0 0 0 1px var(--tag-blue-active);
       font-weight: bold;
     }
 
     /* メインコンテナ */
     .container {
       max-width: 1100px;
-      margin: 2rem auto;
+      margin: 1.8rem auto;
       padding: 0 1rem;
-    }
-
-    /* 検索フィルター */
-    .search-box {
-      background: #fff;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-    }
-    .filter-row {
-      display: flex;
-      align-items: flex-start;
-      padding: 0.8rem 0;
-      border-bottom: 1px solid var(--border-color);
-      gap: 1rem;
-    }
-    .filter-row:last-child { border-bottom: none; }
-    .filter-label {
-      width: 140px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-      padding-top: 0.3rem;
-    }
-    .filter-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .chip {
-      padding: 0.3rem 0.8rem;
-      border: 1px solid #d6d3d1;
-      border-radius: 6px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: 0.15s;
-    }
-    .chip.level.active {
-      background: var(--tag-pink);
-      color: var(--text-main);
-      border-color: var(--tag-pink-active);
-      font-weight: bold;
-    }
-    .chip.hobby.active {
-      background: var(--tag-blue);
-      border-color: var(--tag-blue-active);
-      font-weight: bold;
-    }
-    .chip.lang.active {
-      background: #fef3c7;
-      border-color: var(--primary-dark);
-      font-weight: bold;
     }
 
     /* 講師一覧グリッド */
@@ -162,7 +192,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
     .teacher-grid {
       display: grid;
@@ -171,6 +201,7 @@
     }
     @media (max-width: 600px) {
       .teacher-grid { grid-template-columns: 1fr; }
+      .filter-row { flex-direction: column; gap: 0.4rem; }
     }
 
     /* 講師カード */
@@ -227,7 +258,7 @@
       border: 1px solid #f59e0b;
     }
 
-    /* 国旗アイコン */
+    /* カード内国旗アイコン */
     .flags-row {
       display: flex;
       align-items: center;
@@ -328,10 +359,8 @@
       min-height: 215px;
     }
 
-    /* ① スケジュール表（0,3,6,9,12,15,18,21,24の縦線付き） */
-    .schedule-wrapper {
-      position: relative;
-    }
+    /* スケジュール表（縦線付き） */
+    .schedule-wrapper { position: relative; }
     .schedule-header {
       display: flex;
       align-items: center;
@@ -354,23 +383,17 @@
       transform: translateX(-50%);
       color: var(--text-main);
     }
-    .schedule-rows-area {
-      position: relative;
-    }
-    /* 縦線を貫通させるオーバーレイ */
+    .schedule-rows-area { position: relative; }
     .grid-lines-overlay {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 64px;
-      right: 0;
+      top: 0; bottom: 0;
+      left: 64px; right: 0;
       pointer-events: none;
       z-index: 1;
     }
     .grid-v-line {
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: 0; bottom: 0;
       width: 1px;
       background-color: #78716c;
       opacity: 0.55;
@@ -401,7 +424,7 @@
       z-index: 2;
     }
 
-    /* ② レビュータブ（平均評価＋棒グラフ＋ソート＋レビュー一覧） */
+    /* レビュータブ */
     .review-panel-bg {
       background: #fefce8;
       margin: -0.85rem;
@@ -434,11 +457,7 @@
       font-size: 0.75rem;
       font-weight: bold;
     }
-    .star-label {
-      width: 26px;
-      color: #eab308;
-      text-align: right;
-    }
+    .star-label { width: 26px; color: #eab308; text-align: right; }
     .bar-track {
       flex: 1;
       height: 10px;
@@ -446,10 +465,7 @@
       border: 1px solid #44403c;
       overflow: hidden;
     }
-    .bar-fill {
-      height: 100%;
-      background: #eab308;
-    }
+    .bar-fill { height: 100%; background: #eab308; }
     .count-label {
       width: 28px;
       color: #0284c7;
@@ -471,10 +487,7 @@
       border: none;
       font-size: 0.74rem;
     }
-    .sort-link.active {
-      font-weight: bold;
-      color: #0369a1;
-    }
+    .sort-link.active { font-weight: bold; color: #0369a1; }
     .review-list {
       max-height: 165px;
       overflow-y: auto;
@@ -493,17 +506,8 @@
       gap: 0.5rem;
     }
     .review-card-left { flex: 1; }
-    .review-meta {
-      font-weight: bold;
-      font-size: 0.73rem;
-      margin-bottom: 0.15rem;
-    }
-    .review-stars {
-      color: #eab308;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
+    .review-meta { font-weight: bold; font-size: 0.73rem; margin-bottom: 0.15rem; }
+    .review-stars { color: #eab308; font-size: 0.95rem; letter-spacing: 1px; white-space: nowrap; }
 
     .btn-book {
       width: 100%;
@@ -519,42 +523,6 @@
       transition: 0.2s;
     }
     .btn-book:hover { background: var(--primary-dark); }
-
-    /* シニア講師向けビュー */
-    .senior-dashboard {
-      display: none;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      border: 2px solid var(--primary);
-    }
-    .senior-dashboard h2 { font-size: 1.6rem; margin-bottom: 1rem; }
-    .senior-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    .senior-card {
-      border: 2px solid #e7e5e4;
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .senior-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .senior-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 1rem 1.5rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-    }
 
     /* モーダル */
     .modal-overlay {
@@ -611,40 +579,59 @@
       KOTOHOGI
       <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
     </div>
-    <div class="mode-switch">
-      <button class="mode-btn active" id="btn-student-mode" onclick="switchMode('student')">生徒用画面（先生を探す）</button>
-      <button class="mode-btn" id="btn-senior-mode" onclick="switchMode('senior')">らくらく講師用画面</button>
+    <div class="header-nav">
+      <span class="header-pill">🌍 24時間オンライン / 1h 2,000円〜</span>
     </div>
   </header>
 
-  <!-- 生徒向けビュー -->
-  <div id="student-view">
-    <section class="hero">
-      <h1>経験豊富な日本のシニアと、生きた日本語を学ぼう</h1>
-      <p>元教員や元ビジネスパーソンなど、人生経験豊かな講師とマンツーマンで会話・読み書き・日本文化を学べるオンライン学習サイトです。</p>
-      <div class="hero-badges">
-        <span class="badge">🌍 24時間365日 オンライン対応</span>
-        <span class="badge">💴 1時間 2,000円〜3,000円の明朗会計</span>
-        <span class="badge">🤝 AIによる趣味・経歴マッチング</span>
+  <!-- ① 赤丸部分を置き換えた、わかりやすい検索フィルターエリア -->
+  <section class="search-hero-area">
+    <div class="search-inner">
+      <div class="search-title-bar">
+        <h1>🔍 あなたにぴったりの先生を探す</h1>
+        <button class="btn-reset" onclick="resetFilters()">✕ 選択条件をすべてクリア</button>
       </div>
-    </section>
 
-    <div class="container">
-      <!-- 検索フィルター -->
       <div class="search-box">
+        <!-- ② 国旗付きの可能言語フィルター -->
         <div class="filter-row">
           <div class="filter-label">可能言語</div>
           <div class="filter-options" id="lang-filters">
-            <button class="chip lang" data-val="JP">🇯🇵 日本語</button>
-            <button class="chip lang" data-val="US">🇺🇸 英語(米)</button>
-            <button class="chip lang" data-val="UK">🇬🇧 英語(英)</button>
-            <button class="chip lang" data-val="CN">🇨🇳 中国語</button>
-            <button class="chip lang" data-val="KR">🇰🇷 韓国語</button>
-            <button class="chip lang" data-val="FR">🇫🇷 フランス語</button>
-            <button class="chip lang" data-val="ES">🇪🇸 スペイン語</button>
-            <button class="chip lang" data-val="AE">🇦🇪 アラビア語</button>
+            <button class="chip lang" data-val="JP">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>
+              日本語
+            </button>
+            <button class="chip lang" data-val="US">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>
+              英語(米)
+            </button>
+            <button class="chip lang" data-val="UK">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>
+              英語(英)
+            </button>
+            <button class="chip lang" data-val="CN">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>
+              中国語
+            </button>
+            <button class="chip lang" data-val="KR">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>
+              韓国語
+            </button>
+            <button class="chip lang" data-val="FR">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>
+              フランス語
+            </button>
+            <button class="chip lang" data-val="ES">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>
+              スペイン語
+            </button>
+            <button class="chip lang" data-val="AE">
+              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>
+              アラビア語
+            </button>
           </div>
         </div>
+
         <div class="filter-row">
           <div class="filter-label">授業レベル・内容</div>
           <div class="filter-options" id="level-filters">
@@ -655,6 +642,7 @@
             <button class="chip level" data-val="書き">書き</button>
           </div>
         </div>
+
         <div class="filter-row">
           <div class="filter-label">趣味・関心テーマ</div>
           <div class="filter-options" id="hobby-filters">
@@ -670,45 +658,21 @@
           </div>
         </div>
       </div>
-
-      <!-- 検索結果 -->
-      <div class="results-header">
-        <h2>検索結果（<span id="teacher-count">0</span>名の先生）</h2>
-        <select id="sort-select" onchange="renderTeachers()" style="padding: 0.4rem; border-radius: 4px;">
-          <option value="rating">並び替え: 評価順</option>
-          <option value="price_asc">並び替え: 料金が安い順</option>
-          <option value="reviews_desc">並び替え: レビュー件数順</option>
-        </select>
-      </div>
-
-      <div class="teacher-grid" id="teacher-grid"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- シニア講師向けビュー（らくらく講師用サイト） -->
-  <div id="senior-view" class="container">
-    <div class="senior-dashboard" style="display: block;">
-      <h2>👵👴 らくらく講師用マイページ（石原 美緒子・72歳）</h2>
-      <p>現在のランク：<strong>プレミアム先生（1授業 2,000円受取 / 累計124時間・評価 ★4.6）</strong></p>
-      
-      <div class="senior-grid">
-        <div class="senior-card">
-          <h3>📅 本日の授業予定</h3>
-          <p>2月15日（土）10:00〜11:00<br>生徒：Jocelynさん（日常会話・ドラマトーク）</p>
-          <button class="senior-btn" onclick="alert('Zoom会議室をワンクリックで起動します！')">授業を始める（Zoom起動）</button>
-        </div>
-        <div class="senior-card">
-          <h3>📝 授業完了の報告</h3>
-          <p>授業が終わったらボタンを押して完了報告を行ってください。</p>
-          <button class="senior-btn" style="background:#0284c7;" onclick="alert('授業完了報告を受け付けました。月末締めで翌月15日にお振り込みいたします。')">授業報告をする</button>
-        </div>
-        <div class="senior-card">
-          <h3>🎓 オンラインツール講習</h3>
-          <p>Zoomの画面共有やデジタルテキストの使い方をスタッフと練習できます。</p>
-          <button class="senior-btn" style="background:#57534e;" onclick="alert('サポートスタッフとの無料練習予約画面へ移動します。')">操作練習を予約する</button>
-        </div>
-      </div>
+  <!-- 検索結果一覧 -->
+  <div class="container">
+    <div class="results-header">
+      <h2>検索結果（<span id="teacher-count">0</span>名の先生）</h2>
+      <select id="sort-select" onchange="renderTeachers()" style="padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid #d6d3d1;">
+        <option value="rating">並び替え: 評価順</option>
+        <option value="price_asc">並び替え: 料金が安い順</option>
+        <option value="reviews_desc">並び替え: レビュー件数順</option>
+      </select>
     </div>
+
+    <div class="teacher-grid" id="teacher-grid"></div>
   </div>
 
   <!-- 予約・特商法確認モーダル -->
@@ -758,7 +722,6 @@
   </footer>
 
   <script>
-    // SVG国旗アイコン
     const flagSVGs = {
       JP: `<span class="flag-item" title="日本語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
       US: `<span class="flag-item" title="英語（アメリカ）"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
@@ -770,7 +733,6 @@
       AE: `<span class="flag-item" title="アラビア語"><svg width="30" height="20" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
     };
 
-    // 共通サンプルレビュー生成ヘルパー
     const defaultReviews = [
       { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "とてもやさしい先生です。" },
       { user: "@Miomaruさん", date: "2025年2月18日", timestamp: 20250218, stars: 4, text: "1から丁寧に教えてくれて、楽しく日本語を学ぶことができました。" },
@@ -778,7 +740,6 @@
       { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "わからなかった宿題を一緒に見てもらいました。またお願いしたいです。" }
     ];
 
-    // 20名分の講師データ（既存2名 + 追加18名）
     const teachers = [
       {
         id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000,
@@ -1052,7 +1013,6 @@
     let reviewSortModes = {};
     let currentTeacher = null;
 
-    // フィルター設定
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
@@ -1067,6 +1027,14 @@
         renderTeachers();
       });
     });
+
+    function resetFilters() {
+      selectedLangs.clear();
+      selectedLevels.clear();
+      selectedHobbies.clear();
+      document.querySelectorAll('.chip').forEach(btn => btn.classList.remove('active'));
+      renderTeachers();
+    }
 
     function switchTab(teacherId, tabName) {
       activeTabs[teacherId] = tabName;
@@ -1105,7 +1073,6 @@
       const grid = document.getElementById('teacher-grid');
       grid.innerHTML = '';
 
-      // 0, 3, 6, 9, 12, 15, 18, 21, 24時の位置（%）
       const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
 
       filtered.forEach(t => {
@@ -1143,7 +1110,6 @@
             </div>
           `;
         } else {
-          // ② レビュータブ（平均評価 + 棒グラフ + ソート機能）
           const totalReviews = Object.values(t.ratingCounts).reduce((a, b) => a + b, 0);
           const barsHtml = [5, 4, 3, 2, 1].map(star => {
             const cnt = t.ratingCounts[star] || 0;
@@ -1236,13 +1202,6 @@
           </div>
         `;
       });
-    }
-
-    function switchMode(mode) {
-      document.getElementById('student-view').style.display = mode === 'student' ? 'block' : 'none';
-      document.getElementById('senior-view').style.display = mode === 'senior' ? 'block' : 'none';
-      document.getElementById('btn-student-mode').classList.toggle('active', mode === 'student');
-      document.getElementById('btn-senior-mode').classList.toggle('active', mode === 'senior');
     }
 
     function openModal(id) {
