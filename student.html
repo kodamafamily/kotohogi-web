@@ -161,12 +161,14 @@
       flex: 1;
     }
 
-    /* 直感的な時間帯グループタブ */
+    /* 時間帯グループタブ */
     .time-period-tabs {
       display: flex;
       gap: 0.4rem;
       margin-bottom: 0.55rem;
       width: 100%;
+      flex-wrap: wrap;
+      align-items: center;
     }
     .period-tab {
       padding: 0.25rem 0.7rem;
@@ -182,6 +184,12 @@
       background: #16a34a;
       color: #fff;
       border-color: #15803d;
+    }
+    .selected-time-badge {
+      font-size: 0.78rem;
+      color: #15803d;
+      font-weight: bold;
+      margin-left: auto;
     }
     .time-slots-grid {
       display: flex;
@@ -520,7 +528,7 @@
     }
     .btn-book:hover { background: var(--primary-dark); }
 
-    /* モーダル */
+    /* 予約モーダル（2ステップ：日付選択 ⇒ 30分刻み時間選択） */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -535,8 +543,10 @@
       background: #fff;
       padding: 1.8rem;
       border-radius: 12px;
-      max-width: 560px;
+      max-width: 620px;
       width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
       position: relative;
     }
     .modal-close-x {
@@ -548,6 +558,89 @@
       cursor: pointer;
       color: var(--text-muted);
     }
+    .step-box {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-radius: 10px;
+      padding: 0.95rem 1.1rem;
+      margin: 0.85rem 0;
+    }
+    .step-title {
+      font-size: 0.88rem;
+      font-weight: bold;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .step-num {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 12px;
+    }
+    .booking-date-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .booking-date-btn {
+      padding: 0.45rem 0.85rem;
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+      transition: 0.15s;
+    }
+    .booking-date-btn:hover { border-color: var(--primary); background: #fffbeb; }
+    .booking-date-btn.selected {
+      background: #fef3c7;
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 1px var(--primary-dark);
+      color: #92400e;
+    }
+    .booking-time-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+      gap: 0.45rem;
+      max-height: 165px;
+      overflow-y: auto;
+      padding-right: 0.2rem;
+    }
+    .booking-time-btn {
+      padding: 0.45rem 0.5rem;
+      border: 1px solid #d6d3d1;
+      border-radius: 7px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: bold;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      transition: 0.15s;
+    }
+    .booking-time-btn:hover { border-color: #16a34a; background: #f0fdf4; }
+    .booking-time-btn.selected {
+      background: #dcfce7;
+      border-color: #16a34a;
+      box-shadow: 0 0 0 1px #16a34a;
+      color: #14532d;
+    }
+    .chosen-summary {
+      background: #eff6ff;
+      border: 1px solid #93c5fd;
+      color: #1e3a8a;
+      padding: 0.55rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: bold;
+      margin-top: 0.6rem;
+    }
+
     .payment-options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -572,10 +665,10 @@
     .pay-ticket:disabled { background: #d6d3d1; color: #78716c; cursor: not-allowed; }
     .policy-box {
       background: #fef3c7;
-      padding: 0.8rem;
+      padding: 0.75rem;
       border-radius: 6px;
-      font-size: 0.78rem;
-      margin: 1rem 0;
+      font-size: 0.76rem;
+      margin: 0.8rem 0;
     }
 
     footer {
@@ -621,9 +714,9 @@
       </div>
 
       <div class="search-box">
-        <!-- 行1：希望の日付（ワンクリック選択） -->
+        <!-- 行1：希望の日付（複数選択可） -->
         <div class="filter-row">
-          <div class="filter-label">希望の日付</div>
+          <div class="filter-label">希望の日付<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可</span></div>
           <div class="filter-options" id="date-filters">
             <button class="chip date" data-val="12 WED">2/12 (水)</button>
             <button class="chip date" data-val="13 THU">2/13 (木)</button>
@@ -635,15 +728,16 @@
           </div>
         </div>
 
-        <!-- 行2：希望の開始時間（30分刻み・ワンクリック選択） -->
+        <!-- 行2：希望の開始時間（30分刻み・複数選択可） -->
         <div class="filter-row">
-          <div class="filter-label">希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※30分刻み（1h授業）</span></div>
+          <div class="filter-label">希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可（1h授業）</span></div>
           <div class="filter-options" style="flex-direction: column; align-items: flex-start;">
             <div class="time-period-tabs">
               <button class="period-tab active" onclick="switchTimePeriod('all', this)">すべて (9:00〜23:00)</button>
               <button class="period-tab" onclick="switchTimePeriod('morning', this)">🌅 午前 (9:00〜11:30)</button>
               <button class="period-tab" onclick="switchTimePeriod('afternoon', this)">☀️ 午後 (12:00〜17:30)</button>
               <button class="period-tab" onclick="switchTimePeriod('night', this)">🌙 夜 (18:00〜23:00)</button>
+              <span class="selected-time-badge" id="selected-time-count"></span>
             </div>
             <div class="time-slots-grid" id="time-slots-container"></div>
           </div>
@@ -733,16 +827,24 @@
     <div class="teacher-grid" id="teacher-grid"></div>
   </div>
 
-  <!-- 予約・決済・回数券モーダル -->
+  <!-- 予約・決済・回数券モーダル（ステップ1: 日付 ⇒ ステップ2: 30分刻み時間） -->
   <div class="modal-overlay" id="booking-modal">
     <div class="modal">
       <button class="modal-close-x" onclick="closeModal()">✕</button>
-      <h3 id="modal-teacher-name">授業の予約申し込み</h3>
-      <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark); margin-top:0.3rem;"></p>
-      
-      <div style="margin: 1rem 0;">
-        <label style="display:block; font-size:0.85rem; font-weight:bold;">希望日時（1時間枠）：</label>
-        <select id="booking-slot" style="width:100%; padding:0.5rem; margin-top:0.3rem; border-radius:6px;"></select>
+      <h3 id="modal-teacher-name" style="font-size:1.3rem;">授業の予約申し込み</h3>
+      <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark); margin-top:0.2rem; font-size:0.9rem;"></p>
+
+      <!-- ステップ1：日付を選ぶ -->
+      <div class="step-box">
+        <div class="step-title"><span class="step-num">STEP 1</span> 受講する日付を選んでください</div>
+        <div class="booking-date-grid" id="modal-date-buttons"></div>
+      </div>
+
+      <!-- ステップ2：30分刻みの時間を選ぶ -->
+      <div class="step-box">
+        <div class="step-title"><span class="step-num">STEP 2</span> 開始時間を選んでください（30分刻み・1時間授業）</div>
+        <div class="booking-time-grid" id="modal-time-buttons"></div>
+        <div class="chosen-summary" id="modal-chosen-summary">選択中の日時：未選択</div>
       </div>
 
       <div class="policy-box">
@@ -782,6 +884,16 @@
       FR: `<span class="flag-item" title="フランス語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>`,
       ES: `<span class="flag-item" title="スペイン語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>`,
       AE: `<span class="flag-item" title="アラビア語"><svg width="30" height="20" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
+    };
+
+    const dayLabelMap = {
+      "12 WED": "2/12 (水)",
+      "13 THU": "2/13 (木)",
+      "14 FRI": "2/14 (金)",
+      "15 SAT": "2/15 (土)",
+      "16 SUN": "2/16 (日)",
+      "17 MON": "2/17 (月)",
+      "18 TUE": "2/18 (火)"
     };
 
     const defaultReviews = [
@@ -1076,7 +1188,7 @@
 
     let studentState = loadState();
     let selectedDates = new Set();
-    let selectedStartTime = null; // 30分刻み単一選択（再クリックで解除）
+    let selectedStartTimes = new Set(); // 30分刻み・複数選択可
     let currentTimePeriod = 'all';
     let selectedLangs = new Set();
     let selectedLevels = new Set();
@@ -1085,13 +1197,17 @@
     let reviewSortModes = {};
     let currentTeacher = null;
 
+    // 予約モーダル内の選択状態（ステップ1：日付、ステップ2：時間）
+    let bookingSelectedDay = null;
+    let bookingSelectedStart = null;
+
     function formatHour(val) {
       const h = Math.floor(val);
       const m = (val % 1) === 0.5 ? "30" : "00";
       return `${String(h).padStart(2, '0')}:${m}`;
     }
 
-    // 30分刻み時間ボタンを描画（9:00〜23:00）
+    // 30分刻み時間ボタンを描画（複数選択可）
     function renderTimeSlotButtons() {
       const container = document.getElementById('time-slots-container');
       container.innerHTML = '';
@@ -1101,15 +1217,24 @@
         if (currentTimePeriod === 'night' && t < 18.0) continue;
 
         const btn = document.createElement('button');
-        btn.className = 'chip time' + (selectedStartTime === t ? ' active' : '');
+        btn.className = 'chip time' + (selectedStartTimes.has(t) ? ' active' : '');
         btn.textContent = `${formatHour(t)}〜`;
         btn.onclick = () => {
-          selectedStartTime = (selectedStartTime === t) ? null : t;
+          if (selectedStartTimes.has(t)) {
+            selectedStartTimes.delete(t);
+          } else {
+            selectedStartTimes.add(t);
+          }
           renderTimeSlotButtons();
           renderTeachers();
         };
         container.appendChild(btn);
       }
+
+      const countEl = document.getElementById('selected-time-count');
+      countEl.textContent = selectedStartTimes.size > 0
+        ? `選択中: ${selectedStartTimes.size}個の時間帯`
+        : '';
     }
 
     function switchTimePeriod(period, el) {
@@ -1139,7 +1264,7 @@
 
     function resetFilters() {
       selectedDates.clear();
-      selectedStartTime = null;
+      selectedStartTimes.clear();
       selectedLangs.clear();
       selectedLevels.clear();
       selectedHobbies.clear();
@@ -1192,12 +1317,13 @@
         const levelMatch = [...selectedLevels].every(l => t.levels.includes(l));
         const hobbyMatch = [...selectedHobbies].every(h => t.hobbies.includes(h));
 
+        // 複数日付 × 複数30分刻み時間帯のORマッチング
         let scheduleMatch = true;
-        if (selectedDates.size > 0 || selectedStartTime !== null) {
+        if (selectedDates.size > 0 || selectedStartTimes.size > 0) {
           scheduleMatch = t.schedule.some(s => {
             if (s.end <= s.start) return false;
             const dateOk = (selectedDates.size === 0) || selectedDates.has(s.day);
-            const timeOk = (selectedStartTime === null) || (s.start <= selectedStartTime && (selectedStartTime + 1) <= s.end);
+            const timeOk = (selectedStartTimes.size === 0) || [...selectedStartTimes].some(st => s.start <= st && (st + 1) <= s.end);
             return dateOk && timeOk;
           });
         }
@@ -1353,9 +1479,76 @@
       });
     }
 
+    // ステップ1（日付）＆ステップ2（30分刻み時間）の描画
+    function renderBookingStep1And2() {
+      const availableDays = currentTeacher.schedule.filter(s => s.end > s.start);
+      const dateContainer = document.getElementById('modal-date-buttons');
+      dateContainer.innerHTML = '';
+
+      if (availableDays.length === 0) {
+        dateContainer.innerHTML = '<span style="font-size:0.85rem; color:#57534e;">現在予約可能な枠がありません。</span>';
+        return;
+      }
+
+      // 初期選択日の決定（フィルター選択中の日を優先、なければ最初の空き日）
+      if (!bookingSelectedDay || !availableDays.some(d => d.day === bookingSelectedDay)) {
+        const matchedDay = availableDays.find(d => selectedDates.has(d.day));
+        bookingSelectedDay = matchedDay ? matchedDay.day : availableDays[0].day;
+      }
+
+      availableDays.forEach(s => {
+        const btn = document.createElement('button');
+        btn.className = 'booking-date-btn' + (s.day === bookingSelectedDay ? ' selected' : '');
+        btn.textContent = dayLabelMap[s.day] || s.day;
+        btn.onclick = () => {
+          bookingSelectedDay = s.day;
+          bookingSelectedStart = null; // 日付を変えたら時間を再計算
+          renderBookingStep1And2();
+        };
+        dateContainer.appendChild(btn);
+      });
+
+      // ステップ2：選択された日付の空き時間内で30分刻みの1時間枠ボタンを生成
+      const daySchedule = availableDays.find(d => d.day === bookingSelectedDay);
+      const timeContainer = document.getElementById('modal-time-buttons');
+      timeContainer.innerHTML = '';
+
+      const slots = [];
+      for (let t = daySchedule.start; t + 1 <= daySchedule.end; t += 0.5) {
+        slots.push(t);
+      }
+
+      if (bookingSelectedStart === null || !slots.includes(bookingSelectedStart)) {
+        const matchedTime = slots.find(st => selectedStartTimes.has(st));
+        bookingSelectedStart = matchedTime !== undefined ? matchedTime : slots[0];
+      }
+
+      slots.forEach(st => {
+        const btn = document.createElement('button');
+        btn.className = 'booking-time-btn' + (st === bookingSelectedStart ? ' selected' : '');
+        btn.textContent = `${formatHour(st)}〜${formatHour(st + 1)}`;
+        btn.onclick = () => {
+          bookingSelectedStart = st;
+          renderBookingStep1And2();
+        };
+        timeContainer.appendChild(btn);
+      });
+
+      const summaryEl = document.getElementById('modal-chosen-summary');
+      if (bookingSelectedDay && bookingSelectedStart !== null) {
+        const dText = dayLabelMap[bookingSelectedDay] || bookingSelectedDay;
+        summaryEl.textContent = `✅ 選択中の予約枠：2026年${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}（1時間）`;
+      } else {
+        summaryEl.textContent = '選択中の日時：未選択';
+      }
+    }
+
     function openModal(id) {
       studentState = loadState();
       currentTeacher = teachers.find(t => t.id === id);
+      bookingSelectedDay = null;
+      bookingSelectedStart = null;
+
       const isPremium = currentTeacher.price === 3000;
       const requiredTickets = isPremium ? 1.5 : 1.0;
 
@@ -1364,17 +1557,7 @@
         `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`;
       document.getElementById('agree-policy').checked = false;
 
-      const slotSelect = document.getElementById('booking-slot');
-      slotSelect.innerHTML = '';
-      currentTeacher.schedule.forEach(s => {
-        if (s.end > s.start) {
-          const opt = document.createElement('option');
-          const startH = selectedStartTime !== null && s.start <= selectedStartTime && (selectedStartTime + 1) <= s.end
-            ? selectedStartTime : s.start;
-          opt.textContent = `2月${s.day} ${formatHour(startH)}〜${formatHour(startH + 1)}`;
-          slotSelect.appendChild(opt);
-        }
-      });
+      renderBookingStep1And2();
 
       const payArea = document.getElementById('payment-area');
       if (studentState.tickets > 0) {
@@ -1409,13 +1592,18 @@
     }
 
     function confirmBooking(method) {
+      if (!bookingSelectedDay || bookingSelectedStart === null) {
+        alert('STEP 1 と STEP 2 で予約日時を選択してください。');
+        return;
+      }
       if (!document.getElementById('agree-policy').checked) {
         alert('キャンセル・返金規定への同意にチェックを入れてください。');
         return;
       }
       const isPremium = currentTeacher.price === 3000;
       const requiredTickets = isPremium ? 1.5 : 1.0;
-      const chosenSlot = document.getElementById('booking-slot').value;
+      const dText = dayLabelMap[bookingSelectedDay] || bookingSelectedDay;
+      const chosenSlot = `2026年${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}`;
 
       if (method === 'ticket') {
         studentState.tickets = Math.round((studentState.tickets - requiredTickets) * 10) / 10;
@@ -1427,7 +1615,7 @@
         });
         saveState(studentState);
         updateTicketHeader();
-        alert(`回数券を ${requiredTickets.toFixed(1)}回分 使用して ${currentTeacher.name} の授業を予約しました！（残り回数券: ${studentState.tickets.toFixed(1)}回分）`);
+        alert(`【予約完了】${chosenSlot}\n回数券を ${requiredTickets.toFixed(1)}回分 使用して ${currentTeacher.name} の授業を予約しました！（残り回数券: ${studentState.tickets.toFixed(1)}回分）`);
       } else {
         studentState.history.unshift({
           date: chosenSlot,
@@ -1436,7 +1624,7 @@
           payment: `クレジット決済 ¥${currentTeacher.price.toLocaleString()}`
         });
         saveState(studentState);
-        alert(`${currentTeacher.name} の授業予約を受け付けました！決済完了後、受講用Zoomリンクをメールでお送りします。`);
+        alert(`【予約完了】${chosenSlot}\n${currentTeacher.name} の授業予約を受け付けました！決済完了後、受講用Zoomリンクをメールでお送りします。`);
       }
       closeModal();
     }
