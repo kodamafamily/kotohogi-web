@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KOTOHOGI 運営管理画面（財務・法務・精算モニター）</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --dark: #1c1917;
+      --bg: #f5f5f4;
+      --text: #292524;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.25rem; color: #fcd34d; }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+    /* KPIグリッド */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+    .kpi-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.3rem;
+      border: 1px solid #d6d3d1;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .kpi-label { font-size: 0.82rem; color: #57534e; font-weight: bold; }
+    .kpi-value { font-size: 1.7rem; font-weight: bold; margin: 0.3rem 0; }
+    .kpi-sub { font-size: 0.78rem; color: #78716c; }
+
+    /* 資金決済法（1,000万円供託ライン）監視バー */
+    .legal-monitor {
+      background: #fff;
+      border: 2px solid #0284c7;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .legal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .status-ok {
+      background: #dcfce7;
+      color: #166534;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 22px;
+      background: #e7e5e4;
+      border-radius: 11px;
+      overflow: hidden;
+      margin: 0.6rem 0;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0284c7, #38bdf8);
+      transition: 0.3s;
+    }
+
+    /* テーブル */
+    .panel {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #d6d3d1;
+      margin-bottom: 1.8rem;
+    }
+    .panel h2 { font-size: 1.15rem; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 0.6rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e7e5e4; }
+    th { background: #fafaf9; font-weight: bold; }
+    .btn-export {
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🛡️ KOTOHOGI 運営管理ダッシュボード（社内専用）</h1>
+    <div style="font-size:0.85rem;">基準日：2026年2月15日現在</div>
+  </header>
+
+  <div class="container">
+    <!-- 口座分別管理＆KPIサマリー -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">【受託用口座】預かり受講料残高</div>
+        <div class="kpi-value" style="color:#0284c7;">¥1,485,000</div>
+        <div class="kpi-sub">※事業運営用口座と完全分別管理中</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">【事業運営用口座】運営手数料確定分</div>
+        <div class="kpi-value" style="color:#d97706;">¥512,500</div>
+        <div class="kpi-sub">ノーマル37.5% / プレミアム33.3%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">当月 講師支払予定総額（翌月15日払）</div>
+        <div class="kpi-value">¥972,500</div>
+        <div class="kpi-sub">対象講師数：20名（確定レッスン 580h）</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">未使用回数券 発行残高総額</div>
+        <div class="kpi-value" id="total-unused-tickets">¥647,000</div>
+        <div class="kpi-sub">有効期限管理（発行から6ヶ月間）</div>
+      </div>
+    </div>
+
+    <!-- 資金決済法（前払式支払手段）監視パネル -->
+    <div class="legal-monitor">
+      <div class="legal-header">
+        <div>
+          <h2 style="font-size:1.15rem;">⚖️ 資金決済法：未使用回数券残高モニター（基準日：3月末・9月末）</h2>
+          <p style="font-size:0.82rem; color:#57534e;">未使用残高が1,000万円を超えると法務局への供託義務（残高の1/2以上）が発生します。800万円到達でアラート通知。</p>
+        </div>
+        <span class="status-ok">● 安全圏（供託義務なし：上限の 6.5%）</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width: 6.5%;"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:bold;">
+        <span>現在残高：¥647,000</span>
+        <span>社内警戒ライン：¥8,000,000</span>
+        <span>法務局供託基準：¥10,000,000</span>
+      </div>
+    </div>
+
+    <!-- 生徒別 未使用回数券管理テーブル -->
+    <div class="panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+        <h2 style="margin-bottom:0;">🎟 生徒別 未使用回数券・有効期限一覧</h2>
+        <button class="btn-export" onclick="alert('全銀フォーマット（振込データCSV）および未使用残高台帳CSVをダウンロードします。')">CSV出力（経理・銀行振込用）</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>生徒名</th>
+            <th>購入セット</th>
+            <th>残り回数分</th>
+            <th>未使用残高（円換算）</th>
+            <th>有効期限</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody id="ticket-ledger-body">
+          <tr>
+            <td><strong>Jocelyn さん</strong>（あなた）</td>
+            <td>11回分セット（¥20,000）</td>
+            <td id="jocelyn-rem">3.5 回分</td>
+            <td id="jocelyn-yen">¥6,363</td>
+            <td>2026年8月31日</td>
+            <td><span style="color:#16a34a; font-weight:bold;">有効</span></td>
+          </tr>
+          <tr>
+            <td>D さん（留学生）</td>
+            <td>11回分セット（¥20,000）</td>
+            <td>8.0 回分</td>
+            <td>¥14,545</td>
+            <td>2026年7月31日</td>
+            <td><span style="color:#16a34a; font-weight:bold;">有効</span></td>
+          </tr>
+          <tr>
+            <td>E さん（駐在員ご家族）</td>
+            <td>11回分セット × 2</td>
+            <td>16.5 回分</td>
+            <td>¥30,000</td>
+            <td>2026年8月15日</td>
+            <td><span style="color:#16a34a; font-weight:bold;">有効</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // student.html / mypage.html でのJocelynさんの最新残高を自動反映
+    const saved = localStorage.getItem("kotohogi_demo_state_v1");
+    if (saved) {
+      const st = JSON.parse(saved);
+      document.getElementById('jocelyn-rem').textContent = `${st.tickets.toFixed(1)} 回分`;
+      const yen = Math.round((20000 / 11) * st.tickets);
+      document.getElementById('jocelyn-yen').textContent = `¥${yen.toLocaleString()}`;
+    }
+  </script>
+</body>
+</html>
