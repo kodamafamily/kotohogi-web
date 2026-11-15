@@ -28,7 +28,7 @@
       line-height: 1.6;
     }
 
-    /* ヘッダー（生徒専用にシンプル化） */
+    /* ヘッダー */
     header {
       background: #fff;
       border-bottom: 2px solid var(--primary);
@@ -39,6 +39,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      flex-wrap: wrap;
+      gap: 0.8rem;
     }
     .logo {
       font-size: 1.5rem;
@@ -55,23 +57,39 @@
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      font-size: 0.85rem;
+      gap: 0.8rem;
     }
-    .header-pill {
+    .ticket-badge-header {
       background: #fffbeb;
-      border: 1px solid #fcd34d;
+      border: 1px solid #f59e0b;
       color: #92400e;
-      padding: 0.35rem 0.8rem;
+      padding: 0.4rem 0.85rem;
       border-radius: 20px;
+      font-size: 0.85rem;
       font-weight: bold;
     }
+    .btn-mypage {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: 0.2s;
+      box-shadow: 0 2px 4px rgba(245, 158, 11, 0.25);
+    }
+    .btn-mypage:hover { background: var(--primary-dark); }
 
-    /* ① ファーストビュー直結の検索フィルターエリア */
+    /* 検索フィルターエリア */
     .search-hero-area {
       background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
       border-bottom: 1px solid #fde68a;
-      padding: 1.8rem 1rem 2.2rem;
+      padding: 1.6rem 1rem 2rem;
     }
     .search-inner {
       max-width: 1100px;
@@ -83,27 +101,40 @@
       align-items: center;
       margin-bottom: 1rem;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
     .search-title-bar h1 {
       font-size: 1.35rem;
       color: var(--text-main);
     }
-    .btn-reset {
-      background: #fff;
-      border: 1px solid #d6d3d1;
-      color: var(--text-muted);
-      padding: 0.35rem 0.85rem;
+    .search-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-myfilter {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.9rem;
       border-radius: 6px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       cursor: pointer;
       font-weight: bold;
       transition: 0.15s;
     }
-    .btn-reset:hover {
-      background: #f5f5f4;
-      color: var(--text-main);
+    .btn-myfilter:hover { background: #0369a1; }
+    .btn-reset {
+      background: #fff;
+      border: 1px solid #d6d3d1;
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: bold;
     }
+    .btn-reset:hover { background: #f5f5f4; color: var(--text-main); }
 
     .search-box {
       background: #fff;
@@ -115,7 +146,7 @@
     .filter-row {
       display: flex;
       align-items: flex-start;
-      padding: 0.75rem 0;
+      padding: 0.7rem 0;
       border-bottom: 1px solid var(--border-color);
       gap: 1rem;
     }
@@ -124,7 +155,7 @@
     .filter-label {
       width: 140px;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       flex-shrink: 0;
       padding-top: 0.35rem;
       color: var(--text-main);
@@ -132,27 +163,24 @@
     .filter-options {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
+      gap: 0.5rem;
     }
 
-    /* ② 国旗付きフィルターチップ */
+    /* フィルターチップ */
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.35rem 0.85rem;
+      gap: 0.4rem;
+      padding: 0.32rem 0.8rem;
       border: 1px solid #d6d3d1;
       border-radius: 8px;
       background: #fff;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       transition: 0.15s;
       color: var(--text-main);
     }
-    .chip:hover {
-      border-color: var(--primary);
-      background: #fffbeb;
-    }
+    .chip:hover { border-color: var(--primary); background: #fffbeb; }
     .chip-flag {
       display: inline-flex;
       align-items: center;
@@ -160,6 +188,13 @@
       border-radius: 2px;
       overflow: hidden;
       height: 15px;
+    }
+    .chip.day.active, .chip.time.active {
+      background: #dcfce7;
+      border-color: #16a34a;
+      box-shadow: 0 0 0 1px #16a34a;
+      font-weight: bold;
+      color: #14532d;
     }
     .chip.lang.active {
       background: #fef3c7;
@@ -187,7 +222,6 @@
       padding: 0 1rem;
     }
 
-    /* 講師一覧グリッド */
     .results-header {
       display: flex;
       justify-content: space-between;
@@ -240,15 +274,8 @@
       gap: 0.6rem;
       flex-wrap: wrap;
     }
-    .teacher-name-row h3 {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .rating {
-      color: #eab308;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
+    .teacher-name-row h3 { font-size: 1.25rem; font-weight: bold; }
+    .rating { color: #eab308; font-weight: bold; font-size: 1.1rem; }
     .rank-badge {
       font-size: 0.72rem;
       padding: 0.15rem 0.5rem;
@@ -258,7 +285,6 @@
       border: 1px solid #f59e0b;
     }
 
-    /* カード内国旗アイコン */
     .flags-row {
       display: flex;
       align-items: center;
@@ -275,7 +301,6 @@
       height: 22px;
     }
 
-    /* タグ類 */
     .tags-hobby-group, .tags-level-group {
       display: flex;
       flex-wrap: wrap;
@@ -313,7 +338,7 @@
       border-radius: 6px;
     }
     .price-line {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: bold;
       color: var(--primary-dark);
       margin-bottom: 0.5rem;
@@ -329,7 +354,7 @@
     }
     .bio-row { margin-bottom: 0.25rem; }
 
-    /* タブ切り替え（スケジュール / レビュー） */
+    /* タブ切り替え */
     .tabs {
       display: flex;
       border: 1px solid var(--text-main);
@@ -359,7 +384,7 @@
       min-height: 215px;
     }
 
-    /* スケジュール表（縦線付き） */
+    /* スケジュール表 */
     .schedule-wrapper { position: relative; }
     .schedule-header {
       display: flex;
@@ -368,21 +393,9 @@
       font-weight: bold;
       margin-bottom: 0.35rem;
     }
-    .schedule-month {
-      width: 64px;
-      color: var(--text-main);
-      flex-shrink: 0;
-    }
-    .time-scale-header {
-      flex: 1;
-      position: relative;
-      height: 16px;
-    }
-    .time-scale-header span {
-      position: absolute;
-      transform: translateX(-50%);
-      color: var(--text-main);
-    }
+    .schedule-month { width: 64px; color: var(--text-main); flex-shrink: 0; }
+    .time-scale-header { flex: 1; position: relative; height: 16px; }
+    .time-scale-header span { position: absolute; transform: translateX(-50%); color: var(--text-main); }
     .schedule-rows-area { position: relative; }
     .grid-lines-overlay {
       position: absolute;
@@ -405,17 +418,8 @@
       height: 22px;
       position: relative;
     }
-    .day-label {
-      width: 64px;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-    .time-track {
-      flex: 1;
-      height: 13px;
-      background: #f5f5f4;
-      position: relative;
-    }
+    .day-label { width: 64px; font-weight: bold; flex-shrink: 0; }
+    .time-track { flex: 1; height: 13px; background: #f5f5f4; position: relative; }
     .time-fill {
       position: absolute;
       top: 0; bottom: 0;
@@ -437,64 +441,17 @@
       gap: 1rem;
       margin-bottom: 0.5rem;
     }
-    .big-rating {
-      font-size: 1.45rem;
-      font-weight: bold;
-      color: #eab308;
-      white-space: nowrap;
-      padding: 0 0.4rem;
-    }
-    .rating-bars {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.22rem;
-    }
-    .rating-bar-row {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
+    .big-rating { font-size: 1.45rem; font-weight: bold; color: #eab308; white-space: nowrap; padding: 0 0.4rem; }
+    .rating-bars { flex: 1; display: flex; flex-direction: column; gap: 0.22rem; }
+    .rating-bar-row { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: bold; }
     .star-label { width: 26px; color: #eab308; text-align: right; }
-    .bar-track {
-      flex: 1;
-      height: 10px;
-      background: #fff;
-      border: 1px solid #44403c;
-      overflow: hidden;
-    }
+    .bar-track { flex: 1; height: 10px; background: #fff; border: 1px solid #44403c; overflow: hidden; }
     .bar-fill { height: 100%; background: #eab308; }
-    .count-label {
-      width: 28px;
-      color: #0284c7;
-      text-decoration: underline;
-      font-size: 0.72rem;
-    }
-    .review-sort-links {
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-      font-size: 0.74rem;
-      margin-bottom: 0.55rem;
-    }
-    .sort-link {
-      color: #0284c7;
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-size: 0.74rem;
-    }
+    .count-label { width: 28px; color: #0284c7; text-decoration: underline; font-size: 0.72rem; }
+    .review-sort-links { display: flex; justify-content: flex-end; gap: 0.75rem; font-size: 0.74rem; margin-bottom: 0.55rem; }
+    .sort-link { color: #0284c7; text-decoration: underline; cursor: pointer; background: none; border: none; font-size: 0.74rem; }
     .sort-link.active { font-weight: bold; color: #0369a1; }
-    .review-list {
-      max-height: 165px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
+    .review-list { max-height: 165px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.45rem; }
     .review-card-item {
       background: #e7e5e4;
       border: 1px solid #57534e;
@@ -524,30 +481,126 @@
     }
     .btn-book:hover { background: var(--primary-dark); }
 
-    /* モーダル */
+    /* モーダル共通 */
     .modal-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
       justify-content: center;
       align-items: center;
       z-index: 200;
+      padding: 1rem;
     }
     .modal {
       background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 500px;
-      width: 90%;
+      padding: 1.8rem;
+      border-radius: 12px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
     }
-    .modal h3 { margin-bottom: 1rem; }
+    .modal.wide { max-width: 760px; }
+    .modal-close-x {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    /* 予約モーダル内の支払い並列ボタン */
+    .payment-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    @media (max-width: 500px) { .payment-options-grid { grid-template-columns: 1fr; } }
+    .pay-card-btn {
+      padding: 0.85rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.92rem;
+      line-height: 1.4;
+      transition: 0.2s;
+    }
+    .pay-credit { background: var(--primary); color: #fff; }
+    .pay-credit:hover { background: var(--primary-dark); }
+    .pay-ticket { background: #0284c7; color: #fff; }
+    .pay-ticket:hover { background: #0369a1; }
+    .pay-ticket:disabled {
+      background: #d6d3d1;
+      color: #78716c;
+      cursor: not-allowed;
+    }
+
     .policy-box {
       background: #fef3c7;
       padding: 0.8rem;
       border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       margin: 1rem 0;
+    }
+
+    /* マイページ用スタイル */
+    .mypage-section {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+      background: #fafaf9;
+    }
+    .mypage-section h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.6rem;
+    }
+    .ticket-status-card {
+      background: #fff;
+      border: 2px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .history-item {
+      background: #fff;
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .history-item:hover {
+      border-color: var(--primary);
+      background: #fffbeb;
+    }
+    .myfilter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+    .myfilter-form select {
+      padding: 0.4rem;
+      border-radius: 6px;
+      border: 1px solid #d6d3d1;
+      font-size: 0.85rem;
     }
 
     footer {
@@ -580,20 +633,48 @@
       <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
     </div>
     <div class="header-nav">
-      <span class="header-pill">🌍 24時間オンライン / 1h 2,000円〜</span>
+      <div class="ticket-badge-header" id="header-ticket-display">🎟 回数券残り: 3.5回分</div>
+      <button class="btn-mypage" onclick="openMyPage()">👤 マイページ</button>
     </div>
   </header>
 
-  <!-- ① 赤丸部分を置き換えた、わかりやすい検索フィルターエリア -->
+  <!-- 検索フィルターエリア -->
   <section class="search-hero-area">
     <div class="search-inner">
       <div class="search-title-bar">
         <h1>🔍 あなたにぴったりの先生を探す</h1>
-        <button class="btn-reset" onclick="resetFilters()">✕ 選択条件をすべてクリア</button>
+        <div class="search-actions">
+          <button class="btn-myfilter" onclick="applyMyFilter()">⭐ マイフィルターを適用</button>
+          <button class="btn-reset" onclick="resetFilters()">✕ 条件をクリア</button>
+        </div>
       </div>
 
       <div class="search-box">
-        <!-- ② 国旗付きの可能言語フィルター -->
+        <!-- ② 希望授業日時フィルター -->
+        <div class="filter-row">
+          <div class="filter-label">希望の曜日</div>
+          <div class="filter-options" id="day-filters">
+            <button class="chip day" data-val="12 WED">12 (水)</button>
+            <button class="chip day" data-val="13 THU">13 (木)</button>
+            <button class="chip day" data-val="14 FRI">14 (金)</button>
+            <button class="chip day" data-val="15 SAT">15 (土)</button>
+            <button class="chip day" data-val="16 SUN">16 (日)</button>
+            <button class="chip day" data-val="17 MON">17 (月)</button>
+            <button class="chip day" data-val="18 TUE">18 (火)</button>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <div class="filter-label">希望の時間帯</div>
+          <div class="filter-options" id="time-filters">
+            <button class="chip time" data-start="9" data-end="12">🌅 朝 (9:00〜12:00)</button>
+            <button class="chip time" data-start="12" data-end="15">☀️ 昼 (12:00〜15:00)</button>
+            <button class="chip time" data-start="15" data-end="18">🌇 夕方 (15:00〜18:00)</button>
+            <button class="chip time" data-start="18" data-end="24">🌙 夜 (18:00〜24:00)</button>
+          </div>
+        </div>
+
+        <!-- 可能言語フィルター -->
         <div class="filter-row">
           <div class="filter-label">可能言語</div>
           <div class="filter-options" id="lang-filters">
@@ -675,15 +756,16 @@
     <div class="teacher-grid" id="teacher-grid"></div>
   </div>
 
-  <!-- 予約・特商法確認モーダル -->
+  <!-- 予約・決済・回数券モーダル -->
   <div class="modal-overlay" id="booking-modal">
     <div class="modal">
+      <button class="modal-close-x" onclick="closeModal()">✕</button>
       <h3 id="modal-teacher-name">授業の予約申し込み</h3>
-      <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark);"></p>
+      <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark); margin-top:0.3rem;"></p>
       
       <div style="margin: 1rem 0;">
         <label style="display:block; font-size:0.85rem; font-weight:bold;">希望日時を選択：</label>
-        <select id="booking-slot" style="width:100%; padding:0.5rem; margin-top:0.3rem;">
+        <select id="booking-slot" style="width:100%; padding:0.5rem; margin-top:0.3rem; border-radius:6px;">
           <option>2月12日（水）12:00〜13:00</option>
           <option>2月13日（木）15:00〜16:00</option>
           <option>2月15日（土）10:00〜11:00</option>
@@ -692,18 +774,85 @@
 
       <div class="policy-box">
         <strong>【キャンセル・返金規定（特定商取引法に基づく表示）】</strong><br>
-        ・授業開始24時間前までは無料でキャンセル可能です。<br>
-        ・開始24時間前を過ぎた生徒様都合のキャンセルは100%のキャンセル料が発生します。<br>
-        ・講師都合の欠勤やシステム障害時は全額返金または振替を行います。
+        ・授業開始24時間前までは無料でキャンセル可能です（回数券も返還されます）。<br>
+        ・開始24時間前を過ぎた生徒様都合のキャンセルは100%のキャンセル料が発生します。
       </div>
-      <label style="font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+      <label style="font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.8rem;">
         <input type="checkbox" id="agree-policy"> 上記のキャンセル規定および利用規約に同意する
       </label>
 
-      <div style="display:flex; gap:0.5rem;">
-        <button class="btn-book" style="margin-top:0;" onclick="confirmBooking()">クレジットカード決済へ進む</button>
-        <button class="btn-book" style="margin-top:0; background:#a8a29e;" onclick="closeModal()">閉じる</button>
+      <!-- ③ クレジット決済と回数券利用を並列表示 -->
+      <div id="payment-area"></div>
+    </div>
+  </div>
+
+  <!-- ④ 生徒マイページモーダル -->
+  <div class="modal-overlay" id="mypage-modal">
+    <div class="modal wide">
+      <button class="modal-close-x" onclick="closeMyPage()">✕</button>
+      <h3 style="font-size:1.35rem; margin-bottom:1rem;">👤 生徒マイページ（Jocelyn さん）</h3>
+
+      <!-- 回数券ステータス -->
+      <div class="mypage-section">
+        <h4>🎟 回数券（チケット）残高・購入</h4>
+        <div id="mypage-ticket-box"></div>
       </div>
+
+      <!-- マイフィルター設定 -->
+      <div class="mypage-section">
+        <h4>⭐ マイフィルター設定（お気に入り検索条件の保存）</h4>
+        <p style="font-size:0.82rem; color:var(--text-muted);">よく使う検索条件を保存しておくと、トップページの「マイフィルターを適用」ボタンで一発検索できます。</p>
+        <div class="myfilter-form">
+          <select id="mf-lang">
+            <option value="">言語: 指定なし</option>
+            <option value="JP">日本語</option>
+            <option value="US">英語(米)</option>
+            <option value="UK">英語(英)</option>
+            <option value="CN">中国語</option>
+            <option value="KR">韓国語</option>
+            <option value="FR">フランス語</option>
+            <option value="ES">スペイン語</option>
+            <option value="AE">アラビア語</option>
+          </select>
+          <select id="mf-level">
+            <option value="">レベル: 指定なし</option>
+            <option value="基礎会話">基礎会話</option>
+            <option value="日常会話">日常会話</option>
+            <option value="ビジネス">ビジネス</option>
+            <option value="読み">読み</option>
+            <option value="書き">書き</option>
+          </select>
+          <select id="mf-hobby">
+            <option value="">趣味: 指定なし</option>
+            <option value="建築">建築</option>
+            <option value="スポーツ">スポーツ</option>
+            <option value="相撲">相撲</option>
+            <option value="映画・ドラマ">映画・ドラマ</option>
+            <option value="音楽">音楽</option>
+            <option value="旅行">旅行</option>
+            <option value="料理・グルメ">料理・グルメ</option>
+            <option value="歴史・文化">歴史・文化</option>
+            <option value="アニメ・漫画">アニメ・漫画</option>
+          </select>
+          <button class="btn-myfilter" onclick="saveMyFilter()">この条件を保存する</button>
+        </div>
+        <p id="current-myfilter-label" style="font-size:0.82rem; font-weight:bold; color:#0284c7; margin-top:0.5rem;"></p>
+      </div>
+
+      <!-- これまでの授業履歴 -->
+      <div class="mypage-section" style="margin-bottom:0;">
+        <h4>📚 これまでの授業履歴（総受講回数：<span id="total-lesson-count">0</span>回）</h4>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">※履歴の先生をクリックすると、その先生の詳細プロフィール・予約画面が開きます。</p>
+        <div id="lesson-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 履歴から開く先生詳細ポップアップ -->
+  <div class="modal-overlay" id="teacher-detail-modal">
+    <div class="modal wide">
+      <button class="modal-close-x" onclick="closeTeacherDetailModal()">✕</button>
+      <div id="teacher-detail-content"></div>
     </div>
   </div>
 
@@ -778,10 +927,7 @@
           { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 18, end: 22 },
           { day: "15 SAT", start: 10, end: 18 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 15 }, { day: "18 TUE", start: 9, end: 15 }
         ],
-        reviews: [
-          { user: "@Wei_Tokyoさん", date: "2025年2月24日", timestamp: 20250224, stars: 5, text: "中国語でも補足してくれて安心でした。日本の商習慣がよくわかりました。" },
-          ...defaultReviews.slice(0, 3)
-        ]
+        reviews: defaultReviews
       },
       {
         id: 4, name: "高橋 節子 (70)", icon: "👵🏻", rating: 4.9, rank: "プレミアム先生", price: 3000,
@@ -1006,6 +1152,23 @@
       }
     ];
 
+    // 生徒アカウントの状態管理（回数券・受講履歴・マイフィルター）
+    let studentState = {
+      tickets: 3.5, // 初期状態：3.5回分保有（0にすると未購入時のUIもテスト可能）
+      history: [
+        { date: "2026年2月10日", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分" },
+        { date: "2026年2月03日", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分" },
+        { date: "2026年1月25日", teacherId: 1, topic: "日本建築とビジネス文化", payment: "クレジット決済 ¥3,000" }
+      ],
+      myFilter: {
+        lang: "US",
+        level: "日常会話",
+        hobby: ""
+      }
+    };
+
+    let selectedDays = new Set();
+    let selectedTimeSlots = []; // { start, end }
     let selectedLangs = new Set();
     let selectedLevels = new Set();
     let selectedHobbies = new Set();
@@ -1013,11 +1176,20 @@
     let reviewSortModes = {};
     let currentTeacher = null;
 
+    // フィルターボタン設定
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
         const val = btn.dataset.val;
-        if (btn.classList.contains('lang')) {
+        if (btn.classList.contains('day')) {
+          selectedDays.has(val) ? selectedDays.delete(val) : selectedDays.add(val);
+        } else if (btn.classList.contains('time')) {
+          const s = Number(btn.dataset.start);
+          const e = Number(btn.dataset.end);
+          const idx = selectedTimeSlots.findIndex(item => item.start === s && item.end === e);
+          if (idx > -1) selectedTimeSlots.splice(idx, 1);
+          else selectedTimeSlots.push({ start: s, end: e });
+        } else if (btn.classList.contains('lang')) {
           selectedLangs.has(val) ? selectedLangs.delete(val) : selectedLangs.add(val);
         } else if (btn.classList.contains('level')) {
           selectedLevels.has(val) ? selectedLevels.delete(val) : selectedLevels.add(val);
@@ -1029,10 +1201,33 @@
     });
 
     function resetFilters() {
+      selectedDays.clear();
+      selectedTimeSlots = [];
       selectedLangs.clear();
       selectedLevels.clear();
       selectedHobbies.clear();
       document.querySelectorAll('.chip').forEach(btn => btn.classList.remove('active'));
+      renderTeachers();
+    }
+
+    function applyMyFilter() {
+      resetFilters();
+      const mf = studentState.myFilter;
+      if (mf.lang) {
+        selectedLangs.add(mf.lang);
+        const el = document.querySelector(`.chip.lang[data-val="${mf.lang}"]`);
+        if (el) el.classList.add('active');
+      }
+      if (mf.level) {
+        selectedLevels.add(mf.level);
+        const el = document.querySelector(`.chip.level[data-val="${mf.level}"]`);
+        if (el) el.classList.add('active');
+      }
+      if (mf.hobby) {
+        selectedHobbies.add(mf.hobby);
+        const el = document.querySelector(`.chip.hobby[data-val="${mf.hobby}"]`);
+        if (el) el.classList.add('active');
+      }
       renderTeachers();
     }
 
@@ -1050,13 +1245,154 @@
       return '★'.repeat(count) + '☆'.repeat(5 - count);
     }
 
+    // 講師カードHTML生成（一覧と履歴ポップアップの両方で再利用）
+    function buildTeacherCardInner(t, isPopup = false) {
+      const currentTab = activeTabs[t.id] || 'schedule';
+      const isSchedule = currentTab === 'schedule';
+      const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
+      const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+
+      let tabContent = '';
+      if (isSchedule) {
+        const headerMarks = hours.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
+        const verticalLines = hours.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
+        const rowsHtml = t.schedule.map(s => {
+          const leftPct = (s.start / 24) * 100;
+          const widthPct = ((s.end - s.start) / 24) * 100;
+          return `
+            <div class="schedule-bar-row">
+              <span class="day-label">${s.day}</span>
+              <div class="time-track">
+                ${widthPct > 0 ? `<div class="time-fill" style="left:${leftPct}%; width:${widthPct}%;"></div>` : ''}
+              </div>
+            </div>`;
+        }).join('');
+
+        tabContent = `
+          <div class="schedule-wrapper">
+            <div class="schedule-header">
+              <span class="schedule-month">FEB</span>
+              <div class="time-scale-header">${headerMarks}</div>
+            </div>
+            <div class="schedule-rows-area">
+              <div class="grid-lines-overlay">${verticalLines}</div>
+              ${rowsHtml}
+            </div>
+          </div>
+        `;
+      } else {
+        const totalReviews = Object.values(t.ratingCounts).reduce((a, b) => a + b, 0);
+        const barsHtml = [5, 4, 3, 2, 1].map(star => {
+          const cnt = t.ratingCounts[star] || 0;
+          const pct = totalReviews > 0 ? Math.round((cnt / totalReviews) * 100) : 0;
+          return `
+            <div class="rating-bar-row">
+              <span class="star-label">★${star}</span>
+              <div class="bar-track"><div class="bar-fill" style="width: ${pct}%;"></div></div>
+              <span class="count-label">${cnt}</span>
+            </div>
+          `;
+        }).join('');
+
+        const rSort = reviewSortModes[t.id] || 'newest';
+        const sortedReviews = [...t.reviews].sort((a, b) => {
+          if (rSort === 'highest') return b.stars - a.stars;
+          if (rSort === 'lowest') return a.stars - b.stars;
+          return b.timestamp - a.timestamp;
+        });
+
+        const reviewsHtml = sortedReviews.map(r => `
+          <div class="review-card-item">
+            <div class="review-card-left">
+              <div class="review-meta">${r.user} ${r.date}</div>
+              <div>${r.text}</div>
+            </div>
+            <div class="review-stars">${renderStars(r.stars)}</div>
+          </div>
+        `).join('');
+
+        tabContent = `
+          <div class="review-panel-bg">
+            <div class="rating-summary-box">
+              <div class="big-rating">★ ${t.rating.toFixed(1)}</div>
+              <div class="rating-bars">${barsHtml}</div>
+            </div>
+            <div class="review-sort-links">
+              <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">新しい順</button>
+              <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">評価が高い順</button>
+              <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">評価が低い順</button>
+            </div>
+            <div class="review-list">${reviewsHtml}</div>
+          </div>
+        `;
+      }
+
+      const ticketCost = t.price === 3000 ? "1.5回分" : "1.0回分";
+
+      return `
+        <div>
+          <div class="teacher-top">
+            <div class="avatar-circle">${t.icon}</div>
+            <div class="teacher-header-info">
+              <div class="teacher-name-row">
+                <h3>${t.name}</h3>
+                <span class="rating">★ ${t.rating.toFixed(1)}</span>
+                <span class="rank-badge">${t.rank}</span>
+              </div>
+              <div class="flags-row">${flagsHtml}</div>
+              <div class="tags-hobby-group">
+                ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+
+          <div class="level-section">
+            <span class="level-label">授業レベル：</span>
+            <div class="tags-level-group">
+              ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="price-line">受講料：¥${t.price.toLocaleString()} / 1h（回数券利用時：${ticketCost}消費）</div>
+
+          <div class="teacher-bio">
+            <div class="bio-row">${t.education}</div>
+            <div class="bio-row">${t.career}</div>
+            <div class="bio-row"><strong>趣味・関心：</strong>${t.bio}</div>
+            <div class="bio-row"><strong>生徒に一言：</strong>${t.message}</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="tabs">
+            <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">スケジュール</button>
+            <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review'); ${isPopup ? `openTeacherDetailPopup(${t.id})` : ''}">レビュー</button>
+          </div>
+          <div class="tab-panel">${tabContent}</div>
+          <button class="btn-book" onclick="${isPopup ? 'closeTeacherDetailModal();' : ''} openModal(${t.id})">予約にすすむ</button>
+        </div>
+      `;
+    }
+
     function renderTeachers() {
       const sortBy = document.getElementById('sort-select').value;
       let filtered = teachers.filter(t => {
         const langMatch = [...selectedLangs].every(lg => t.languages.includes(lg));
         const levelMatch = [...selectedLevels].every(l => t.levels.includes(l));
         const hobbyMatch = [...selectedHobbies].every(h => t.hobbies.includes(h));
-        return langMatch && levelMatch && hobbyMatch;
+
+        // 曜日＆時間帯のマッチング
+        let scheduleMatch = true;
+        if (selectedDays.size > 0 || selectedTimeSlots.length > 0) {
+          scheduleMatch = t.schedule.some(s => {
+            if (s.end <= s.start) return false;
+            const dayOk = selectedDays.size === 0 || selectedDays.has(s.day);
+            const timeOk = selectedTimeSlots.length === 0 || selectedTimeSlots.some(slot => s.start < slot.end && s.end > slot.start);
+            return dayOk && timeOk;
+          });
+        }
+
+        return langMatch && levelMatch && hobbyMatch && scheduleMatch;
       });
 
       if (sortBy === 'rating') filtered.sort((a, b) => b.rating - a.rating);
@@ -1073,142 +1409,47 @@
       const grid = document.getElementById('teacher-grid');
       grid.innerHTML = '';
 
-      const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
-
       filtered.forEach(t => {
-        const currentTab = activeTabs[t.id] || 'schedule';
-        const isSchedule = currentTab === 'schedule';
-        const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
-
-        let tabContent = '';
-        if (isSchedule) {
-          const headerMarks = hours.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
-          const verticalLines = hours.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
-
-          const rowsHtml = t.schedule.map(s => {
-            const leftPct = (s.start / 24) * 100;
-            const widthPct = ((s.end - s.start) / 24) * 100;
-            return `
-              <div class="schedule-bar-row">
-                <span class="day-label">${s.day}</span>
-                <div class="time-track">
-                  ${widthPct > 0 ? `<div class="time-fill" style="left:${leftPct}%; width:${widthPct}%;"></div>` : ''}
-                </div>
-              </div>`;
-          }).join('');
-
-          tabContent = `
-            <div class="schedule-wrapper">
-              <div class="schedule-header">
-                <span class="schedule-month">FEB</span>
-                <div class="time-scale-header">${headerMarks}</div>
-              </div>
-              <div class="schedule-rows-area">
-                <div class="grid-lines-overlay">${verticalLines}</div>
-                ${rowsHtml}
-              </div>
-            </div>
-          `;
-        } else {
-          const totalReviews = Object.values(t.ratingCounts).reduce((a, b) => a + b, 0);
-          const barsHtml = [5, 4, 3, 2, 1].map(star => {
-            const cnt = t.ratingCounts[star] || 0;
-            const pct = totalReviews > 0 ? Math.round((cnt / totalReviews) * 100) : 0;
-            return `
-              <div class="rating-bar-row">
-                <span class="star-label">★${star}</span>
-                <div class="bar-track"><div class="bar-fill" style="width: ${pct}%;"></div></div>
-                <span class="count-label">${cnt}</span>
-              </div>
-            `;
-          }).join('');
-
-          const rSort = reviewSortModes[t.id] || 'newest';
-          const sortedReviews = [...t.reviews].sort((a, b) => {
-            if (rSort === 'highest') return b.stars - a.stars;
-            if (rSort === 'lowest') return a.stars - b.stars;
-            return b.timestamp - a.timestamp;
-          });
-
-          const reviewsHtml = sortedReviews.map(r => `
-            <div class="review-card-item">
-              <div class="review-card-left">
-                <div class="review-meta">${r.user} ${r.date}</div>
-                <div>${r.text}</div>
-              </div>
-              <div class="review-stars">${renderStars(r.stars)}</div>
-            </div>
-          `).join('');
-
-          tabContent = `
-            <div class="review-panel-bg">
-              <div class="rating-summary-box">
-                <div class="big-rating">★ ${t.rating.toFixed(1)}</div>
-                <div class="rating-bars">${barsHtml}</div>
-              </div>
-              <div class="review-sort-links">
-                <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest')">新しい順</button>
-                <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest')">評価が高い順</button>
-                <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest')">評価が低い順</button>
-              </div>
-              <div class="review-list">${reviewsHtml}</div>
-            </div>
-          `;
-        }
-
-        grid.innerHTML += `
-          <div class="teacher-card">
-            <div>
-              <div class="teacher-top">
-                <div class="avatar-circle">${t.icon}</div>
-                <div class="teacher-header-info">
-                  <div class="teacher-name-row">
-                    <h3>${t.name}</h3>
-                    <span class="rating">★ ${t.rating.toFixed(1)}</span>
-                    <span class="rank-badge">${t.rank}</span>
-                  </div>
-                  <div class="flags-row" aria-label="可能言語">${flagsHtml}</div>
-                  <div class="tags-hobby-group">
-                    ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
-                  </div>
-                </div>
-              </div>
-
-              <div class="level-section">
-                <span class="level-label">授業レベル：</span>
-                <div class="tags-level-group">
-                  ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
-                </div>
-              </div>
-
-              <div class="price-line">受講料：¥${t.price.toLocaleString()} / 1授業(1時間)</div>
-
-              <div class="teacher-bio">
-                <div class="bio-row">${t.education}</div>
-                <div class="bio-row">${t.career}</div>
-                <div class="bio-row"><strong>趣味・関心：</strong>${t.bio}</div>
-                <div class="bio-row"><strong>生徒に一言：</strong>${t.message}</div>
-              </div>
-            </div>
-
-            <div>
-              <div class="tabs">
-                <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">スケジュール</button>
-                <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review')">レビュー</button>
-              </div>
-              <div class="tab-panel">${tabContent}</div>
-              <button class="btn-book" onclick="openModal(${t.id})">予約にすすむ</button>
-            </div>
-          </div>
-        `;
+        grid.innerHTML += `<div class="teacher-card">${buildTeacherCardInner(t, false)}</div>`;
       });
     }
 
+    // ③ 予約モーダル（クレジット決済と回数券利用を並列表示）
     function openModal(id) {
       currentTeacher = teachers.find(t => t.id === id);
+      const isPremium = currentTeacher.price === 3000;
+      const requiredTickets = isPremium ? 1.5 : 1.0;
+
       document.getElementById('modal-teacher-name').textContent = `${currentTeacher.name} の授業予約`;
-      document.getElementById('modal-teacher-price').textContent = `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間）`;
+      document.getElementById('modal-teacher-price').textContent =
+        `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`;
       document.getElementById('agree-policy').checked = false;
+
+      const payArea = document.getElementById('payment-area');
+      if (studentState.tickets > 0) {
+        const canAfford = studentState.tickets >= requiredTickets;
+        payArea.innerHTML = `
+          <div style="font-size:0.82rem; color:#0284c7; font-weight:bold;">
+            現在の保有回数券：${studentState.tickets.toFixed(1)}回分
+          </div>
+          <div class="payment-options-grid">
+            <button class="pay-card-btn pay-credit" onclick="confirmBooking('credit')">
+              💳 クレジット決済で予約<br><span style="font-size:0.78rem; font-weight:normal;">¥${currentTeacher.price.toLocaleString()} を都度払い</span>
+            </button>
+            <button class="pay-card-btn pay-ticket" ${canAfford ? '' : 'disabled'} onclick="confirmBooking('ticket')">
+              🎟 回数券を使って予約<br><span style="font-size:0.78rem; font-weight:normal;">${canAfford ? `${requiredTickets.toFixed(1)}回分を消費（残り ${(studentState.tickets - requiredTickets).toFixed(1)}回分）` : `残高不足（あと ${(requiredTickets - studentState.tickets).toFixed(1)}回分必要）`}</span>
+            </button>
+          </div>
+        `;
+      } else {
+        payArea.innerHTML = `
+          <button class="btn-book" style="margin-top:0.4rem;" onclick="confirmBooking('credit')">💳 クレジットカード決済へ進む（¥${currentTeacher.price.toLocaleString()}）</button>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.5rem; text-align:center;">
+            ※10回分の料金で11回受講できるお得な回数券は「マイページ」から購入できます。
+          </p>
+        `;
+      }
+
       document.getElementById('booking-modal').style.display = 'flex';
     }
 
@@ -1216,15 +1457,137 @@
       document.getElementById('booking-modal').style.display = 'none';
     }
 
-    function confirmBooking() {
+    function confirmBooking(method) {
       if (!document.getElementById('agree-policy').checked) {
         alert('キャンセル・返金規定への同意にチェックを入れてください。');
         return;
       }
-      alert(`${currentTeacher.name} の授業予約を受け付けました！決済完了後、受講用Zoomリンクをメールでお送りします。`);
+      const isPremium = currentTeacher.price === 3000;
+      const requiredTickets = isPremium ? 1.5 : 1.0;
+
+      if (method === 'ticket') {
+        studentState.tickets = Math.round((studentState.tickets - requiredTickets) * 10) / 10;
+        updateTicketHeader();
+        studentState.history.unshift({
+          date: "2026年2月12日（予約済）",
+          teacherId: currentTeacher.id,
+          topic: "オンライン日本語レッスン",
+          payment: `回数券 ${requiredTickets.toFixed(1)}回分`
+        });
+        alert(`回数券を ${requiredTickets.toFixed(1)}回分 使用して ${currentTeacher.name} の授業を予約しました！（残り回数券: ${studentState.tickets.toFixed(1)}回分）`);
+      } else {
+        studentState.history.unshift({
+          date: "2026年2月12日（予約済）",
+          teacherId: currentTeacher.id,
+          topic: "オンライン日本語レッスン",
+          payment: `クレジット決済 ¥${currentTeacher.price.toLocaleString()}`
+        });
+        alert(`${currentTeacher.name} の授業予約を受け付けました！決済完了後、受講用Zoomリンクをメールでお送りします。`);
+      }
       closeModal();
     }
 
+    function updateTicketHeader() {
+      const el = document.getElementById('header-ticket-display');
+      el.textContent = studentState.tickets > 0
+        ? `🎟 回数券残り: ${studentState.tickets.toFixed(1)}回分`
+        : `🎟 回数券: 未購入（1回分お得！）`;
+    }
+
+    // ④ 生徒マイページ関連
+    function openMyPage() {
+      renderMyPageContent();
+      document.getElementById('mypage-modal').style.display = 'flex';
+    }
+
+    function closeMyPage() {
+      document.getElementById('mypage-modal').style.display = 'none';
+    }
+
+    function buyTicketPack() {
+      studentState.tickets = Math.round((studentState.tickets + 11.0) * 10) / 10;
+      updateTicketHeader();
+      renderMyPageContent();
+      alert('11回分回数券セット（¥20,000・1回分お得！）を購入しました！有効期限は購入日から6ヶ月間です。');
+    }
+
+    function saveMyFilter() {
+      studentState.myFilter = {
+        lang: document.getElementById('mf-lang').value,
+        level: document.getElementById('mf-level').value,
+        hobby: document.getElementById('mf-hobby').value
+      };
+      renderMyPageContent();
+      alert('マイフィルターを保存しました！トップページの「⭐ マイフィルターを適用」ボタンからいつでも呼び出せます。');
+    }
+
+    function renderMyPageContent() {
+      // 回数券エリア
+      const ticketBox = document.getElementById('mypage-ticket-box');
+      if (studentState.tickets > 0) {
+        ticketBox.innerHTML = `
+          <div class="ticket-status-card">
+            <div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">現在の回数券残高（有効期限：2026年8月31日）</div>
+              <div style="font-size:1.5rem; font-weight:bold; color:var(--primary-dark);">残り ${studentState.tickets.toFixed(1)} 回分</div>
+              <div style="font-size:0.78rem; color:var(--text-muted);">※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。</div>
+            </div>
+            <button class="btn-myfilter" style="background:var(--primary);" onclick="buyTicketPack()">＋ 11回分を追加購入（¥20,000）</button>
+          </div>
+        `;
+      } else {
+        ticketBox.innerHTML = `
+          <div class="ticket-status-card" style="background:#fffbeb;">
+            <div>
+              <div style="font-weight:bold; color:#92400e;">現在、回数券をお持ちではありません</div>
+              <div style="font-size:0.85rem;">10回分の料金（¥20,000）で<strong>11回分（¥22,000相当）</strong>受講できるお得な回数券がおすすめです！</div>
+            </div>
+            <button class="btn-myfilter" style="background:var(--primary);" onclick="buyTicketPack()">🎟 11回分回数券を購入する（¥20,000）</button>
+          </div>
+        `;
+      }
+
+      // マイフィルター現在値反映
+      const mf = studentState.myFilter;
+      document.getElementById('mf-lang').value = mf.lang;
+      document.getElementById('mf-level').value = mf.level;
+      document.getElementById('mf-hobby').value = mf.hobby;
+      const conds = [mf.lang, mf.level, mf.hobby].filter(Boolean);
+      document.getElementById('current-myfilter-label').textContent =
+        conds.length > 0 ? `現在保存中のマイフィルター: 【 ${conds.join(' / ')} 】` : '現在マイフィルターは未設定です。';
+
+      // 授業履歴エリア
+      document.getElementById('total-lesson-count').textContent = studentState.history.length;
+      const historyList = document.getElementById('lesson-history-list');
+      historyList.innerHTML = studentState.history.map(h => {
+        const t = teachers.find(item => item.id === h.teacherId);
+        if (!t) return '';
+        return `
+          <div class="history-item" onclick="openTeacherDetailPopup(${t.id})">
+            <div>
+              <div style="font-size:0.78rem; color:var(--text-muted);">${h.date} ｜ ${h.payment}</div>
+              <div style="font-weight:bold; font-size:0.95rem;">${t.icon} ${t.name} <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">（${h.topic}）</span></div>
+            </div>
+            <span style="color:#0284c7; font-size:0.82rem; font-weight:bold;">先生の詳細・再予約 ＞</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 履歴クリック時の先生詳細ポップアップ
+    function openTeacherDetailPopup(teacherId) {
+      const t = teachers.find(item => item.id === teacherId);
+      if (!t) return;
+      document.getElementById('teacher-detail-content').innerHTML = buildTeacherCardInner(t, true);
+      document.getElementById('teacher-detail-modal').style.display = 'flex';
+    }
+
+    function closeTeacherDetailModal() {
+      document.getElementById('teacher-detail-modal').style.display = 'none';
+    }
+
+    // 初期表示
+    updateTicketHeader();
     renderTeachers();
   </script>
 </body>
