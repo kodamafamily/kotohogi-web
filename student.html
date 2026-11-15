@@ -156,35 +156,38 @@
     .filter-options {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.48rem;
       align-items: center;
+      flex: 1;
     }
 
-    /* ② 日付＋30分刻み時間セレクトボックス */
-    .datetime-picker-group {
+    /* 直感的な時間帯グループタブ */
+    .time-period-tabs {
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.55rem;
+      width: 100%;
     }
-    .dt-select {
-      padding: 0.42rem 0.75rem;
-      border: 1px solid #a8a29e;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      background: #fff;
-      color: var(--text-main);
-      font-weight: bold;
+    .period-tab {
+      padding: 0.25rem 0.7rem;
+      font-size: 0.78rem;
+      border-radius: 6px;
+      border: 1px solid #d6d3d1;
+      background: #f5f5f4;
       cursor: pointer;
-    }
-    .dt-select.active-filter {
-      background: #dcfce7;
-      border-color: #16a34a;
-      color: #14532d;
-    }
-    .dt-hint {
-      font-size: 0.8rem;
+      font-weight: bold;
       color: var(--text-muted);
+    }
+    .period-tab.active {
+      background: #16a34a;
+      color: #fff;
+      border-color: #15803d;
+    }
+    .time-slots-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.42rem;
+      width: 100%;
     }
 
     /* フィルターチップ */
@@ -192,7 +195,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.32rem 0.8rem;
+      padding: 0.32rem 0.78rem;
       border: 1px solid #d6d3d1;
       border-radius: 8px;
       background: #fff;
@@ -209,6 +212,18 @@
       border-radius: 2px;
       overflow: hidden;
       height: 15px;
+    }
+    .chip.date.active, .chip.time.active {
+      background: #dcfce7;
+      border-color: #16a34a;
+      box-shadow: 0 0 0 1px #16a34a;
+      font-weight: bold;
+      color: #14532d;
+    }
+    .chip.time {
+      padding: 0.28rem 0.65rem;
+      font-size: 0.82rem;
+      font-variant-numeric: tabular-nums;
     }
     .chip.lang.active {
       background: #fef3c7;
@@ -253,7 +268,7 @@
       .filter-row { flex-direction: column; gap: 0.4rem; }
     }
 
-    /* ③ 講師カード（上揃えレイアウト修正済み） */
+    /* 講師カード（上揃えレイアウト） */
     .teacher-card {
       background: #fff;
       border: 1px solid var(--border-color);
@@ -262,9 +277,8 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* 上から順に詰める */
+      justify-content: flex-start;
     }
-    /* プロフィール部分の最小高さを揃えてタブの開始位置を水平に一致させる */
     .card-profile-upper {
       min-height: 295px;
       display: flex;
@@ -376,11 +390,8 @@
     }
     .bio-row { margin-bottom: 0.25rem; }
 
-    /* タブ切り替えエリア（常に上部から開始） */
-    .card-tab-section {
-      display: flex;
-      flex-direction: column;
-    }
+    /* タブ切り替えエリア */
+    .card-tab-section { display: flex; flex-direction: column; }
     .tabs {
       display: flex;
       border: 1px solid var(--text-main);
@@ -491,7 +502,6 @@
     .review-meta { font-weight: bold; font-size: 0.73rem; margin-bottom: 0.15rem; }
     .review-stars { color: #eab308; font-size: 0.95rem; letter-spacing: 1px; white-space: nowrap; }
 
-    /* 予約ボタンだけカード最下部に配置 */
     .card-footer-action {
       margin-top: auto;
       padding-top: 0.9rem;
@@ -595,7 +605,6 @@
     </a>
     <div class="header-nav">
       <div class="ticket-badge-header" id="header-ticket-display">🎟 回数券残り: 3.5回分</div>
-      <!-- ① 別ページ（mypage.html）へ遷移 -->
       <a href="mypage.html" class="btn-mypage">👤 マイページ</a>
     </div>
   </header>
@@ -612,31 +621,35 @@
       </div>
 
       <div class="search-box">
-        <!-- ② 特定の日付＋時間（30分刻み）検索 -->
+        <!-- 行1：希望の日付（ワンクリック選択） -->
         <div class="filter-row">
-          <div class="filter-label">希望の日時（1時間枠）</div>
-          <div class="filter-options">
-            <div class="datetime-picker-group">
-              <select id="filter-date" class="dt-select" onchange="onDateTimeFilterChange()">
-                <option value="">日付を指定しない</option>
-                <option value="12 WED">2026年2月12日（水）</option>
-                <option value="13 THU">2026年2月13日（木）</option>
-                <option value="14 FRI">2026年2月14日（金）</option>
-                <option value="15 SAT">2026年2月15日（土）</option>
-                <option value="16 SUN">2026年2月16日（日）</option>
-                <option value="17 MON">2026年2月17日（月）</option>
-                <option value="18 TUE">2026年2月18日（火）</option>
-              </select>
-
-              <select id="filter-time" class="dt-select" onchange="onDateTimeFilterChange()">
-                <option value="">開始時間を指定しない</option>
-              </select>
-              <span class="dt-hint" id="dt-range-preview">※30分刻みで選択可能（選択時間から1時間受講）</span>
-            </div>
+          <div class="filter-label">希望の日付</div>
+          <div class="filter-options" id="date-filters">
+            <button class="chip date" data-val="12 WED">2/12 (水)</button>
+            <button class="chip date" data-val="13 THU">2/13 (木)</button>
+            <button class="chip date" data-val="14 FRI">2/14 (金)</button>
+            <button class="chip date" data-val="15 SAT">2/15 (土)</button>
+            <button class="chip date" data-val="16 SUN">2/16 (日)</button>
+            <button class="chip date" data-val="17 MON">2/17 (月)</button>
+            <button class="chip date" data-val="18 TUE">2/18 (火)</button>
           </div>
         </div>
 
-        <!-- 可能言語フィルター -->
+        <!-- 行2：希望の開始時間（30分刻み・ワンクリック選択） -->
+        <div class="filter-row">
+          <div class="filter-label">希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※30分刻み（1h授業）</span></div>
+          <div class="filter-options" style="flex-direction: column; align-items: flex-start;">
+            <div class="time-period-tabs">
+              <button class="period-tab active" onclick="switchTimePeriod('all', this)">すべて (9:00〜23:00)</button>
+              <button class="period-tab" onclick="switchTimePeriod('morning', this)">🌅 午前 (9:00〜11:30)</button>
+              <button class="period-tab" onclick="switchTimePeriod('afternoon', this)">☀️ 午後 (12:00〜17:30)</button>
+              <button class="period-tab" onclick="switchTimePeriod('night', this)">🌙 夜 (18:00〜23:00)</button>
+            </div>
+            <div class="time-slots-grid" id="time-slots-container"></div>
+          </div>
+        </div>
+
+        <!-- 行3：可能言語フィルター -->
         <div class="filter-row">
           <div class="filter-label">可能言語</div>
           <div class="filter-options" id="lang-filters">
@@ -675,6 +688,7 @@
           </div>
         </div>
 
+        <!-- 行4：授業レベル・内容 -->
         <div class="filter-row">
           <div class="filter-label">授業レベル・内容</div>
           <div class="filter-options" id="level-filters">
@@ -686,6 +700,7 @@
           </div>
         </div>
 
+        <!-- 行5：趣味・関心テーマ -->
         <div class="filter-row">
           <div class="filter-label">趣味・関心テーマ</div>
           <div class="filter-options" id="hobby-filters">
@@ -776,7 +791,6 @@
       { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "わからなかった宿題を一緒に見てもらいました。またお願いしたいです。" }
     ];
 
-    // スケジュールは30分単位（例：9.5 = 9:30）に対応
     const teachers = [
       {
         id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000,
@@ -1040,7 +1054,6 @@
       }
     ];
 
-    // 共通ストレージ（mypage.html / admin.html とも連携）
     const STORAGE_KEY = "kotohogi_demo_state_v1";
     function loadState() {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -1062,6 +1075,9 @@
     }
 
     let studentState = loadState();
+    let selectedDates = new Set();
+    let selectedStartTime = null; // 30分刻み単一選択（再クリックで解除）
+    let currentTimePeriod = 'all';
     let selectedLangs = new Set();
     let selectedLevels = new Set();
     let selectedHobbies = new Set();
@@ -1069,34 +1085,48 @@
     let reviewSortModes = {};
     let currentTeacher = null;
 
-    // 30分刻みの時間オプションを生成（0:00〜23:00）
     function formatHour(val) {
       const h = Math.floor(val);
       const m = (val % 1) === 0.5 ? "30" : "00";
       return `${String(h).padStart(2, '0')}:${m}`;
     }
 
-    const timeSelect = document.getElementById('filter-time');
-    for (let t = 6.0; t <= 23.0; t += 0.5) {
-      const opt = document.createElement('option');
-      opt.value = t;
-      opt.textContent = `${formatHour(t)} 〜 ${formatHour(t + 1)}`;
-      timeSelect.appendChild(opt);
+    // 30分刻み時間ボタンを描画（9:00〜23:00）
+    function renderTimeSlotButtons() {
+      const container = document.getElementById('time-slots-container');
+      container.innerHTML = '';
+      for (let t = 9.0; t <= 23.0; t += 0.5) {
+        if (currentTimePeriod === 'morning' && (t < 9.0 || t >= 12.0)) continue;
+        if (currentTimePeriod === 'afternoon' && (t < 12.0 || t >= 18.0)) continue;
+        if (currentTimePeriod === 'night' && t < 18.0) continue;
+
+        const btn = document.createElement('button');
+        btn.className = 'chip time' + (selectedStartTime === t ? ' active' : '');
+        btn.textContent = `${formatHour(t)}〜`;
+        btn.onclick = () => {
+          selectedStartTime = (selectedStartTime === t) ? null : t;
+          renderTimeSlotButtons();
+          renderTeachers();
+        };
+        container.appendChild(btn);
+      }
     }
 
-    function onDateTimeFilterChange() {
-      const dEl = document.getElementById('filter-date');
-      const tEl = document.getElementById('filter-time');
-      dEl.classList.toggle('active-filter', dEl.value !== "");
-      tEl.classList.toggle('active-filter', tEl.value !== "");
-      renderTeachers();
+    function switchTimePeriod(period, el) {
+      currentTimePeriod = period;
+      document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderTimeSlotButtons();
     }
 
-    document.querySelectorAll('.chip').forEach(btn => {
+    // 日付・言語・レベル・趣味ボタン設定
+    document.querySelectorAll('.chip.date, .chip.lang, .chip.level, .chip.hobby').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
         const val = btn.dataset.val;
-        if (btn.classList.contains('lang')) {
+        if (btn.classList.contains('date')) {
+          selectedDates.has(val) ? selectedDates.delete(val) : selectedDates.add(val);
+        } else if (btn.classList.contains('lang')) {
           selectedLangs.has(val) ? selectedLangs.delete(val) : selectedLangs.add(val);
         } else if (btn.classList.contains('level')) {
           selectedLevels.has(val) ? selectedLevels.delete(val) : selectedLevels.add(val);
@@ -1108,14 +1138,13 @@
     });
 
     function resetFilters() {
-      document.getElementById('filter-date').value = "";
-      document.getElementById('filter-time').value = "";
-      document.getElementById('filter-date').classList.remove('active-filter');
-      document.getElementById('filter-time').classList.remove('active-filter');
+      selectedDates.clear();
+      selectedStartTime = null;
       selectedLangs.clear();
       selectedLevels.clear();
       selectedHobbies.clear();
       document.querySelectorAll('.chip').forEach(btn => btn.classList.remove('active'));
+      renderTimeSlotButtons();
       renderTeachers();
     }
 
@@ -1157,22 +1186,18 @@
 
     function renderTeachers() {
       const sortBy = document.getElementById('sort-select').value;
-      const targetDate = document.getElementById('filter-date').value;
-      const targetTimeVal = document.getElementById('filter-time').value;
-      const targetStart = targetTimeVal !== "" ? Number(targetTimeVal) : null;
 
       let filtered = teachers.filter(t => {
         const langMatch = [...selectedLangs].every(lg => t.languages.includes(lg));
         const levelMatch = [...selectedLevels].every(l => t.levels.includes(l));
         const hobbyMatch = [...selectedHobbies].every(h => t.hobbies.includes(h));
 
-        // ② 特定日付＋30分刻み時間マッチング（選択した開始時間から1時間枠が収まるか判定）
         let scheduleMatch = true;
-        if (targetDate !== "" || targetStart !== null) {
+        if (selectedDates.size > 0 || selectedStartTime !== null) {
           scheduleMatch = t.schedule.some(s => {
             if (s.end <= s.start) return false;
-            const dateOk = (targetDate === "") || (s.day === targetDate);
-            const timeOk = (targetStart === null) || (s.start <= targetStart && (targetStart + 1) <= s.end);
+            const dateOk = (selectedDates.size === 0) || selectedDates.has(s.day);
+            const timeOk = (selectedStartTime === null) || (s.start <= selectedStartTime && (selectedStartTime + 1) <= s.end);
             return dateOk && timeOk;
           });
         }
@@ -1312,7 +1337,6 @@
               </div>
             </div>
 
-            <!-- ③ 左右で上の位置がピタッと揃うタブセクション -->
             <div class="card-tab-section">
               <div class="tabs">
                 <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">スケジュール</button>
@@ -1340,13 +1364,14 @@
         `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`;
       document.getElementById('agree-policy').checked = false;
 
-      // 先生の空きスケジュールから予約候補枠を生成
       const slotSelect = document.getElementById('booking-slot');
       slotSelect.innerHTML = '';
       currentTeacher.schedule.forEach(s => {
         if (s.end > s.start) {
           const opt = document.createElement('option');
-          opt.textContent = `2月${s.day} ${formatHour(s.start)}〜${formatHour(s.start + 1)}`;
+          const startH = selectedStartTime !== null && s.start <= selectedStartTime && (selectedStartTime + 1) <= s.end
+            ? selectedStartTime : s.start;
+          opt.textContent = `2月${s.day} ${formatHour(startH)}〜${formatHour(startH + 1)}`;
           slotSelect.appendChild(opt);
         }
       });
@@ -1424,9 +1449,9 @@
         : `🎟 回数券: 未購入（1回分お得！）`;
     }
 
-    // マイページで「先生の詳細を見る」を押した際に直接その先生の予約モーダルを開ける連携
     window.addEventListener('DOMContentLoaded', () => {
       updateTicketHeader();
+      renderTimeSlotButtons();
       renderTeachers();
       const params = new URLSearchParams(window.location.search);
       const bookId = params.get('book');
