@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KOTOHOGI らくらく講師用マイページ</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --bg-color: #fafaf9;
+      --text-main: #292524;
+      --text-muted: #57534e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+    header {
+      background: #fff;
+      border-bottom: 3px solid var(--primary);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+    .logo span {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-left: 0.6rem;
+      background: #fef3c7;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .status-banner {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .status-banner h1 { font-size: 1.5rem; }
+    .rank-pill {
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      color: #92400e;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+    .senior-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+    .senior-card {
+      background: #fff;
+      border: 2px solid #d6d3d1;
+      border-radius: 12px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .senior-card h2 {
+      font-size: 1.35rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-main);
+    }
+    .senior-card p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .senior-btn {
+      padding: 1.1rem 1.2rem;
+      font-size: 1.15rem;
+      font-weight: bold;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.2s;
+    }
+    .senior-btn:hover { opacity: 0.9; }
+    .btn-blue { background: #0284c7; }
+    .btn-gray { background: #57534e; }
+    .support-box {
+      margin-top: 2.5rem;
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      KOTOHOGI
+      <span>らくらく講師用サイト</span>
+    </div>
+    <div style="font-weight: bold; font-size: 1rem;">
+      こんにちは、石原 美緒子 先生
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="status-banner">
+      <div>
+        <h1>現在のランク：プレミアム先生</h1>
+        <p style="font-size: 1.05rem; margin-top: 0.3rem;">累計授業時間：<strong>124時間</strong> ／ 生徒からの評価：<strong>★ 4.6</strong></p>
+      </div>
+      <div class="rank-pill">
+        1授業（1時間）の受取報酬：2,000円
+      </div>
+    </div>
+
+    <div class="senior-grid">
+      <div class="senior-card">
+        <div>
+          <h2>📅 本日の授業予定</h2>
+          <p><strong>2月15日（土）10:00〜11:00</strong><br>生徒：Jocelyn（ジョスリン）さん<br>内容：日常会話・ドラマトーク</p>
+        </div>
+        <button class="senior-btn" onclick="alert('Zoom会議室をワンクリックで起動します！')">授業を始める（Zoom起動）</button>
+      </div>
+
+      <div class="senior-card">
+        <div>
+          <h2>📝 授業完了の報告</h2>
+          <p>授業が終わりましたら、下のボタンを押して完了報告を行ってください。</p>
+        </div>
+        <button class="senior-btn btn-blue" onclick="alert('授業完了報告を受け付けました。月末締めで翌月15日にお振り込みいたします。')">授業報告をする</button>
+      </div>
+
+      <div class="senior-card">
+        <div>
+          <h2>🎓 オンラインツール講習</h2>
+          <p>Zoomの画面共有やテキストの使い方を、スタッフとマンツーマンで練習できます。</p>
+        </div>
+        <button class="senior-btn btn-gray" onclick="alert('サポートスタッフとの無料練習予約画面へ移動します。')">操作練習を予約する</button>
+      </div>
+    </div>
+
+    <div class="support-box">
+      操作に迷ったときは、いつでもKOTOHOGIサポート窓口（<strong>0120-XXX-XXX</strong> / 毎日 9:00〜18:00）までお電話ください。
+    </div>
+  </div>
+
+</body>
+</html>
