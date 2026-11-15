@@ -9,6 +9,10 @@
     :root {
       --primary: #f59e0b;
       --primary-dark: #d97706;
+      --tag-blue: #bae6fd;
+      --tag-blue-active: #0284c7;
+      --tag-pink: #fbcfe8;
+      --tag-pink-active: #db2777;
       --bg-color: #fafaf9;
       --text-main: #292524;
       --text-muted: #57534e;
@@ -103,18 +107,64 @@
     .btn-blue { background: #0284c7; }
     .btn-blue:hover { background: #0369a1; }
 
-    /* マイフィルター */
-    .filter-form {
+    /* 国旗付きマイフィルター設定エリア */
+    .mf-row {
       display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-top: 0.8rem;
+      align-items: flex-start;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border-color);
+      gap: 1rem;
     }
-    .filter-form select {
-      padding: 0.5rem 0.8rem;
-      border-radius: 8px;
+    .mf-row:last-of-type { border-bottom: none; }
+    .mf-label {
+      width: 125px;
+      font-weight: bold;
+      font-size: 0.88rem;
+      padding-top: 0.3rem;
+      flex-shrink: 0;
+    }
+    .mf-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
       border: 1px solid #d6d3d1;
-      font-size: 0.9rem;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.84rem;
+      transition: 0.15s;
+    }
+    .chip-flag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #e7e5e4;
+      border-radius: 2px;
+      overflow: hidden;
+      height: 15px;
+    }
+    .chip.lang.active {
+      background: #fef3c7;
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 1px var(--primary-dark);
+      font-weight: bold;
+    }
+    .chip.level.active {
+      background: var(--tag-pink);
+      border-color: var(--tag-pink-active);
+      box-shadow: 0 0 0 1px var(--tag-pink-active);
+      font-weight: bold;
+    }
+    .chip.hobby.active {
+      background: var(--tag-blue);
+      border-color: var(--tag-blue-active);
+      box-shadow: 0 0 0 1px var(--tag-blue-active);
+      font-weight: bold;
     }
 
     /* 受講履歴 */
@@ -203,45 +253,79 @@
       <div id="ticket-status-area"></div>
     </div>
 
-    <!-- 2. マイフィルター設定 -->
+    <!-- 2. マイフィルター設定（国旗付きボタン形式） -->
     <div class="card-section">
       <h2>⭐ マイフィルター設定（お気に入り検索条件の保存）</h2>
-      <p style="font-size:0.85rem; color:var(--text-muted);">保存した条件は、先生検索ページの「⭐ マイフィルターを適用」ボタンからいつでも呼び出せます。</p>
-      <div class="filter-form">
-        <select id="mf-lang">
-          <option value="">可能言語: 指定なし</option>
-          <option value="JP">🇯🇵 日本語</option>
-          <option value="US">🇺🇸 英語(米)</option>
-          <option value="UK">🇬🇧 英語(英)</option>
-          <option value="CN">🇨🇳 中国語</option>
-          <option value="KR">🇰🇷 韓国語</option>
-          <option value="FR">🇫🇷 フランス語</option>
-          <option value="ES">🇪🇸 スペイン語</option>
-          <option value="AE">🇦🇪 アラビア語</option>
-        </select>
-        <select id="mf-level">
-          <option value="">授業レベル: 指定なし</option>
-          <option value="基礎会話">基礎会話</option>
-          <option value="日常会話">日常会話</option>
-          <option value="ビジネス">ビジネス</option>
-          <option value="読み">読み</option>
-          <option value="書き">書き</option>
-        </select>
-        <select id="mf-hobby">
-          <option value="">趣味・関心: 指定なし</option>
-          <option value="建築">建築</option>
-          <option value="スポーツ">スポーツ</option>
-          <option value="相撲">相撲</option>
-          <option value="映画・ドラマ">映画・ドラマ</option>
-          <option value="音楽">音楽</option>
-          <option value="旅行">旅行</option>
-          <option value="料理・グルメ">料理・グルメ</option>
-          <option value="歴史・文化">歴史・文化</option>
-          <option value="アニメ・漫画">アニメ・漫画</option>
-        </select>
-        <button class="btn-action btn-blue" onclick="saveMyFilter()">この条件を保存する</button>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">保存した条件は、先生検索ページの「⭐ マイフィルターを適用」ボタンからいつでも呼び出せます。</p>
+
+      <div class="mf-row">
+        <div class="mf-label">可能言語</div>
+        <div class="mf-options" id="mf-lang-group">
+          <button class="chip lang" data-val="JP">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>
+            日本語
+          </button>
+          <button class="chip lang" data-val="US">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>
+            英語(米)
+          </button>
+          <button class="chip lang" data-val="UK">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>
+            英語(英)
+          </button>
+          <button class="chip lang" data-val="CN">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>
+            中国語
+          </button>
+          <button class="chip lang" data-val="KR">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>
+            韓国語
+          </button>
+          <button class="chip lang" data-val="FR">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>
+            フランス語
+          </button>
+          <button class="chip lang" data-val="ES">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>
+            スペイン語
+          </button>
+          <button class="chip lang" data-val="AE">
+            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>
+            アラビア語
+          </button>
+        </div>
       </div>
-      <p id="saved-filter-text" style="font-size:0.85rem; font-weight:bold; color:#0284c7; margin-top:0.6rem;"></p>
+
+      <div class="mf-row">
+        <div class="mf-label">授業レベル</div>
+        <div class="mf-options" id="mf-level-group">
+          <button class="chip level" data-val="基礎会話">基礎会話</button>
+          <button class="chip level" data-val="日常会話">日常会話</button>
+          <button class="chip level" data-val="ビジネス">ビジネス</button>
+          <button class="chip level" data-val="読み">読み</button>
+          <button class="chip level" data-val="書き">書き</button>
+        </div>
+      </div>
+
+      <div class="mf-row">
+        <div class="mf-label">趣味・関心</div>
+        <div class="mf-options" id="mf-hobby-group">
+          <button class="chip hobby" data-val="建築">建築</button>
+          <button class="chip hobby" data-val="スポーツ">スポーツ</button>
+          <button class="chip hobby" data-val="相撲">相撲</button>
+          <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
+          <button class="chip hobby" data-val="音楽">音楽</button>
+          <button class="chip hobby" data-val="旅行">旅行</button>
+          <button class="chip hobby" data-val="料理・グルメ">料理・グルメ</button>
+          <button class="chip hobby" data-val="歴史・文化">歴史・文化</button>
+          <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
+        </div>
+      </div>
+
+      <div style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <button class="btn-action btn-blue" onclick="saveMyFilter()">この条件をマイフィルターに保存する</button>
+        <span id="saved-filter-text" style="font-size:0.85rem; font-weight:bold; color:#0284c7;"></span>
+      </div>
     </div>
 
     <!-- 3. これまでの授業履歴 -->
@@ -251,7 +335,7 @@
       <div class="history-list" id="history-list"></div>
     </div>
 
-    <!-- 4. 過去に閲覧した教材・ニュース記事（今後の教材機能拡張用） -->
+    <!-- 4. 過去に閲覧した教材・ニュース記事 -->
     <div class="card-section">
       <h2>📖 過去に閲覧・授業で使用した教材</h2>
       <div class="material-grid">
@@ -302,9 +386,30 @@
     }
 
     let state = getState();
+    let draftFilter = { ...state.myFilter };
+
+    // 各カテゴリー単一選択（再クリックで解除）
+    document.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.val;
+        const type = btn.classList.contains('lang') ? 'lang' : (btn.classList.contains('level') ? 'level' : 'hobby');
+        const groupEl = btn.parentElement;
+
+        if (draftFilter[type] === val) {
+          draftFilter[type] = "";
+          btn.classList.remove('active');
+        } else {
+          groupEl.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
+          draftFilter[type] = val;
+          btn.classList.add('active');
+        }
+      });
+    });
 
     function renderPage() {
       state = getState();
+      draftFilter = { ...state.myFilter };
+
       const ticketArea = document.getElementById('ticket-status-area');
       if (state.tickets > 0) {
         ticketArea.innerHTML = `
@@ -332,12 +437,24 @@
         `;
       }
 
-      document.getElementById('mf-lang').value = state.myFilter.lang || "";
-      document.getElementById('mf-level').value = state.myFilter.level || "";
-      document.getElementById('mf-hobby').value = state.myFilter.hobby || "";
+      // チップの選択状態を反映
+      document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
+      if (draftFilter.lang) {
+        const el = document.querySelector(`.chip.lang[data-val="${draftFilter.lang}"]`);
+        if (el) el.classList.add('active');
+      }
+      if (draftFilter.level) {
+        const el = document.querySelector(`.chip.level[data-val="${draftFilter.level}"]`);
+        if (el) el.classList.add('active');
+      }
+      if (draftFilter.hobby) {
+        const el = document.querySelector(`.chip.hobby[data-val="${draftFilter.hobby}"]`);
+        if (el) el.classList.add('active');
+      }
+
       const activeList = [state.myFilter.lang, state.myFilter.level, state.myFilter.hobby].filter(Boolean);
       document.getElementById('saved-filter-text').textContent =
-        activeList.length > 0 ? `現在保存中のマイフィルター：【 ${activeList.join(' / ')} 】` : "現在マイフィルターは未設定です。";
+        activeList.length > 0 ? `現在保存中：【 ${activeList.join(' / ')} 】` : "現在マイフィルターは未設定です。";
 
       document.getElementById('total-lessons').textContent = state.history.length;
       const hList = document.getElementById('history-list');
@@ -369,11 +486,7 @@
     }
 
     function saveMyFilter() {
-      state.myFilter = {
-        lang: document.getElementById('mf-lang').value,
-        level: document.getElementById('mf-level').value,
-        hobby: document.getElementById('mf-hobby').value
-      };
+      state.myFilter = { ...draftFilter };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderPage();
       alert("マイフィルターを保存しました！先生検索ページで「⭐ マイフィルターを適用」を押すと反映されます。");
