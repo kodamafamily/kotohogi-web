@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>講師新規登録 | KOTOHOGI 〜日本語教育に経験を。人生にやりがいを。〜</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --tag-blue: #bae6fd;
+      --tag-blue-active: #0284c7;
+      --tag-pink: #fbcfe8;
+      --tag-pink-active: #db2777;
+      --bg-color: #fafaf9;
+      --text-main: #292524;
+      --text-muted: #57534e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+    header {
+      background: #fff;
+      border-bottom: 3px solid var(--primary);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .brand-link { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+    .logo-text { font-size: 1.55rem; font-weight: bold; color: var(--primary-dark); letter-spacing: 0.05em; line-height: 1.2; }
+    .logo-text span { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: normal; }
+    .btn-outline {
+      border: 1.5px solid var(--primary); color: var(--primary-dark); background: #fff;
+      padding: 0.5rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.92rem;
+    }
+
+    /* シニア講師向け理念アピールセクション */
+    .senior-lp {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      padding: 3rem 1.5rem;
+      border-bottom: 2px solid #fde68a;
+      text-align: center;
+    }
+    .senior-lp-inner { max-width: 920px; margin: 0 auto; }
+    .hero-brand-showcase {
+      display: inline-flex; flex-direction: column; align-items: center;
+      background: #fff; border: 2px solid #f59e0b; border-radius: 20px;
+      padding: 1rem 2.2rem; margin-bottom: 1.4rem;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.14);
+    }
+    .hero-brand-title { font-size: 2.2rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.08em; }
+    .senior-lp h1 { font-size: 1.95rem; margin-bottom: 0.9rem; line-height: 1.4; }
+    .senior-lp p { font-size: 1.08rem; color: var(--text-main); max-width: 760px; margin: 0 auto 2rem; }
+
+    .value-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem; text-align: left;
+    }
+    .value-card {
+      background: #fff; border-radius: 12px; padding: 1.5rem;
+      border: 1px solid #f59e0b; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .value-card h3 { font-size: 1.12rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
+    .value-card p { font-size: 0.95rem; margin: 0; color: var(--text-muted); }
+
+    /* 講師登録フォーム */
+    .form-container { max-width: 740px; margin: 2.5rem auto; padding: 0 1rem; }
+    .form-card {
+      background: #fff; border: 2px solid var(--primary); border-radius: 14px;
+      padding: 2.2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+    .form-card h2 { font-size: 1.5rem; text-align: center; margin-bottom: 0.4rem; }
+    .form-sub { text-align: center; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.8rem; }
+
+    .form-group { margin-bottom: 1.3rem; }
+    .form-group label { display: block; font-weight: bold; font-size: 1rem; margin-bottom: 0.4rem; }
+    .form-control {
+      width: 100%; padding: 0.75rem 0.9rem; border: 1px solid #a8a29e;
+      border-radius: 8px; font-size: 1rem; font-family: inherit;
+    }
+    .chip-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .chip {
+      padding: 0.45rem 0.9rem; border: 1.5px solid #d6d3d1; border-radius: 8px;
+      background: #fff; cursor: pointer; font-size: 0.92rem; font-weight: bold;
+    }
+    .chip.lang.active { background: #fef3c7; border-color: var(--primary-dark); color: #92400e; }
+    .chip.level.active { background: var(--tag-pink); border-color: var(--tag-pink-active); color: #831843; }
+    .chip.hobby.active { background: var(--tag-blue); border-color: var(--tag-blue-active); color: #0c4a6e; }
+
+    /* AI英語翻訳サポートボックス */
+    .ai-translate-box {
+      background: #eff6ff;
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      padding: 1.3rem;
+      margin: 1.5rem 0;
+    }
+    .ai-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .btn-ai {
+      background: #2563eb; color: #fff; border: none; padding: 0.6rem 1.1rem;
+      border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
+    }
+    .btn-ai:hover { background: #1d4ed8; }
+
+    .btn-submit {
+      width: 100%; padding: 1.1rem; background: var(--primary); color: #fff; border: none;
+      border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; margin-top: 1rem;
+    }
+    .btn-submit:hover { background: var(--primary-dark); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="teacher.html" class="brand-link">
+      <svg width="44" height="32" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
+        <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
+        <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        KOTOHOGI
+        <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
+      </div>
+    </a>
+    <a href="teacher.html" class="btn-outline">講師マイページへ</a>
+  </header>
+
+  <section class="senior-lp">
+    <div class="senior-lp-inner">
+      <div class="hero-brand-showcase">
+        <svg width="88" height="60" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
+          <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
+          <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <div class="hero-brand-title">KOTOHOGI</div>
+      </div>
+
+      <h1>あなたの豊かな人生経験と知見が、<br>世界の若者の未来を創ります。</h1>
+      <p>長年培ってこられたお仕事のご経験、子育てや趣味の知識、そして美しい日本語。<br>KOTOHOGIでは、シニア世代の皆さまの「知見」と「経験」を必要としている世界中の若者が待っています。</p>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <h3>🌟 特別な資格は不要です</h3>
+          <p>教員経験や会社員経験、趣味のお話など、あなたの人生そのものが最高の教材になります。</p>
+        </div>
+        <div class="value-card">
+          <h3>💻 パソコン操作も徹底サポート</h3>
+          <p>登録後にスタッフとZoomの練習講習を行いますので、ネットに不慣れな方も安心です。</p>
+        </div>
+        <div class="value-card">
+          <h3>🤝 やりがいと仲間づくり</h3>
+          <p>1授業1,250円〜2,000円の報酬に加え、年4回の講師コミュニティ交流会も開催します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="form-container">
+    <div class="form-card">
+      <h2>👵👴 講師プロフィール登録フォーム</h2>
+      <p class="form-sub">※ご登録内容は、後から「講師マイページ」でいつでも変更できます。</p>
+
+      <form onsubmit="handleTeacherRegister(event)">
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label>お名前（表示名）</label>
+            <input type="text" id="t-name" class="form-control" placeholder="例：児玉 卓" required>
+          </div>
+          <div class="form-group">
+            <label>ご年齢</label>
+            <input type="number" id="t-age" class="form-control" placeholder="例：65" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>最終学歴・主なご経歴</label>
+          <input type="text" id="t-edu" class="form-control" placeholder="例：九州大学 理工学部卒業" style="margin-bottom:0.5rem;" required>
+          <input type="text" id="t-career" class="form-control" placeholder="例：精密機器メーカー 勤務経験あり（40年勤続）" required>
+        </div>
+
+        <div class="form-group">
+          <label>対応可能な言語（複数選択可）</label>
+          <div class="chip-group" id="t-lang-group">
+            <button type="button" class="chip lang active" data-val="JP">🇯🇵 日本語</button>
+            <button type="button" class="chip lang" data-val="US">🇺🇸 英語(米)</button>
+            <button type="button" class="chip lang" data-val="UK">🇬🇧 英語(英)</button>
+            <button type="button" class="chip lang" data-val="CN">🇨🇳 中国語</button>
+            <button type="button" class="chip lang" data-val="KR">🇰🇷 韓国語</button>
+            <button type="button" class="chip lang" data-val="FR">🇫🇷 フランス語</button>
+            <button type="button" class="chip lang" data-val="ES">🇪🇸 スペイン語</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>担当できる授業レベル（複数選択可）</label>
+          <div class="chip-group" id="t-level-group">
+            <button type="button" class="chip level active" data-val="基礎会話">基礎会話</button>
+            <button type="button" class="chip level active" data-val="日常会話">日常会話</button>
+            <button type="button" class="chip level" data-val="ビジネス">ビジネス</button>
+            <button type="button" class="chip level" data-val="読み">読み</button>
+            <button type="button" class="chip level" data-val="書き">書き</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ご自身の趣味・得意な話題（生徒が検索する際のタグになります）</label>
+          <div class="chip-group" id="t-hobby-group">
+            <button type="button" class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
+            <button type="button" class="chip hobby" data-val="ビジネス・経済">ビジネス・経済</button>
+            <button type="button" class="chip hobby" data-val="日本文化・茶道">日本文化・茶道</button>
+            <button type="button" class="chip hobby" data-val="旅行・温泉">旅行・温泉</button>
+            <button type="button" class="chip hobby" data-val="料理・和食">料理・和食</button>
+            <button type="button" class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
+            <button type="button" class="chip hobby" data-val="J-POP・音楽">J-POP・音楽</button>
+            <button type="button" class="chip hobby" data-val="歴史・城">歴史・城</button>
+            <button type="button" class="chip hobby" data-val="スポーツ">スポーツ</button>
+            <button type="button" class="chip hobby" data-val="相撲">相撲</button>
+            <button type="button" class="chip hobby" data-val="建築">建築</button>
+            <button type="button" class="chip hobby" data-val="IT・テクノロジー">IT・テクノロジー</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>趣味・自己紹介（日本語でご入力ください）</label>
+          <textarea id="t-bio-ja" class="form-control" rows="2" placeholder="例：趣味は写真撮影と温泉旅行です。長年メーカーで技術職をしていました。" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>生徒へのメッセージ（日本語でご入力ください）</label>
+          <textarea id="t-msg-ja" class="form-control" rows="2" placeholder="例：日本の文化や技術について、楽しくおしゃべりしましょう！初心者の方も大歓迎です。" required></textarea>
+        </div>
+
+        <!-- AI英語翻訳サポートセクション -->
+        <div class="ai-translate-box">
+          <div class="ai-header">
+            <strong style="color:#1e40af; font-size:1rem;">🤖 AI英語プロフィール自動作成サポート</strong>
+            <button type="button" class="btn-ai" onclick="generateEnglishProfile()">✨ 日本語から英語文を自動作成する</button>
+          </div>
+          <p style="font-size:0.85rem; color:#1e3a8a; margin-bottom:0.8rem;">
+            海外の生徒が英語表示で検索した際にも魅力が伝わるよう、上の日本語入力内容からAIが自然な英語プロフィールを自動生成します。
+          </p>
+          <div class="form-group" style="margin-bottom:0.7rem;">
+            <label style="font-size:0.88rem;">自己紹介（英語・自動生成）</label>
+            <textarea id="t-bio-en" class="form-control" rows="2" placeholder="上の青いボタンを押すと英語文が自動入力されます"></textarea>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:0.88rem;">生徒へのメッセージ（英語・自動生成）</label>
+            <textarea id="t-msg-en" class="form-control" rows="2" placeholder="上の青いボタンを押すと英語文が自動入力されます"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">講師登録を完了する ＞</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "kotohogi_demo_state_v3";
+
+    document.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+      });
+    });
+
+    function generateEnglishProfile() {
+      const bioJa = document.getElementById('t-bio-ja').value.trim();
+      const msgJa = document.getElementById('t-msg-ja').value.trim();
+      const career = document.getElementById('t-career').value.trim();
+
+      if (!bioJa && !msgJa) {
+        alert("先に上の欄に日本語で「自己紹介」と「生徒へのメッセージ」をご入力ください。");
+        return;
+      }
+
+      // プロトタイプ用の自然なAI英訳生成
+      document.getElementById('t-bio-en').value =
+        `My hobbies include Japanese culture, traveling, and sharing stories from my career (${career || 'experienced professional'}). (${bioJa})`;
+      document.getElementById('t-msg-en').value =
+        `Let's enjoy practicing natural Japanese conversation together! Beginners are very welcome. (${msgJa})`;
+
+      alert("✨ AIが日本語の内容をもとに自然な英語プロフィールを作成しました！内容をご確認のうえ登録ボタンを押してください。");
+    }
+
+    function handleTeacherRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('t-name').value.trim();
+      const age = document.getElementById('t-age').value.trim();
+      const edu = document.getElementById('t-edu').value.trim();
+      const career = document.getElementById('t-career').value.trim();
+      const bioJa = document.getElementById('t-bio-ja').value.trim();
+      const msgJa = document.getElementById('t-msg-ja').value.trim();
+      const bioEn = document.getElementById('t-bio-en').value.trim() || `Experienced Japanese tutor. (${bioJa})`;
+      const msgEn = document.getElementById('t-msg-en').value.trim() || `Let's enjoy learning Japanese together! (${msgJa})`;
+
+      const langs = [...document.querySelectorAll('#t-lang-group .chip.active')].map(el => el.dataset.val);
+      const levels = [...document.querySelectorAll('#t-level-group .chip.active')].map(el => el.dataset.val);
+      const hobbies = [...document.querySelectorAll('#t-hobby-group .chip.active')].map(el => el.dataset.val);
+
+      const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      if (!state.customTeachers) state.customTeachers = [];
+
+      state.customTeachers.unshift({
+        id: Date.now(),
+        name: `${name} (${age})`,
+        icon: "👴🏻",
+        rating: 5.0,
+        rank: "ノーマル先生",
+        price: 2000,
+        languages: langs.length > 0 ? langs : ["JP"],
+        hobbies: hobbies.length > 0 ? hobbies : ["日本文化・茶道"],
+        levels: levels.length > 0 ? levels : ["日常会話"],
+        education: edu,
+        career: career,
+        bio: bioJa,
+        bioEn: bioEn,
+        message: msgJa,
+        messageEn: msgEn,
+        ratingCounts: { 5: 1, 4: 0, 3: 0, 2: 0, 1: 0 },
+        schedule: [
+          { day: "12 WED", start: 10, end: 16 }, { day: "13 THU", start: 10, end: 16 }, { day: "14 FRI", start: 0, end: 0 },
+          { day: "15 SAT", start: 10, end: 16 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 10, end: 16 }, { day: "18 TUE", start: 10, end: 16 }
+        ],
+        reviews: [
+          { user: "@KOTOHOGI運営", date: "2026/11/23", timestamp: 20261123, stars: 5, text: "新規ご登録ありがとうございます！経験豊富な素晴らしい先生です。" }
+        ]
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      alert(`${name} 先生の講師登録が完了しました！\n生徒側の検索画面にも即座に掲載されます。続いて講師マイページへ移動します。`);
+      window.location.href = "teacher.html";
+    }
+  </script>
+</body>
+</html>
