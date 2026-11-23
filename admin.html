@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>KOTOHOGI 運営管理画面（財務・法務・精算モニター）</title>
+  <title>KOTOHOGI 運営管理画面（財務・法務・個人情報管理）</title>
   <style>
     :root {
       --primary: #f59e0b;
@@ -26,11 +26,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     header h1 { font-size: 1.25rem; color: #fcd34d; }
     .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
-    /* KPIグリッド */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -38,75 +39,37 @@
       margin-bottom: 1.8rem;
     }
     .kpi-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1.3rem;
-      border: 1px solid #d6d3d1;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      background: #fff; border-radius: 10px; padding: 1.3rem;
+      border: 1px solid #d6d3d1; box-shadow: 0 2px 4px rgba(0,0,0,0.03);
     }
     .kpi-label { font-size: 0.82rem; color: #57534e; font-weight: bold; }
     .kpi-value { font-size: 1.7rem; font-weight: bold; margin: 0.3rem 0; }
     .kpi-sub { font-size: 0.78rem; color: #78716c; }
 
-    /* 資金決済法（1,000万円供託ライン）監視バー */
     .legal-monitor {
-      background: #fff;
-      border: 2px solid #0284c7;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.8rem;
+      background: #fff; border: 2px solid #0284c7; border-radius: 12px;
+      padding: 1.5rem; margin-bottom: 1.8rem;
     }
-    .legal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .status-ok {
-      background: #dcfce7;
-      color: #166534;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 0.85rem;
-    }
-    .progress-bar-bg {
-      width: 100%;
-      height: 22px;
-      background: #e7e5e4;
-      border-radius: 11px;
-      overflow: hidden;
-      margin: 0.6rem 0;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #0284c7, #38bdf8);
-      transition: 0.3s;
-    }
+    .legal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem; }
+    .status-ok { background: #dcfce7; color: #166534; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem; }
+    .progress-bar-bg { width: 100%; height: 22px; background: #e7e5e4; border-radius: 11px; overflow: hidden; margin: 0.6rem 0; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #0284c7, #38bdf8); }
 
-    /* テーブル */
     .panel {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      border: 1px solid #d6d3d1;
-      margin-bottom: 1.8rem;
+      background: #fff; border-radius: 12px; padding: 1.5rem;
+      border: 1px solid #d6d3d1; margin-bottom: 1.8rem; overflow-x: auto;
     }
     .panel h2 { font-size: 1.15rem; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 0.6rem; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 650px; }
     th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e7e5e4; }
     th { background: #fafaf9; font-weight: bold; }
+    .token-pill {
+      background: #f1f5f9; border: 1px solid #cbd5e1; font-family: monospace;
+      font-size: 0.78rem; padding: 0.15rem 0.45rem; border-radius: 4px;
+    }
     .btn-export {
-      background: #16a34a;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.85rem;
+      background: #16a34a; color: #fff; border: none; padding: 0.5rem 1rem;
+      border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.85rem;
     }
   </style>
 </head>
@@ -114,7 +77,7 @@
 
   <header>
     <h1>🛡️ KOTOHOGI 運営管理ダッシュボード（社内専用）</h1>
-    <div style="font-size:0.85rem;">基準日：2026年2月15日現在</div>
+    <div style="font-size:0.85rem;">🔒 管理者権限（二段階認証済）</div>
   </header>
 
   <div class="container">
@@ -137,17 +100,17 @@
       </div>
       <div class="kpi-card">
         <div class="kpi-label">未使用回数券 発行残高総額</div>
-        <div class="kpi-value" id="total-unused-tickets">¥647,000</div>
+        <div class="kpi-value">¥647,000</div>
         <div class="kpi-sub">有効期限管理（発行から6ヶ月間）</div>
       </div>
     </div>
 
-    <!-- 資金決済法（前払式支払手段）監視パネル -->
+    <!-- 資金決済法（1,000万円供託ライン）監視パネル -->
     <div class="legal-monitor">
       <div class="legal-header">
         <div>
           <h2 style="font-size:1.15rem;">⚖️ 資金決済法：未使用回数券残高モニター（基準日：3月末・9月末）</h2>
-          <p style="font-size:0.82rem; color:#57534e;">未使用残高が1,000万円を超えると法務局への供託義務（残高の1/2以上）が発生します。800万円到達でアラート通知。</p>
+          <p style="font-size:0.82rem; color:#57534e;">未使用残高が1,000万円を超えると法務局への供託義務（残高の1/2以上）が発生します。</p>
         </div>
         <span class="status-ok">● 安全圏（供託義務なし：上限の 6.5%）</span>
       </div>
@@ -161,62 +124,55 @@
       </div>
     </div>
 
-    <!-- 生徒別 未使用回数券管理テーブル -->
+    <!-- 新設：登録生徒・個人情報管理テーブル（PCI DSS非保持化対応） -->
     <div class="panel">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
-        <h2 style="margin-bottom:0;">🎟 生徒別 未使用回数券・有効期限一覧</h2>
-        <button class="btn-export" onclick="alert('全銀フォーマット（振込データCSV）および未使用残高台帳CSVをダウンロードします。')">CSV出力（経理・銀行振込用）</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap:wrap; gap:0.5rem;">
+        <div>
+          <h2 style="margin-bottom:0.2rem;">👥 登録生徒・個人情報管理台帳（暗号化保管）</h2>
+          <p style="font-size:0.78rem; color:#57534e;">※クレジットカード番号は自社DBに保存せず、Stripeの決済トークンIDのみを保持しています（非保持化準拠）。</p>
+        </div>
+        <button class="btn-export" onclick="alert('アクセスログを記録した上で、暗号化CSVを出力します。')">個人情報台帳CSV出力（監査ログ記録）</button>
       </div>
       <table>
         <thead>
           <tr>
-            <th>生徒名</th>
-            <th>購入セット</th>
-            <th>残り回数分</th>
-            <th>未使用残高（円換算）</th>
-            <th>有効期限</th>
-            <th>ステータス</th>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>出身国 / 言語</th>
+            <th>決済トークン（カード非保持）</th>
+            <th>保有回数券</th>
+            <th>登録日</th>
           </tr>
         </thead>
-        <tbody id="ticket-ledger-body">
-          <tr>
-            <td><strong>Jocelyn さん</strong>（あなた）</td>
-            <td>11回分セット（¥20,000）</td>
-            <td id="jocelyn-rem">3.5 回分</td>
-            <td id="jocelyn-yen">¥6,363</td>
-            <td>2026年8月31日</td>
-            <td><span style="color:#16a34a; font-weight:bold;">有効</span></td>
-          </tr>
-          <tr>
-            <td>D さん（留学生）</td>
-            <td>11回分セット（¥20,000）</td>
-            <td>8.0 回分</td>
-            <td>¥14,545</td>
-            <td>2026年7月31日</td>
-            <td><span style="color:#16a34a; font-weight:bold;">有効</span></td>
-          </tr>
-          <tr>
-            <td>E さん（駐在員ご家族）</td>
-            <td>11回分セット × 2</td>
-            <td>16.5 回分</td>
-            <td>¥30,000</td>
-            <td>2026年8月15日</td>
-            <td><span style="color:#16a34a; font-weight:bold;">有効</span></td>
-          </tr>
-        </tbody>
+        <tbody id="student-master-body"></tbody>
       </table>
     </div>
   </div>
 
   <script>
-    // student.html / mypage.html でのJocelynさんの最新残高を自動反映
-    const saved = localStorage.getItem("kotohogi_demo_state_v1");
-    if (saved) {
-      const st = JSON.parse(saved);
-      document.getElementById('jocelyn-rem').textContent = `${st.tickets.toFixed(1)} 回分`;
-      const yen = Math.round((20000 / 11) * st.tickets);
-      document.getElementById('jocelyn-yen').textContent = `¥${yen.toLocaleString()}`;
+    const STORAGE_KEY = "kotohogi_demo_state_v2";
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    const users = (saved && saved.registeredUsers) ? saved.registeredUsers : [
+      { id: "USR-1001", name: "Jocelyn さん", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardToken: "tok_stripe_99a8b7", tickets: 3.5, joinedAt: "2026年1月15日" }
+    ];
+
+    if (saved && users.length > 0) {
+      users[0].tickets = saved.tickets;
     }
+
+    const tbody = document.getElementById('student-master-body');
+    tbody.innerHTML = users.map(u => `
+      <tr>
+        <td><code>${u.id}</code></td>
+        <td><strong>${u.name}</strong></td>
+        <td>${u.email}</td>
+        <td>${u.country}</td>
+        <td><span class="token-pill">${u.cardToken}</span></td>
+        <td><strong>${Number(u.tickets).toFixed(1)} 回分</strong></td>
+        <td>${u.joinedAt}</td>
+      </tr>
+    `).join('');
   </script>
 </body>
 </html>
