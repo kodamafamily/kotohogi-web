@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>生徒新規登録 | KOTOHOGI 〜日本語教育に経験を。人生にやりがいを。〜</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --bg-color: #fafaf9;
+      --text-main: #292524;
+      --text-muted: #57534e;
+      --border-color: #e7e5e4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+    header {
+      background: #fff;
+      border-bottom: 2px solid var(--primary);
+      padding: 0.85rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+    .logo-text span {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+    .header-actions { display: flex; gap: 0.6rem; align-items: center; }
+    .btn-outline {
+      border: 1.5px solid var(--primary);
+      color: var(--primary-dark);
+      background: #fff;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.88rem;
+    }
+
+    /* 理念・大型ロゴアピール（LPセクション） */
+    .lp-hero {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      padding: 2.8rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #fde68a;
+    }
+    .lp-hero-inner { max-width: 920px; margin: 0 auto; }
+    .hero-brand-showcase {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border: 2px solid #f59e0b;
+      border-radius: 20px;
+      padding: 1.2rem 2.5rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.14);
+    }
+    .hero-brand-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+    .hero-brand-sub {
+      font-size: 0.92rem;
+      color: #92400e;
+      font-weight: bold;
+    }
+    .lp-hero h1 { font-size: 1.85rem; margin-bottom: 0.8rem; line-height: 1.38; }
+    .lp-hero p { font-size: 1rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 2rem; }
+
+    .merit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      text-align: left;
+    }
+    .merit-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.4rem;
+      border: 1px solid #fde68a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .merit-card h3 { font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
+    .merit-card p { font-size: 0.88rem; color: var(--text-main); margin: 0; }
+
+    /* 登録フォーム */
+    .form-container { max-width: 680px; margin: 2.5rem auto; padding: 0 1rem; }
+    .form-card {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+    .form-card h2 { font-size: 1.4rem; text-align: center; margin-bottom: 0.4rem; }
+    .form-sub { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-weight: bold; font-size: 0.88rem; margin-bottom: 0.35rem; }
+    .req-badge { background: #dc2626; color: #fff; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
+    .opt-badge { background: #78716c; color: #fff; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
+    .form-control {
+      width: 100%; padding: 0.65rem 0.85rem; border: 1px solid #d6d3d1;
+      border-radius: 8px; font-size: 0.95rem;
+    }
+    .card-security-box {
+      background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px;
+      padding: 1.1rem; margin-top: 1.2rem;
+    }
+    .security-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.4rem; }
+    .pci-badge { background: #dcfce7; color: #166534; font-size: 0.74rem; font-weight: bold; padding: 0.2rem 0.6rem; border-radius: 12px; }
+    .card-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-top: 0.6rem; }
+    .btn-submit {
+      width: 100%; padding: 1rem; background: var(--primary); color: #fff; border: none;
+      border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 1.5rem;
+    }
+    .btn-submit:hover { background: var(--primary-dark); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="student.html" class="brand-link">
+      <!-- オレンジと黄色の握手ロゴマーク -->
+      <svg width="44" height="32" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
+        <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
+        <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        KOTOHOGI
+        <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a href="teacher.register.html" class="btn-outline" style="border-color:#78716c; color:#57534e;">講師登録はこちら</a>
+      <a href="student.html" class="btn-outline">先生一覧を見る</a>
+    </div>
+  </header>
+
+  <section class="lp-hero">
+    <div class="lp-hero-inner">
+      <!-- 大型ロゴ＆ブランド名表示 -->
+      <div class="hero-brand-showcase">
+        <svg width="96" height="66" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
+          <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
+          <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <div class="hero-brand-title">KOTOHOGI</div>
+        <div class="hero-brand-sub">〜日本語教育に経験を。人生にやりがいを。〜</div>
+      </div>
+
+      <h1>教科書にはない「生きた日本語」と<br>日本の文化・ビジネスの知恵を学ぼう</h1>
+      <p>KOTOHOGI（ことほぎ）は、元教員・元商社マン・元エンジニアなど豊かな人生経験を持つ日本のシニア講師と、1対1で楽しく実践的な日本語を学べるオンライン学習サービスです。</p>
+
+      <div class="merit-grid">
+        <div class="merit-card">
+          <h3>🎓 人生経験豊富なシニア講師陣</h3>
+          <p>元国語教師やビジネス経験者から、自然な会話・敬語・日本の商習慣まで深く学べます。</p>
+        </div>
+        <div class="merit-card">
+          <h3>🤝 趣味・経歴でぴったりの先生と出会う</h3>
+          <p>アニメ、相撲、建築、料理など共通の趣味で検索できるため、初対面でも会話が弾みます。</p>
+        </div>
+        <div class="merit-card">
+          <h3>💴 1時間 2,000円〜の安心価格</h3>
+          <p>さらに10回分の料金（¥20,000）で11回受講できるお得な回数券制度もご用意しています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="form-container">
+    <div class="form-card">
+      <h2>✨ 生徒アカウント新規登録（無料）</h2>
+      <p class="form-sub">登録後すぐに先生のスケジュール確認・授業予約が可能になります。</p>
+
+      <form onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label>お名前（ニックネーム可）<span class="req-badge">必須</span></label>
+          <input type="text" id="reg-name" class="form-control" placeholder="例：Jocelyn（ジョスリン）" required>
+        </div>
+
+        <div class="form-group">
+          <label>メールアドレス（予約確定通知・Zoomリンク送付先）<span class="req-badge">必須</span></label>
+          <input type="email" id="reg-email" class="form-control" value="shun.sk.kodama@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>パスワード<span class="req-badge">必須</span></label>
+          <input type="password" id="reg-pass" class="form-control" placeholder="8文字以上の英数字" value="password123" required>
+        </div>
+
+        <div class="form-group">
+          <label>出身国・地域 / 母語<span class="req-badge">必須</span></label>
+          <select id="reg-country" class="form-control">
+            <option value="アメリカ / 英語">アメリカ / 英語</option>
+            <option value="中国 / 中国語">中国 / 中国語</option>
+            <option value="ベトナム / ベトナム語">ベトナム / ベトナム語</option>
+            <option value="韓国 / 韓国語">韓国 / 韓国語</option>
+            <option value="フランス / フランス語">フランス / フランス語</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+
+        <div class="card-security-box">
+          <div class="security-header">
+            <strong style="font-size:0.9rem;">💳 クレジットカード登録 <span class="opt-badge">任意・後から登録可</span></strong>
+            <span class="pci-badge">🔒 PCI DSS準拠（カード情報非保持化）</span>
+          </div>
+          <p style="font-size:0.76rem; color:var(--text-muted); margin-bottom:0.6rem;">
+            ※カード番号はKOTOHOGIのサーバーには一切保存されず、決済代行会社（Stripe）へ直接暗号化送信されます。
+          </p>
+          <input type="text" id="reg-card-num" class="form-control" placeholder="カード番号（例：4242 •••• •••• 4242）">
+          <div class="card-row-2">
+            <input type="text" class="form-control" placeholder="有効期限（MM / YY）">
+            <input type="text" class="form-control" placeholder="セキュリティコード（CVC）">
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem; font-size: 0.84rem;">
+          <label style="display:flex; align-items:center; gap:0.5rem;">
+            <input type="checkbox" required checked>
+            <span><strong>利用規約</strong> および <strong>プライバシーポリシー</strong> に同意する</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit">登録して先生を探す（無料） ＞</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "kotohogi_demo_state_v3";
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const country = document.getElementById('reg-country').value;
+      const cardInput = document.getElementById('reg-card-num').value.trim();
+
+      const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      const state = existing || {
+        tickets: 3.5,
+        history: [
+          { date: "2026/2/15 (土) 10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
+          { date: "2026/2/3 (火) 14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
+        ],
+        myFilter: { lang: "US", level: "日常会話", hobby: "" },
+        registeredUsers: [],
+        customTeachers: []
+      };
+
+      state.isLoggedIn = true;
+      state.user = {
+        name: name,
+        email: email,
+        country: country,
+        cardRegistered: cardInput.length > 0 ? "Visa •••• " + cardInput.slice(-4) : "未登録（都度決済）"
+      };
+
+      if (!state.registeredUsers) state.registeredUsers = [];
+      state.registeredUsers.unshift({
+        id: "USR-" + Math.floor(1000 + Math.random() * 9000),
+        name: name,
+        email: email,
+        country: country,
+        cardToken: cardInput.length > 0 ? "tok_stripe_" + Math.random().toString(36).substring(2, 8) : "未登録",
+        tickets: state.tickets,
+        joinedAt: "2026/11/23"
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      alert(`ようこそ、${name} さん！会員登録が完了しました。`);
+      window.location.href = "student.html";
+    }
+  </script>
+</body>
+</html>
