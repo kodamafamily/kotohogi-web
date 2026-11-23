@@ -28,15 +28,16 @@
     header {
       background: #fff;
       border-bottom: 2px solid var(--primary);
-      padding: 0.9rem 2rem;
+      padding: 0.85rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 0.8rem;
     }
-    .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-dark); text-decoration: none; }
-    .logo span { display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: normal; }
+    .brand-link { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+    .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--primary-dark); letter-spacing: 0.05em; line-height: 1.2; }
+    .logo-text span { display: block; font-size: 0.74rem; color: var(--text-muted); font-weight: normal; }
     .header-right { display: flex; gap: 0.6rem; align-items: center; }
     .lang-toggle-btn {
       background: #f5f5f4; border: 1px solid #a8a29e; color: var(--text-main);
@@ -58,36 +59,17 @@
       border-left: 4px solid var(--primary); padding-left: 0.7rem;
     }
 
-    /* オンライン授業入室カード */
     .upcoming-card {
-      background: #f0fdf4;
-      border: 2px solid #22c55e;
-      border-radius: 10px;
-      padding: 1.2rem 1.4rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      background: #f0fdf4; border: 2px solid #22c55e; border-radius: 10px;
+      padding: 1.2rem 1.4rem; margin-bottom: 0.8rem; display: flex;
+      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
     }
     .btn-zoom-enter {
-      background: #16a34a;
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.3rem;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);
+      background: #16a34a; color: #fff; border: none; padding: 0.75rem 1.3rem;
+      border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem;
     }
-    .btn-zoom-enter:hover { background: #15803d; }
 
-    /* 回数券カード */
     .ticket-box {
       border: 2px solid #f59e0b; background: #fffbeb; border-radius: 10px;
       padding: 1.2rem 1.5rem; display: flex; justify-content: space-between;
@@ -99,7 +81,6 @@
     }
     .btn-blue { background: #0284c7; }
 
-    /* 国旗付きマイフィルター設定 */
     .mf-row { display: flex; align-items: flex-start; padding: 0.65rem 0; border-bottom: 1px solid var(--border-color); gap: 1rem; }
     .mf-row:last-of-type { border-bottom: none; }
     .mf-label { width: 125px; font-weight: bold; font-size: 0.88rem; padding-top: 0.3rem; flex-shrink: 0; }
@@ -113,7 +94,6 @@
     .chip.level.active { background: var(--tag-pink); border-color: var(--tag-pink-active); box-shadow: 0 0 0 1px var(--tag-pink-active); font-weight: bold; }
     .chip.hobby.active { background: var(--tag-blue); border-color: var(--tag-blue-active); box-shadow: 0 0 0 1px var(--tag-blue-active); font-weight: bold; }
 
-    /* 受講履歴 */
     .history-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .history-item {
       border: 1px solid #d6d3d1; border-radius: 8px; padding: 0.9rem 1.2rem;
@@ -122,7 +102,6 @@
     }
     .history-item:hover { border-color: var(--primary); background: #fffbeb; }
 
-    /* 教材アーカイブ */
     .material-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
     .material-card { border: 1px solid #d6d3d1; border-radius: 8px; padding: 1rem; background: #fafaf9; }
     .material-tag {
@@ -130,7 +109,6 @@
       font-size: 0.72rem; font-weight: bold; padding: 0.15rem 0.5rem; border-radius: 4px; margin-bottom: 0.4rem;
     }
 
-    /* ポップアップ */
     .modal-overlay {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.55); justify-content: center; align-items: center; z-index: 200; padding: 1rem;
@@ -142,9 +120,17 @@
 <body>
 
   <header>
-    <a href="student.html" class="logo">
-      KOTOHOGI
-      <span id="mp-tagline">〜日本語教育に経験を。人生にやりがいを。〜</span>
+    <a href="student.html" class="brand-link">
+      <svg width="44" height="32" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
+        <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
+        <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        KOTOHOGI
+        <span id="mp-tagline">〜日本語教育に経験を。人生にやりがいを。〜</span>
+      </div>
     </a>
     <div class="header-right">
       <button class="lang-toggle-btn" id="mp-lang-btn" onclick="toggleLang()">🌐 English</button>
@@ -235,13 +221,13 @@
         <div class="material-card">
           <span class="material-tag">日常会話・日本文化</span>
           <h3 style="font-size:1rem; margin-bottom:0.3rem;">第4回：大相撲の観戦マナーと歴史</h3>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026年2月10日（担当：石原 美緒子 先生）</p>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026/2/10（担当：石原 美緒子 先生）</p>
           <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキストを開きます。')">教材を復習する</button>
         </div>
         <div class="material-card">
           <span class="material-tag">ビジネス・敬語</span>
           <h3 style="font-size:1rem; margin-bottom:0.3rem;">面接で好印象を与える尊敬語・謙譲語</h3>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026年1月25日（担当：児玉 峻 先生）</p>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026/1/25（担当：児玉 峻 先生）</p>
           <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキストを開きます。')">教材を復習する</button>
         </div>
       </div>
@@ -257,7 +243,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "kotohogi_demo_state_v2";
+    const STORAGE_KEY = "kotohogi_demo_state_v3";
     const teacherMaster = {
       1: { id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"], hobbies: ["建築", "スポーツ", "相撲"], career: "東京大学 建築学科卒業 / 不動産デベロッパー勤務経験あり", message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！" },
       2: { id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇬🇧 🇦🇪", levels: ["基礎会話", "日常会話", "読み"], hobbies: ["スポーツ", "J-POP・音楽", "映画・ドラマ", "旅行・温泉"], career: "一橋大学 法学部卒業 / 航空会社勤務経験あり", message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！" },
@@ -272,8 +258,8 @@
         user: { name: "Jocelyn", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardRegistered: "Visa •••• 4242" },
         tickets: 3.5,
         history: [
-          { date: "2026年2月15日（土）10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
-          { date: "2026年2月03日（火）14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
+          { date: "2026/2/15 (土) 10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
+          { date: "2026/2/3 (火) 14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
         ],
         myFilter: { lang: "US", level: "日常会話", hobby: "" }
       };
@@ -312,7 +298,7 @@
     });
 
     function enterZoomRoom(teacherName, dateStr, url) {
-      alert(`【Zoom会議室を起動します】\n\n講師：${teacherName}\n日時：${dateStr}\n会議URL：${url}\n\n※本番環境ではZoomアプリが直接立ち上がり、カメラ・マイクをONにするだけですぐに授業が始まります。`);
+      alert(`【Zoom会議室を起動します】\n\n講師：${teacherName}\n日時：${dateStr}\n会議URL：${url}`);
     }
 
     function renderPage() {
@@ -321,7 +307,6 @@
       const uName = state.user ? state.user.name : "Jocelyn";
       document.getElementById('mp-title').textContent = langMode === 'ja' ? `👤 生徒マイページ（${uName} さん）` : `👤 Student My Page (${uName})`;
 
-      // 予約済みの授業・Zoom入室エリア
       const upcomingArea = document.getElementById('upcoming-lessons-area');
       const upcomings = state.history.filter(h => h.status === 'upcoming');
       if (upcomings.length > 0) {
@@ -330,31 +315,30 @@
           return `
             <div class="upcoming-card">
               <div>
-                <div style="font-size:0.82rem; color:#15803d; font-weight:bold;">● 受講予定（予約確定済み）</div>
+                <div style="font-size:0.82rem; color:#15803d; font-weight:bold;">● ${langMode === 'ja' ? '受講予定（予約確定済み）' : 'Confirmed Upcoming Lesson'}</div>
                 <div style="font-size:1.1rem; font-weight:bold; margin:0.2rem 0;">${u.date}</div>
-                <div style="font-size:0.9rem;">担当講師：<strong>${t.icon} ${t.name}</strong>（${u.payment}）</div>
+                <div style="font-size:0.9rem;">${langMode === 'ja' ? '担当講師：' : 'Teacher: '}<strong>${t.icon} ${t.name}</strong>（${u.payment}）</div>
               </div>
               <button class="btn-zoom-enter" onclick="enterZoomRoom('${t.name}', '${u.date}', '${u.zoomUrl || 'https://zoom.us/j/123456789'}')">
-                🎥 オンライン授業に入室する
+                🎥 ${langMode === 'ja' ? 'オンライン授業に入室する' : 'Join Online Lesson (Zoom)'}
               </button>
             </div>
           `;
         }).join('');
       } else {
-        upcomingArea.innerHTML = `<p style="font-size:0.9rem; color:var(--text-muted);">現在予約中の授業はありません。「先生を探す画面」から予約を行ってください。</p>`;
+        upcomingArea.innerHTML = `<p style="font-size:0.9rem; color:var(--text-muted);">現在予約中の授業はありません。</p>`;
       }
 
-      // 回数券エリア
       const ticketArea = document.getElementById('ticket-status-area');
       if (state.tickets > 0) {
         ticketArea.innerHTML = `
           <div class="ticket-box">
             <div>
-              <div style="font-size:0.85rem; color:var(--text-muted);">現在の回数券残高（有効期限：2026年8月31日）</div>
-              <div style="font-size:1.6rem; font-weight:bold; color:var(--primary-dark);">残り ${state.tickets.toFixed(1)} 回分</div>
-              <div style="font-size:0.8rem; color:var(--text-muted);">※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。</div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">${langMode === 'ja' ? '現在の回数券残高（有効期限：2026/8/31）' : 'Current Balance (Valid until: 2026/8/31)'}</div>
+              <div style="font-size:1.6rem; font-weight:bold; color:var(--primary-dark);">${langMode === 'ja' ? `残り ${state.tickets.toFixed(1)} 回分` : `${state.tickets.toFixed(1)} Tickets Left`}</div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">${langMode === 'ja' ? '※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。' : '*Normal: 1.0 ticket / Premium: 1.5 tickets per lesson.'}</div>
             </div>
-            <button class="btn-action" onclick="buyTickets()">＋ 11回分を追加購入（¥20,000）</button>
+            <button class="btn-action" onclick="buyTickets()">＋ ${langMode === 'ja' ? '11回分を追加購入（¥20,000）' : 'Buy 11-Ticket Pack (¥20,000)'}</button>
           </div>
         `;
       } else {
