@@ -42,16 +42,22 @@
       flex-wrap: wrap;
       gap: 0.8rem;
     }
-    .logo {
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+    .logo-text {
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--primary-dark);
       letter-spacing: 0.05em;
-      text-decoration: none;
+      line-height: 1.2;
     }
-    .logo span {
+    .logo-text span {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
       font-weight: normal;
     }
@@ -365,7 +371,7 @@
       border-radius: 0 0 6px 6px; padding: 0.85rem; background: #fff;
     }
 
-    /* スケジュール表（2時間区切り・2時間ごとの縦線） */
+    /* スケジュール表（2時間区切り） */
     .schedule-wrapper { position: relative; }
     .schedule-header { display: flex; align-items: center; font-size: 0.68rem; font-weight: bold; margin-bottom: 0.35rem; }
     .schedule-month { width: 64px; color: var(--text-main); flex-shrink: 0; }
@@ -429,24 +435,13 @@
       font-size: 1.4rem; cursor: pointer; color: var(--text-muted);
     }
 
-    /* プレミアム先生説明バナー */
     .premium-explain-box {
-      background: #fffbeb;
-      border: 1.5px solid #f59e0b;
-      border-radius: 8px;
-      padding: 0.7rem 0.95rem;
-      margin-top: 0.5rem;
-      font-size: 0.82rem;
-      color: #78350f;
+      background: #fffbeb; border: 1.5px solid #f59e0b; border-radius: 8px;
+      padding: 0.7rem 0.95rem; margin-top: 0.5rem; font-size: 0.82rem; color: #78350f;
     }
     .normal-explain-box {
-      background: #f5f5f4;
-      border: 1px solid #d6d3d1;
-      border-radius: 8px;
-      padding: 0.6rem 0.95rem;
-      margin-top: 0.5rem;
-      font-size: 0.82rem;
-      color: #44403c;
+      background: #f5f5f4; border: 1px solid #d6d3d1; border-radius: 8px;
+      padding: 0.6rem 0.95rem; margin-top: 0.5rem; font-size: 0.82rem; color: #44403c;
     }
 
     .step-box {
@@ -491,33 +486,15 @@
     .pay-ticket:disabled { background: #d6d3d1; color: #78716c; cursor: not-allowed; }
     .policy-box { background: #fef3c7; padding: 0.75rem; border-radius: 6px; font-size: 0.76rem; margin: 0.8rem 0; }
 
-    /* 予約完了ポップアップ */
-    .complete-card {
-      text-align: center;
-      padding: 1rem 0.5rem;
-    }
-    .complete-icon {
-      font-size: 3.2rem;
-      margin-bottom: 0.5rem;
-    }
+    .complete-card { text-align: center; padding: 1rem 0.5rem; }
+    .complete-icon { font-size: 3.2rem; margin-bottom: 0.5rem; }
     .complete-details {
-      background: #f0fdf4;
-      border: 1.5px solid #22c55e;
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: left;
-      margin: 1rem 0;
-      font-size: 0.9rem;
+      background: #f0fdf4; border: 1.5px solid #22c55e; border-radius: 10px;
+      padding: 1rem; text-align: left; margin: 1rem 0; font-size: 0.9rem;
     }
     .mail-notice-box {
-      background: #eff6ff;
-      border: 1px solid #93c5fd;
-      border-radius: 8px;
-      padding: 0.8rem;
-      font-size: 0.82rem;
-      color: #1e40af;
-      margin-bottom: 1.2rem;
-      text-align: left;
+      background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px;
+      padding: 0.8rem; font-size: 0.82rem; color: #1e40af; margin-bottom: 1.2rem; text-align: left;
     }
 
     footer { background: #292524; color: #d6d3d1; padding: 2rem; margin-top: 4rem; font-size: 0.85rem; }
@@ -528,9 +505,18 @@
 <body>
 
   <header>
-    <a href="student.html" class="logo">
-      KOTOHOGI
-      <span id="txt-tagline">〜日本語教育に経験を。人生にやりがいを。〜</span>
+    <a href="student.html" class="brand-link">
+      <!-- オレンジと黄色の握手ロゴマーク -->
+      <svg width="44" height="32" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
+        <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
+        <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        KOTOHOGI
+        <span id="txt-tagline">〜日本語教育に経験を。人生にやりがいを。〜</span>
+      </div>
     </a>
     <div class="header-nav">
       <button class="lang-toggle-btn" id="btn-ui-lang" onclick="toggleUILang()">🌐 English</button>
@@ -550,40 +536,23 @@
       </div>
 
       <div class="search-box">
-        <!-- 講師ランクフィルター（新規追加） -->
+        <!-- 講師ランクフィルター -->
         <div class="filter-row">
           <div class="filter-label" id="lbl-rank">講師ランク・料金</div>
-          <div class="filter-options" id="rank-filters">
-            <button class="chip rank" data-val="ノーマル先生">ノーマル先生（¥2,000 / チケット1.0回分）</button>
-            <button class="chip rank" data-val="プレミアム先生">👑 プレミアム先生（¥3,000 / チケット1.5回分）</button>
-          </div>
+          <div class="filter-options" id="rank-filters"></div>
         </div>
 
         <!-- 希望の日付 -->
         <div class="filter-row">
           <div class="filter-label" id="lbl-date">希望の日付<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可</span></div>
-          <div class="filter-options" id="date-filters">
-            <button class="chip date" data-val="12 WED">2/12 (水)</button>
-            <button class="chip date" data-val="13 THU">2/13 (木)</button>
-            <button class="chip date" data-val="14 FRI">2/14 (金)</button>
-            <button class="chip date" data-val="15 SAT">2/15 (土)</button>
-            <button class="chip date" data-val="16 SUN">2/16 (日)</button>
-            <button class="chip date" data-val="17 MON">2/17 (月)</button>
-            <button class="chip date" data-val="18 TUE">2/18 (火)</button>
-          </div>
+          <div class="filter-options" id="date-filters"></div>
         </div>
 
         <!-- 希望の開始時間 -->
         <div class="filter-row">
           <div class="filter-label" id="lbl-time">希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可（1h授業）</span></div>
           <div class="filter-options" style="flex-direction: column; align-items: flex-start;">
-            <div class="time-period-tabs">
-              <button class="period-tab active" onclick="switchTimePeriod('all', this)">すべて (9:00〜23:00)</button>
-              <button class="period-tab" onclick="switchTimePeriod('morning', this)">🌅 午前 (9:00〜11:30)</button>
-              <button class="period-tab" onclick="switchTimePeriod('afternoon', this)">☀️ 午後 (12:00〜17:30)</button>
-              <button class="period-tab" onclick="switchTimePeriod('night', this)">🌙 夜 (18:00〜23:00)</button>
-              <span class="selected-time-badge" id="selected-time-count"></span>
-            </div>
+            <div class="time-period-tabs" id="period-tabs-area"></div>
             <div class="time-slots-grid" id="time-slots-container"></div>
           </div>
         </div>
@@ -591,47 +560,19 @@
         <!-- 可能言語フィルター -->
         <div class="filter-row">
           <div class="filter-label" id="lbl-lang">可能言語</div>
-          <div class="filter-options" id="lang-filters">
-            <button class="chip lang" data-val="JP"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>日本語</button>
-            <button class="chip lang" data-val="US"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>英語(米)</button>
-            <button class="chip lang" data-val="UK"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>英語(英)</button>
-            <button class="chip lang" data-val="CN"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>中国語</button>
-            <button class="chip lang" data-val="KR"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>韓国語</button>
-            <button class="chip lang" data-val="FR"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>フランス語</button>
-            <button class="chip lang" data-val="ES"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>スペイン語</button>
-            <button class="chip lang" data-val="AE"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>アラビア語</button>
-          </div>
+          <div class="filter-options" id="lang-filters"></div>
         </div>
 
         <!-- 授業レベル・内容 -->
         <div class="filter-row">
           <div class="filter-label" id="lbl-level">授業レベル・内容</div>
-          <div class="filter-options" id="level-filters">
-            <button class="chip level" data-val="基礎会話">基礎会話</button>
-            <button class="chip level" data-val="日常会話">日常会話</button>
-            <button class="chip level" data-val="ビジネス">ビジネス</button>
-            <button class="chip level" data-val="読み">読み</button>
-            <button class="chip level" data-val="書き">書き</button>
-          </div>
+          <div class="filter-options" id="level-filters"></div>
         </div>
 
-        <!-- 趣味・関心テーマ（需要の高いテーマを拡充） -->
+        <!-- 趣味・関心テーマ -->
         <div class="filter-row">
           <div class="filter-label" id="lbl-hobby">趣味・関心テーマ</div>
-          <div class="filter-options" id="hobby-filters">
-            <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
-            <button class="chip hobby" data-val="ビジネス・経済">ビジネス・経済</button>
-            <button class="chip hobby" data-val="日本文化・茶道">日本文化・茶道</button>
-            <button class="chip hobby" data-val="旅行・温泉">旅行・温泉</button>
-            <button class="chip hobby" data-val="料理・和食">料理・和食</button>
-            <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
-            <button class="chip hobby" data-val="J-POP・音楽">J-POP・音楽</button>
-            <button class="chip hobby" data-val="歴史・城">歴史・城</button>
-            <button class="chip hobby" data-val="スポーツ">スポーツ</button>
-            <button class="chip hobby" data-val="相撲">相撲</button>
-            <button class="chip hobby" data-val="建築">建築</button>
-            <button class="chip hobby" data-val="IT・テクノロジー">IT・テクノロジー</button>
-          </div>
+          <div class="filter-options" id="hobby-filters"></div>
         </div>
       </div>
     </div>
@@ -641,11 +582,7 @@
   <div class="container">
     <div class="results-header">
       <h2><span id="txt-results-prefix">検索結果</span>（<span id="teacher-count">0</span><span id="txt-results-suffix">名の先生</span>）</h2>
-      <select id="sort-select" onchange="renderTeachers()" style="padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid #d6d3d1;">
-        <option value="rating">並び替え: 評価順</option>
-        <option value="price_asc">並び替え: 料金が安い順</option>
-        <option value="reviews_desc">並び替え: レビュー件数順</option>
-      </select>
+      <select id="sort-select" onchange="renderTeachers()" style="padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid #d6d3d1;"></select>
     </div>
 
     <div class="teacher-grid" id="teacher-grid"></div>
@@ -655,50 +592,43 @@
   <div class="modal-overlay" id="booking-modal">
     <div class="modal">
       <button class="modal-close-x" onclick="closeModal()">✕</button>
-      <h3 id="modal-teacher-name" style="font-size:1.3rem;">授業の予約申し込み</h3>
+      <h3 id="modal-teacher-name" style="font-size:1.3rem;"></h3>
       <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark); margin-top:0.2rem; font-size:0.9rem;"></p>
 
-      <!-- プレミアム先生かノーマル先生かの明確な説明欄 -->
       <div id="modal-rank-explanation"></div>
 
-      <!-- STEP 1 -->
       <div class="step-box">
-        <div class="step-title"><span class="step-num">STEP 1</span> 受講する日付を選んでください</div>
+        <div class="step-title"><span class="step-num">STEP 1</span> <span id="modal-step1-title">受講する日付を選んでください</span></div>
         <div class="booking-date-grid" id="modal-date-buttons"></div>
       </div>
 
-      <!-- STEP 2 -->
       <div class="step-box">
-        <div class="step-title"><span class="step-num">STEP 2</span> 開始時間を選んでください（30分刻み・1時間授業）</div>
+        <div class="step-title"><span class="step-num">STEP 2</span> <span id="modal-step2-title">開始時間を選んでください（30分刻み・1時間授業）</span></div>
         <div class="booking-time-grid" id="modal-time-buttons"></div>
-        <div class="chosen-summary" id="modal-chosen-summary">選択中の日時：未選択</div>
+        <div class="chosen-summary" id="modal-chosen-summary"></div>
       </div>
 
-      <div class="policy-box">
-        <strong>【キャンセル・返金規定（特定商取引法に基づく表示）】</strong><br>
-        ・授業開始24時間前までは無料でキャンセル可能です（回数券も返還されます）。<br>
-        ・開始24時間前を過ぎた生徒様都合のキャンセルは100%のキャンセル料が発生します。
-      </div>
+      <div class="policy-box" id="modal-policy-box"></div>
       <label style="font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.8rem;">
-        <input type="checkbox" id="agree-policy"> 上記のキャンセル規定および利用規約に同意する
+        <input type="checkbox" id="agree-policy"> <span id="modal-agree-label">上記のキャンセル規定および利用規約に同意する</span>
       </label>
 
       <div id="payment-area"></div>
     </div>
   </div>
 
-  <!-- 予約完了ポップアップ（回数券・クレジット共通） -->
+  <!-- 予約完了ポップアップ -->
   <div class="modal-overlay" id="complete-modal">
     <div class="modal">
       <button class="modal-close-x" onclick="closeCompleteModal()">✕</button>
       <div class="complete-card">
         <div class="complete-icon">🎉</div>
-        <h3 style="font-size:1.4rem; color:#15803d;">授業の予約が完了しました！</h3>
+        <h3 id="complete-title" style="font-size:1.4rem; color:#15803d;">授業の予約が完了しました！</h3>
         <div class="complete-details" id="complete-details-box"></div>
         <div class="mail-notice-box" id="complete-mail-box"></div>
         <div style="display:flex; gap:0.7rem; justify-content:center; flex-wrap:wrap;">
-          <a href="mypage.html" class="btn-mypage" style="padding:0.75rem 1.4rem;">マイページで予約と入室URLを確認 ＞</a>
-          <button class="btn-reset" style="padding:0.75rem 1.2rem;" onclick="closeCompleteModal()">閉じる</button>
+          <a href="mypage.html" class="btn-mypage" style="padding:0.75rem 1.4rem;" id="complete-mypage-btn">マイページで予約と入室URLを確認 ＞</a>
+          <button class="btn-reset" style="padding:0.75rem 1.2rem;" onclick="closeCompleteModal()" id="complete-close-btn">閉じる</button>
         </div>
       </div>
     </div>
@@ -711,7 +641,7 @@
         〒100-0000 東京都〇〇区〇〇 1-2-3 / 代表者：社長名
       </div>
       <div class="footer-links">
-        <a href="#tokushoho" onclick="alert('特定商取引法に基づく表記（運営会社情報・支払時期・キャンセル規定等）を表示します')">特定商取引法に基づく表記</a>
+        <a href="#tokushoho" onclick="alert('特定商取引法に基づく表記を表示します')">特定商取引法に基づく表記</a>
         <a href="#privacy" onclick="alert('プライバシーポリシーを表示します')">プライバシーポリシー</a>
         <a href="#terms" onclick="alert('利用規約を表示します')">利用規約</a>
       </div>
@@ -719,37 +649,76 @@
   </footer>
 
   <script>
-    const STORAGE_KEY = "kotohogi_demo_state_v2";
+    const STORAGE_KEY = "kotohogi_demo_state_v3";
     const flagSVGs = {
-      JP: `<span class="flag-item" title="日本語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
-      US: `<span class="flag-item" title="英語（アメリカ）"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
-      UK: `<span class="flag-item" title="英語（イギリス）"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>`,
-      CN: `<span class="flag-item" title="中国語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>`,
-      KR: `<span class="flag-item" title="韓国語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>`,
-      FR: `<span class="flag-item" title="フランス語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>`,
-      ES: `<span class="flag-item" title="スペイン語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>`,
-      AE: `<span class="flag-item" title="アラビア語"><svg width="30" height="20" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
+      JP: `<span class="flag-item" title="Japanese"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
+      US: `<span class="flag-item" title="English (US)"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
+      UK: `<span class="flag-item" title="English (UK)"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>`,
+      CN: `<span class="flag-item" title="Chinese"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>`,
+      KR: `<span class="flag-item" title="Korean"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>`,
+      FR: `<span class="flag-item" title="French"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>`,
+      ES: `<span class="flag-item" title="Spanish"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>`,
+      AE: `<span class="flag-item" title="Arabic"><svg width="30" height="20" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>`
     };
 
-    const dayLabelMap = {
-      "12 WED": "2/12 (水)", "13 THU": "2/13 (木)", "14 FRI": "2/14 (金)",
-      "15 SAT": "2/15 (土)", "16 SUN": "2/16 (日)", "17 MON": "2/17 (月)", "18 TUE": "2/18 (火)"
+    const smallFlagSVGs = {
+      JP: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg>`,
+      US: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg>`,
+      UK: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg>`,
+      CN: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg>`,
+      KR: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg>`,
+      FR: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg>`,
+      ES: `<svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg>`,
+      AE: `<svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg>`
+    };
+
+    // 日英対訳マスター（タグ・言語・日付）
+    const dayLabels = {
+      ja: { "12 WED": "2/12 (水)", "13 THU": "2/13 (木)", "14 FRI": "2/14 (金)", "15 SAT": "2/15 (土)", "16 SUN": "2/16 (日)", "17 MON": "2/17 (月)", "18 TUE": "2/18 (火)" },
+      en: { "12 WED": "2/12 (Wed)", "13 THU": "2/13 (Thu)", "14 FRI": "2/14 (Fri)", "15 SAT": "2/15 (Sat)", "16 SUN": "2/16 (Sun)", "17 MON": "2/17 (Mon)", "18 TUE": "2/18 (Tue)" }
+    };
+
+    const langLabels = {
+      ja: { JP: "日本語", US: "英語(米)", UK: "英語(英)", CN: "中国語", KR: "韓国語", FR: "フランス語", ES: "スペイン語", AE: "アラビア語" },
+      en: { JP: "Japanese", US: "English (US)", UK: "English (UK)", CN: "Chinese", KR: "Korean", FR: "French", ES: "Spanish", AE: "Arabic" }
+    };
+
+    const levelLabels = {
+      ja: { "基礎会話": "基礎会話", "日常会話": "日常会話", "ビジネス": "ビジネス", "読み": "読み", "書き": "書き" },
+      en: { "基礎会話": "Beginner", "日常会話": "Daily Conv.", "ビジネス": "Business", "読み": "Reading", "書き": "Writing" }
+    };
+
+    const hobbyLabels = {
+      ja: {
+        "アニメ・漫画": "アニメ・漫画", "ビジネス・経済": "ビジネス・経済", "日本文化・茶道": "日本文化・茶道",
+        "旅行・温泉": "旅行・温泉", "料理・和食": "料理・和食", "映画・ドラマ": "映画・ドラマ",
+        "J-POP・音楽": "J-POP・音楽", "歴史・城": "歴史・城", "スポーツ": "スポーツ",
+        "相撲": "相撲", "建築": "建築", "IT・テクノロジー": "IT・テクノロジー"
+      },
+      en: {
+        "アニメ・漫画": "Anime & Manga", "ビジネス・経済": "Business & Economy", "日本文化・茶道": "Culture & Tea Ceremony",
+        "旅行・温泉": "Travel & Onsen", "料理・和食": "Japanese Cuisine", "映画・ドラマ": "Movies & Drama",
+        "J-POP・音楽": "J-POP & Music", "歴史・城": "History & Castles", "スポーツ": "Sports",
+        "相撲": "Sumo", "建築": "Architecture", "IT・テクノロジー": "IT & Tech"
+      }
     };
 
     const defaultReviews = [
-      { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "とてもやさしい先生です。" },
-      { user: "@Miomaruさん", date: "2025年2月18日", timestamp: 20250218, stars: 4, text: "1から丁寧に教えてくれて、楽しく日本語を学ぶことができました。" },
-      { user: "@Miomarumaruさん", date: "2025年2月18日", timestamp: 20250218, stars: 5, text: "He was very kind and I enjoyed the lesson very much! Thank you!" },
-      { user: "@Shunshunさん", date: "2025年2月22日", timestamp: 20250222, stars: 5, text: "わからなかった宿題を一緒に見てもらいました。またお願いしたいです。" }
+      { user: "@Shunshunさん", date: "2025/2/22", timestamp: 20250222, stars: 5, text: "とてもやさしい先生です。" },
+      { user: "@Miomaruさん", date: "2025/2/18", timestamp: 20250218, stars: 4, text: "1から丁寧に教えてくれて、楽しく日本語を学ぶことができました。" },
+      { user: "@Miomarumaruさん", date: "2025/2/18", timestamp: 20250218, stars: 5, text: "He was very kind and I enjoyed the lesson very much! Thank you!" },
+      { user: "@Shunshunさん", date: "2025/2/22", timestamp: 20250222, stars: 5, text: "わからなかった宿題を一緒に見てもらいました。またお願いしたいです。" }
     ];
 
-    const teachers = [
+    const baseTeachers = [
       {
         id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000,
         languages: ["JP", "US"], hobbies: ["建築", "スポーツ", "相撲", "ビジネス・経済"], levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"],
         education: "東京大学 建築学科卒業", career: "不動産デベロッパー勤務経験あり",
         bio: "趣味はスポーツ観戦全般です！建築・不動産関係の仕事をしていたので、建物巡りも好きです！",
+        bioEn: "I love watching all kinds of sports! Having worked in architecture and real estate, I also enjoy visiting historical buildings.",
         message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！",
+        messageEn: "If you love sports or architecture, let's chat together in Japanese!",
         ratingCounts: { 5: 240, 4: 45, 3: 19, 2: 13, 1: 26 },
         schedule: [
           { day: "12 WED", start: 9, end: 18 }, { day: "13 THU", start: 9.5, end: 22 }, { day: "14 FRI", start: 20, end: 24 },
@@ -762,7 +731,9 @@
         languages: ["JP", "UK", "AE"], hobbies: ["スポーツ", "J-POP・音楽", "映画・ドラマ", "旅行・温泉"], levels: ["基礎会話", "日常会話", "読み"],
         education: "一橋大学 法学部卒業", career: "航空会社勤務経験あり",
         bio: "趣味はドラマ鑑賞とピアノ演奏です。",
+        bioEn: "My hobbies are watching dramas and playing the piano.",
         message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！",
+        messageEn: "I strive to make every lesson fun! I will support you so you can keep enjoying your Japanese studies.",
         ratingCounts: { 5: 195, 4: 38, 3: 12, 2: 5, 1: 8 },
         schedule: [
           { day: "12 WED", start: 19, end: 22.5 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 0, end: 0 },
@@ -775,7 +746,9 @@
         languages: ["JP", "US", "CN"], hobbies: ["歴史・城", "旅行・温泉", "料理・和食", "ビジネス・経済"], levels: ["日常会話", "ビジネス", "読み", "書き"],
         education: "京都大学 文学部卒業", career: "大手総合商社 勤務経験あり（北京駐在6年）",
         bio: "日本の歴史や城巡りが趣味です。各地の美味しい和食もよく知っています。",
+        bioEn: "My hobbies are Japanese history and visiting castles. I also know lots of great local Washoku restaurants.",
         message: "ビジネス敬語から日本の歴史雑学まで、楽しく会話しましょう！",
+        messageEn: "From business keigo to Japanese historical trivia, let's enjoy great conversations!",
         ratingCounts: { 5: 310, 4: 40, 3: 8, 2: 2, 1: 3 },
         schedule: [
           { day: "12 WED", start: 9, end: 15.5 }, { day: "13 THU", start: 9, end: 15 }, { day: "14 FRI", start: 18.5, end: 22 },
@@ -788,7 +761,9 @@
         languages: ["JP", "US"], hobbies: ["映画・ドラマ", "相撲", "歴史・城", "日本文化・茶道"], levels: ["基礎会話", "日常会話", "読み", "書き"],
         education: "東京学芸大学 教育学部卒業", career: "都立高校 元教諭（国語）",
         bio: "映画やドラマ鑑賞、大相撲観戦が大好きです。年2回は国技館へ足を運びます。",
+        bioEn: "I love watching movies, dramas, and Grand Sumo tournaments. I visit Ryogoku Kokugikan twice a year.",
         message: "国語の教員経験を活かし、正しい発音と美しい日本語を丁寧にお教えします。",
+        messageEn: "Using my experience as a high school Japanese teacher, I will carefully teach you natural pronunciation and beautiful Japanese.",
         ratingCounts: { 5: 412, 4: 35, 3: 5, 2: 1, 1: 2 },
         schedule: [
           { day: "12 WED", start: 9, end: 17 }, { day: "13 THU", start: 9, end: 17 }, { day: "14 FRI", start: 9.5, end: 17.5 },
@@ -801,206 +776,13 @@
         languages: ["JP", "US"], hobbies: ["アニメ・漫画", "スポーツ", "旅行・温泉"], levels: ["基礎会話", "日常会話", "ビジネス"],
         education: "早稲田大学 商学部卒業", career: "大手化学メーカー 勤務経験あり",
         bio: "スポーツ観戦と少年漫画が大好きで、毎週欠かさず読んでいます。",
+        bioEn: "I love watching sports and reading Shonen manga every single week.",
         message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！",
+        messageEn: "Let's practice natural daily conversation using famous lines from anime and manga!",
         ratingCounts: { 5: 85, 4: 22, 3: 9, 2: 3, 1: 4 },
         schedule: [
           { day: "12 WED", start: 12.5, end: 21 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 12, end: 18.5 },
           { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 12, end: 21 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 12, end: 21 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 6, name: "田中 陽子 (67)", icon: "👩🏻", rating: 4.7, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "FR", "UK"], hobbies: ["料理・和食", "J-POP・音楽", "旅行・温泉", "日本文化・茶道"], levels: ["基礎会話", "日常会話", "読み"],
-        education: "慶應義塾大学 文学部卒業", career: "外資系ホテル コンシェルジュ勤務経験あり",
-        bio: "和食作りと音楽鑑賞が趣味です。フランス旅行に何度も行きました。",
-        message: "おもてなしの心で、リラックスして話せる時間を作ります。",
-        ratingCounts: { 5: 160, 4: 28, 3: 6, 2: 2, 1: 1 },
-        schedule: [
-          { day: "12 WED", start: 15, end: 23 }, { day: "13 THU", start: 15.5, end: 23 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 14, end: 22 }, { day: "16 SUN", start: 14, end: 22 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 15, end: 23 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 7, name: "渡辺 博 (71)", icon: "👴🏻", rating: 4.4, rank: "ノーマル先生", price: 2000,
-        languages: ["JP"], hobbies: ["歴史・城", "建築", "旅行・温泉"], levels: ["日常会話", "読み", "書き"],
-        education: "東北大学 工学部卒業", career: "自治体 都市計画・文化財保護担当",
-        bio: "古い寺社仏閣の建築様式を調べるのがライフワークです。",
-        message: "日本語だけでたくさん話したい中級・上級者の方、大歓迎です！",
-        ratingCounts: { 5: 62, 4: 18, 3: 7, 2: 4, 1: 3 },
-        schedule: [
-          { day: "12 WED", start: 9, end: 12.5 }, { day: "13 THU", start: 9, end: 12 }, { day: "14 FRI", start: 9, end: 12 },
-          { day: "15 SAT", start: 9, end: 15.5 }, { day: "16 SUN", start: 9, end: 15 }, { day: "17 MON", start: 9, end: 12 }, { day: "18 TUE", start: 0, end: 0 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 8, name: "伊藤 恵美子 (64)", icon: "👩🏻‍🦳", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "KR", "US"], hobbies: ["映画・ドラマ", "料理・和食", "J-POP・音楽"], levels: ["基礎会話", "日常会話", "ビジネス"],
-        education: "大阪外国語大学 卒業", career: "航空会社 客室乗務員・マナー講師",
-        bio: "ドラマと音楽が大好きで、韓国語も日常会話ができます。",
-        message: "就職活動中の留学生向けの面接練習やビジネスマナーもお任せください！",
-        ratingCounts: { 5: 220, 4: 25, 3: 4, 2: 1, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 10.5, end: 16 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 10, end: 16.5 },
-          { day: "15 SAT", start: 10, end: 18 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 10, end: 16 }, { day: "18 TUE", start: 18, end: 22 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 9, name: "山本 隆司 (69)", icon: "👨🏻", rating: 4.3, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "ES"], hobbies: ["スポーツ", "J-POP・音楽", "旅行・温泉"], levels: ["基礎会話", "日常会話"],
-        education: "上智大学 外国語学部卒業", career: "自動車メーカー 中南米営業担当",
-        bio: "サッカー観戦とギター演奏が趣味です。メキシコに5年住んでいました。",
-        message: "スペイン語圏の学習者の方、文法の違いもわかりやすく説明しますよ！",
-        ratingCounts: { 5: 54, 4: 19, 3: 8, 2: 3, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 20, end: 24 }, { day: "13 THU", start: 20.5, end: 24 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 8, end: 12.5 }, { day: "16 SUN", start: 8, end: 12 }, { day: "17 MON", start: 20, end: 24 }, { day: "18 TUE", start: 20, end: 24 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 10, name: "中村 文子 (73)", icon: "👵🏻", rating: 4.7, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US"], hobbies: ["日本文化・茶道", "料理・和食", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
-        education: "お茶の水女子大学 文教育学部卒業", career: "中学校 元教諭（社会・書道）",
-        bio: "茶道と家庭料理が趣味です。最近は孫と一緒に日本のアニメを見ています。",
-        message: "日本の四季の行事や食文化について、楽しくおしゃべりしましょう。",
-        ratingCounts: { 5: 175, 4: 30, 3: 7, 2: 2, 1: 3 },
-        schedule: [
-          { day: "12 WED", start: 9, end: 14.5 }, { day: "13 THU", start: 9, end: 14 }, { day: "14 FRI", start: 9, end: 14 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 13.5, end: 17.5 }, { day: "17 MON", start: 9, end: 14 }, { day: "18 TUE", start: 9, end: 14 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 11, name: "小林 茂 (66)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "US"], hobbies: ["IT・テクノロジー", "アニメ・漫画", "旅行・温泉"], levels: ["日常会話", "ビジネス", "書き"],
-        education: "東京工業大学 工学部卒業", career: "大手電機メーカー エンジニア",
-        bio: "ITガジェットとSFアニメ鑑賞、国内の温泉巡りが趣味です。",
-        message: "ITやものづくり分野で働きたい方の技術日本語もサポートできます。",
-        ratingCounts: { 5: 78, 4: 21, 3: 6, 2: 2, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 18, end: 22.5 }, { day: "13 THU", start: 18, end: 22 }, { day: "14 FRI", start: 18, end: 22 },
-          { day: "15 SAT", start: 10.5, end: 17 }, { day: "16 SUN", start: 10, end: 17 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 18, end: 22 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 12, name: "加藤 真由美 (63)", icon: "👩🏻", rating: 4.6, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "CN"], hobbies: ["料理・和食", "映画・ドラマ", "旅行・温泉"], levels: ["基礎会話", "日常会話", "読み"],
-        education: "神戸大学 国際文化学部卒業", career: "貿易会社 勤務経験あり",
-        bio: "和食の食べ歩きが趣味です。台湾と香港に何度も訪れています。",
-        message: "漢字圏の方ならではの表現のクセを直して、自然な日本語に近づけます！",
-        ratingCounts: { 5: 92, 4: 18, 3: 5, 2: 1, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 10, end: 15.5 }, { day: "13 THU", start: 10, end: 15 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 9.5, end: 13.5 }, { day: "16 SUN", start: 9, end: 13 }, { day: "17 MON", start: 10, end: 15 }, { day: "18 TUE", start: 10, end: 15 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 13, name: "吉田 義男 (74)", icon: "👴🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "UK"], hobbies: ["相撲", "ビジネス・経済", "歴史・城"], levels: ["日常会話", "ビジネス", "読み", "書き"],
-        education: "慶應義塾大学 経済学部卒業", career: "メガバンク 勤務経験あり（ロンドン支店勤務）",
-        bio: "大相撲と経済ニュース分析が趣味です。落語もよく聞きに行きます。",
-        message: "経済ニュースの読解や、大人同士の知的な雑談を楽しみましょう。",
-        ratingCounts: { 5: 265, 4: 32, 3: 7, 2: 2, 1: 1 },
-        schedule: [
-          { day: "12 WED", start: 16.5, end: 21 }, { day: "13 THU", start: 16, end: 21 }, { day: "14 FRI", start: 16, end: 21 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 16, end: 21 }, { day: "17 MON", start: 16, end: 21 }, { day: "18 TUE", start: 0, end: 0 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 14, name: "山田 和子 (68)", icon: "👩🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP"], hobbies: ["料理・和食", "旅行・温泉", "日本文化・茶道"], levels: ["基礎会話", "日常会話"],
-        education: "日本女子大学 家政学部卒業", career: "病院 栄養士・食育インストラクター",
-        bio: "日本の家庭料理や和菓子作りが得意です。",
-        message: "日本に住み始めたばかりの奥様や学生さん、生活の相談も兼ねてお話ししましょう！",
-        ratingCounts: { 5: 68, 4: 15, 3: 6, 2: 2, 1: 1 },
-        schedule: [
-          { day: "12 WED", start: 9.5, end: 13.5 }, { day: "13 THU", start: 9, end: 13 }, { day: "14 FRI", start: 9, end: 13 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 13 }, { day: "18 TUE", start: 9, end: 13 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 15, name: "佐々木 達也 (65)", icon: "👨🏻", rating: 4.4, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "US"], hobbies: ["スポーツ", "映画・ドラマ", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "ビジネス"],
-        education: "明治大学 政治経済学部卒業", career: "広告代理店 勤務経験あり",
-        bio: "野球観戦と映画鑑賞が趣味です。日本のCMやトレンド文化に詳しいです。",
-        message: "教科書には載っていない若者言葉やリアルな会話表現を楽しく学べます！",
-        ratingCounts: { 5: 59, 4: 17, 3: 5, 2: 3, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 13, end: 19.5 }, { day: "13 THU", start: 13, end: 19 }, { day: "14 FRI", start: 13.5, end: 19 },
-          { day: "15 SAT", start: 13, end: 19 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 13, end: 19 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 16, name: "松本 千代子 (71)", icon: "👵🏻", rating: 4.9, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "FR"], hobbies: ["J-POP・音楽", "日本文化・茶道", "映画・ドラマ"], levels: ["基礎会話", "日常会話", "読み", "書き"],
-        education: "東京藝術大学 音楽学部卒業", career: "音楽教室主宰・小学校非常勤講師",
-        bio: "ピアノと日本の音楽・唱歌、フランス映画が大好きです。",
-        message: "綺麗なイントネーション（高低アクセント）を音楽のリズムのように楽しく身につけましょう。",
-        ratingCounts: { 5: 280, 4: 20, 3: 3, 2: 1, 1: 0 },
-        schedule: [
-          { day: "12 WED", start: 14.5, end: 20.5 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 14, end: 20 },
-          { day: "15 SAT", start: 10, end: 16 }, { day: "16 SUN", start: 10, end: 16 }, { day: "17 MON", start: 14, end: 20 }, { day: "18 TUE", start: 0, end: 0 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 17, name: "井上 浩二 (67)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "KR"], hobbies: ["旅行・温泉", "料理・和食", "スポーツ"], levels: ["日常会話", "ビジネス", "読み"],
-        education: "九州大学 経済学部卒業", career: "鉄道会社 観光企画担当",
-        bio: "全国のローカル線巡りと温泉旅行、ゴルフが趣味です。",
-        message: "日本旅行のプランを一緒に立てながら、実践的な旅行日本語を練習しましょう！",
-        ratingCounts: { 5: 74, 4: 16, 3: 6, 2: 1, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 9, end: 15 }, { day: "13 THU", start: 9.5, end: 15.5 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 9, end: 18 }, { day: "16 SUN", start: 9, end: 18 }, { day: "17 MON", start: 9, end: 15 }, { day: "18 TUE", start: 0, end: 0 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 18, name: "木村 律子 (69)", icon: "👩🏻‍🦳", rating: 4.7, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "映画・ドラマ", "歴史・城"], levels: ["基礎会話", "日常会話", "読み", "書き"],
-        education: "津田塾大学 学芸学部卒業", career: "出版社 編集者（児童書・文芸担当）",
-        bio: "読書とジブリ映画、美術館巡りが大好きです。",
-        message: "小説やニュース記事を一緒に読みながら、語彙力と表現力を広げましょう！",
-        ratingCounts: { 5: 188, 4: 27, 3: 5, 2: 2, 1: 1 },
-        schedule: [
-          { day: "12 WED", start: 10, end: 18.5 }, { day: "13 THU", start: 10, end: 18 }, { day: "14 FRI", start: 0, end: 0 },
-          { day: "15 SAT", start: 0, end: 0 }, { day: "16 SUN", start: 10.5, end: 18 }, { day: "17 MON", start: 10, end: 18 }, { day: "18 TUE", start: 10, end: 18 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 19, name: "林 政男 (72)", icon: "👴🏻", rating: 4.6, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "US", "ES"], hobbies: ["建築", "旅行・温泉", "相撲"], levels: ["日常会話", "ビジネス"],
-        education: "横浜国立大学 工学部卒業", career: "大手ゼネコン 海外プロジェクト担当",
-        bio: "世界中の建築物を見て回ることが趣味です。相撲も毎場所欠かさず見ています。",
-        message: "海外での建設プロジェクト経験が豊富です。楽しく異文化交流しましょう！",
-        ratingCounts: { 5: 88, 4: 19, 3: 4, 2: 1, 1: 2 },
-        schedule: [
-          { day: "12 WED", start: 19.5, end: 23.5 }, { day: "13 THU", start: 19, end: 23 }, { day: "14 FRI", start: 19, end: 23 },
-          { day: "15 SAT", start: 9, end: 14 }, { day: "16 SUN", start: 9, end: 14 }, { day: "17 MON", start: 0, end: 0 }, { day: "18 TUE", start: 19, end: 23 }
-        ],
-        reviews: defaultReviews
-      },
-      {
-        id: 20, name: "斎藤 美智子 (66)", icon: "👩🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "CN", "US"], hobbies: ["料理・和食", "J-POP・音楽", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
-        education: "同志社大学 文学部卒業", career: "日本語学校 非常勤講師経験あり",
-        bio: "京都のカフェ巡りと合唱、日本の漫画が大好きです。",
-        message: "初めて日本語を学ぶ方も大歓迎！ゼロから優しくサポートします。",
-        ratingCounts: { 5: 230, 4: 29, 3: 6, 2: 1, 1: 1 },
-        schedule: [
-          { day: "12 WED", start: 9, end: 17.5 }, { day: "13 THU", start: 0, end: 0 }, { day: "14 FRI", start: 9, end: 17 },
-          { day: "15 SAT", start: 9.5, end: 17 }, { day: "16 SUN", start: 0, end: 0 }, { day: "17 MON", start: 9, end: 17 }, { day: "18 TUE", start: 9, end: 17 }
         ],
         reviews: defaultReviews
       }
@@ -1010,17 +792,18 @@
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) return JSON.parse(saved);
       const initial = {
-        isLoggedIn: false, // 初期状態は未ログイン（登録/ログインボタン表示）
+        isLoggedIn: false,
         user: { name: "Jocelyn", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardRegistered: "Visa •••• 4242" },
         tickets: 3.5,
         history: [
-          { date: "2026年2月15日（土）10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
-          { date: "2026年2月03日（火）14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
+          { date: "2026/2/15 (土) 10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
+          { date: "2026/2/3 (火) 14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
         ],
         myFilter: { lang: "US", level: "日常会話", hobby: "" },
         registeredUsers: [
-          { id: "USR-1001", name: "Jocelyn さん", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardToken: "tok_stripe_99a8b7", tickets: 3.5, joinedAt: "2026年1月15日" }
-        ]
+          { id: "USR-1001", name: "Jocelyn さん", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardToken: "tok_stripe_99a8b7", tickets: 3.5, joinedAt: "2026/1/15" }
+        ],
+        customTeachers: []
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
       return initial;
@@ -1028,6 +811,7 @@
     function saveState(st) { localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); }
 
     let studentState = loadState();
+    let teachers = [...(studentState.customTeachers || []), ...baseTeachers];
     let uiLang = 'ja';
     let selectedRanks = new Set();
     let selectedDates = new Set();
@@ -1042,55 +826,108 @@
     let bookingSelectedDay = null;
     let bookingSelectedStart = null;
 
-    // 日英UI切り替え
-    const i18nDict = {
-      ja: {
-        tagline: "〜日本語教育に経験を。人生にやりがいを。〜",
-        btnLang: "🌐 English",
-        searchTitle: "🔍 あなたにぴったりの先生を探す",
-        btnMyFilter: "⭐ マイフィルターを適用",
-        btnReset: "✕ 条件をクリア",
-        lblRank: "講師ランク・料金",
-        lblLang: "可能言語",
-        lblLevel: "授業レベル・内容",
-        lblHobby: "趣味・関心テーマ",
-        resPrefix: "検索結果",
-        resSuffix: "名の先生"
-      },
-      en: {
-        tagline: "~ Experience for Japanese Education. Purpose for Life. ~",
-        btnLang: "🌐 日本語",
-        searchTitle: "🔍 Find Your Ideal Japanese Teacher",
-        btnMyFilter: "⭐ Apply My Filter",
-        btnReset: "✕ Clear All",
-        lblRank: "Teacher Rank & Fee",
-        lblLang: "Languages Spoken",
-        lblLevel: "Lesson Level",
-        lblHobby: "Hobbies & Interests",
-        resPrefix: "Search Results",
-        resSuffix: " Teachers Found"
-      }
-    };
+    function formatHour(val) {
+      const h = Math.floor(val);
+      const m = (val % 1) === 0.5 ? "30" : "00";
+      return `${String(h).padStart(2, '0')}:${m}`;
+    }
 
-    function toggleUILang() {
-      uiLang = uiLang === 'ja' ? 'en' : 'ja';
-      const d = i18nDict[uiLang];
-      document.getElementById('txt-tagline').textContent = d.tagline;
-      document.getElementById('btn-ui-lang').textContent = d.btnLang;
-      document.getElementById('txt-search-title').textContent = d.searchTitle;
-      document.getElementById('txt-btn-myfilter').textContent = d.btnMyFilter;
-      document.getElementById('txt-btn-reset').textContent = d.btnReset;
-      document.getElementById('lbl-rank').textContent = d.lblRank;
-      document.getElementById('lbl-lang').textContent = d.lblLang;
-      document.getElementById('lbl-level').textContent = d.lblLevel;
-      document.getElementById('lbl-hobby').textContent = d.lblHobby;
-      document.getElementById('txt-results-prefix').textContent = d.resPrefix;
-      document.getElementById('txt-results-suffix').textContent = d.resSuffix;
-      renderAuthHeader();
+    // フィルターUI全体の再描画（日英完全対応）
+    function renderAllFilterChips() {
+      // ランク
+      const rankBox = document.getElementById('rank-filters');
+      const rankItems = [
+        { val: "ノーマル先生", label: uiLang === 'ja' ? "ノーマル先生（¥2,000 / チケット1.0回分）" : "Normal Teacher (¥2,000 / 1.0 Ticket)" },
+        { val: "プレミアム先生", label: uiLang === 'ja' ? "👑 プレミアム先生（¥3,000 / チケット1.5回分）" : "👑 Premium Teacher (¥3,000 / 1.5 Tickets)" }
+      ];
+      rankBox.innerHTML = rankItems.map(r =>
+        `<button class="chip rank ${selectedRanks.has(r.val) ? 'active' : ''}" onclick="toggleSetFilter('rank', '${r.val}')">${r.label}</button>`
+      ).join('');
+
+      // 日付
+      const dateBox = document.getElementById('date-filters');
+      dateBox.innerHTML = Object.keys(dayLabels.ja).map(k =>
+        `<button class="chip date ${selectedDates.has(k) ? 'active' : ''}" onclick="toggleSetFilter('date', '${k}')">${dayLabels[uiLang][k]}</button>`
+      ).join('');
+
+      // 時間帯タブ
+      const pTabs = document.getElementById('period-tabs-area');
+      const pNames = uiLang === 'ja'
+        ? { all: "すべて (9:00〜23:00)", morning: "🌅 午前 (9:00〜11:30)", afternoon: "☀️ 午後 (12:00〜17:30)", night: "🌙 夜 (18:00〜23:00)" }
+        : { all: "All (9:00–23:00)", morning: "🌅 Morning (9:00–11:30)", afternoon: "☀️ Afternoon (12:00–17:30)", night: "🌙 Night (18:00–23:00)" };
+      pTabs.innerHTML = `
+        <button class="period-tab ${currentTimePeriod === 'all' ? 'active' : ''}" onclick="switchTimePeriod('all')">${pNames.all}</button>
+        <button class="period-tab ${currentTimePeriod === 'morning' ? 'active' : ''}" onclick="switchTimePeriod('morning')">${pNames.morning}</button>
+        <button class="period-tab ${currentTimePeriod === 'afternoon' ? 'active' : ''}" onclick="switchTimePeriod('afternoon')">${pNames.afternoon}</button>
+        <button class="period-tab ${currentTimePeriod === 'night' ? 'active' : ''}" onclick="switchTimePeriod('night')">${pNames.night}</button>
+        <span class="selected-time-badge" id="selected-time-count"></span>
+      `;
+      renderTimeSlotButtons();
+
+      // 可能言語
+      const langBox = document.getElementById('lang-filters');
+      langBox.innerHTML = Object.keys(langLabels.ja).map(code =>
+        `<button class="chip lang ${selectedLangs.has(code) ? 'active' : ''}" onclick="toggleSetFilter('lang', '${code}')">
+          <span class="chip-flag">${smallFlagSVGs[code]}</span>${langLabels[uiLang][code]}
+        </button>`
+      ).join('');
+
+      // 授業レベル
+      const lvlBox = document.getElementById('level-filters');
+      lvlBox.innerHTML = Object.keys(levelLabels.ja).map(k =>
+        `<button class="chip level ${selectedLevels.has(k) ? 'active' : ''}" onclick="toggleSetFilter('level', '${k}')">${levelLabels[uiLang][k]}</button>`
+      ).join('');
+
+      // 趣味
+      const hobBox = document.getElementById('hobby-filters');
+      hobBox.innerHTML = Object.keys(hobbyLabels.ja).map(k =>
+        `<button class="chip hobby ${selectedHobbies.has(k) ? 'active' : ''}" onclick="toggleSetFilter('hobby', '${k}')">${hobbyLabels[uiLang][k]}</button>`
+      ).join('');
+
+      // 並び替えセレクト
+      const sortSel = document.getElementById('sort-select');
+      const curSort = sortSel.value || 'rating';
+      sortSel.innerHTML = uiLang === 'ja'
+        ? `<option value="rating">並び替え: 評価順</option><option value="price_asc">並び替え: 料金が安い順</option><option value="reviews_desc">並び替え: レビュー件数順</option>`
+        : `<option value="rating">Sort: Highest Rating</option><option value="price_asc">Sort: Lowest Price</option><option value="reviews_desc">Sort: Most Reviews</option>`;
+      sortSel.value = curSort;
+    }
+
+    function toggleSetFilter(type, val) {
+      const map = { rank: selectedRanks, date: selectedDates, lang: selectedLangs, level: selectedLevels, hobby: selectedHobbies };
+      const set = map[type];
+      set.has(val) ? set.delete(val) : set.add(val);
+      renderAllFilterChips();
       renderTeachers();
     }
 
-    // ヘッダーの認証状態描画（未ログイン時は登録/ログイン、ログイン後はマイページ表示）
+    function toggleUILang() {
+      uiLang = uiLang === 'ja' ? 'en' : 'ja';
+      document.getElementById('txt-tagline').textContent = uiLang === 'ja'
+        ? "〜日本語教育に経験を。人生にやりがいを。〜"
+        : "~ Experience for Japanese Education. Purpose for Life. ~";
+      document.getElementById('btn-ui-lang').textContent = uiLang === 'ja' ? "🌐 English" : "🌐 日本語";
+      document.getElementById('txt-search-title').textContent = uiLang === 'ja' ? "🔍 あなたにぴったりの先生を探す" : "🔍 Find Your Ideal Japanese Teacher";
+      document.getElementById('txt-btn-myfilter').textContent = uiLang === 'ja' ? "⭐ マイフィルターを適用" : "⭐ Apply My Filter";
+      document.getElementById('txt-btn-reset').textContent = uiLang === 'ja' ? "✕ 条件をクリア" : "✕ Clear All";
+      document.getElementById('lbl-rank').textContent = uiLang === 'ja' ? "講師ランク・料金" : "Teacher Rank & Fee";
+      document.getElementById('lbl-date').innerHTML = uiLang === 'ja'
+        ? `希望の日付<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可</span>`
+        : `Preferred Dates<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">*Multi-select</span>`;
+      document.getElementById('lbl-time').innerHTML = uiLang === 'ja'
+        ? `希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可（1h授業）</span>`
+        : `Start Time (1h)<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">*Multi-select</span>`;
+      document.getElementById('lbl-lang').textContent = uiLang === 'ja' ? "可能言語" : "Languages Spoken";
+      document.getElementById('lbl-level').textContent = uiLang === 'ja' ? "授業レベル・内容" : "Lesson Level";
+      document.getElementById('lbl-hobby').textContent = uiLang === 'ja' ? "趣味・関心テーマ" : "Hobbies & Interests";
+      document.getElementById('txt-results-prefix').textContent = uiLang === 'ja' ? "検索結果" : "Search Results";
+      document.getElementById('txt-results-suffix').textContent = uiLang === 'ja' ? "名の先生" : " Teachers Found";
+
+      renderAuthHeader();
+      renderAllFilterChips();
+      renderTeachers();
+    }
+
     function renderAuthHeader() {
       studentState = loadState();
       const area = document.getElementById('auth-nav-area');
@@ -1099,17 +936,18 @@
           ? `🎟 回数券残り: ${studentState.tickets.toFixed(1)}回分`
           : `🎟 Tickets: ${studentState.tickets.toFixed(1)} left`;
         const mypageText = uiLang === 'ja' ? `👤 マイページ (${studentState.user.name})` : `👤 My Page (${studentState.user.name})`;
+        const logoutText = uiLang === 'ja' ? "ログアウト" : "Log Out";
         area.innerHTML = `
           <div class="ticket-badge-header">${ticketText}</div>
           <a href="mypage.html" class="btn-mypage">${mypageText}</a>
-          <button onclick="logoutDemo()" style="background:none; border:none; color:#78716c; font-size:0.75rem; cursor:pointer; text-decoration:underline;">ログアウト</button>
+          <button onclick="logoutDemo()" style="background:none; border:none; color:#78716c; font-size:0.75rem; cursor:pointer; text-decoration:underline;">${logoutText}</button>
         `;
       } else {
         const loginText = uiLang === 'ja' ? "ログイン" : "Log In";
         const regText = uiLang === 'ja' ? "✨ 新規登録（無料）" : "✨ Sign Up (Free)";
         area.innerHTML = `
           <button class="btn-auth-login" onclick="loginDemo()">${loginText}</button>
-          <a href="register.html" class="btn-auth-register">${regText}</a>
+          <a href="student.register.html" class="btn-auth-register">${regText}</a>
         `;
       }
     }
@@ -1118,19 +956,15 @@
       studentState.isLoggedIn = true;
       saveState(studentState);
       renderAuthHeader();
-      alert(`${studentState.user.name} さんとしてログインしました！右上に「マイページ」ボタンが表示されました。`);
+      alert(uiLang === 'ja'
+        ? `${studentState.user.name} さんとしてログインしました！右上に「マイページ」ボタンが表示されました。`
+        : `Logged in as ${studentState.user.name}! "My Page" button is now available at the top right.`);
     }
 
     function logoutDemo() {
       studentState.isLoggedIn = false;
       saveState(studentState);
       renderAuthHeader();
-    }
-
-    function formatHour(val) {
-      const h = Math.floor(val);
-      const m = (val % 1) === 0.5 ? "30" : "00";
-      return `${String(h).padStart(2, '0')}:${m}`;
     }
 
     function renderTimeSlotButtons() {
@@ -1143,7 +977,7 @@
 
         const btn = document.createElement('button');
         btn.className = 'chip time' + (selectedStartTimes.has(t) ? ' active' : '');
-        btn.textContent = `${formatHour(t)}〜`;
+        btn.textContent = uiLang === 'ja' ? `${formatHour(t)}〜` : `${formatHour(t)}-`;
         btn.onclick = () => {
           selectedStartTimes.has(t) ? selectedStartTimes.delete(t) : selectedStartTimes.add(t);
           renderTimeSlotButtons();
@@ -1152,34 +986,17 @@
         container.appendChild(btn);
       }
       const countEl = document.getElementById('selected-time-count');
-      countEl.textContent = selectedStartTimes.size > 0 ? `選択中: ${selectedStartTimes.size}個の時間帯` : '';
+      if (countEl) {
+        countEl.textContent = selectedStartTimes.size > 0
+          ? (uiLang === 'ja' ? `選択中: ${selectedStartTimes.size}個の時間帯` : `Selected: ${selectedStartTimes.size} slots`)
+          : '';
+      }
     }
 
-    function switchTimePeriod(period, el) {
+    function switchTimePeriod(period) {
       currentTimePeriod = period;
-      document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      renderTimeSlotButtons();
+      renderAllFilterChips();
     }
-
-    document.querySelectorAll('.chip.rank, .chip.date, .chip.lang, .chip.level, .chip.hobby').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        const val = btn.dataset.val;
-        if (btn.classList.contains('rank')) {
-          selectedRanks.has(val) ? selectedRanks.delete(val) : selectedRanks.add(val);
-        } else if (btn.classList.contains('date')) {
-          selectedDates.has(val) ? selectedDates.delete(val) : selectedDates.add(val);
-        } else if (btn.classList.contains('lang')) {
-          selectedLangs.has(val) ? selectedLangs.delete(val) : selectedLangs.add(val);
-        } else if (btn.classList.contains('level')) {
-          selectedLevels.has(val) ? selectedLevels.delete(val) : selectedLevels.add(val);
-        } else {
-          selectedHobbies.has(val) ? selectedHobbies.delete(val) : selectedHobbies.add(val);
-        }
-        renderTeachers();
-      });
-    });
 
     function resetFilters() {
       selectedRanks.clear();
@@ -1188,8 +1005,7 @@
       selectedLangs.clear();
       selectedLevels.clear();
       selectedHobbies.clear();
-      document.querySelectorAll('.chip').forEach(btn => btn.classList.remove('active'));
-      renderTimeSlotButtons();
+      renderAllFilterChips();
       renderTeachers();
     }
 
@@ -1197,21 +1013,10 @@
       resetFilters();
       studentState = loadState();
       const mf = studentState.myFilter;
-      if (mf.lang) {
-        selectedLangs.add(mf.lang);
-        const el = document.querySelector(`.chip.lang[data-val="${mf.lang}"]`);
-        if (el) el.classList.add('active');
-      }
-      if (mf.level) {
-        selectedLevels.add(mf.level);
-        const el = document.querySelector(`.chip.level[data-val="${mf.level}"]`);
-        if (el) el.classList.add('active');
-      }
-      if (mf.hobby) {
-        selectedHobbies.add(mf.hobby);
-        const el = document.querySelector(`.chip.hobby[data-val="${mf.hobby}"]`);
-        if (el) el.classList.add('active');
-      }
+      if (mf.lang) selectedLangs.add(mf.lang);
+      if (mf.level) selectedLevels.add(mf.level);
+      if (mf.hobby) selectedHobbies.add(mf.hobby);
+      renderAllFilterChips();
       renderTeachers();
     }
 
@@ -1264,7 +1069,7 @@
       const grid = document.getElementById('teacher-grid');
       grid.innerHTML = '';
 
-      // 2時間区切りの目盛り＆縦線（0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24）
+      // 2時間区切りの目盛り＆縦線
       const hours2Step = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24];
 
       filtered.forEach(t => {
@@ -1294,7 +1099,7 @@
           tabContent = `
             <div class="schedule-wrapper">
               <div class="schedule-header">
-                <span class="schedule-month">FEB</span>
+                <span class="schedule-month">2026/2</span>
                 <div class="time-scale-header">${headerMarks}</div>
               </div>
               <div class="schedule-rows-area">
@@ -1341,9 +1146,9 @@
                 <div class="rating-bars">${barsHtml}</div>
               </div>
               <div class="review-sort-links">
-                <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest')">新しい順</button>
-                <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest')">評価が高い順</button>
-                <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest')">評価が低い順</button>
+                <button class="sort-link ${rSort === 'newest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'newest')">${uiLang === 'ja' ? '新しい順' : 'Newest'}</button>
+                <button class="sort-link ${rSort === 'highest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'highest')">${uiLang === 'ja' ? '評価が高い順' : 'Highest'}</button>
+                <button class="sort-link ${rSort === 'lowest' ? 'active' : ''}" onclick="setReviewSort(${t.id}, 'lowest')">${uiLang === 'ja' ? '評価が低い順' : 'Lowest'}</button>
               </div>
               <div class="review-list">${reviewsHtml}</div>
             </div>
@@ -1353,6 +1158,8 @@
         const bookBtnText = uiLang === 'ja' ? "予約にすすむ" : "Proceed to Booking";
         const schedTabText = uiLang === 'ja' ? "スケジュール" : "Schedule";
         const revTabText = uiLang === 'ja' ? "レビュー" : "Reviews";
+        const bioText = uiLang === 'ja' ? t.bio : (t.bioEn || t.bio);
+        const msgText = uiLang === 'ja' ? t.message : (t.messageEn || t.message);
 
         grid.innerHTML += `
           <div class="teacher-card">
@@ -1367,7 +1174,7 @@
                   </div>
                   <div class="flags-row">${flagsHtml}</div>
                   <div class="tags-hobby-group">
-                    ${t.hobbies.map(h => `<span class="tag-hobby">${h}</span>`).join('')}
+                    ${t.hobbies.map(h => `<span class="tag-hobby">${hobbyLabels[uiLang][h] || h}</span>`).join('')}
                   </div>
                 </div>
               </div>
@@ -1375,7 +1182,7 @@
               <div class="level-section">
                 <span class="level-label">${uiLang === 'ja' ? '授業レベル：' : 'Level:'}</span>
                 <div class="tags-level-group">
-                  ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
+                  ${t.levels.map(l => `<span class="tag-level">${levelLabels[uiLang][l] || l}</span>`).join('')}
                 </div>
               </div>
 
@@ -1388,8 +1195,8 @@
               <div class="teacher-bio">
                 <div class="bio-row">${t.education}</div>
                 <div class="bio-row">${t.career}</div>
-                <div class="bio-row"><strong>${uiLang === 'ja' ? '趣味・関心：' : 'Hobbies: '}</strong>${t.bio}</div>
-                <div class="bio-row"><strong>${uiLang === 'ja' ? '生徒に一言：' : 'Message: '}</strong>${t.message}</div>
+                <div class="bio-row"><strong>${uiLang === 'ja' ? '趣味・関心：' : 'Hobbies: '}</strong>${bioText}</div>
+                <div class="bio-row"><strong>${uiLang === 'ja' ? '生徒に一言：' : 'Message: '}</strong>${msgText}</div>
               </div>
             </div>
 
@@ -1415,7 +1222,7 @@
       dateContainer.innerHTML = '';
 
       if (availableDays.length === 0) {
-        dateContainer.innerHTML = '<span style="font-size:0.85rem; color:#57534e;">現在予約可能な枠がありません。</span>';
+        dateContainer.innerHTML = `<span style="font-size:0.85rem; color:#57534e;">${uiLang === 'ja' ? '現在予約可能な枠がありません。' : 'No available slots.'}</span>`;
         return;
       }
 
@@ -1427,7 +1234,7 @@
       availableDays.forEach(s => {
         const btn = document.createElement('button');
         btn.className = 'booking-date-btn' + (s.day === bookingSelectedDay ? ' selected' : '');
-        btn.textContent = dayLabelMap[s.day] || s.day;
+        btn.textContent = dayLabels[uiLang][s.day] || s.day;
         btn.onclick = () => {
           bookingSelectedDay = s.day;
           bookingSelectedStart = null;
@@ -1463,8 +1270,10 @@
 
       const summaryEl = document.getElementById('modal-chosen-summary');
       if (bookingSelectedDay && bookingSelectedStart !== null) {
-        const dText = dayLabelMap[bookingSelectedDay] || bookingSelectedDay;
-        summaryEl.textContent = `✅ 選択中の予約枠：2026年${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}（1時間）`;
+        const dText = dayLabels[uiLang][bookingSelectedDay] || bookingSelectedDay;
+        summaryEl.textContent = uiLang === 'ja'
+          ? `✅ 選択中の予約枠：2026/${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}（1時間）`
+          : `✅ Selected Slot: 2026/${dText} ${formatHour(bookingSelectedStart)}–${formatHour(bookingSelectedStart + 1)} (1 hour)`;
       }
     }
 
@@ -1477,27 +1286,30 @@
       const isPremium = currentTeacher.rank === "プレミアム先生";
       const requiredTickets = isPremium ? 1.5 : 1.0;
 
-      document.getElementById('modal-teacher-name').textContent = `${currentTeacher.name} の授業予約`;
-      document.getElementById('modal-teacher-price').textContent =
-        `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`;
+      document.getElementById('modal-teacher-name').textContent = uiLang === 'ja'
+        ? `${currentTeacher.name} の授業予約`
+        : `Book a Lesson with ${currentTeacher.name}`;
+      document.getElementById('modal-teacher-price').textContent = uiLang === 'ja'
+        ? `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`
+        : `Fee: ¥${currentTeacher.price.toLocaleString()} (1h) / Tickets Required: ${requiredTickets.toFixed(1)}`;
 
-      // プレミアム先生かノーマル先生かの明確な説明表示
       const rankBox = document.getElementById('modal-rank-explanation');
       if (isPremium) {
-        rankBox.innerHTML = `
-          <div class="premium-explain-box">
-            <strong>👑 この講師は「プレミアム先生」認定講師です</strong><br>
-            累計授業時間100時間以上かつ生徒評価★4.5以上を達成したベテラン講師のため、通常（ノーマル先生 ¥2,000）の1.5倍である <strong>¥3,000（回数券の場合は1.5回分）</strong> となります。
-          </div>
-        `;
+        rankBox.innerHTML = uiLang === 'ja'
+          ? `<div class="premium-explain-box"><strong>👑 この講師は「プレミアム先生」認定講師です</strong><br>累計授業時間100時間以上かつ生徒評価★4.5以上を達成したベテラン講師のため、通常（ノーマル先生 ¥2,000）の1.5倍である <strong>¥3,000（回数券の場合は1.5回分）</strong> となります。</div>`
+          : `<div class="premium-explain-box"><strong>👑 Certified "Premium Teacher"</strong><br>Achieved 100+ lesson hours and a ★4.5+ rating. Rate is 1.5x the normal rate: <strong>¥3,000 (or 1.5 tickets)</strong>.</div>`;
       } else {
-        rankBox.innerHTML = `
-          <div class="normal-explain-box">
-            <strong>📘 この講師は「ノーマル先生」です</strong><br>
-            1時間あたり <strong>¥2,000（回数券の場合は1.0回分）</strong> でご受講いただけます。
-          </div>
-        `;
+        rankBox.innerHTML = uiLang === 'ja'
+          ? `<div class="normal-explain-box"><strong>📘 この講師は「ノーマル先生」です</strong><br>1時間あたり <strong>¥2,000（回数券の場合は1.0回分）</strong> でご受講いただけます。</div>`
+          : `<div class="normal-explain-box"><strong>📘 "Normal Teacher"</strong><br>Standard rate: <strong>¥2,000 (or 1.0 ticket)</strong> per hour.</div>`;
       }
+
+      document.getElementById('modal-step1-title').textContent = uiLang === 'ja' ? "受講する日付を選んでください" : "Select a Date";
+      document.getElementById('modal-step2-title').textContent = uiLang === 'ja' ? "開始時間を選んでください（30分刻み・1時間授業）" : "Select Start Time (30-min intervals, 1h lesson)";
+      document.getElementById('modal-policy-box').innerHTML = uiLang === 'ja'
+        ? `<strong>【キャンセル・返金規定（特定商取引法に基づく表示）】</strong><br>・授業開始24時間前までは無料でキャンセル可能です（回数券も返還されます）。<br>・開始24時間前を過ぎた生徒様都合のキャンセルは100%のキャンセル料が発生します。`
+        : `<strong>[Cancellation & Refund Policy]</strong><br>• Free cancellation up to 24 hours before lesson start (tickets refunded).<br>• Cancellations within 24 hours are charged 100%.`;
+      document.getElementById('modal-agree-label').textContent = uiLang === 'ja' ? "上記のキャンセル規定および利用規約に同意する" : "I agree to the Cancellation Policy and Terms of Service";
 
       document.getElementById('agree-policy').checked = false;
       renderBookingStep1And2();
@@ -1507,58 +1319,52 @@
         const canAfford = studentState.tickets >= requiredTickets;
         payArea.innerHTML = `
           <div style="font-size:0.82rem; color:#0284c7; font-weight:bold;">
-            現在の保有回数券：${studentState.tickets.toFixed(1)}回分
+            ${uiLang === 'ja' ? `現在の保有回数券：${studentState.tickets.toFixed(1)}回分` : `Current Ticket Balance: ${studentState.tickets.toFixed(1)}`}
           </div>
           <div class="payment-options-grid">
             <button class="pay-card-btn pay-credit" onclick="confirmBooking('credit')">
-              💳 クレジット決済で予約<br><span style="font-size:0.78rem; font-weight:normal;">¥${currentTeacher.price.toLocaleString()} を都度払い</span>
+              💳 ${uiLang === 'ja' ? 'クレジット決済で予約' : 'Pay by Credit Card'}<br>
+              <span style="font-size:0.78rem; font-weight:normal;">¥${currentTeacher.price.toLocaleString()}</span>
             </button>
             <button class="pay-card-btn pay-ticket" ${canAfford ? '' : 'disabled'} onclick="confirmBooking('ticket')">
-              🎟 回数券を使って予約<br><span style="font-size:0.78rem; font-weight:normal;">${canAfford ? `${requiredTickets.toFixed(1)}回分を消費（残り ${(studentState.tickets - requiredTickets).toFixed(1)}回分）` : `残高不足（あと ${(requiredTickets - studentState.tickets).toFixed(1)}回分必要）`}</span>
+              🎟 ${uiLang === 'ja' ? '回数券を使って予約' : 'Use Lesson Tickets'}<br>
+              <span style="font-size:0.78rem; font-weight:normal;">${canAfford ? `${requiredTickets.toFixed(1)} ${uiLang === 'ja' ? '回分を消費' : 'tickets used'}` : (uiLang === 'ja' ? '残高不足' : 'Insufficient balance')}</span>
             </button>
           </div>
         `;
       } else {
         payArea.innerHTML = `
-          <button class="btn-book" style="margin-top:0.4rem;" onclick="confirmBooking('credit')">💳 クレジットカード決済へ進む（¥${currentTeacher.price.toLocaleString()}）</button>
-          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.5rem; text-align:center;">
-            ※10回分の料金で11回受講できるお得な回数券は「マイページ」から購入できます。
-          </p>
+          <button class="btn-book" style="margin-top:0.4rem;" onclick="confirmBooking('credit')">💳 ${uiLang === 'ja' ? 'クレジットカード決済へ進む' : 'Proceed to Credit Card Payment'}（¥${currentTeacher.price.toLocaleString()}）</button>
         `;
       }
 
       document.getElementById('booking-modal').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('booking-modal').style.display = 'none';
-    }
-
-    function closeCompleteModal() {
-      document.getElementById('complete-modal').style.display = 'none';
-    }
+    function closeModal() { document.getElementById('booking-modal').style.display = 'none'; }
+    function closeCompleteModal() { document.getElementById('complete-modal').style.display = 'none'; }
 
     function confirmBooking(method) {
-      if (!bookingSelectedDay || bookingSelectedStart === null) {
-        alert('STEP 1 と STEP 2 で予約日時を選択してください。');
-        return;
-      }
+      if (!bookingSelectedDay || bookingSelectedStart === null) return;
       if (!document.getElementById('agree-policy').checked) {
-        alert('キャンセル・返金規定への同意にチェックを入れてください。');
+        alert(uiLang === 'ja' ? 'キャンセル・返金規定への同意にチェックを入れてください。' : 'Please agree to the cancellation policy.');
         return;
       }
       const isPremium = currentTeacher.rank === "プレミアム先生";
       const requiredTickets = isPremium ? 1.5 : 1.0;
-      const dText = dayLabelMap[bookingSelectedDay] || bookingSelectedDay;
-      const chosenSlot = `2026年${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}`;
+      const dText = dayLabels[uiLang][bookingSelectedDay] || bookingSelectedDay;
+      // 日付表記を 2026/2/12 (水) 形式に統一
+      const chosenSlot = `2026/${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}`;
       const zoomMeetingUrl = `https://zoom.us/j/${Math.floor(10000000000 + Math.random() * 89999999999)}`;
 
       let paymentLabel = "";
       if (method === 'ticket') {
         studentState.tickets = Math.round((studentState.tickets - requiredTickets) * 10) / 10;
-        paymentLabel = `回数券 ${requiredTickets.toFixed(1)}回分（残り ${studentState.tickets.toFixed(1)}回分）`;
+        paymentLabel = uiLang === 'ja'
+          ? `回数券 ${requiredTickets.toFixed(1)}回分（残り ${studentState.tickets.toFixed(1)}回分）`
+          : `${requiredTickets.toFixed(1)} Tickets used (${studentState.tickets.toFixed(1)} remaining)`;
       } else {
-        paymentLabel = `クレジットカード決済 ¥${currentTeacher.price.toLocaleString()}`;
+        paymentLabel = `Credit Card ¥${currentTeacher.price.toLocaleString()}`;
       }
 
       studentState.history.unshift({
@@ -1573,13 +1379,13 @@
       renderAuthHeader();
       closeModal();
 
-      // 予約完了ポップアップの表示＆試験用メール送信（shun.sk.kodama@gmail.com）
       const targetEmail = "shun.sk.kodama@gmail.com";
+      document.getElementById('complete-title').textContent = uiLang === 'ja' ? "授業の予約が完了しました！" : "Lesson Booking Confirmed!";
       document.getElementById('complete-details-box').innerHTML = `
-        <div><strong>担当講師：</strong>${currentTeacher.name}（${currentTeacher.rank}）</div>
-        <div><strong>予約日時：</strong>${chosenSlot}</div>
-        <div><strong>お支払い方法：</strong>${paymentLabel}</div>
-        <div><strong>授業用Zoom URL：</strong><a href="${zoomMeetingUrl}" target="_blank" style="color:#0284c7;">${zoomMeetingUrl}</a></div>
+        <div><strong>${uiLang === 'ja' ? '担当講師：' : 'Teacher: '}</strong>${currentTeacher.name}</div>
+        <div><strong>${uiLang === 'ja' ? '予約日時：' : 'Date & Time: '}</strong>${chosenSlot}</div>
+        <div><strong>${uiLang === 'ja' ? 'お支払い：' : 'Payment: '}</strong>${paymentLabel}</div>
+        <div><strong>Zoom URL：</strong><a href="${zoomMeetingUrl}" target="_blank" style="color:#0284c7;">${zoomMeetingUrl}</a></div>
       `;
 
       const mailSubject = encodeURIComponent(`【KOTOHOGI】授業予約完了のお知らせ（${chosenSlot} / ${currentTeacher.name}）`);
@@ -1589,14 +1395,15 @@
         `■ 予約日時：${chosenSlot}\n` +
         `■ 決済内容：${paymentLabel}\n` +
         `■ オンライン授業Zoom URL：${zoomMeetingUrl}\n\n` +
-        `開始5分前になりましたら上記URLよりご入室ください。\nKOTOHOGI 運営事務局`
+        `KOTOHOGI 運営事務局`
       );
 
       document.getElementById('complete-mail-box').innerHTML = `
-        <strong>📧 予約完了メールを送信しました</strong><br>
-        宛先：<code>${targetEmail}</code><br>
-        ※静的HTMLプロトタイプのため、実際のメールソフトで送信テストを行う場合は
-        <a href="mailto:${targetEmail}?subject=${mailSubject}&body=${mailBody}" style="color:#0284c7; font-weight:bold; text-decoration:underline;">こちらのメール起動リンク</a> をクリックしてください（本番環境ではサーバーから自動送信されます）。
+        <strong>📧 ${uiLang === 'ja' ? '予約完了メールを送信しました' : 'Confirmation Email Sent'}</strong><br>
+        To: <code>${targetEmail}</code><br>
+        <a href="mailto:${targetEmail}?subject=${mailSubject}&body=${mailBody}" style="color:#0284c7; font-weight:bold; text-decoration:underline;">
+          ${uiLang === 'ja' ? '▶ メールソフトを開いて実送信テストを行う' : '▶ Open Mail App to Send Test Email'}
+        </a>
       `;
 
       document.getElementById('complete-modal').style.display = 'flex';
@@ -1604,7 +1411,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       renderAuthHeader();
-      renderTimeSlotButtons();
+      renderAllFilterChips();
       renderTeachers();
       const params = new URLSearchParams(window.location.search);
       const bookId = params.get('book');
