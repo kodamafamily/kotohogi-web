@@ -35,203 +35,108 @@
       flex-wrap: wrap;
       gap: 0.8rem;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary-dark);
-      text-decoration: none;
-    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-dark); text-decoration: none; }
     .logo span { display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: normal; }
+    .header-right { display: flex; gap: 0.6rem; align-items: center; }
+    .lang-toggle-btn {
+      background: #f5f5f4; border: 1px solid #a8a29e; color: var(--text-main);
+      padding: 0.42rem 0.8rem; border-radius: 8px; font-size: 0.82rem; font-weight: bold; cursor: pointer;
+    }
     .btn-back {
-      background: #fff;
-      border: 2px solid var(--primary);
-      color: var(--primary-dark);
-      text-decoration: none;
-      padding: 0.45rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.9rem;
+      background: #fff; border: 2px solid var(--primary); color: var(--primary-dark);
+      text-decoration: none; padding: 0.42rem 1rem; border-radius: 8px; font-weight: bold; font-size: 0.88rem;
     }
-    .btn-back:hover { background: #fffbeb; }
 
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .page-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    .page-title { font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
     .card-section {
-      background: #fff;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      background: #fff; border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
     .card-section h2 {
-      font-size: 1.15rem;
-      margin-bottom: 0.9rem;
-      border-left: 4px solid var(--primary);
-      padding-left: 0.7rem;
+      font-size: 1.15rem; margin-bottom: 0.9rem;
+      border-left: 4px solid var(--primary); padding-left: 0.7rem;
     }
 
-    /* 回数券カード */
-    .ticket-box {
-      border: 2px solid #f59e0b;
-      background: #fffbeb;
+    /* オンライン授業入室カード */
+    .upcoming-card {
+      background: #f0fdf4;
+      border: 2px solid #22c55e;
       border-radius: 10px;
-      padding: 1.2rem 1.5rem;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 0.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .btn-action {
-      background: var(--primary);
+    .btn-zoom-enter {
+      background: #16a34a;
       color: #fff;
       border: none;
-      padding: 0.65rem 1.2rem;
+      padding: 0.75rem 1.3rem;
       border-radius: 8px;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
-    }
-    .btn-action:hover { background: var(--primary-dark); }
-    .btn-blue { background: #0284c7; }
-    .btn-blue:hover { background: #0369a1; }
-
-    /* 国旗付きマイフィルター設定エリア */
-    .mf-row {
-      display: flex;
-      align-items: flex-start;
-      padding: 0.65rem 0;
-      border-bottom: 1px solid var(--border-color);
-      gap: 1rem;
-    }
-    .mf-row:last-of-type { border-bottom: none; }
-    .mf-label {
-      width: 125px;
-      font-weight: bold;
-      font-size: 0.88rem;
-      padding-top: 0.3rem;
-      flex-shrink: 0;
-    }
-    .mf-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-    .chip {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      border: 1px solid #d6d3d1;
-      border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 0.84rem;
-      transition: 0.15s;
+      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);
     }
-    .chip-flag {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid #e7e5e4;
-      border-radius: 2px;
-      overflow: hidden;
-      height: 15px;
+    .btn-zoom-enter:hover { background: #15803d; }
+
+    /* 回数券カード */
+    .ticket-box {
+      border: 2px solid #f59e0b; background: #fffbeb; border-radius: 10px;
+      padding: 1.2rem 1.5rem; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
     }
-    .chip.lang.active {
-      background: #fef3c7;
-      border-color: var(--primary-dark);
-      box-shadow: 0 0 0 1px var(--primary-dark);
-      font-weight: bold;
+    .btn-action {
+      background: var(--primary); color: #fff; border: none; padding: 0.65rem 1.2rem;
+      border-radius: 8px; font-weight: bold; font-size: 0.9rem; cursor: pointer;
     }
-    .chip.level.active {
-      background: var(--tag-pink);
-      border-color: var(--tag-pink-active);
-      box-shadow: 0 0 0 1px var(--tag-pink-active);
-      font-weight: bold;
+    .btn-blue { background: #0284c7; }
+
+    /* 国旗付きマイフィルター設定 */
+    .mf-row { display: flex; align-items: flex-start; padding: 0.65rem 0; border-bottom: 1px solid var(--border-color); gap: 1rem; }
+    .mf-row:last-of-type { border-bottom: none; }
+    .mf-label { width: 125px; font-weight: bold; font-size: 0.88rem; padding-top: 0.3rem; flex-shrink: 0; }
+    .mf-options { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.75rem;
+      border: 1px solid #d6d3d1; border-radius: 8px; background: #fff; cursor: pointer; font-size: 0.84rem;
     }
-    .chip.hobby.active {
-      background: var(--tag-blue);
-      border-color: var(--tag-blue-active);
-      box-shadow: 0 0 0 1px var(--tag-blue-active);
-      font-weight: bold;
-    }
+    .chip-flag { display: inline-flex; align-items: center; border: 1px solid #e7e5e4; border-radius: 2px; overflow: hidden; height: 15px; }
+    .chip.lang.active { background: #fef3c7; border-color: var(--primary-dark); box-shadow: 0 0 0 1px var(--primary-dark); font-weight: bold; }
+    .chip.level.active { background: var(--tag-pink); border-color: var(--tag-pink-active); box-shadow: 0 0 0 1px var(--tag-pink-active); font-weight: bold; }
+    .chip.hobby.active { background: var(--tag-blue); border-color: var(--tag-blue-active); box-shadow: 0 0 0 1px var(--tag-blue-active); font-weight: bold; }
 
     /* 受講履歴 */
     .history-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .history-item {
-      border: 1px solid #d6d3d1;
-      border-radius: 8px;
-      padding: 0.9rem 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.15s;
-      background: #fafaf9;
+      border: 1px solid #d6d3d1; border-radius: 8px; padding: 0.9rem 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; background: #fafaf9;
     }
     .history-item:hover { border-color: var(--primary); background: #fffbeb; }
 
     /* 教材アーカイブ */
-    .material-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .material-card {
-      border: 1px solid #d6d3d1;
-      border-radius: 8px;
-      padding: 1rem;
-      background: #fafaf9;
-    }
+    .material-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .material-card { border: 1px solid #d6d3d1; border-radius: 8px; padding: 1rem; background: #fafaf9; }
     .material-tag {
-      display: inline-block;
-      background: #bae6fd;
-      color: #0c4a6e;
-      font-size: 0.72rem;
-      font-weight: bold;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      margin-bottom: 0.4rem;
+      display: inline-block; background: #bae6fd; color: #0c4a6e;
+      font-size: 0.72rem; font-weight: bold; padding: 0.15rem 0.5rem; border-radius: 4px; margin-bottom: 0.4rem;
     }
 
-    /* 先生詳細ポップアップ */
+    /* ポップアップ */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.55);
-      justify-content: center;
-      align-items: center;
-      z-index: 200;
-      padding: 1rem;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55); justify-content: center; align-items: center; z-index: 200; padding: 1rem;
     }
-    .modal {
-      background: #fff;
-      padding: 1.8rem;
-      border-radius: 12px;
-      max-width: 650px;
-      width: 100%;
-      position: relative;
-    }
-    .modal-close-x {
-      position: absolute;
-      top: 1rem; right: 1.2rem;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
+    .modal { background: #fff; padding: 1.8rem; border-radius: 12px; max-width: 650px; width: 100%; position: relative; }
+    .modal-close-x { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -239,66 +144,52 @@
   <header>
     <a href="student.html" class="logo">
       KOTOHOGI
-      <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
+      <span id="mp-tagline">〜日本語教育に経験を。人生にやりがいを。〜</span>
     </a>
-    <a href="student.html" class="btn-back">← 先生を探す画面に戻る</a>
+    <div class="header-right">
+      <button class="lang-toggle-btn" id="mp-lang-btn" onclick="toggleLang()">🌐 English</button>
+      <a href="student.html" class="btn-back" id="mp-back-btn">← 先生を探す画面に戻る</a>
+    </div>
   </header>
 
   <div class="container">
-    <h1 class="page-title">👤 生徒マイページ（Jocelyn さん）</h1>
+    <h1 class="page-title" id="mp-title">👤 生徒マイページ</h1>
 
-    <!-- 1. 回数券ステータス -->
+    <!-- 1. 予約済みの授業・オンラインミーティング入室 -->
     <div class="card-section">
-      <h2>🎟 回数券（チケット）残高・購入</h2>
+      <h2 id="mp-sec-upcoming">🎥 予約済みの授業・オンライン入室（Zoom）</h2>
+      <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:0.8rem;" id="mp-upcoming-desc">
+        授業開始5分前になりましたら「オンライン授業に入室する」ボタンを押してください（Zoomが自動で起動します）。
+      </p>
+      <div id="upcoming-lessons-area"></div>
+    </div>
+
+    <!-- 2. 回数券ステータス -->
+    <div class="card-section">
+      <h2 id="mp-sec-tickets">🎟 回数券（チケット）残高・購入</h2>
       <div id="ticket-status-area"></div>
     </div>
 
-    <!-- 2. マイフィルター設定（国旗付きボタン形式） -->
+    <!-- 3. マイフィルター設定 -->
     <div class="card-section">
-      <h2>⭐ マイフィルター設定（お気に入り検索条件の保存）</h2>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">保存した条件は、先生検索ページの「⭐ マイフィルターを適用」ボタンからいつでも呼び出せます。</p>
-
+      <h2 id="mp-sec-filter">⭐ マイフィルター設定（お気に入り検索条件の保存）</h2>
       <div class="mf-row">
         <div class="mf-label">可能言語</div>
         <div class="mf-options" id="mf-lang-group">
-          <button class="chip lang" data-val="JP">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>
-            日本語
-          </button>
-          <button class="chip lang" data-val="US">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>
-            英語(米)
-          </button>
-          <button class="chip lang" data-val="UK">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>
-            英語(英)
-          </button>
-          <button class="chip lang" data-val="CN">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>
-            中国語
-          </button>
-          <button class="chip lang" data-val="KR">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>
-            韓国語
-          </button>
-          <button class="chip lang" data-val="FR">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>
-            フランス語
-          </button>
-          <button class="chip lang" data-val="ES">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>
-            スペイン語
-          </button>
-          <button class="chip lang" data-val="AE">
-            <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>
-            アラビア語
-          </button>
+          <button class="chip lang" data-val="JP"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>日本語</button>
+          <button class="chip lang" data-val="US"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>英語(米)</button>
+          <button class="chip lang" data-val="UK"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>英語(英)</button>
+          <button class="chip lang" data-val="CN"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>中国語</button>
+          <button class="chip lang" data-val="KR"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>韓国語</button>
+          <button class="chip lang" data-val="FR"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>フランス語</button>
+          <button class="chip lang" data-val="ES"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>スペイン語</button>
+          <button class="chip lang" data-val="AE"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>アラビア語</button>
         </div>
       </div>
 
       <div class="mf-row">
         <div class="mf-label">授業レベル</div>
-        <div class="mf-options" id="mf-level-group">
+        <div class="mf-options">
           <button class="chip level" data-val="基礎会話">基礎会話</button>
           <button class="chip level" data-val="日常会話">日常会話</button>
           <button class="chip level" data-val="ビジネス">ビジネス</button>
@@ -309,16 +200,19 @@
 
       <div class="mf-row">
         <div class="mf-label">趣味・関心</div>
-        <div class="mf-options" id="mf-hobby-group">
-          <button class="chip hobby" data-val="建築">建築</button>
+        <div class="mf-options">
+          <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
+          <button class="chip hobby" data-val="ビジネス・経済">ビジネス・経済</button>
+          <button class="chip hobby" data-val="日本文化・茶道">日本文化・茶道</button>
+          <button class="chip hobby" data-val="旅行・温泉">旅行・温泉</button>
+          <button class="chip hobby" data-val="料理・和食">料理・和食</button>
+          <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
+          <button class="chip hobby" data-val="J-POP・音楽">J-POP・音楽</button>
+          <button class="chip hobby" data-val="歴史・城">歴史・城</button>
           <button class="chip hobby" data-val="スポーツ">スポーツ</button>
           <button class="chip hobby" data-val="相撲">相撲</button>
-          <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
-          <button class="chip hobby" data-val="音楽">音楽</button>
-          <button class="chip hobby" data-val="旅行">旅行</button>
-          <button class="chip hobby" data-val="料理・グルメ">料理・グルメ</button>
-          <button class="chip hobby" data-val="歴史・文化">歴史・文化</button>
-          <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
+          <button class="chip hobby" data-val="建築">建築</button>
+          <button class="chip hobby" data-val="IT・テクノロジー">IT・テクノロジー</button>
         </div>
       </div>
 
@@ -328,14 +222,13 @@
       </div>
     </div>
 
-    <!-- 3. これまでの授業履歴 -->
+    <!-- 4. これまでの授業履歴 -->
     <div class="card-section">
       <h2>📚 これまでの授業履歴（総受講回数：<span id="total-lessons">0</span>回）</h2>
-      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;">※履歴をクリックすると、その先生の詳細プロフィール・再予約画面がポップアップで開きます。</p>
       <div class="history-list" id="history-list"></div>
     </div>
 
-    <!-- 4. 過去に閲覧した教材・ニュース記事 -->
+    <!-- 5. 過去に閲覧した教材 -->
     <div class="card-section">
       <h2>📖 過去に閲覧・授業で使用した教材</h2>
       <div class="material-grid">
@@ -343,13 +236,13 @@
           <span class="material-tag">日常会話・日本文化</span>
           <h3 style="font-size:1rem; margin-bottom:0.3rem;">第4回：大相撲の観戦マナーと歴史</h3>
           <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026年2月10日（担当：石原 美緒子 先生）</p>
-          <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキスト（PDF/Web教材）を開きます。')">教材を復習する</button>
+          <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキストを開きます。')">教材を復習する</button>
         </div>
         <div class="material-card">
           <span class="material-tag">ビジネス・敬語</span>
           <h3 style="font-size:1rem; margin-bottom:0.3rem;">面接で好印象を与える尊敬語・謙譲語</h3>
           <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026年1月25日（担当：児玉 峻 先生）</p>
-          <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキスト（PDF/Web教材）を開きます。')">教材を復習する</button>
+          <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキストを開きます。')">教材を復習する</button>
         </div>
       </div>
     </div>
@@ -364,22 +257,23 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "kotohogi_demo_state_v1";
+    const STORAGE_KEY = "kotohogi_demo_state_v2";
     const teacherMaster = {
       1: { id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"], hobbies: ["建築", "スポーツ", "相撲"], career: "東京大学 建築学科卒業 / 不動産デベロッパー勤務経験あり", message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！" },
-      2: { id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇬🇧 🇦🇪", levels: ["基礎会話", "日常会話", "読み"], hobbies: ["スポーツ", "音楽", "映画・ドラマ", "旅行"], career: "一橋大学 法学部卒業 / 航空会社勤務経験あり", message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！" },
-      5: { id: 5, name: "鈴木 誠 (65)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス"], hobbies: ["アニメ・漫画", "スポーツ", "旅行"], career: "早稲田大学 商学部卒業 / 大手化学メーカー 勤務経験あり", message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！" }
+      2: { id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇬🇧 🇦🇪", levels: ["基礎会話", "日常会話", "読み"], hobbies: ["スポーツ", "J-POP・音楽", "映画・ドラマ", "旅行・温泉"], career: "一橋大学 法学部卒業 / 航空会社勤務経験あり", message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！" },
+      5: { id: 5, name: "鈴木 誠 (65)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス"], hobbies: ["アニメ・漫画", "スポーツ", "旅行・温泉"], career: "早稲田大学 商学部卒業 / 大手化学メーカー 勤務経験あり", message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！" }
     };
 
     function getState() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) return JSON.parse(saved);
       return {
+        isLoggedIn: true,
+        user: { name: "Jocelyn", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardRegistered: "Visa •••• 4242" },
         tickets: 3.5,
         history: [
-          { date: "2026年2月10日", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分" },
-          { date: "2026年2月03日", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分" },
-          { date: "2026年1月25日", teacherId: 1, topic: "日本建築とビジネス文化", payment: "クレジット決済 ¥3,000" }
+          { date: "2026年2月15日（土）10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
+          { date: "2026年2月03日（火）14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
         ],
         myFilter: { lang: "US", level: "日常会話", hobby: "" }
       };
@@ -387,8 +281,19 @@
 
     let state = getState();
     let draftFilter = { ...state.myFilter };
+    let langMode = 'ja';
 
-    // 各カテゴリー単一選択（再クリックで解除）
+    function toggleLang() {
+      langMode = langMode === 'ja' ? 'en' : 'ja';
+      document.getElementById('mp-lang-btn').textContent = langMode === 'ja' ? '🌐 English' : '🌐 日本語';
+      document.getElementById('mp-tagline').textContent = langMode === 'ja' ? '〜日本語教育に経験を。人生にやりがいを。〜' : '~ Experience for Japanese Education. Purpose for Life. ~';
+      document.getElementById('mp-back-btn').textContent = langMode === 'ja' ? '← 先生を探す画面に戻る' : '← Back to Find Teachers';
+      document.getElementById('mp-sec-upcoming').textContent = langMode === 'ja' ? '🎥 予約済みの授業・オンライン入室（Zoom）' : '🎥 Upcoming Lessons & Join Online Room (Zoom)';
+      document.getElementById('mp-sec-tickets').textContent = langMode === 'ja' ? '🎟 回数券（チケット）残高・購入' : '🎟 Lesson Tickets Balance & Purchase';
+      document.getElementById('mp-sec-filter').textContent = langMode === 'ja' ? '⭐ マイフィルター設定（お気に入り検索条件の保存）' : '⭐ My Filter Settings';
+      renderPage();
+    }
+
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
         const val = btn.dataset.val;
@@ -406,10 +311,40 @@
       });
     });
 
+    function enterZoomRoom(teacherName, dateStr, url) {
+      alert(`【Zoom会議室を起動します】\n\n講師：${teacherName}\n日時：${dateStr}\n会議URL：${url}\n\n※本番環境ではZoomアプリが直接立ち上がり、カメラ・マイクをONにするだけですぐに授業が始まります。`);
+    }
+
     function renderPage() {
       state = getState();
       draftFilter = { ...state.myFilter };
+      const uName = state.user ? state.user.name : "Jocelyn";
+      document.getElementById('mp-title').textContent = langMode === 'ja' ? `👤 生徒マイページ（${uName} さん）` : `👤 Student My Page (${uName})`;
 
+      // 予約済みの授業・Zoom入室エリア
+      const upcomingArea = document.getElementById('upcoming-lessons-area');
+      const upcomings = state.history.filter(h => h.status === 'upcoming');
+      if (upcomings.length > 0) {
+        upcomingArea.innerHTML = upcomings.map(u => {
+          const t = teacherMaster[u.teacherId] || teacherMaster[1];
+          return `
+            <div class="upcoming-card">
+              <div>
+                <div style="font-size:0.82rem; color:#15803d; font-weight:bold;">● 受講予定（予約確定済み）</div>
+                <div style="font-size:1.1rem; font-weight:bold; margin:0.2rem 0;">${u.date}</div>
+                <div style="font-size:0.9rem;">担当講師：<strong>${t.icon} ${t.name}</strong>（${u.payment}）</div>
+              </div>
+              <button class="btn-zoom-enter" onclick="enterZoomRoom('${t.name}', '${u.date}', '${u.zoomUrl || 'https://zoom.us/j/123456789'}')">
+                🎥 オンライン授業に入室する
+              </button>
+            </div>
+          `;
+        }).join('');
+      } else {
+        upcomingArea.innerHTML = `<p style="font-size:0.9rem; color:var(--text-muted);">現在予約中の授業はありません。「先生を探す画面」から予約を行ってください。</p>`;
+      }
+
+      // 回数券エリア
       const ticketArea = document.getElementById('ticket-status-area');
       if (state.tickets > 0) {
         ticketArea.innerHTML = `
@@ -419,38 +354,25 @@
               <div style="font-size:1.6rem; font-weight:bold; color:var(--primary-dark);">残り ${state.tickets.toFixed(1)} 回分</div>
               <div style="font-size:0.8rem; color:var(--text-muted);">※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。</div>
             </div>
-            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <button class="btn-action" onclick="buyTickets()">＋ 11回分を追加購入（¥20,000）</button>
-              <button class="btn-action" style="background:#78716c; font-size:0.78rem;" onclick="resetTicketsToZero()">[テスト用] 残高0枚表示を確認</button>
-            </div>
+            <button class="btn-action" onclick="buyTickets()">＋ 11回分を追加購入（¥20,000）</button>
           </div>
         `;
       } else {
         ticketArea.innerHTML = `
           <div class="ticket-box">
             <div>
-              <div style="font-weight:bold; color:#92400e; font-size:1.05rem;">現在、回数券をお持ちではありません</div>
-              <div style="font-size:0.88rem; margin-top:0.2rem;">10回分の料金（¥20,000）で<strong>11回分（¥22,000相当）</strong>受講できるお得な回数券がおすすめです！</div>
+              <div style="font-weight:bold; color:#92400e;">現在、回数券をお持ちではありません</div>
+              <div style="font-size:0.88rem;">10回分の料金（¥20,000）で<strong>11回分</strong>受講できるお得な回数券がおすすめです！</div>
             </div>
             <button class="btn-action" onclick="buyTickets()">🎟 11回分回数券を購入する（¥20,000）</button>
           </div>
         `;
       }
 
-      // チップの選択状態を反映
       document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
-      if (draftFilter.lang) {
-        const el = document.querySelector(`.chip.lang[data-val="${draftFilter.lang}"]`);
-        if (el) el.classList.add('active');
-      }
-      if (draftFilter.level) {
-        const el = document.querySelector(`.chip.level[data-val="${draftFilter.level}"]`);
-        if (el) el.classList.add('active');
-      }
-      if (draftFilter.hobby) {
-        const el = document.querySelector(`.chip.hobby[data-val="${draftFilter.hobby}"]`);
-        if (el) el.classList.add('active');
-      }
+      if (draftFilter.lang) { const el = document.querySelector(`.chip.lang[data-val="${draftFilter.lang}"]`); if (el) el.classList.add('active'); }
+      if (draftFilter.level) { const el = document.querySelector(`.chip.level[data-val="${draftFilter.level}"]`); if (el) el.classList.add('active'); }
+      if (draftFilter.hobby) { const el = document.querySelector(`.chip.hobby[data-val="${draftFilter.hobby}"]`); if (el) el.classList.add('active'); }
 
       const activeList = [state.myFilter.lang, state.myFilter.level, state.myFilter.hobby].filter(Boolean);
       document.getElementById('saved-filter-text').textContent =
@@ -476,20 +398,14 @@
       state.tickets = Math.round((state.tickets + 11.0) * 10) / 10;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderPage();
-      alert("11回分回数券（¥20,000）を購入しました！有効期限は6ヶ月間です。");
-    }
-
-    function resetTicketsToZero() {
-      state.tickets = 0;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      renderPage();
+      alert("11回分回数券（¥20,000）を購入しました！");
     }
 
     function saveMyFilter() {
       state.myFilter = { ...draftFilter };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderPage();
-      alert("マイフィルターを保存しました！先生検索ページで「⭐ マイフィルターを適用」を押すと反映されます。");
+      alert("マイフィルターを保存しました！");
     }
 
     function openTeacherPopup(id) {
@@ -514,9 +430,7 @@
       document.getElementById('teacher-popup').style.display = 'flex';
     }
 
-    function closePopup() {
-      document.getElementById('teacher-popup').style.display = 'none';
-    }
+    function closePopup() { document.getElementById('teacher-popup').style.display = 'none'; }
 
     renderPage();
   </script>
