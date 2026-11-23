@@ -32,7 +32,7 @@
     header {
       background: #fff;
       border-bottom: 2px solid var(--primary);
-      padding: 0.9rem 2rem;
+      padding: 0.85rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -58,16 +58,48 @@
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.65rem;
+      flex-wrap: wrap;
     }
+    .lang-toggle-btn {
+      background: #f5f5f4;
+      border: 1px solid #a8a29e;
+      color: var(--text-main);
+      padding: 0.42rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .lang-toggle-btn:hover { background: #e7e5e4; }
+
     .ticket-badge-header {
       background: #fffbeb;
       border: 1px solid #f59e0b;
       color: #92400e;
       padding: 0.4rem 0.85rem;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: bold;
+    }
+    .btn-auth-login {
+      background: #fff;
+      border: 1.5px solid var(--primary);
+      color: var(--primary-dark);
+      padding: 0.45rem 0.95rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .btn-auth-register {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.48rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.88rem;
     }
     .btn-mypage {
       background: var(--primary);
@@ -80,7 +112,6 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      transition: 0.2s;
       box-shadow: 0 2px 4px rgba(245, 158, 11, 0.25);
     }
     .btn-mypage:hover { background: var(--primary-dark); }
@@ -89,12 +120,9 @@
     .search-hero-area {
       background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
       border-bottom: 1px solid #fde68a;
-      padding: 1.6rem 1rem 2rem;
+      padding: 1.5rem 1rem 2rem;
     }
-    .search-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    .search-inner { max-width: 1100px; margin: 0 auto; }
     .search-title-bar {
       display: flex;
       justify-content: space-between;
@@ -114,9 +142,7 @@
       font-size: 0.84rem;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.15s;
     }
-    .btn-myfilter:hover { background: #0369a1; }
     .btn-reset {
       background: #fff;
       border: 1px solid #d6d3d1;
@@ -127,7 +153,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-    .btn-reset:hover { background: #f5f5f4; color: var(--text-main); }
 
     .search-box {
       background: #fff;
@@ -139,16 +164,16 @@
     .filter-row {
       display: flex;
       align-items: flex-start;
-      padding: 0.75rem 0;
+      padding: 0.7rem 0;
       border-bottom: 1px solid var(--border-color);
       gap: 1rem;
     }
     .filter-row:last-child { border-bottom: none; padding-bottom: 0.2rem; }
     .filter-row:first-child { padding-top: 0.2rem; }
     .filter-label {
-      width: 145px;
+      width: 155px;
       font-weight: bold;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       flex-shrink: 0;
       padding-top: 0.35rem;
       color: var(--text-main);
@@ -156,23 +181,22 @@
     .filter-options {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.48rem;
+      gap: 0.45rem;
       align-items: center;
       flex: 1;
     }
 
-    /* 時間帯グループタブ */
     .time-period-tabs {
       display: flex;
       gap: 0.4rem;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.5rem;
       width: 100%;
       flex-wrap: wrap;
       align-items: center;
     }
     .period-tab {
-      padding: 0.25rem 0.7rem;
-      font-size: 0.78rem;
+      padding: 0.24rem 0.68rem;
+      font-size: 0.77rem;
       border-radius: 6px;
       border: 1px solid #d6d3d1;
       background: #f5f5f4;
@@ -180,35 +204,21 @@
       font-weight: bold;
       color: var(--text-muted);
     }
-    .period-tab.active {
-      background: #16a34a;
-      color: #fff;
-      border-color: #15803d;
-    }
-    .selected-time-badge {
-      font-size: 0.78rem;
-      color: #15803d;
-      font-weight: bold;
-      margin-left: auto;
-    }
-    .time-slots-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.42rem;
-      width: 100%;
-    }
+    .period-tab.active { background: #16a34a; color: #fff; border-color: #15803d; }
+    .selected-time-badge { font-size: 0.78rem; color: #15803d; font-weight: bold; margin-left: auto; }
+    .time-slots-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; width: 100%; }
 
     /* フィルターチップ */
     .chip {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.32rem 0.78rem;
+      padding: 0.3rem 0.75rem;
       border: 1px solid #d6d3d1;
       border-radius: 8px;
       background: #fff;
       cursor: pointer;
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       transition: 0.15s;
       color: var(--text-main);
     }
@@ -221,6 +231,13 @@
       overflow: hidden;
       height: 15px;
     }
+    .chip.rank.active {
+      background: #fef3c7;
+      border-color: #d97706;
+      box-shadow: 0 0 0 1px #d97706;
+      font-weight: bold;
+      color: #92400e;
+    }
     .chip.date.active, .chip.time.active {
       background: #dcfce7;
       border-color: #16a34a;
@@ -228,11 +245,7 @@
       font-weight: bold;
       color: #14532d;
     }
-    .chip.time {
-      padding: 0.28rem 0.65rem;
-      font-size: 0.82rem;
-      font-variant-numeric: tabular-nums;
-    }
+    .chip.time { padding: 0.26rem 0.62rem; font-size: 0.81rem; font-variant-numeric: tabular-nums; }
     .chip.lang.active {
       background: #fef3c7;
       border-color: var(--primary-dark);
@@ -253,12 +266,7 @@
     }
 
     /* メインコンテナ */
-    .container {
-      max-width: 1100px;
-      margin: 1.8rem auto;
-      padding: 0 1rem;
-    }
-
+    .container { max-width: 1100px; margin: 1.8rem auto; padding: 0 1rem; }
     .results-header {
       display: flex;
       justify-content: space-between;
@@ -276,7 +284,7 @@
       .filter-row { flex-direction: column; gap: 0.4rem; }
     }
 
-    /* 講師カード（上揃えレイアウト） */
+    /* 講師カード */
     .teacher-card {
       background: #fff;
       border: 1px solid var(--border-color);
@@ -287,204 +295,99 @@
       flex-direction: column;
       justify-content: flex-start;
     }
-    .card-profile-upper {
-      min-height: 295px;
-      display: flex;
-      flex-direction: column;
-    }
-    .teacher-top {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      margin-bottom: 0.8rem;
-    }
+    .card-profile-upper { min-height: 295px; display: flex; flex-direction: column; }
+    .teacher-top { display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 0.8rem; }
     .avatar-circle {
-      width: 90px;
-      height: 90px;
-      background: #f5f5f4;
-      border: 2px solid #d6d3d1;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      flex-shrink: 0;
+      width: 90px; height: 90px;
+      background: #f5f5f4; border: 2px solid #d6d3d1; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; flex-shrink: 0;
     }
     .teacher-header-info { flex: 1; }
-    .teacher-name-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
+    .teacher-name-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
     .teacher-name-row h3 { font-size: 1.25rem; font-weight: bold; }
     .rating { color: #eab308; font-weight: bold; font-size: 1.1rem; }
     .rank-badge {
       font-size: 0.72rem;
-      padding: 0.15rem 0.5rem;
+      padding: 0.15rem 0.55rem;
       border-radius: 4px;
+      background: #f5f5f4;
+      color: #57534e;
+      border: 1px solid #d6d3d1;
+    }
+    .rank-badge.premium {
       background: #fef3c7;
       color: #92400e;
-      border: 1px solid #f59e0b;
-    }
-
-    .flags-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 0.45rem 0 0.55rem;
-    }
-    .flag-item {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid #e7e5e4;
-      border-radius: 3px;
-      overflow: hidden;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-      height: 22px;
-    }
-
-    .tags-hobby-group, .tags-level-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-    .tag-hobby {
-      background: var(--tag-blue);
-      color: #0c4a6e;
-      font-size: 0.76rem;
+      border-color: #f59e0b;
       font-weight: bold;
-      padding: 0.18rem 0.6rem;
-      border-radius: 6px;
+    }
+
+    .flags-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.45rem 0 0.55rem; }
+    .flag-item {
+      display: inline-flex; align-items: center;
+      border: 1px solid #e7e5e4; border-radius: 3px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08); height: 22px;
+    }
+
+    .tags-hobby-group, .tags-level-group { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .tag-hobby {
+      background: var(--tag-blue); color: #0c4a6e;
+      font-size: 0.75rem; font-weight: bold;
+      padding: 0.18rem 0.58rem; border-radius: 6px;
     }
     .level-section {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin: 0.6rem 0;
-      padding-top: 0.6rem;
-      border-top: 1px dashed #e7e5e4;
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      margin: 0.6rem 0; padding-top: 0.6rem; border-top: 1px dashed #e7e5e4;
     }
-    .level-label {
-      font-size: 0.82rem;
-      font-weight: bold;
-      color: var(--text-muted);
-      white-space: nowrap;
-      padding-top: 0.18rem;
-    }
+    .level-label { font-size: 0.82rem; font-weight: bold; color: var(--text-muted); white-space: nowrap; padding-top: 0.18rem; }
     .tag-level {
-      background: var(--tag-pink);
-      color: #831843;
-      font-size: 0.76rem;
-      font-weight: bold;
-      padding: 0.18rem 0.6rem;
-      border-radius: 6px;
+      background: var(--tag-pink); color: #831843;
+      font-size: 0.75rem; font-weight: bold;
+      padding: 0.18rem 0.58rem; border-radius: 6px;
     }
-    .price-line {
-      font-size: 0.88rem;
-      font-weight: bold;
-      color: var(--primary-dark);
-      margin-bottom: 0.5rem;
-    }
+    .price-line { font-size: 0.88rem; font-weight: bold; color: var(--primary-dark); margin-bottom: 0.5rem; }
     .teacher-bio {
-      font-size: 0.83rem;
-      color: var(--text-main);
-      margin-bottom: 1rem;
-      background: #fafaf9;
-      padding: 0.75rem;
-      border-radius: 8px;
-      border: 1px solid #f5f5f4;
-      flex: 1;
+      font-size: 0.83rem; color: var(--text-main); margin-bottom: 1rem;
+      background: #fafaf9; padding: 0.75rem; border-radius: 8px; border: 1px solid #f5f5f4; flex: 1;
     }
     .bio-row { margin-bottom: 0.25rem; }
 
-    /* タブ切り替えエリア */
+    /* タブ切り替え */
     .card-tab-section { display: flex; flex-direction: column; }
-    .tabs {
-      display: flex;
-      border: 1px solid var(--text-main);
-      border-radius: 6px 6px 0 0;
-      overflow: hidden;
-    }
+    .tabs { display: flex; border: 1px solid var(--text-main); border-radius: 6px 6px 0 0; overflow: hidden; }
     .tab-btn {
-      flex: 1;
-      padding: 0.45rem;
-      background: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.88rem;
+      flex: 1; padding: 0.45rem; background: #fff; border: none;
+      cursor: pointer; font-weight: bold; font-size: 0.88rem;
     }
-    .tab-btn.active {
-      background: #fef9c3;
-      color: var(--text-main);
-      border-bottom: 2px solid var(--primary);
-    }
+    .tab-btn.active { background: #fef9c3; color: var(--text-main); border-bottom: 2px solid var(--primary); }
     .tab-panel {
-      border: 1px solid var(--text-main);
-      border-top: none;
-      border-radius: 0 0 6px 6px;
-      padding: 0.85rem;
-      background: #fff;
+      border: 1px solid var(--text-main); border-top: none;
+      border-radius: 0 0 6px 6px; padding: 0.85rem; background: #fff;
     }
 
-    /* スケジュール表 */
+    /* スケジュール表（2時間区切り・2時間ごとの縦線） */
     .schedule-wrapper { position: relative; }
-    .schedule-header {
-      display: flex;
-      align-items: center;
-      font-size: 0.72rem;
-      font-weight: bold;
-      margin-bottom: 0.35rem;
-    }
+    .schedule-header { display: flex; align-items: center; font-size: 0.68rem; font-weight: bold; margin-bottom: 0.35rem; }
     .schedule-month { width: 64px; color: var(--text-main); flex-shrink: 0; }
     .time-scale-header { flex: 1; position: relative; height: 16px; }
     .time-scale-header span { position: absolute; transform: translateX(-50%); color: var(--text-main); }
     .schedule-rows-area { position: relative; }
     .grid-lines-overlay {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 64px; right: 0;
-      pointer-events: none;
-      z-index: 1;
+      position: absolute; top: 0; bottom: 0; left: 64px; right: 0;
+      pointer-events: none; z-index: 1;
     }
     .grid-v-line {
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 1px;
-      background-color: #78716c;
-      opacity: 0.55;
+      position: absolute; top: 0; bottom: 0; width: 1px;
+      background-color: #78716c; opacity: 0.5;
     }
-    .schedule-bar-row {
-      display: flex;
-      align-items: center;
-      font-size: 0.75rem;
-      height: 22px;
-      position: relative;
-    }
+    .schedule-bar-row { display: flex; align-items: center; font-size: 0.75rem; height: 22px; position: relative; }
     .day-label { width: 64px; font-weight: bold; flex-shrink: 0; }
     .time-track { flex: 1; height: 13px; background: #f5f5f4; position: relative; }
-    .time-fill {
-      position: absolute;
-      top: 0; bottom: 0;
-      background: #eab308;
-      border-radius: 2px;
-      z-index: 2;
-    }
+    .time-fill { position: absolute; top: 0; bottom: 0; background: #eab308; border-radius: 2px; z-index: 2; }
 
     /* レビュータブ */
-    .review-panel-bg {
-      background: #fefce8;
-      margin: -0.85rem;
-      padding: 0.85rem;
-      border-radius: 0 0 5px 5px;
-    }
-    .rating-summary-box {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
+    .review-panel-bg { background: #fefce8; margin: -0.85rem; padding: 0.85rem; border-radius: 0 0 5px 5px; }
+    .rating-summary-box { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
     .big-rating { font-size: 1.45rem; font-weight: bold; color: #eab308; white-space: nowrap; padding: 0 0.4rem; }
     .rating-bars { flex: 1; display: flex; flex-direction: column; gap: 0.22rem; }
     .rating-bar-row { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: bold; }
@@ -497,195 +400,128 @@
     .sort-link.active { font-weight: bold; color: #0369a1; }
     .review-list { max-height: 165px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.45rem; }
     .review-card-item {
-      background: #e7e5e4;
-      border: 1px solid #57534e;
-      padding: 0.5rem 0.65rem;
-      font-size: 0.78rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
+      background: #e7e5e4; border: 1px solid #57534e; padding: 0.5rem 0.65rem;
+      font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
     }
     .review-card-left { flex: 1; }
     .review-meta { font-weight: bold; font-size: 0.73rem; margin-bottom: 0.15rem; }
     .review-stars { color: #eab308; font-size: 0.95rem; letter-spacing: 1px; white-space: nowrap; }
 
-    .card-footer-action {
-      margin-top: auto;
-      padding-top: 0.9rem;
-    }
+    .card-footer-action { margin-top: auto; padding-top: 0.9rem; }
     .btn-book {
-      width: 100%;
-      padding: 0.8rem;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
+      width: 100%; padding: 0.8rem; background: var(--primary); color: #fff;
+      border: none; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s;
     }
     .btn-book:hover { background: var(--primary-dark); }
 
-    /* 予約モーダル（2ステップ：日付選択 ⇒ 30分刻み時間選択） */
+    /* モーダル共通 */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.55);
-      justify-content: center;
-      align-items: center;
-      z-index: 200;
-      padding: 1rem;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55); justify-content: center; align-items: center;
+      z-index: 200; padding: 1rem;
     }
     .modal {
-      background: #fff;
-      padding: 1.8rem;
-      border-radius: 12px;
-      max-width: 620px;
-      width: 100%;
-      max-height: 92vh;
-      overflow-y: auto;
-      position: relative;
+      background: #fff; padding: 1.8rem; border-radius: 12px;
+      max-width: 620px; width: 100%; max-height: 92vh; overflow-y: auto; position: relative;
     }
     .modal-close-x {
-      position: absolute;
-      top: 1rem; right: 1.2rem;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: var(--text-muted);
+      position: absolute; top: 1rem; right: 1.2rem; background: none; border: none;
+      font-size: 1.4rem; cursor: pointer; color: var(--text-muted);
     }
-    .step-box {
-      background: #fafaf9;
-      border: 1px solid #e7e5e4;
-      border-radius: 10px;
-      padding: 0.95rem 1.1rem;
-      margin: 0.85rem 0;
+
+    /* プレミアム先生説明バナー */
+    .premium-explain-box {
+      background: #fffbeb;
+      border: 1.5px solid #f59e0b;
+      border-radius: 8px;
+      padding: 0.7rem 0.95rem;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: #78350f;
     }
-    .step-title {
-      font-size: 0.88rem;
-      font-weight: bold;
-      color: var(--text-main);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .step-num {
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.75rem;
-      padding: 0.1rem 0.5rem;
-      border-radius: 12px;
-    }
-    .booking-date-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-    .booking-date-btn {
-      padding: 0.45rem 0.85rem;
+    .normal-explain-box {
+      background: #f5f5f4;
       border: 1px solid #d6d3d1;
       border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: bold;
-      transition: 0.15s;
+      padding: 0.6rem 0.95rem;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: #44403c;
     }
-    .booking-date-btn:hover { border-color: var(--primary); background: #fffbeb; }
+
+    .step-box {
+      background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 10px;
+      padding: 0.9rem 1.1rem; margin: 0.8rem 0;
+    }
+    .step-title { font-size: 0.88rem; font-weight: bold; margin-bottom: 0.55rem; display: flex; align-items: center; gap: 0.45rem; }
+    .step-num { background: var(--primary); color: #fff; font-size: 0.75rem; padding: 0.1rem 0.5rem; border-radius: 12px; }
+    .booking-date-grid { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .booking-date-btn {
+      padding: 0.42rem 0.82rem; border: 1px solid #d6d3d1; border-radius: 8px;
+      background: #fff; cursor: pointer; font-size: 0.84rem; font-weight: bold;
+    }
     .booking-date-btn.selected {
-      background: #fef3c7;
-      border-color: var(--primary-dark);
-      box-shadow: 0 0 0 1px var(--primary-dark);
-      color: #92400e;
+      background: #fef3c7; border-color: var(--primary-dark);
+      box-shadow: 0 0 0 1px var(--primary-dark); color: #92400e;
     }
     .booking-time-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
-      gap: 0.45rem;
-      max-height: 165px;
-      overflow-y: auto;
-      padding-right: 0.2rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+      gap: 0.42rem; max-height: 155px; overflow-y: auto;
     }
     .booking-time-btn {
-      padding: 0.45rem 0.5rem;
-      border: 1px solid #d6d3d1;
-      border-radius: 7px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 0.82rem;
-      font-weight: bold;
-      text-align: center;
-      font-variant-numeric: tabular-nums;
-      transition: 0.15s;
+      padding: 0.42rem 0.5rem; border: 1px solid #d6d3d1; border-radius: 7px;
+      background: #fff; cursor: pointer; font-size: 0.81rem; font-weight: bold; text-align: center;
     }
-    .booking-time-btn:hover { border-color: #16a34a; background: #f0fdf4; }
     .booking-time-btn.selected {
-      background: #dcfce7;
-      border-color: #16a34a;
-      box-shadow: 0 0 0 1px #16a34a;
-      color: #14532d;
+      background: #dcfce7; border-color: #16a34a; box-shadow: 0 0 0 1px #16a34a; color: #14532d;
     }
     .chosen-summary {
-      background: #eff6ff;
-      border: 1px solid #93c5fd;
-      color: #1e3a8a;
-      padding: 0.55rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: bold;
-      margin-top: 0.6rem;
+      background: #eff6ff; border: 1px solid #93c5fd; color: #1e3a8a;
+      padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.86rem; font-weight: bold; margin-top: 0.6rem;
     }
 
-    .payment-options-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 0.8rem;
-    }
+    .payment-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.8rem; }
     @media (max-width: 500px) { .payment-options-grid { grid-template-columns: 1fr; } }
     .pay-card-btn {
-      padding: 0.85rem;
-      border-radius: 8px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.92rem;
-      line-height: 1.4;
-      transition: 0.2s;
+      padding: 0.85rem; border-radius: 8px; border: none; font-weight: bold;
+      cursor: pointer; font-size: 0.9rem; line-height: 1.4; transition: 0.2s;
     }
     .pay-credit { background: var(--primary); color: #fff; }
-    .pay-credit:hover { background: var(--primary-dark); }
     .pay-ticket { background: #0284c7; color: #fff; }
-    .pay-ticket:hover { background: #0369a1; }
     .pay-ticket:disabled { background: #d6d3d1; color: #78716c; cursor: not-allowed; }
-    .policy-box {
-      background: #fef3c7;
-      padding: 0.75rem;
-      border-radius: 6px;
-      font-size: 0.76rem;
-      margin: 0.8rem 0;
+    .policy-box { background: #fef3c7; padding: 0.75rem; border-radius: 6px; font-size: 0.76rem; margin: 0.8rem 0; }
+
+    /* 予約完了ポップアップ */
+    .complete-card {
+      text-align: center;
+      padding: 1rem 0.5rem;
+    }
+    .complete-icon {
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .complete-details {
+      background: #f0fdf4;
+      border: 1.5px solid #22c55e;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: left;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .mail-notice-box {
+      background: #eff6ff;
+      border: 1px solid #93c5fd;
+      border-radius: 8px;
+      padding: 0.8rem;
+      font-size: 0.82rem;
+      color: #1e40af;
+      margin-bottom: 1.2rem;
+      text-align: left;
     }
 
-    footer {
-      background: #292524;
-      color: #d6d3d1;
-      padding: 2rem;
-      margin-top: 4rem;
-      font-size: 0.85rem;
-    }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+    footer { background: #292524; color: #d6d3d1; padding: 2rem; margin-top: 4rem; font-size: 0.85rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-links a { color: #fcd34d; margin-right: 1.5rem; text-decoration: none; }
   </style>
 </head>
@@ -694,11 +530,11 @@
   <header>
     <a href="student.html" class="logo">
       KOTOHOGI
-      <span>〜日本語教育に経験を。人生にやりがいを。〜</span>
+      <span id="txt-tagline">〜日本語教育に経験を。人生にやりがいを。〜</span>
     </a>
     <div class="header-nav">
-      <div class="ticket-badge-header" id="header-ticket-display">🎟 回数券残り: 3.5回分</div>
-      <a href="mypage.html" class="btn-mypage">👤 マイページ</a>
+      <button class="lang-toggle-btn" id="btn-ui-lang" onclick="toggleUILang()">🌐 English</button>
+      <div id="auth-nav-area" style="display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap;"></div>
     </div>
   </header>
 
@@ -706,17 +542,26 @@
   <section class="search-hero-area">
     <div class="search-inner">
       <div class="search-title-bar">
-        <h1>🔍 あなたにぴったりの先生を探す</h1>
+        <h1 id="txt-search-title">🔍 あなたにぴったりの先生を探す</h1>
         <div class="search-actions">
-          <button class="btn-myfilter" onclick="applyMyFilter()">⭐ マイフィルターを適用</button>
-          <button class="btn-reset" onclick="resetFilters()">✕ 条件をクリア</button>
+          <button class="btn-myfilter" id="txt-btn-myfilter" onclick="applyMyFilter()">⭐ マイフィルターを適用</button>
+          <button class="btn-reset" id="txt-btn-reset" onclick="resetFilters()">✕ 条件をクリア</button>
         </div>
       </div>
 
       <div class="search-box">
-        <!-- 行1：希望の日付（複数選択可） -->
+        <!-- 講師ランクフィルター（新規追加） -->
         <div class="filter-row">
-          <div class="filter-label">希望の日付<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可</span></div>
+          <div class="filter-label" id="lbl-rank">講師ランク・料金</div>
+          <div class="filter-options" id="rank-filters">
+            <button class="chip rank" data-val="ノーマル先生">ノーマル先生（¥2,000 / チケット1.0回分）</button>
+            <button class="chip rank" data-val="プレミアム先生">👑 プレミアム先生（¥3,000 / チケット1.5回分）</button>
+          </div>
+        </div>
+
+        <!-- 希望の日付 -->
+        <div class="filter-row">
+          <div class="filter-label" id="lbl-date">希望の日付<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可</span></div>
           <div class="filter-options" id="date-filters">
             <button class="chip date" data-val="12 WED">2/12 (水)</button>
             <button class="chip date" data-val="13 THU">2/13 (木)</button>
@@ -728,9 +573,9 @@
           </div>
         </div>
 
-        <!-- 行2：希望の開始時間（30分刻み・複数選択可） -->
+        <!-- 希望の開始時間 -->
         <div class="filter-row">
-          <div class="filter-label">希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可（1h授業）</span></div>
+          <div class="filter-label" id="lbl-time">希望の開始時間<br><span style="font-size:0.74rem; font-weight:normal; color:var(--text-muted);">※複数選択可（1h授業）</span></div>
           <div class="filter-options" style="flex-direction: column; align-items: flex-start;">
             <div class="time-period-tabs">
               <button class="period-tab active" onclick="switchTimePeriod('all', this)">すべて (9:00〜23:00)</button>
@@ -743,48 +588,24 @@
           </div>
         </div>
 
-        <!-- 行3：可能言語フィルター -->
+        <!-- 可能言語フィルター -->
         <div class="filter-row">
-          <div class="filter-label">可能言語</div>
+          <div class="filter-label" id="lbl-lang">可能言語</div>
           <div class="filter-options" id="lang-filters">
-            <button class="chip lang" data-val="JP">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>
-              日本語
-            </button>
-            <button class="chip lang" data-val="US">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>
-              英語(米)
-            </button>
-            <button class="chip lang" data-val="UK">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>
-              英語(英)
-            </button>
-            <button class="chip lang" data-val="CN">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>
-              中国語
-            </button>
-            <button class="chip lang" data-val="KR">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>
-              韓国語
-            </button>
-            <button class="chip lang" data-val="FR">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>
-              フランス語
-            </button>
-            <button class="chip lang" data-val="ES">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>
-              スペイン語
-            </button>
-            <button class="chip lang" data-val="AE">
-              <span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>
-              アラビア語
-            </button>
+            <button class="chip lang" data-val="JP"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>日本語</button>
+            <button class="chip lang" data-val="US"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>英語(米)</button>
+            <button class="chip lang" data-val="UK"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#012169"/><path d="M0 0l32 22M32 0L0 22" stroke="#fff" stroke-width="4"/><path d="M0 0l32 22M32 0L0 22" stroke="#c8102e" stroke-width="2"/><path d="M16 0v22M0 11h32" stroke="#fff" stroke-width="6"/><path d="M16 0v22M0 11h32" stroke="#c8102e" stroke-width="3.5"/></svg></span>英語(英)</button>
+            <button class="chip lang" data-val="CN"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#de2910"/><polygon points="6,3 7.2,6.5 3.8,4.3 8.2,4.3 4.8,6.5" fill="#ffde00"/></svg></span>中国語</button>
+            <button class="chip lang" data-val="KR"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="5" fill="#cd2e3a"/><path d="M11 11a5 5 0 0 0 10 0" fill="#0047a0"/></svg></span>韓国語</button>
+            <button class="chip lang" data-val="FR"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="10.6" height="22" fill="#002395"/><rect x="10.6" width="10.8" height="22" fill="#fff"/><rect x="21.4" width="10.6" height="22" fill="#ed2939"/></svg></span>フランス語</button>
+            <button class="chip lang" data-val="ES"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect width="32" height="5.5" fill="#aa151b"/><rect y="5.5" width="32" height="11" fill="#f1bf00"/><rect y="16.5" width="32" height="5.5" fill="#aa151b"/></svg></span>スペイン語</button>
+            <button class="chip lang" data-val="AE"><span class="chip-flag"><svg width="22" height="15" viewBox="0 0 32 22"><rect x="8" y="0" width="24" height="7.33" fill="#00732f"/><rect x="8" y="7.33" width="24" height="7.33" fill="#fff"/><rect x="8" y="14.66" width="24" height="7.34" fill="#000"/><rect x="0" y="0" width="8" height="22" fill="#ff0000"/></svg></span>アラビア語</button>
           </div>
         </div>
 
-        <!-- 行4：授業レベル・内容 -->
+        <!-- 授業レベル・内容 -->
         <div class="filter-row">
-          <div class="filter-label">授業レベル・内容</div>
+          <div class="filter-label" id="lbl-level">授業レベル・内容</div>
           <div class="filter-options" id="level-filters">
             <button class="chip level" data-val="基礎会話">基礎会話</button>
             <button class="chip level" data-val="日常会話">日常会話</button>
@@ -794,19 +615,22 @@
           </div>
         </div>
 
-        <!-- 行5：趣味・関心テーマ -->
+        <!-- 趣味・関心テーマ（需要の高いテーマを拡充） -->
         <div class="filter-row">
-          <div class="filter-label">趣味・関心テーマ</div>
+          <div class="filter-label" id="lbl-hobby">趣味・関心テーマ</div>
           <div class="filter-options" id="hobby-filters">
-            <button class="chip hobby" data-val="建築">建築</button>
+            <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
+            <button class="chip hobby" data-val="ビジネス・経済">ビジネス・経済</button>
+            <button class="chip hobby" data-val="日本文化・茶道">日本文化・茶道</button>
+            <button class="chip hobby" data-val="旅行・温泉">旅行・温泉</button>
+            <button class="chip hobby" data-val="料理・和食">料理・和食</button>
+            <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
+            <button class="chip hobby" data-val="J-POP・音楽">J-POP・音楽</button>
+            <button class="chip hobby" data-val="歴史・城">歴史・城</button>
             <button class="chip hobby" data-val="スポーツ">スポーツ</button>
             <button class="chip hobby" data-val="相撲">相撲</button>
-            <button class="chip hobby" data-val="映画・ドラマ">映画・ドラマ</button>
-            <button class="chip hobby" data-val="音楽">音楽</button>
-            <button class="chip hobby" data-val="旅行">旅行</button>
-            <button class="chip hobby" data-val="料理・グルメ">料理・グルメ</button>
-            <button class="chip hobby" data-val="歴史・文化">歴史・文化</button>
-            <button class="chip hobby" data-val="アニメ・漫画">アニメ・漫画</button>
+            <button class="chip hobby" data-val="建築">建築</button>
+            <button class="chip hobby" data-val="IT・テクノロジー">IT・テクノロジー</button>
           </div>
         </div>
       </div>
@@ -816,7 +640,7 @@
   <!-- 検索結果一覧 -->
   <div class="container">
     <div class="results-header">
-      <h2>検索結果（<span id="teacher-count">0</span>名の先生）</h2>
+      <h2><span id="txt-results-prefix">検索結果</span>（<span id="teacher-count">0</span><span id="txt-results-suffix">名の先生</span>）</h2>
       <select id="sort-select" onchange="renderTeachers()" style="padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid #d6d3d1;">
         <option value="rating">並び替え: 評価順</option>
         <option value="price_asc">並び替え: 料金が安い順</option>
@@ -827,20 +651,23 @@
     <div class="teacher-grid" id="teacher-grid"></div>
   </div>
 
-  <!-- 予約・決済・回数券モーダル（ステップ1: 日付 ⇒ ステップ2: 30分刻み時間） -->
+  <!-- 予約・決済・回数券モーダル -->
   <div class="modal-overlay" id="booking-modal">
     <div class="modal">
       <button class="modal-close-x" onclick="closeModal()">✕</button>
       <h3 id="modal-teacher-name" style="font-size:1.3rem;">授業の予約申し込み</h3>
       <p id="modal-teacher-price" style="font-weight:bold; color:var(--primary-dark); margin-top:0.2rem; font-size:0.9rem;"></p>
 
-      <!-- ステップ1：日付を選ぶ -->
+      <!-- プレミアム先生かノーマル先生かの明確な説明欄 -->
+      <div id="modal-rank-explanation"></div>
+
+      <!-- STEP 1 -->
       <div class="step-box">
         <div class="step-title"><span class="step-num">STEP 1</span> 受講する日付を選んでください</div>
         <div class="booking-date-grid" id="modal-date-buttons"></div>
       </div>
 
-      <!-- ステップ2：30分刻みの時間を選ぶ -->
+      <!-- STEP 2 -->
       <div class="step-box">
         <div class="step-title"><span class="step-num">STEP 2</span> 開始時間を選んでください（30分刻み・1時間授業）</div>
         <div class="booking-time-grid" id="modal-time-buttons"></div>
@@ -860,6 +687,23 @@
     </div>
   </div>
 
+  <!-- 予約完了ポップアップ（回数券・クレジット共通） -->
+  <div class="modal-overlay" id="complete-modal">
+    <div class="modal">
+      <button class="modal-close-x" onclick="closeCompleteModal()">✕</button>
+      <div class="complete-card">
+        <div class="complete-icon">🎉</div>
+        <h3 style="font-size:1.4rem; color:#15803d;">授業の予約が完了しました！</h3>
+        <div class="complete-details" id="complete-details-box"></div>
+        <div class="mail-notice-box" id="complete-mail-box"></div>
+        <div style="display:flex; gap:0.7rem; justify-content:center; flex-wrap:wrap;">
+          <a href="mypage.html" class="btn-mypage" style="padding:0.75rem 1.4rem;">マイページで予約と入室URLを確認 ＞</a>
+          <button class="btn-reset" style="padding:0.75rem 1.2rem;" onclick="closeCompleteModal()">閉じる</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-inner">
       <div>
@@ -875,6 +719,7 @@
   </footer>
 
   <script>
+    const STORAGE_KEY = "kotohogi_demo_state_v2";
     const flagSVGs = {
       JP: `<span class="flag-item" title="日本語"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#fff"/><circle cx="16" cy="11" r="6" fill="#bc002d"/></svg></span>`,
       US: `<span class="flag-item" title="英語（アメリカ）"><svg width="30" height="20" viewBox="0 0 32 22"><rect width="32" height="22" fill="#b22234"/><path d="M0 3.4h32M0 6.8h32M0 10.2h32M0 13.6h32M0 17h32M0 20.4h32" stroke="#fff" stroke-width="1.7"/><rect width="14" height="12" fill="#3c3b6e"/></svg></span>`,
@@ -887,13 +732,8 @@
     };
 
     const dayLabelMap = {
-      "12 WED": "2/12 (水)",
-      "13 THU": "2/13 (木)",
-      "14 FRI": "2/14 (金)",
-      "15 SAT": "2/15 (土)",
-      "16 SUN": "2/16 (日)",
-      "17 MON": "2/17 (月)",
-      "18 TUE": "2/18 (火)"
+      "12 WED": "2/12 (水)", "13 THU": "2/13 (木)", "14 FRI": "2/14 (金)",
+      "15 SAT": "2/15 (土)", "16 SUN": "2/16 (日)", "17 MON": "2/17 (月)", "18 TUE": "2/18 (火)"
     };
 
     const defaultReviews = [
@@ -906,7 +746,7 @@
     const teachers = [
       {
         id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US"], hobbies: ["建築", "スポーツ", "相撲"], levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"],
+        languages: ["JP", "US"], hobbies: ["建築", "スポーツ", "相撲", "ビジネス・経済"], levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"],
         education: "東京大学 建築学科卒業", career: "不動産デベロッパー勤務経験あり",
         bio: "趣味はスポーツ観戦全般です！建築・不動産関係の仕事をしていたので、建物巡りも好きです！",
         message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！",
@@ -919,7 +759,7 @@
       },
       {
         id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "UK", "AE"], hobbies: ["スポーツ", "音楽", "映画・ドラマ", "旅行"], levels: ["基礎会話", "日常会話", "読み"],
+        languages: ["JP", "UK", "AE"], hobbies: ["スポーツ", "J-POP・音楽", "映画・ドラマ", "旅行・温泉"], levels: ["基礎会話", "日常会話", "読み"],
         education: "一橋大学 法学部卒業", career: "航空会社勤務経験あり",
         bio: "趣味はドラマ鑑賞とピアノ演奏です。",
         message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！",
@@ -932,9 +772,9 @@
       },
       {
         id: 3, name: "佐藤 健一 (68)", icon: "👴🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US", "CN"], hobbies: ["歴史・文化", "旅行", "料理・グルメ"], levels: ["日常会話", "ビジネス", "読み", "書き"],
+        languages: ["JP", "US", "CN"], hobbies: ["歴史・城", "旅行・温泉", "料理・和食", "ビジネス・経済"], levels: ["日常会話", "ビジネス", "読み", "書き"],
         education: "京都大学 文学部卒業", career: "大手総合商社 勤務経験あり（北京駐在6年）",
-        bio: "日本の歴史や城巡りが趣味です。各地の美味しいものもよく知っています。",
+        bio: "日本の歴史や城巡りが趣味です。各地の美味しい和食もよく知っています。",
         message: "ビジネス敬語から日本の歴史雑学まで、楽しく会話しましょう！",
         ratingCounts: { 5: 310, 4: 40, 3: 8, 2: 2, 1: 3 },
         schedule: [
@@ -945,7 +785,7 @@
       },
       {
         id: 4, name: "高橋 節子 (70)", icon: "👵🏻", rating: 4.9, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US"], hobbies: ["映画・ドラマ", "相撲", "歴史・文化"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        languages: ["JP", "US"], hobbies: ["映画・ドラマ", "相撲", "歴史・城", "日本文化・茶道"], levels: ["基礎会話", "日常会話", "読み", "書き"],
         education: "東京学芸大学 教育学部卒業", career: "都立高校 元教諭（国語）",
         bio: "映画やドラマ鑑賞、大相撲観戦が大好きです。年2回は国技館へ足を運びます。",
         message: "国語の教員経験を活かし、正しい発音と美しい日本語を丁寧にお教えします。",
@@ -958,7 +798,7 @@
       },
       {
         id: 5, name: "鈴木 誠 (65)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "スポーツ", "旅行"], levels: ["基礎会話", "日常会話", "ビジネス"],
+        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "スポーツ", "旅行・温泉"], levels: ["基礎会話", "日常会話", "ビジネス"],
         education: "早稲田大学 商学部卒業", career: "大手化学メーカー 勤務経験あり",
         bio: "スポーツ観戦と少年漫画が大好きで、毎週欠かさず読んでいます。",
         message: "アニメや漫画のセリフを題材に、自然な日常会話を練習しましょう！",
@@ -971,9 +811,9 @@
       },
       {
         id: 6, name: "田中 陽子 (67)", icon: "👩🏻", rating: 4.7, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "FR", "UK"], hobbies: ["料理・グルメ", "音楽", "旅行"], levels: ["基礎会話", "日常会話", "読み"],
+        languages: ["JP", "FR", "UK"], hobbies: ["料理・和食", "J-POP・音楽", "旅行・温泉", "日本文化・茶道"], levels: ["基礎会話", "日常会話", "読み"],
         education: "慶應義塾大学 文学部卒業", career: "外資系ホテル コンシェルジュ勤務経験あり",
-        bio: "和食作りとクラシック音楽鑑賞が趣味です。フランス旅行に何度も行きました。",
+        bio: "和食作りと音楽鑑賞が趣味です。フランス旅行に何度も行きました。",
         message: "おもてなしの心で、リラックスして話せる時間を作ります。",
         ratingCounts: { 5: 160, 4: 28, 3: 6, 2: 2, 1: 1 },
         schedule: [
@@ -984,7 +824,7 @@
       },
       {
         id: 7, name: "渡辺 博 (71)", icon: "👴🏻", rating: 4.4, rank: "ノーマル先生", price: 2000,
-        languages: ["JP"], hobbies: ["歴史・文化", "建築", "旅行"], levels: ["日常会話", "読み", "書き"],
+        languages: ["JP"], hobbies: ["歴史・城", "建築", "旅行・温泉"], levels: ["日常会話", "読み", "書き"],
         education: "東北大学 工学部卒業", career: "自治体 都市計画・文化財保護担当",
         bio: "古い寺社仏閣の建築様式を調べるのがライフワークです。",
         message: "日本語だけでたくさん話したい中級・上級者の方、大歓迎です！",
@@ -997,9 +837,9 @@
       },
       {
         id: 8, name: "伊藤 恵美子 (64)", icon: "👩🏻‍🦳", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "KR", "US"], hobbies: ["映画・ドラマ", "料理・グルメ", "音楽"], levels: ["基礎会話", "日常会話", "ビジネス"],
+        languages: ["JP", "KR", "US"], hobbies: ["映画・ドラマ", "料理・和食", "J-POP・音楽"], levels: ["基礎会話", "日常会話", "ビジネス"],
         education: "大阪外国語大学 卒業", career: "航空会社 客室乗務員・マナー講師",
-        bio: "韓国ドラマとK-POPが大好きで、韓国語も日常会話ができます。",
+        bio: "ドラマと音楽が大好きで、韓国語も日常会話ができます。",
         message: "就職活動中の留学生向けの面接練習やビジネスマナーもお任せください！",
         ratingCounts: { 5: 220, 4: 25, 3: 4, 2: 1, 1: 2 },
         schedule: [
@@ -1010,7 +850,7 @@
       },
       {
         id: 9, name: "山本 隆司 (69)", icon: "👨🏻", rating: 4.3, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "ES"], hobbies: ["スポーツ", "音楽", "旅行"], levels: ["基礎会話", "日常会話"],
+        languages: ["JP", "ES"], hobbies: ["スポーツ", "J-POP・音楽", "旅行・温泉"], levels: ["基礎会話", "日常会話"],
         education: "上智大学 外国語学部卒業", career: "自動車メーカー 中南米営業担当",
         bio: "サッカー観戦とギター演奏が趣味です。メキシコに5年住んでいました。",
         message: "スペイン語圏の学習者の方、文法の違いもわかりやすく説明しますよ！",
@@ -1023,7 +863,7 @@
       },
       {
         id: 10, name: "中村 文子 (73)", icon: "👵🏻", rating: 4.7, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US"], hobbies: ["歴史・文化", "料理・グルメ", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        languages: ["JP", "US"], hobbies: ["日本文化・茶道", "料理・和食", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
         education: "お茶の水女子大学 文教育学部卒業", career: "中学校 元教諭（社会・書道）",
         bio: "茶道と家庭料理が趣味です。最近は孫と一緒に日本のアニメを見ています。",
         message: "日本の四季の行事や食文化について、楽しくおしゃべりしましょう。",
@@ -1036,9 +876,9 @@
       },
       {
         id: 11, name: "小林 茂 (66)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "US"], hobbies: ["建築", "アニメ・漫画", "旅行"], levels: ["日常会話", "ビジネス", "書き"],
+        languages: ["JP", "US"], hobbies: ["IT・テクノロジー", "アニメ・漫画", "旅行・温泉"], levels: ["日常会話", "ビジネス", "書き"],
         education: "東京工業大学 工学部卒業", career: "大手電機メーカー エンジニア",
-        bio: "プラモデル制作とSFアニメ鑑賞、国内の温泉巡りが趣味です。",
+        bio: "ITガジェットとSFアニメ鑑賞、国内の温泉巡りが趣味です。",
         message: "ITやものづくり分野で働きたい方の技術日本語もサポートできます。",
         ratingCounts: { 5: 78, 4: 21, 3: 6, 2: 2, 1: 2 },
         schedule: [
@@ -1049,9 +889,9 @@
       },
       {
         id: 12, name: "加藤 真由美 (63)", icon: "👩🏻", rating: 4.6, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "CN"], hobbies: ["料理・グルメ", "映画・ドラマ", "旅行"], levels: ["基礎会話", "日常会話", "読み"],
+        languages: ["JP", "CN"], hobbies: ["料理・和食", "映画・ドラマ", "旅行・温泉"], levels: ["基礎会話", "日常会話", "読み"],
         education: "神戸大学 国際文化学部卒業", career: "貿易会社 勤務経験あり",
-        bio: "中華料理と和食の食べ歩きが趣味です。台湾と香港に何度も訪れています。",
+        bio: "和食の食べ歩きが趣味です。台湾と香港に何度も訪れています。",
         message: "漢字圏の方ならではの表現のクセを直して、自然な日本語に近づけます！",
         ratingCounts: { 5: 92, 4: 18, 3: 5, 2: 1, 1: 2 },
         schedule: [
@@ -1062,9 +902,9 @@
       },
       {
         id: 13, name: "吉田 義男 (74)", icon: "👴🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "UK"], hobbies: ["相撲", "歴史・文化", "音楽"], levels: ["日常会話", "ビジネス", "読み", "書き"],
+        languages: ["JP", "UK"], hobbies: ["相撲", "ビジネス・経済", "歴史・城"], levels: ["日常会話", "ビジネス", "読み", "書き"],
         education: "慶應義塾大学 経済学部卒業", career: "メガバンク 勤務経験あり（ロンドン支店勤務）",
-        bio: "大相撲とジャズ鑑賞が趣味です。落語もよく聞きに行きます。",
+        bio: "大相撲と経済ニュース分析が趣味です。落語もよく聞きに行きます。",
         message: "経済ニュースの読解や、大人同士の知的な雑談を楽しみましょう。",
         ratingCounts: { 5: 265, 4: 32, 3: 7, 2: 2, 1: 1 },
         schedule: [
@@ -1075,7 +915,7 @@
       },
       {
         id: 14, name: "山田 和子 (68)", icon: "👩🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP"], hobbies: ["料理・グルメ", "旅行", "歴史・文化"], levels: ["基礎会話", "日常会話"],
+        languages: ["JP"], hobbies: ["料理・和食", "旅行・温泉", "日本文化・茶道"], levels: ["基礎会話", "日常会話"],
         education: "日本女子大学 家政学部卒業", career: "病院 栄養士・食育インストラクター",
         bio: "日本の家庭料理や和菓子作りが得意です。",
         message: "日本に住み始めたばかりの奥様や学生さん、生活の相談も兼ねてお話ししましょう！",
@@ -1101,9 +941,9 @@
       },
       {
         id: 16, name: "松本 千代子 (71)", icon: "👵🏻", rating: 4.9, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "FR"], hobbies: ["音楽", "歴史・文化", "映画・ドラマ"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        languages: ["JP", "FR"], hobbies: ["J-POP・音楽", "日本文化・茶道", "映画・ドラマ"], levels: ["基礎会話", "日常会話", "読み", "書き"],
         education: "東京藝術大学 音楽学部卒業", career: "音楽教室主宰・小学校非常勤講師",
-        bio: "ピアノと日本の童謡・唱歌、フランス映画が大好きです。",
+        bio: "ピアノと日本の音楽・唱歌、フランス映画が大好きです。",
         message: "綺麗なイントネーション（高低アクセント）を音楽のリズムのように楽しく身につけましょう。",
         ratingCounts: { 5: 280, 4: 20, 3: 3, 2: 1, 1: 0 },
         schedule: [
@@ -1114,7 +954,7 @@
       },
       {
         id: 17, name: "井上 浩二 (67)", icon: "👨🏻‍🦳", rating: 4.5, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "KR"], hobbies: ["旅行", "料理・グルメ", "スポーツ"], levels: ["日常会話", "ビジネス", "読み"],
+        languages: ["JP", "KR"], hobbies: ["旅行・温泉", "料理・和食", "スポーツ"], levels: ["日常会話", "ビジネス", "読み"],
         education: "九州大学 経済学部卒業", career: "鉄道会社 観光企画担当",
         bio: "全国のローカル線巡りと温泉旅行、ゴルフが趣味です。",
         message: "日本旅行のプランを一緒に立てながら、実践的な旅行日本語を練習しましょう！",
@@ -1127,7 +967,7 @@
       },
       {
         id: 18, name: "木村 律子 (69)", icon: "👩🏻‍🦳", rating: 4.7, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "映画・ドラマ", "歴史・文化"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        languages: ["JP", "US"], hobbies: ["アニメ・漫画", "映画・ドラマ", "歴史・城"], levels: ["基礎会話", "日常会話", "読み", "書き"],
         education: "津田塾大学 学芸学部卒業", career: "出版社 編集者（児童書・文芸担当）",
         bio: "読書とジブリ映画、美術館巡りが大好きです。",
         message: "小説やニュース記事を一緒に読みながら、語彙力と表現力を広げましょう！",
@@ -1140,7 +980,7 @@
       },
       {
         id: 19, name: "林 政男 (72)", icon: "👴🏻", rating: 4.6, rank: "ノーマル先生", price: 2000,
-        languages: ["JP", "US", "ES"], hobbies: ["建築", "旅行", "相撲"], levels: ["日常会話", "ビジネス"],
+        languages: ["JP", "US", "ES"], hobbies: ["建築", "旅行・温泉", "相撲"], levels: ["日常会話", "ビジネス"],
         education: "横浜国立大学 工学部卒業", career: "大手ゼネコン 海外プロジェクト担当",
         bio: "世界中の建築物を見て回ることが趣味です。相撲も毎場所欠かさず見ています。",
         message: "海外での建設プロジェクト経験が豊富です。楽しく異文化交流しましょう！",
@@ -1153,7 +993,7 @@
       },
       {
         id: 20, name: "斎藤 美智子 (66)", icon: "👩🏻", rating: 4.8, rank: "プレミアム先生", price: 3000,
-        languages: ["JP", "CN", "US"], hobbies: ["料理・グルメ", "音楽", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
+        languages: ["JP", "CN", "US"], hobbies: ["料理・和食", "J-POP・音楽", "アニメ・漫画"], levels: ["基礎会話", "日常会話", "読み", "書き"],
         education: "同志社大学 文学部卒業", career: "日本語学校 非常勤講師経験あり",
         bio: "京都のカフェ巡りと合唱、日本の漫画が大好きです。",
         message: "初めて日本語を学ぶ方も大歓迎！ゼロから優しくサポートします。",
@@ -1166,29 +1006,32 @@
       }
     ];
 
-    const STORAGE_KEY = "kotohogi_demo_state_v1";
     function loadState() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) return JSON.parse(saved);
       const initial = {
+        isLoggedIn: false, // 初期状態は未ログイン（登録/ログインボタン表示）
+        user: { name: "Jocelyn", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardRegistered: "Visa •••• 4242" },
         tickets: 3.5,
         history: [
-          { date: "2026年2月10日", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分" },
-          { date: "2026年2月03日", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分" },
-          { date: "2026年1月25日", teacherId: 1, topic: "日本建築とビジネス文化", payment: "クレジット決済 ¥3,000" }
+          { date: "2026年2月15日（土）10:00〜11:00", teacherId: 2, topic: "日常会話・ドラマトーク", payment: "回数券 1.5回分", status: "upcoming", zoomUrl: "https://zoom.us/j/98765432100" },
+          { date: "2026年2月03日（火）14:00〜15:00", teacherId: 5, topic: "アニメ・漫画フリートーク", payment: "回数券 1.0回分", status: "completed", zoomUrl: "" }
         ],
-        myFilter: { lang: "US", level: "日常会話", hobby: "" }
+        myFilter: { lang: "US", level: "日常会話", hobby: "" },
+        registeredUsers: [
+          { id: "USR-1001", name: "Jocelyn さん", email: "shun.sk.kodama@gmail.com", country: "アメリカ / 英語", cardToken: "tok_stripe_99a8b7", tickets: 3.5, joinedAt: "2026年1月15日" }
+        ]
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
       return initial;
     }
-    function saveState(st) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
-    }
+    function saveState(st) { localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); }
 
     let studentState = loadState();
+    let uiLang = 'ja';
+    let selectedRanks = new Set();
     let selectedDates = new Set();
-    let selectedStartTimes = new Set(); // 30分刻み・複数選択可
+    let selectedStartTimes = new Set();
     let currentTimePeriod = 'all';
     let selectedLangs = new Set();
     let selectedLevels = new Set();
@@ -1196,10 +1039,93 @@
     let activeTabs = {};
     let reviewSortModes = {};
     let currentTeacher = null;
-
-    // 予約モーダル内の選択状態（ステップ1：日付、ステップ2：時間）
     let bookingSelectedDay = null;
     let bookingSelectedStart = null;
+
+    // 日英UI切り替え
+    const i18nDict = {
+      ja: {
+        tagline: "〜日本語教育に経験を。人生にやりがいを。〜",
+        btnLang: "🌐 English",
+        searchTitle: "🔍 あなたにぴったりの先生を探す",
+        btnMyFilter: "⭐ マイフィルターを適用",
+        btnReset: "✕ 条件をクリア",
+        lblRank: "講師ランク・料金",
+        lblLang: "可能言語",
+        lblLevel: "授業レベル・内容",
+        lblHobby: "趣味・関心テーマ",
+        resPrefix: "検索結果",
+        resSuffix: "名の先生"
+      },
+      en: {
+        tagline: "~ Experience for Japanese Education. Purpose for Life. ~",
+        btnLang: "🌐 日本語",
+        searchTitle: "🔍 Find Your Ideal Japanese Teacher",
+        btnMyFilter: "⭐ Apply My Filter",
+        btnReset: "✕ Clear All",
+        lblRank: "Teacher Rank & Fee",
+        lblLang: "Languages Spoken",
+        lblLevel: "Lesson Level",
+        lblHobby: "Hobbies & Interests",
+        resPrefix: "Search Results",
+        resSuffix: " Teachers Found"
+      }
+    };
+
+    function toggleUILang() {
+      uiLang = uiLang === 'ja' ? 'en' : 'ja';
+      const d = i18nDict[uiLang];
+      document.getElementById('txt-tagline').textContent = d.tagline;
+      document.getElementById('btn-ui-lang').textContent = d.btnLang;
+      document.getElementById('txt-search-title').textContent = d.searchTitle;
+      document.getElementById('txt-btn-myfilter').textContent = d.btnMyFilter;
+      document.getElementById('txt-btn-reset').textContent = d.btnReset;
+      document.getElementById('lbl-rank').textContent = d.lblRank;
+      document.getElementById('lbl-lang').textContent = d.lblLang;
+      document.getElementById('lbl-level').textContent = d.lblLevel;
+      document.getElementById('lbl-hobby').textContent = d.lblHobby;
+      document.getElementById('txt-results-prefix').textContent = d.resPrefix;
+      document.getElementById('txt-results-suffix').textContent = d.resSuffix;
+      renderAuthHeader();
+      renderTeachers();
+    }
+
+    // ヘッダーの認証状態描画（未ログイン時は登録/ログイン、ログイン後はマイページ表示）
+    function renderAuthHeader() {
+      studentState = loadState();
+      const area = document.getElementById('auth-nav-area');
+      if (studentState.isLoggedIn) {
+        const ticketText = uiLang === 'ja'
+          ? `🎟 回数券残り: ${studentState.tickets.toFixed(1)}回分`
+          : `🎟 Tickets: ${studentState.tickets.toFixed(1)} left`;
+        const mypageText = uiLang === 'ja' ? `👤 マイページ (${studentState.user.name})` : `👤 My Page (${studentState.user.name})`;
+        area.innerHTML = `
+          <div class="ticket-badge-header">${ticketText}</div>
+          <a href="mypage.html" class="btn-mypage">${mypageText}</a>
+          <button onclick="logoutDemo()" style="background:none; border:none; color:#78716c; font-size:0.75rem; cursor:pointer; text-decoration:underline;">ログアウト</button>
+        `;
+      } else {
+        const loginText = uiLang === 'ja' ? "ログイン" : "Log In";
+        const regText = uiLang === 'ja' ? "✨ 新規登録（無料）" : "✨ Sign Up (Free)";
+        area.innerHTML = `
+          <button class="btn-auth-login" onclick="loginDemo()">${loginText}</button>
+          <a href="register.html" class="btn-auth-register">${regText}</a>
+        `;
+      }
+    }
+
+    function loginDemo() {
+      studentState.isLoggedIn = true;
+      saveState(studentState);
+      renderAuthHeader();
+      alert(`${studentState.user.name} さんとしてログインしました！右上に「マイページ」ボタンが表示されました。`);
+    }
+
+    function logoutDemo() {
+      studentState.isLoggedIn = false;
+      saveState(studentState);
+      renderAuthHeader();
+    }
 
     function formatHour(val) {
       const h = Math.floor(val);
@@ -1207,7 +1133,6 @@
       return `${String(h).padStart(2, '0')}:${m}`;
     }
 
-    // 30分刻み時間ボタンを描画（複数選択可）
     function renderTimeSlotButtons() {
       const container = document.getElementById('time-slots-container');
       container.innerHTML = '';
@@ -1220,21 +1145,14 @@
         btn.className = 'chip time' + (selectedStartTimes.has(t) ? ' active' : '');
         btn.textContent = `${formatHour(t)}〜`;
         btn.onclick = () => {
-          if (selectedStartTimes.has(t)) {
-            selectedStartTimes.delete(t);
-          } else {
-            selectedStartTimes.add(t);
-          }
+          selectedStartTimes.has(t) ? selectedStartTimes.delete(t) : selectedStartTimes.add(t);
           renderTimeSlotButtons();
           renderTeachers();
         };
         container.appendChild(btn);
       }
-
       const countEl = document.getElementById('selected-time-count');
-      countEl.textContent = selectedStartTimes.size > 0
-        ? `選択中: ${selectedStartTimes.size}個の時間帯`
-        : '';
+      countEl.textContent = selectedStartTimes.size > 0 ? `選択中: ${selectedStartTimes.size}個の時間帯` : '';
     }
 
     function switchTimePeriod(period, el) {
@@ -1244,12 +1162,13 @@
       renderTimeSlotButtons();
     }
 
-    // 日付・言語・レベル・趣味ボタン設定
-    document.querySelectorAll('.chip.date, .chip.lang, .chip.level, .chip.hobby').forEach(btn => {
+    document.querySelectorAll('.chip.rank, .chip.date, .chip.lang, .chip.level, .chip.hobby').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
         const val = btn.dataset.val;
-        if (btn.classList.contains('date')) {
+        if (btn.classList.contains('rank')) {
+          selectedRanks.has(val) ? selectedRanks.delete(val) : selectedRanks.add(val);
+        } else if (btn.classList.contains('date')) {
           selectedDates.has(val) ? selectedDates.delete(val) : selectedDates.add(val);
         } else if (btn.classList.contains('lang')) {
           selectedLangs.has(val) ? selectedLangs.delete(val) : selectedLangs.add(val);
@@ -1263,6 +1182,7 @@
     });
 
     function resetFilters() {
+      selectedRanks.clear();
       selectedDates.clear();
       selectedStartTimes.clear();
       selectedLangs.clear();
@@ -1313,11 +1233,11 @@
       const sortBy = document.getElementById('sort-select').value;
 
       let filtered = teachers.filter(t => {
+        const rankMatch = selectedRanks.size === 0 || selectedRanks.has(t.rank);
         const langMatch = [...selectedLangs].every(lg => t.languages.includes(lg));
         const levelMatch = [...selectedLevels].every(l => t.levels.includes(l));
         const hobbyMatch = [...selectedHobbies].every(h => t.hobbies.includes(h));
 
-        // 複数日付 × 複数30分刻み時間帯のORマッチング
         let scheduleMatch = true;
         if (selectedDates.size > 0 || selectedStartTimes.size > 0) {
           scheduleMatch = t.schedule.some(s => {
@@ -1327,8 +1247,7 @@
             return dateOk && timeOk;
           });
         }
-
-        return langMatch && levelMatch && hobbyMatch && scheduleMatch;
+        return rankMatch && langMatch && levelMatch && hobbyMatch && scheduleMatch;
       });
 
       if (sortBy === 'rating') filtered.sort((a, b) => b.rating - a.rating);
@@ -1345,18 +1264,21 @@
       const grid = document.getElementById('teacher-grid');
       grid.innerHTML = '';
 
-      const hours = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+      // 2時間区切りの目盛り＆縦線（0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24）
+      const hours2Step = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24];
 
       filtered.forEach(t => {
         const currentTab = activeTabs[t.id] || 'schedule';
         const isSchedule = currentTab === 'schedule';
         const flagsHtml = t.languages.map(code => flagSVGs[code] || '').join('');
-        const ticketCost = t.price === 3000 ? "1.5回分" : "1.0回分";
+        const isPremium = t.rank === "プレミアム先生";
+        const ticketCost = isPremium ? "1.5回分" : "1.0回分";
+        const rankLabel = uiLang === 'ja' ? (isPremium ? "👑 プレミアム先生" : "ノーマル先生") : (isPremium ? "👑 Premium Teacher" : "Normal Teacher");
 
         let tabContent = '';
         if (isSchedule) {
-          const headerMarks = hours.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
-          const verticalLines = hours.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
+          const headerMarks = hours2Step.map(h => `<span style="left: ${(h / 24) * 100}%">${h}</span>`).join('');
+          const verticalLines = hours2Step.map(h => `<div class="grid-v-line" style="left: ${(h / 24) * 100}%"></div>`).join('');
           const rowsHtml = t.schedule.map(s => {
             const leftPct = (s.start / 24) * 100;
             const widthPct = ((s.end - s.start) / 24) * 100;
@@ -1428,6 +1350,10 @@
           `;
         }
 
+        const bookBtnText = uiLang === 'ja' ? "予約にすすむ" : "Proceed to Booking";
+        const schedTabText = uiLang === 'ja' ? "スケジュール" : "Schedule";
+        const revTabText = uiLang === 'ja' ? "レビュー" : "Reviews";
+
         grid.innerHTML += `
           <div class="teacher-card">
             <div class="card-profile-upper">
@@ -1437,7 +1363,7 @@
                   <div class="teacher-name-row">
                     <h3>${t.name}</h3>
                     <span class="rating">★ ${t.rating.toFixed(1)}</span>
-                    <span class="rank-badge">${t.rank}</span>
+                    <span class="rank-badge ${isPremium ? 'premium' : ''}">${rankLabel}</span>
                   </div>
                   <div class="flags-row">${flagsHtml}</div>
                   <div class="tags-hobby-group">
@@ -1447,39 +1373,42 @@
               </div>
 
               <div class="level-section">
-                <span class="level-label">授業レベル：</span>
+                <span class="level-label">${uiLang === 'ja' ? '授業レベル：' : 'Level:'}</span>
                 <div class="tags-level-group">
                   ${t.levels.map(l => `<span class="tag-level">${l}</span>`).join('')}
                 </div>
               </div>
 
-              <div class="price-line">受講料：¥${t.price.toLocaleString()} / 1h（回数券利用時：${ticketCost}消費）</div>
+              <div class="price-line">
+                ${uiLang === 'ja'
+                  ? `受講料：¥${t.price.toLocaleString()} / 1h（回数券利用時：${ticketCost}消費）`
+                  : `Fee: ¥${t.price.toLocaleString()} / 1h (Ticket: ${isPremium ? '1.5' : '1.0'} used)`}
+              </div>
 
               <div class="teacher-bio">
                 <div class="bio-row">${t.education}</div>
                 <div class="bio-row">${t.career}</div>
-                <div class="bio-row"><strong>趣味・関心：</strong>${t.bio}</div>
-                <div class="bio-row"><strong>生徒に一言：</strong>${t.message}</div>
+                <div class="bio-row"><strong>${uiLang === 'ja' ? '趣味・関心：' : 'Hobbies: '}</strong>${t.bio}</div>
+                <div class="bio-row"><strong>${uiLang === 'ja' ? '生徒に一言：' : 'Message: '}</strong>${t.message}</div>
               </div>
             </div>
 
             <div class="card-tab-section">
               <div class="tabs">
-                <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">スケジュール</button>
-                <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review')">レビュー</button>
+                <button class="tab-btn ${isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'schedule')">${schedTabText}</button>
+                <button class="tab-btn ${!isSchedule ? 'active' : ''}" onclick="switchTab(${t.id}, 'review')">${revTabText}</button>
               </div>
               <div class="tab-panel">${tabContent}</div>
             </div>
 
             <div class="card-footer-action">
-              <button class="btn-book" onclick="openModal(${t.id})">予約にすすむ</button>
+              <button class="btn-book" onclick="openModal(${t.id})">${bookBtnText}</button>
             </div>
           </div>
         `;
       });
     }
 
-    // ステップ1（日付）＆ステップ2（30分刻み時間）の描画
     function renderBookingStep1And2() {
       const availableDays = currentTeacher.schedule.filter(s => s.end > s.start);
       const dateContainer = document.getElementById('modal-date-buttons');
@@ -1490,7 +1419,6 @@
         return;
       }
 
-      // 初期選択日の決定（フィルター選択中の日を優先、なければ最初の空き日）
       if (!bookingSelectedDay || !availableDays.some(d => d.day === bookingSelectedDay)) {
         const matchedDay = availableDays.find(d => selectedDates.has(d.day));
         bookingSelectedDay = matchedDay ? matchedDay.day : availableDays[0].day;
@@ -1502,13 +1430,12 @@
         btn.textContent = dayLabelMap[s.day] || s.day;
         btn.onclick = () => {
           bookingSelectedDay = s.day;
-          bookingSelectedStart = null; // 日付を変えたら時間を再計算
+          bookingSelectedStart = null;
           renderBookingStep1And2();
         };
         dateContainer.appendChild(btn);
       });
 
-      // ステップ2：選択された日付の空き時間内で30分刻みの1時間枠ボタンを生成
       const daySchedule = availableDays.find(d => d.day === bookingSelectedDay);
       const timeContainer = document.getElementById('modal-time-buttons');
       timeContainer.innerHTML = '';
@@ -1538,8 +1465,6 @@
       if (bookingSelectedDay && bookingSelectedStart !== null) {
         const dText = dayLabelMap[bookingSelectedDay] || bookingSelectedDay;
         summaryEl.textContent = `✅ 選択中の予約枠：2026年${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}（1時間）`;
-      } else {
-        summaryEl.textContent = '選択中の日時：未選択';
       }
     }
 
@@ -1549,14 +1474,32 @@
       bookingSelectedDay = null;
       bookingSelectedStart = null;
 
-      const isPremium = currentTeacher.price === 3000;
+      const isPremium = currentTeacher.rank === "プレミアム先生";
       const requiredTickets = isPremium ? 1.5 : 1.0;
 
       document.getElementById('modal-teacher-name').textContent = `${currentTeacher.name} の授業予約`;
       document.getElementById('modal-teacher-price').textContent =
         `受講料：¥${currentTeacher.price.toLocaleString()}（税込・1時間） ／ 回数券必要数：${requiredTickets.toFixed(1)}回分`;
-      document.getElementById('agree-policy').checked = false;
 
+      // プレミアム先生かノーマル先生かの明確な説明表示
+      const rankBox = document.getElementById('modal-rank-explanation');
+      if (isPremium) {
+        rankBox.innerHTML = `
+          <div class="premium-explain-box">
+            <strong>👑 この講師は「プレミアム先生」認定講師です</strong><br>
+            累計授業時間100時間以上かつ生徒評価★4.5以上を達成したベテラン講師のため、通常（ノーマル先生 ¥2,000）の1.5倍である <strong>¥3,000（回数券の場合は1.5回分）</strong> となります。
+          </div>
+        `;
+      } else {
+        rankBox.innerHTML = `
+          <div class="normal-explain-box">
+            <strong>📘 この講師は「ノーマル先生」です</strong><br>
+            1時間あたり <strong>¥2,000（回数券の場合は1.0回分）</strong> でご受講いただけます。
+          </div>
+        `;
+      }
+
+      document.getElementById('agree-policy').checked = false;
       renderBookingStep1And2();
 
       const payArea = document.getElementById('payment-area');
@@ -1591,6 +1534,10 @@
       document.getElementById('booking-modal').style.display = 'none';
     }
 
+    function closeCompleteModal() {
+      document.getElementById('complete-modal').style.display = 'none';
+    }
+
     function confirmBooking(method) {
       if (!bookingSelectedDay || bookingSelectedStart === null) {
         alert('STEP 1 と STEP 2 で予約日時を選択してください。');
@@ -1600,52 +1547,68 @@
         alert('キャンセル・返金規定への同意にチェックを入れてください。');
         return;
       }
-      const isPremium = currentTeacher.price === 3000;
+      const isPremium = currentTeacher.rank === "プレミアム先生";
       const requiredTickets = isPremium ? 1.5 : 1.0;
       const dText = dayLabelMap[bookingSelectedDay] || bookingSelectedDay;
       const chosenSlot = `2026年${dText} ${formatHour(bookingSelectedStart)}〜${formatHour(bookingSelectedStart + 1)}`;
+      const zoomMeetingUrl = `https://zoom.us/j/${Math.floor(10000000000 + Math.random() * 89999999999)}`;
 
+      let paymentLabel = "";
       if (method === 'ticket') {
         studentState.tickets = Math.round((studentState.tickets - requiredTickets) * 10) / 10;
-        studentState.history.unshift({
-          date: chosenSlot,
-          teacherId: currentTeacher.id,
-          topic: "オンライン日本語レッスン",
-          payment: `回数券 ${requiredTickets.toFixed(1)}回分`
-        });
-        saveState(studentState);
-        updateTicketHeader();
-        alert(`【予約完了】${chosenSlot}\n回数券を ${requiredTickets.toFixed(1)}回分 使用して ${currentTeacher.name} の授業を予約しました！（残り回数券: ${studentState.tickets.toFixed(1)}回分）`);
+        paymentLabel = `回数券 ${requiredTickets.toFixed(1)}回分（残り ${studentState.tickets.toFixed(1)}回分）`;
       } else {
-        studentState.history.unshift({
-          date: chosenSlot,
-          teacherId: currentTeacher.id,
-          topic: "オンライン日本語レッスン",
-          payment: `クレジット決済 ¥${currentTeacher.price.toLocaleString()}`
-        });
-        saveState(studentState);
-        alert(`【予約完了】${chosenSlot}\n${currentTeacher.name} の授業予約を受け付けました！決済完了後、受講用Zoomリンクをメールでお送りします。`);
+        paymentLabel = `クレジットカード決済 ¥${currentTeacher.price.toLocaleString()}`;
       }
-      closeModal();
-    }
 
-    function updateTicketHeader() {
-      studentState = loadState();
-      const el = document.getElementById('header-ticket-display');
-      el.textContent = studentState.tickets > 0
-        ? `🎟 回数券残り: ${studentState.tickets.toFixed(1)}回分`
-        : `🎟 回数券: 未購入（1回分お得！）`;
+      studentState.history.unshift({
+        date: chosenSlot,
+        teacherId: currentTeacher.id,
+        topic: "オンライン日本語レッスン",
+        payment: paymentLabel,
+        status: "upcoming",
+        zoomUrl: zoomMeetingUrl
+      });
+      saveState(studentState);
+      renderAuthHeader();
+      closeModal();
+
+      // 予約完了ポップアップの表示＆試験用メール送信（shun.sk.kodama@gmail.com）
+      const targetEmail = "shun.sk.kodama@gmail.com";
+      document.getElementById('complete-details-box').innerHTML = `
+        <div><strong>担当講師：</strong>${currentTeacher.name}（${currentTeacher.rank}）</div>
+        <div><strong>予約日時：</strong>${chosenSlot}</div>
+        <div><strong>お支払い方法：</strong>${paymentLabel}</div>
+        <div><strong>授業用Zoom URL：</strong><a href="${zoomMeetingUrl}" target="_blank" style="color:#0284c7;">${zoomMeetingUrl}</a></div>
+      `;
+
+      const mailSubject = encodeURIComponent(`【KOTOHOGI】授業予約完了のお知らせ（${chosenSlot} / ${currentTeacher.name}）`);
+      const mailBody = encodeURIComponent(
+        `${studentState.user.name} 様\n\nKOTOHOGIでの授業予約が完了いたしました。\n\n` +
+        `■ 担当講師：${currentTeacher.name}（${currentTeacher.rank}）\n` +
+        `■ 予約日時：${chosenSlot}\n` +
+        `■ 決済内容：${paymentLabel}\n` +
+        `■ オンライン授業Zoom URL：${zoomMeetingUrl}\n\n` +
+        `開始5分前になりましたら上記URLよりご入室ください。\nKOTOHOGI 運営事務局`
+      );
+
+      document.getElementById('complete-mail-box').innerHTML = `
+        <strong>📧 予約完了メールを送信しました</strong><br>
+        宛先：<code>${targetEmail}</code><br>
+        ※静的HTMLプロトタイプのため、実際のメールソフトで送信テストを行う場合は
+        <a href="mailto:${targetEmail}?subject=${mailSubject}&body=${mailBody}" style="color:#0284c7; font-weight:bold; text-decoration:underline;">こちらのメール起動リンク</a> をクリックしてください（本番環境ではサーバーから自動送信されます）。
+      `;
+
+      document.getElementById('complete-modal').style.display = 'flex';
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      updateTicketHeader();
+      renderAuthHeader();
       renderTimeSlotButtons();
       renderTeachers();
       const params = new URLSearchParams(window.location.search);
       const bookId = params.get('book');
-      if (bookId) {
-        openModal(Number(bookId));
-      }
+      if (bookId) openModal(Number(bookId));
     });
   </script>
 </body>
