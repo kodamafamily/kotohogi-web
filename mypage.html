@@ -28,81 +28,82 @@
     header {
       background: #fff;
       border-bottom: 2px solid var(--primary);
-      padding: 0.85rem 2rem;
+      padding: 0.85rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
-    .brand-link { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
-    .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--primary-dark); letter-spacing: 0.05em; line-height: 1.2; }
-    .logo-text span { display: block; font-size: 0.74rem; color: var(--text-muted); font-weight: normal; }
-    .header-right { display: flex; gap: 0.6rem; align-items: center; }
+    .brand-link { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+    .logo-svg { width: 52px; height: 32px; flex-shrink: 0; }
+    .logo-text { font-size: 1.45rem; font-weight: 800; color: var(--primary-dark); letter-spacing: 0.04em; line-height: 1.15; }
+    .logo-text span { display: block; font-size: 0.72rem; color: var(--text-muted); font-weight: normal; margin-top: 2px; }
+    .header-right { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
     .lang-toggle-btn {
       background: #f5f5f4; border: 1px solid #a8a29e; color: var(--text-main);
-      padding: 0.42rem 0.8rem; border-radius: 8px; font-size: 0.82rem; font-weight: bold; cursor: pointer;
+      padding: 0.4rem 0.75rem; border-radius: 8px; font-size: 0.8rem; font-weight: bold; cursor: pointer;
     }
     .btn-back {
       background: #fff; border: 2px solid var(--primary); color: var(--primary-dark);
-      text-decoration: none; padding: 0.42rem 1rem; border-radius: 8px; font-weight: bold; font-size: 0.88rem;
+      text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 8px; font-weight: bold; font-size: 0.84rem;
     }
 
-    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-    .page-title { font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .container { max-width: 1000px; margin: 1.6rem auto; padding: 0 0.85rem; }
+    .page-title { font-size: 1.35rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
     .card-section {
       background: #fff; border: 1px solid var(--border-color); border-radius: 12px;
-      padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      padding: 1.35rem; margin-bottom: 1.3rem; box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
     .card-section h2 {
-      font-size: 1.15rem; margin-bottom: 0.9rem;
-      border-left: 4px solid var(--primary); padding-left: 0.7rem;
+      font-size: 1.1rem; margin-bottom: 0.85rem;
+      border-left: 4px solid var(--primary); padding-left: 0.65rem;
     }
 
     .upcoming-card {
       background: #f0fdf4; border: 2px solid #22c55e; border-radius: 10px;
-      padding: 1.2rem 1.4rem; margin-bottom: 0.8rem; display: flex;
-      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      padding: 1.1rem 1.2rem; margin-bottom: 0.8rem; display: flex;
+      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.9rem;
     }
     .btn-zoom-enter {
-      background: #16a34a; color: #fff; border: none; padding: 0.75rem 1.3rem;
-      border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
+      background: #16a34a; color: #fff; border: none; padding: 0.75rem 1.2rem;
+      border-radius: 8px; font-weight: bold; font-size: 0.92rem; cursor: pointer;
       display: inline-flex; align-items: center; gap: 0.4rem;
     }
 
     .ticket-box {
       border: 2px solid #f59e0b; background: #fffbeb; border-radius: 10px;
-      padding: 1.2rem 1.5rem; display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1rem;
+      padding: 1.1rem 1.3rem; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.9rem;
     }
     .btn-action {
-      background: var(--primary); color: #fff; border: none; padding: 0.65rem 1.2rem;
-      border-radius: 8px; font-weight: bold; font-size: 0.9rem; cursor: pointer;
+      background: var(--primary); color: #fff; border: none; padding: 0.65rem 1.1rem;
+      border-radius: 8px; font-weight: bold; font-size: 0.88rem; cursor: pointer;
     }
     .btn-blue { background: #0284c7; }
 
-    .mf-row { display: flex; align-items: flex-start; padding: 0.65rem 0; border-bottom: 1px solid var(--border-color); gap: 1rem; }
+    .mf-row { display: flex; align-items: flex-start; padding: 0.65rem 0; border-bottom: 1px solid var(--border-color); gap: 0.9rem; }
     .mf-row:last-of-type { border-bottom: none; }
-    .mf-label { width: 125px; font-weight: bold; font-size: 0.88rem; padding-top: 0.3rem; flex-shrink: 0; }
-    .mf-options { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .mf-label { width: 120px; font-weight: bold; font-size: 0.86rem; padding-top: 0.3rem; flex-shrink: 0; }
+    .mf-options { display: flex; flex-wrap: wrap; gap: 0.42rem; }
     .chip {
-      display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.75rem;
-      border: 1px solid #d6d3d1; border-radius: 8px; background: #fff; cursor: pointer; font-size: 0.84rem;
+      display: inline-flex; align-items: center; gap: 0.38rem; padding: 0.3rem 0.72rem;
+      border: 1px solid #d6d3d1; border-radius: 8px; background: #fff; cursor: pointer; font-size: 0.82rem;
     }
-    .chip-flag { display: inline-flex; align-items: center; border: 1px solid #e7e5e4; border-radius: 2px; overflow: hidden; height: 15px; }
+    .chip-flag { display: inline-flex; align-items: center; border: 1px solid #e7e5e4; border-radius: 2px; overflow: hidden; height: 14px; }
     .chip.lang.active { background: #fef3c7; border-color: var(--primary-dark); box-shadow: 0 0 0 1px var(--primary-dark); font-weight: bold; }
     .chip.level.active { background: var(--tag-pink); border-color: var(--tag-pink-active); box-shadow: 0 0 0 1px var(--tag-pink-active); font-weight: bold; }
     .chip.hobby.active { background: var(--tag-blue); border-color: var(--tag-blue-active); box-shadow: 0 0 0 1px var(--tag-blue-active); font-weight: bold; }
 
     .history-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .history-item {
-      border: 1px solid #d6d3d1; border-radius: 8px; padding: 0.9rem 1.2rem;
+      border: 1px solid #d6d3d1; border-radius: 8px; padding: 0.85rem 1rem;
       display: flex; justify-content: space-between; align-items: center;
-      cursor: pointer; background: #fafaf9;
+      cursor: pointer; background: #fafaf9; gap: 0.5rem; flex-wrap: wrap;
     }
     .history-item:hover { border-color: var(--primary); background: #fffbeb; }
 
-    .material-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .material-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.9rem; }
     .material-card { border: 1px solid #d6d3d1; border-radius: 8px; padding: 1rem; background: #fafaf9; }
     .material-tag {
       display: inline-block; background: #bae6fd; color: #0c4a6e;
@@ -111,21 +112,43 @@
 
     .modal-overlay {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.55); justify-content: center; align-items: center; z-index: 200; padding: 1rem;
+      background: rgba(0,0,0,0.55); justify-content: center; align-items: center; z-index: 200; padding: 0.75rem;
     }
-    .modal { background: #fff; padding: 1.8rem; border-radius: 12px; max-width: 650px; width: 100%; position: relative; }
-    .modal-close-x { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+    .modal { background: #fff; padding: 1.5rem; border-radius: 12px; max-width: 650px; width: 100%; position: relative; }
+    .modal-close-x { position: absolute; top: 0.8rem; right: 1rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+
+    @media (max-width: 640px) {
+      header { padding: 0.65rem 0.9rem; flex-direction: column; align-items: stretch; }
+      .logo-svg { width: 44px; height: 28px; }
+      .logo-text { font-size: 1.25rem; }
+      .header-right { justify-content: space-between; border-top: 1px solid #f5f5f4; padding-top: 0.45rem; }
+      .card-section { padding: 1rem; }
+      .mf-row { flex-direction: column; gap: 0.35rem; }
+      .mf-label { width: 100%; padding-top: 0; }
+      .btn-zoom-enter { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <a href="student.html" class="brand-link">
-      <svg width="44" height="32" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
-        <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
-        <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+      <!-- 公式握手ロゴマーク -->
+      <svg class="logo-svg" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M48 16L68 34L32 76L12 58" stroke="#f97316" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+        <path d="M58 44C76 54 98 54 114 46" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+        <path d="M24 68L42 86" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+        <path d="M138 66L182 104C189 110 189 120 182 126C176 132 166 132 160 126L134 103" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M164 128C171 134 171 144 164 150C158 156 148 156 142 150L114 125" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M144 148C138 154 128 154 122 148L104 132" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+        <path d="M124 84L168 122" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+        <path d="M212 16L192 34L228 76L248 58" stroke="#f59e0b" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+        <path d="M202 44C184 46 170 42 156 38C144 35 132 37 122 44L90 66C83 71 82 81 88 87C94 93 104 92 111 86L128 72L138 66" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M236 68L216 86C206 94 194 96 184 94" stroke="#f59e0b" stroke-width="11" stroke-linecap="round"/>
+        <rect x="46" y="84" width="22" height="36" rx="11" transform="rotate(42 46 84)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+        <rect x="62" y="98" width="22" height="38" rx="11" transform="rotate(42 62 98)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+        <rect x="78" y="112" width="22" height="38" rx="11" transform="rotate(42 78 112)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+        <rect x="94" y="126" width="22" height="34" rx="11" transform="rotate(42 94 126)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
       </svg>
       <div class="logo-text">
         KOTOHOGI
@@ -141,22 +164,19 @@
   <div class="container">
     <h1 class="page-title" id="mp-title">👤 生徒マイページ</h1>
 
-    <!-- 1. 予約済みの授業・オンラインミーティング入室 -->
     <div class="card-section">
       <h2 id="mp-sec-upcoming">🎥 予約済みの授業・オンライン入室（Zoom）</h2>
-      <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:0.8rem;" id="mp-upcoming-desc">
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;" id="mp-upcoming-desc">
         授業開始5分前になりましたら「オンライン授業に入室する」ボタンを押してください（Zoomが自動で起動します）。
       </p>
       <div id="upcoming-lessons-area"></div>
     </div>
 
-    <!-- 2. 回数券ステータス -->
     <div class="card-section">
       <h2 id="mp-sec-tickets">🎟 回数券（チケット）残高・購入</h2>
       <div id="ticket-status-area"></div>
     </div>
 
-    <!-- 3. マイフィルター設定 -->
     <div class="card-section">
       <h2 id="mp-sec-filter">⭐ マイフィルター設定（お気に入り検索条件の保存）</h2>
       <div class="mf-row">
@@ -202,39 +222,36 @@
         </div>
       </div>
 
-      <div style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <div style="margin-top: 1rem; display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;">
         <button class="btn-action btn-blue" onclick="saveMyFilter()">この条件をマイフィルターに保存する</button>
-        <span id="saved-filter-text" style="font-size:0.85rem; font-weight:bold; color:#0284c7;"></span>
+        <span id="saved-filter-text" style="font-size:0.84rem; font-weight:bold; color:#0284c7;"></span>
       </div>
     </div>
 
-    <!-- 4. これまでの授業履歴 -->
     <div class="card-section">
       <h2>📚 これまでの授業履歴（総受講回数：<span id="total-lessons">0</span>回）</h2>
       <div class="history-list" id="history-list"></div>
     </div>
 
-    <!-- 5. 過去に閲覧した教材 -->
     <div class="card-section">
       <h2>📖 過去に閲覧・授業で使用した教材</h2>
       <div class="material-grid">
         <div class="material-card">
           <span class="material-tag">日常会話・日本文化</span>
-          <h3 style="font-size:1rem; margin-bottom:0.3rem;">第4回：大相撲の観戦マナーと歴史</h3>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026/2/10（担当：石原 美緒子 先生）</p>
+          <h3 style="font-size:0.98rem; margin-bottom:0.3rem;">第4回：大相撲の観戦マナーと歴史</h3>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026/2/10（担当：石原 美緒子 先生）</p>
           <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキストを開きます。')">教材を復習する</button>
         </div>
         <div class="material-card">
           <span class="material-tag">ビジネス・敬語</span>
-          <h3 style="font-size:1rem; margin-bottom:0.3rem;">面接で好印象を与える尊敬語・謙譲語</h3>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026/1/25（担当：児玉 峻 先生）</p>
+          <h3 style="font-size:0.98rem; margin-bottom:0.3rem;">面接で好印象を与える尊敬語・謙譲語</h3>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.6rem;">最終閲覧日：2026/1/25（担当：児玉 峻 先生）</p>
           <button class="btn-action" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="alert('デジタルテキストを開きます。')">教材を復習する</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 先生詳細ポップアップ -->
   <div class="modal-overlay" id="teacher-popup">
     <div class="modal">
       <button class="modal-close-x" onclick="closePopup()">✕</button>
@@ -243,7 +260,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "kotohogi_demo_state_v3";
+    const STORAGE_KEY = "kotohogi_demo_state_v4";
     const teacherMaster = {
       1: { id: 1, name: "児玉 峻 (66)", icon: "👨🏻", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇺🇸", levels: ["基礎会話", "日常会話", "ビジネス", "読み", "書き"], hobbies: ["建築", "スポーツ", "相撲"], career: "東京大学 建築学科卒業 / 不動産デベロッパー勤務経験あり", message: "スポーツや建築が好きな生徒さん、是非一緒にお話ししましょう！" },
       2: { id: 2, name: "石原 美緒子 (72)", icon: "👩🏻‍🦳", rating: 4.6, rank: "プレミアム先生", price: 3000, langs: "🇯🇵 🇬🇧 🇦🇪", levels: ["基礎会話", "日常会話", "読み"], hobbies: ["スポーツ", "J-POP・音楽", "映画・ドラマ", "旅行・温泉"], career: "一橋大学 法学部卒業 / 航空会社勤務経験あり", message: "楽しい授業を心がけています！みなさんに日本語学習を継続していただけるようサポートいたします！" },
@@ -273,7 +290,7 @@
       langMode = langMode === 'ja' ? 'en' : 'ja';
       document.getElementById('mp-lang-btn').textContent = langMode === 'ja' ? '🌐 English' : '🌐 日本語';
       document.getElementById('mp-tagline').textContent = langMode === 'ja' ? '〜日本語教育に経験を。人生にやりがいを。〜' : '~ Experience for Japanese Education. Purpose for Life. ~';
-      document.getElementById('mp-back-btn').textContent = langMode === 'ja' ? '← 先生を探す画面に戻る' : '← Back to Find Teachers';
+      document.getElementById('mp-back-btn').textContent = langMode === 'ja' ? '← 先生を探す画面に戻る' : '← Find Teachers';
       document.getElementById('mp-sec-upcoming').textContent = langMode === 'ja' ? '🎥 予約済みの授業・オンライン入室（Zoom）' : '🎥 Upcoming Lessons & Join Online Room (Zoom)';
       document.getElementById('mp-sec-tickets').textContent = langMode === 'ja' ? '🎟 回数券（チケット）残高・購入' : '🎟 Lesson Tickets Balance & Purchase';
       document.getElementById('mp-sec-filter').textContent = langMode === 'ja' ? '⭐ マイフィルター設定（お気に入り検索条件の保存）' : '⭐ My Filter Settings';
@@ -315,9 +332,9 @@
           return `
             <div class="upcoming-card">
               <div>
-                <div style="font-size:0.82rem; color:#15803d; font-weight:bold;">● ${langMode === 'ja' ? '受講予定（予約確定済み）' : 'Confirmed Upcoming Lesson'}</div>
-                <div style="font-size:1.1rem; font-weight:bold; margin:0.2rem 0;">${u.date}</div>
-                <div style="font-size:0.9rem;">${langMode === 'ja' ? '担当講師：' : 'Teacher: '}<strong>${t.icon} ${t.name}</strong>（${u.payment}）</div>
+                <div style="font-size:0.8rem; color:#15803d; font-weight:bold;">● ${langMode === 'ja' ? '受講予定（予約確定済み）' : 'Confirmed Upcoming Lesson'}</div>
+                <div style="font-size:1.05rem; font-weight:bold; margin:0.2rem 0;">${u.date}</div>
+                <div style="font-size:0.88rem;">${langMode === 'ja' ? '担当講師：' : 'Teacher: '}<strong>${t.icon} ${t.name}</strong>（${u.payment}）</div>
               </div>
               <button class="btn-zoom-enter" onclick="enterZoomRoom('${t.name}', '${u.date}', '${u.zoomUrl || 'https://zoom.us/j/123456789'}')">
                 🎥 ${langMode === 'ja' ? 'オンライン授業に入室する' : 'Join Online Lesson (Zoom)'}
@@ -334,9 +351,9 @@
         ticketArea.innerHTML = `
           <div class="ticket-box">
             <div>
-              <div style="font-size:0.85rem; color:var(--text-muted);">${langMode === 'ja' ? '現在の回数券残高（有効期限：2026/8/31）' : 'Current Balance (Valid until: 2026/8/31)'}</div>
-              <div style="font-size:1.6rem; font-weight:bold; color:var(--primary-dark);">${langMode === 'ja' ? `残り ${state.tickets.toFixed(1)} 回分` : `${state.tickets.toFixed(1)} Tickets Left`}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted);">${langMode === 'ja' ? '※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。' : '*Normal: 1.0 ticket / Premium: 1.5 tickets per lesson.'}</div>
+              <div style="font-size:0.82rem; color:var(--text-muted);">${langMode === 'ja' ? '現在の回数券残高（有効期限：2026/8/31）' : 'Current Balance (Valid until: 2026/8/31)'}</div>
+              <div style="font-size:1.5rem; font-weight:bold; color:var(--primary-dark);">${langMode === 'ja' ? `残り ${state.tickets.toFixed(1)} 回分` : `${state.tickets.toFixed(1)} Tickets Left`}</div>
+              <div style="font-size:0.78rem; color:var(--text-muted);">${langMode === 'ja' ? '※ノーマル先生は1.0回分、プレミアム先生は1.5回分を消費します。' : '*Normal: 1.0 ticket / Premium: 1.5 tickets per lesson.'}</div>
             </div>
             <button class="btn-action" onclick="buyTickets()">＋ ${langMode === 'ja' ? '11回分を追加購入（¥20,000）' : 'Buy 11-Ticket Pack (¥20,000)'}</button>
           </div>
@@ -346,7 +363,7 @@
           <div class="ticket-box">
             <div>
               <div style="font-weight:bold; color:#92400e;">現在、回数券をお持ちではありません</div>
-              <div style="font-size:0.88rem;">10回分の料金（¥20,000）で<strong>11回分</strong>受講できるお得な回数券がおすすめです！</div>
+              <div style="font-size:0.85rem;">10回分の料金（¥20,000）で<strong>11回分</strong>受講できるお得な回数券がおすすめです！</div>
             </div>
             <button class="btn-action" onclick="buyTickets()">🎟 11回分回数券を購入する（¥20,000）</button>
           </div>
@@ -369,10 +386,10 @@
         return `
           <div class="history-item" onclick="openTeacherPopup(${t.id})">
             <div>
-              <div style="font-size:0.8rem; color:var(--text-muted);">${h.date} ｜ ${h.payment}</div>
-              <div style="font-weight:bold; font-size:1rem;">${t.icon} ${t.name} <span style="font-size:0.85rem; font-weight:normal; color:var(--text-muted);">（${h.topic}）</span></div>
+              <div style="font-size:0.78rem; color:var(--text-muted);">${h.date} ｜ ${h.payment}</div>
+              <div style="font-weight:bold; font-size:0.95rem;">${t.icon} ${t.name} <span style="font-size:0.82rem; font-weight:normal; color:var(--text-muted);">（${h.topic}）</span></div>
             </div>
-            <span style="color:#0284c7; font-weight:bold; font-size:0.88rem;">先生の詳細・予約へ ＞</span>
+            <span style="color:#0284c7; font-weight:bold; font-size:0.84rem;">先生の詳細・予約へ ＞</span>
           </div>
         `;
       }).join('');
@@ -396,18 +413,18 @@
       const t = teacherMaster[id] || teacherMaster[1];
       document.getElementById('popup-body').innerHTML = `
         <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem;">
-          <div style="font-size:3rem; background:#f5f5f4; width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center;">${t.icon}</div>
+          <div style="font-size:2.6rem; background:#f5f5f4; width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">${t.icon}</div>
           <div>
-            <h3 style="font-size:1.3rem;">${t.name} <span style="color:#eab308;">★ ${t.rating}</span></h3>
-            <div style="font-size:0.85rem; color:var(--primary-dark); font-weight:bold;">${t.rank}（¥${t.price.toLocaleString()} / 1h）</div>
-            <div style="margin-top:0.3rem;">対応言語：${t.langs}</div>
+            <h3 style="font-size:1.2rem;">${t.name} <span style="color:#eab308;">★ ${t.rating}</span></h3>
+            <div style="font-size:0.84rem; color:var(--primary-dark); font-weight:bold;">${t.rank}（¥${t.price.toLocaleString()} / 1h）</div>
+            <div style="margin-top:0.2rem; font-size:0.88rem;">対応言語：${t.langs}</div>
           </div>
         </div>
-        <div style="background:#fafaf9; padding:1rem; border-radius:8px; font-size:0.9rem; margin-bottom:1rem;">
+        <div style="background:#fafaf9; padding:0.9rem; border-radius:8px; font-size:0.86rem; margin-bottom:1rem;">
           <p><strong>経歴：</strong>${t.career}</p>
-          <p style="margin-top:0.4rem;"><strong>対応レベル：</strong>${t.levels.join('・')}</p>
-          <p style="margin-top:0.4rem;"><strong>趣味：</strong>${t.hobbies.join('・')}</p>
-          <p style="margin-top:0.4rem;"><strong>生徒に一言：</strong>${t.message}</p>
+          <p style="margin-top:0.35rem;"><strong>対応レベル：</strong>${t.levels.join('・')}</p>
+          <p style="margin-top:0.35rem;"><strong>趣味：</strong>${t.hobbies.join('・')}</p>
+          <p style="margin-top:0.35rem;"><strong>生徒に一言：</strong>${t.message}</p>
         </div>
         <a href="student.html?book=${t.id}" class="btn-action" style="display:block; text-align:center; text-decoration:none; padding:0.85rem;">この先生の予約へすすむ</a>
       `;
