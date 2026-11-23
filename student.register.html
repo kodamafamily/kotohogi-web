@@ -12,7 +12,6 @@
       --bg-color: #fafaf9;
       --text-main: #292524;
       --text-muted: #57534e;
-      --border-color: #e7e5e4;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -24,106 +23,60 @@
     header {
       background: #fff;
       border-bottom: 2px solid var(--primary);
-      padding: 0.85rem 2rem;
+      padding: 0.85rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
-    .brand-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      text-decoration: none;
-    }
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary-dark);
-      letter-spacing: 0.05em;
-      line-height: 1.2;
-    }
-    .logo-text span {
-      display: block;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      font-weight: normal;
-    }
-    .header-actions { display: flex; gap: 0.6rem; align-items: center; }
+    .brand-link { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+    .logo-svg { width: 52px; height: 32px; flex-shrink: 0; }
+    .logo-text { font-size: 1.45rem; font-weight: 800; color: var(--primary-dark); letter-spacing: 0.04em; line-height: 1.15; }
+    .logo-text span { display: block; font-size: 0.72rem; color: var(--text-muted); font-weight: normal; margin-top: 2px; }
+    .header-actions { display: flex; gap: 0.5rem; align-items: center; }
     .btn-outline {
-      border: 1.5px solid var(--primary);
-      color: var(--primary-dark);
-      background: #fff;
-      padding: 0.45rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.88rem;
+      border: 1.5px solid var(--primary); color: var(--primary-dark); background: #fff;
+      padding: 0.42rem 0.9rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.84rem;
     }
 
-    /* 理念・大型ロゴアピール（LPセクション） */
     .lp-hero {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      padding: 2.8rem 1.5rem;
+      padding: 2.5rem 1rem;
       text-align: center;
       border-bottom: 1px solid #fde68a;
     }
     .lp-hero-inner { max-width: 920px; margin: 0 auto; }
     .hero-brand-showcase {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border: 2px solid #f59e0b;
-      border-radius: 20px;
-      padding: 1.2rem 2.5rem;
-      margin-bottom: 1.4rem;
+      display: inline-flex; flex-direction: column; align-items: center;
+      background: #fff; border: 2px solid #f59e0b; border-radius: 20px;
+      padding: 1.1rem 2.2rem; margin-bottom: 1.3rem;
       box-shadow: 0 6px 18px rgba(245, 158, 11, 0.14);
     }
-    .hero-brand-title {
-      font-size: 2.4rem;
-      font-weight: 900;
-      color: var(--primary-dark);
-      letter-spacing: 0.08em;
-      margin-top: 0.3rem;
-    }
-    .hero-brand-sub {
-      font-size: 0.92rem;
-      color: #92400e;
-      font-weight: bold;
-    }
-    .lp-hero h1 { font-size: 1.85rem; margin-bottom: 0.8rem; line-height: 1.38; }
-    .lp-hero p { font-size: 1rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 2rem; }
+    .hero-brand-title { font-size: 2.2rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.08em; margin-top: 0.25rem; }
+    .hero-brand-sub { font-size: 0.88rem; color: #92400e; font-weight: bold; }
+    .lp-hero h1 { font-size: 1.75rem; margin-bottom: 0.8rem; line-height: 1.38; }
+    .lp-hero p { font-size: 0.98rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 1.8rem; }
 
     .merit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-      text-align: left;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem; text-align: left;
     }
     .merit-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.4rem;
-      border: 1px solid #fde68a;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      background: #fff; border-radius: 12px; padding: 1.3rem;
+      border: 1px solid #fde68a; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
-    .merit-card h3 { font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
-    .merit-card p { font-size: 0.88rem; color: var(--text-main); margin: 0; }
+    .merit-card h3 { font-size: 1.02rem; color: var(--primary-dark); margin-bottom: 0.35rem; }
+    .merit-card p { font-size: 0.86rem; color: var(--text-main); margin: 0; }
 
-    /* 登録フォーム */
-    .form-container { max-width: 680px; margin: 2.5rem auto; padding: 0 1rem; }
+    .form-container { max-width: 680px; margin: 2rem auto; padding: 0 0.85rem; }
     .form-card {
-      background: #fff;
-      border: 2px solid var(--primary);
-      border-radius: 14px;
-      padding: 2rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      background: #fff; border: 2px solid var(--primary); border-radius: 14px;
+      padding: 1.8rem; box-shadow: 0 4px 16px rgba(0,0,0,0.05);
     }
-    .form-card h2 { font-size: 1.4rem; text-align: center; margin-bottom: 0.4rem; }
-    .form-sub { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-    .form-group { margin-bottom: 1.1rem; }
+    .form-card h2 { font-size: 1.35rem; text-align: center; margin-bottom: 0.4rem; }
+    .form-sub { text-align: center; font-size: 0.84rem; color: var(--text-muted); margin-bottom: 1.4rem; }
+    .form-group { margin-bottom: 1.05rem; }
     .form-group label { display: block; font-weight: bold; font-size: 0.88rem; margin-bottom: 0.35rem; }
     .req-badge { background: #dc2626; color: #fff; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
     .opt-badge { background: #78716c; color: #fff; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
@@ -133,28 +86,47 @@
     }
     .card-security-box {
       background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px;
-      padding: 1.1rem; margin-top: 1.2rem;
+      padding: 1rem; margin-top: 1.1rem;
     }
-    .security-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.4rem; }
-    .pci-badge { background: #dcfce7; color: #166534; font-size: 0.74rem; font-weight: bold; padding: 0.2rem 0.6rem; border-radius: 12px; }
-    .card-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-top: 0.6rem; }
+    .security-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.4rem; }
+    .pci-badge { background: #dcfce7; color: #166534; font-size: 0.72rem; font-weight: bold; padding: 0.2rem 0.55rem; border-radius: 12px; }
+    .card-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-top: 0.6rem; }
     .btn-submit {
-      width: 100%; padding: 1rem; background: var(--primary); color: #fff; border: none;
-      border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 1.5rem;
+      width: 100%; padding: 0.95rem; background: var(--primary); color: #fff; border: none;
+      border-radius: 10px; font-size: 1.08rem; font-weight: bold; cursor: pointer; margin-top: 1.4rem;
     }
-    .btn-submit:hover { background: var(--primary-dark); }
+
+    @media (max-width: 640px) {
+      header { padding: 0.65rem 0.9rem; }
+      .logo-svg { width: 44px; height: 28px; }
+      .logo-text { font-size: 1.25rem; }
+      .hero-brand-showcase { padding: 0.9rem 1.4rem; }
+      .hero-brand-title { font-size: 1.75rem; }
+      .lp-hero h1 { font-size: 1.32rem; }
+      .form-card { padding: 1.25rem 1rem; }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <a href="student.html" class="brand-link">
-      <!-- オレンジと黄色の握手ロゴマーク -->
-      <svg width="44" height="32" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
-        <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
-        <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+      <!-- 公式握手ロゴマーク -->
+      <svg class="logo-svg" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M48 16L68 34L32 76L12 58" stroke="#f97316" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+        <path d="M58 44C76 54 98 54 114 46" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+        <path d="M24 68L42 86" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+        <path d="M138 66L182 104C189 110 189 120 182 126C176 132 166 132 160 126L134 103" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M164 128C171 134 171 144 164 150C158 156 148 156 142 150L114 125" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M144 148C138 154 128 154 122 148L104 132" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+        <path d="M124 84L168 122" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+        <path d="M212 16L192 34L228 76L248 58" stroke="#f59e0b" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+        <path d="M202 44C184 46 170 42 156 38C144 35 132 37 122 44L90 66C83 71 82 81 88 87C94 93 104 92 111 86L128 72L138 66" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M236 68L216 86C206 94 194 96 184 94" stroke="#f59e0b" stroke-width="11" stroke-linecap="round"/>
+        <rect x="46" y="84" width="22" height="36" rx="11" transform="rotate(42 46 84)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+        <rect x="62" y="98" width="22" height="38" rx="11" transform="rotate(42 62 98)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+        <rect x="78" y="112" width="22" height="38" rx="11" transform="rotate(42 78 112)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+        <rect x="94" y="126" width="22" height="34" rx="11" transform="rotate(42 94 126)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
       </svg>
       <div class="logo-text">
         KOTOHOGI
@@ -162,20 +134,29 @@
       </div>
     </a>
     <div class="header-actions">
-      <a href="teacher.register.html" class="btn-outline" style="border-color:#78716c; color:#57534e;">講師登録はこちら</a>
-      <a href="student.html" class="btn-outline">先生一覧を見る</a>
+      <a href="teacher.register.html" class="btn-outline" style="border-color:#78716c; color:#57534e;">講師登録</a>
+      <a href="student.html" class="btn-outline">先生一覧</a>
     </div>
   </header>
 
   <section class="lp-hero">
     <div class="lp-hero-inner">
-      <!-- 大型ロゴ＆ブランド名表示 -->
       <div class="hero-brand-showcase">
-        <svg width="96" height="66" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 24L32 12L54 28L42 42L24 34L12 24Z" stroke="#ea580c" stroke-width="5" stroke-linejoin="round" fill="#fff7ed"/>
-          <path d="M108 24L88 12L62 32L76 46L96 34L108 24Z" stroke="#eab308" stroke-width="5" stroke-linejoin="round" fill="#fefce8"/>
-          <path d="M40 38L58 26C63 23 70 25 74 30L84 42C87 46 85 52 80 54L62 62C56 65 48 63 43 58L32 47" stroke="#ea580c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M36 48L46 58M44 55L54 64M53 60L62 67" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+        <svg width="115" height="72" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M48 16L68 34L32 76L12 58" stroke="#f97316" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+          <path d="M58 44C76 54 98 54 114 46" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+          <path d="M24 68L42 86" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+          <path d="M138 66L182 104C189 110 189 120 182 126C176 132 166 132 160 126L134 103" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M164 128C171 134 171 144 164 150C158 156 148 156 142 150L114 125" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M144 148C138 154 128 154 122 148L104 132" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+          <path d="M124 84L168 122" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+          <path d="M212 16L192 34L228 76L248 58" stroke="#f59e0b" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+          <path d="M202 44C184 46 170 42 156 38C144 35 132 37 122 44L90 66C83 71 82 81 88 87C94 93 104 92 111 86L128 72L138 66" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M236 68L216 86C206 94 194 96 184 94" stroke="#f59e0b" stroke-width="11" stroke-linecap="round"/>
+          <rect x="46" y="84" width="22" height="36" rx="11" transform="rotate(42 46 84)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+          <rect x="62" y="98" width="22" height="38" rx="11" transform="rotate(42 62 98)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+          <rect x="78" y="112" width="22" height="38" rx="11" transform="rotate(42 78 112)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
+          <rect x="94" y="126" width="22" height="34" rx="11" transform="rotate(42 94 126)" stroke="#f59e0b" stroke-width="9.5" fill="#fff"/>
         </svg>
         <div class="hero-brand-title">KOTOHOGI</div>
         <div class="hero-brand-sub">〜日本語教育に経験を。人生にやりがいを。〜</div>
@@ -236,20 +217,20 @@
 
         <div class="card-security-box">
           <div class="security-header">
-            <strong style="font-size:0.9rem;">💳 クレジットカード登録 <span class="opt-badge">任意・後から登録可</span></strong>
-            <span class="pci-badge">🔒 PCI DSS準拠（カード情報非保持化）</span>
+            <strong style="font-size:0.88rem;">💳 クレジットカード登録 <span class="opt-badge">任意</span></strong>
+            <span class="pci-badge">🔒 PCI DSS準拠（カード非保持化）</span>
           </div>
-          <p style="font-size:0.76rem; color:var(--text-muted); margin-bottom:0.6rem;">
-            ※カード番号はKOTOHOGIのサーバーには一切保存されず、決済代行会社（Stripe）へ直接暗号化送信されます。
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.6rem;">
+            ※カード番号はKOTOHOGIのサーバーには一切保存されず、Stripeへ直接暗号化送信されます。
           </p>
           <input type="text" id="reg-card-num" class="form-control" placeholder="カード番号（例：4242 •••• •••• 4242）">
           <div class="card-row-2">
             <input type="text" class="form-control" placeholder="有効期限（MM / YY）">
-            <input type="text" class="form-control" placeholder="セキュリティコード（CVC）">
+            <input type="text" class="form-control" placeholder="CVC">
           </div>
         </div>
 
-        <div style="margin-top: 1.2rem; font-size: 0.84rem;">
+        <div style="margin-top: 1.1rem; font-size: 0.82rem;">
           <label style="display:flex; align-items:center; gap:0.5rem;">
             <input type="checkbox" required checked>
             <span><strong>利用規約</strong> および <strong>プライバシーポリシー</strong> に同意する</span>
@@ -262,7 +243,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "kotohogi_demo_state_v3";
+    const STORAGE_KEY = "kotohogi_demo_state_v4";
 
     function handleRegister(e) {
       e.preventDefault();
